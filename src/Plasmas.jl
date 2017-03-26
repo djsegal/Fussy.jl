@@ -1,5 +1,13 @@
 module Plasmas
 
-# package code goes here
+  import Julz
 
-end # module
+  if ( endswith(pwd(), "/test") ) ; cd("..") ; end
+
+  include("../config/bootload.jl")
+
+  function main()
+    println("done.")
+  end
+
+end

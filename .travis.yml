@@ -17,3 +17,8 @@ after_success:
   - julia -e 'cd(Pkg.dir("Plasmas")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
   # push coverage results to Codecov
   - julia -e 'cd(Pkg.dir("Plasmas")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
+script:
+ - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
+ - julia -e 'Pkg.clone(pwd());'
+ - (echo "y" && echo "Plasmas Test" && echo "danSegal2@gmail.com" && echo "Plasmas Test" && echo "n" && yes && cat) | julia -e 'using PkgDev; PkgDev.config();'
+ - julia -e 'Pkg.build("Plasmas"); Pkg.test("Plasmas"; coverage=true)'
