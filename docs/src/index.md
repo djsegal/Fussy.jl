@@ -1,4 +1,4 @@
-# Plasmas.jl Documentation
+# Tokamak.jl Documentation
 
 ```@contents
 ```

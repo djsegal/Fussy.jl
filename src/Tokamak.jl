@@ -1,6 +1,7 @@
-module Plasmas
+module Tokamak
 
-  import Julz
+  using Julz
+  using JLD
 
   if ( endswith(pwd(), "/test") ) ; cd("..") ; end
 

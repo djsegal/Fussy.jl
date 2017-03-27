@@ -1,4 +1,4 @@
-using Plasmas
+using Tokamak
 using Base.Test
 
 @testset "All Tests" begin
