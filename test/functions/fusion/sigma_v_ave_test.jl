@@ -2,17 +2,17 @@
 
   @test isdefined(Tokamak, :sigma_v_ave) == true
 
-  Tokamak.@load_input "T = 1e0u\"keV\""
+  @eval Tokamak.@load_input "T = 1e0u\"keV\""
   expected_value = Tokamak.sigma_v_ave()/1u"m^3*s^-1"
   actual_value = 1e-27
   @test isapprox(expected_value, actual_value, atol=1e-8)
 
-  Tokamak.@load_input("T = 1e1u\"keV\"")
+  @eval Tokamak.@load_input "T = 1e1u\"keV\""
   expected_value = Tokamak.sigma_v_ave()/1u"m^3*s^-1"
   actual_value = 1e-22
   @test isapprox(expected_value, actual_value, atol=1e-8)
 
-  Tokamak.@load_input("T = 1e3u\"keV\"")
+  @eval Tokamak.@load_input "T = 1e3u\"keV\""
   expected_value = Tokamak.sigma_v_ave()/1u"m^3*s^-1"
   actual_value = 1e-22
   @test isapprox(expected_value, actual_value, atol=1e-8)
