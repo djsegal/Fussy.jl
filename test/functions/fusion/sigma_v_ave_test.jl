@@ -29,6 +29,8 @@
   expected_max *= sqrt( T_m )
   expected_max /= sqrt( uconvert(u"MeV/c^2", Tokamak.m_r()) )
 
+  expected_max = uconvert(u"m^3/s", expected_max)
+
   actual_max = Tokamak.sigma_v_ave()
 
   @test isapprox(expected_max, actual_max)

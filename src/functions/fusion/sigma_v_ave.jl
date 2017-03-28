@@ -15,6 +15,7 @@ function sigma_v_ave()
   cur_sigma_v_ave *= ( T_m / T ) ^ (2/3)
   cur_sigma_v_ave *= exp( -3 * ( T_m / T ) ^ (1/3) + 2 )
 
+  cur_sigma_v_ave = uconvert(u"m^3/s", cur_sigma_v_ave)
   cur_sigma_v_ave
 
 end

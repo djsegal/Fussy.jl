@@ -1,5 +1,5 @@
 """
-    b_theta()
+    b_theta(rho)
 
 Lorem ipsum dolor sit amet.
 """
