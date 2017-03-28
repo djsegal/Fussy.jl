@@ -1,1 +1,1 @@
-const E_Li = 3.3u"MeV"
+const E_Li = 4.8u"MeV"
