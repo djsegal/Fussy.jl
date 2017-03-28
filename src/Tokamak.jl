@@ -1,6 +1,7 @@
 module Tokamak
 
   using Julz
+  using QuadGK
 
   if ( endswith(pwd(), "/test") ) ; cd("..") ; end
 
