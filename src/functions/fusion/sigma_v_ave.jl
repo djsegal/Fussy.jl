@@ -1,3 +1,8 @@
+"""
+    sigma_v_ave()
+
+Lorem ipsum dolor sit amet.
+"""
 function sigma_v_ave()
 
   T_m = 296u"keV"

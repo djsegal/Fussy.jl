@@ -1,3 +1,8 @@
+"""
+    sigma_v()
+
+Lorem ipsum dolor sit amet.
+"""
 function sigma_v()
   cur_func = function (rho)
     ( 1 - rho^2 )^( 2 * nu_n ) * rho

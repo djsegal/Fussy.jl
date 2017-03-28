@@ -1,3 +1,8 @@
+"""
+    P_F(R_0, I_M)
+
+Lorem ipsum dolor sit amet.
+"""
 function P_F(R_0, I_M)
   sigma_v_hat = sigma_v()
 

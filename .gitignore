@@ -2,6 +2,7 @@
 *.jl.*.cov
 *.jl.mem
 
-DS_Store
+.DS_Store
 /tmp/*
-/docs/build/*
+docs/build/
+docs/site/

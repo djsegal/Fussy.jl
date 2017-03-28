@@ -3,9 +3,10 @@
 ```@contents
 ```
 
-## Functions
+## Code
 
-```@docs
+```@autodocs
+Modules = [Tokamak]
 ```
 
 ## Index

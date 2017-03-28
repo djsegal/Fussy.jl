@@ -2,15 +2,9 @@ using Documenter, Tokamak
 
 makedocs(
   format = :html,
-  modules = [ Tokamak ],
-  sitename = "Tokamak",
-  pages = [
-  ]
+  sitename = "Tokamak.jl"
 )
 
 deploydocs(
-  repo   = "github.com/djsegal/Tokamak.jl.git",
-  target = "build",
-  deps   = nothing,
-  make   = nothing
+  repo   = "github.com/djsegal/Tokamak.jl.git"
 )
