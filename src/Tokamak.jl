@@ -1,7 +1,6 @@
 module Tokamak
 
   using Julz
-  using JLD
 
   if ( endswith(pwd(), "/test") ) ; cd("..") ; end
 
