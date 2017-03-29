@@ -23,4 +23,5 @@ script:
   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
   - julia -e 'Pkg.clone(pwd());'
   - (echo "y" && echo "Tokamak Test" && echo "danSegal2@gmail.com" && echo "Tokamak Test" && echo "n" && yes && cat) | julia -e 'using PkgDev; PkgDev.config();'
+  - julia -e 'Pkg.checkout("Julz");'
   - julia -e 'Pkg.build("Tokamak"); Pkg.test("Tokamak"; coverage=true)'
