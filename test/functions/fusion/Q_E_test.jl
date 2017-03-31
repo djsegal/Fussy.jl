@@ -2,6 +2,6 @@
 
   @test isdefined(Tokamak, :Q_E) == true
 
-  @test isapprox(Tokamak.Q_E(), 9.342, atol=5e-3)
+  @test isapprox( Tokamak.Q_E(), 9.342 , rtol=5e-5 )
 
 end

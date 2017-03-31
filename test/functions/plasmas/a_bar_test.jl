@@ -4,6 +4,6 @@
 
   Tokamak.load_input( "R_0 = 4u\"m\"" )
 
-  @test isapprox( Tokamak.a_bar() , 1.342u"m" , atol=5e-3u"m" )
+  @test isapprox( Tokamak.a_bar() , 1.342u"m" , rtol=5e-4 )
 
 end

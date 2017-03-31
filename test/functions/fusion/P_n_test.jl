@@ -8,6 +8,6 @@
 
   P_n = Tokamak.P_n()
 
-  @test isapprox( SymPy.N( P_n / P_F ) , 0.8 , atol=5e-3 )
+  @test isapprox( SymPy.N( P_n / P_F ) , 0.8 , rtol=5e-3 )
 
 end

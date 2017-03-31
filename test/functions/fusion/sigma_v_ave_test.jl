@@ -15,10 +15,7 @@
     expected_value = Tokamak.sigma_v_ave()/1u"m^3*s^-1"
     actual_value = value * ( 1u"(cm/m)^3" |> NoUnits )
 
-    tolerance = log(10, min(actual_value, expected_value))
-    tolerance = 5 * 10 ^ tolerance
-
-    @test isapprox(expected_value, actual_value, atol=tolerance)
+    @test isapprox( expected_value , actual_value , rtol=5e-1 )
   end
 
 end

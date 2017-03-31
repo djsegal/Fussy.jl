@@ -17,7 +17,7 @@
   expected_value = 4.074
   actual_value = get_test_greenwald_limit()
 
-  @test isapprox(expected_value, SymPy.N(actual_value), atol=1e-3)
+  @test isapprox(expected_value, SymPy.N(actual_value), rtol=1e-4)
 
   Tokamak.load_input( "I_M = 7u\"MA\"" )
 
@@ -25,7 +25,7 @@
   actual_value = get_test_greenwald_limit()
   actual_value *= Sym("I_M")
 
-  @test isapprox(expected_value, SymPy.N(actual_value), atol=5e-3)
+  @test isapprox(expected_value, SymPy.N(actual_value), rtol=1e-4)
 
   Tokamak.load_input( "R_0 = 3u\"m\"" )
 
@@ -34,6 +34,6 @@
   actual_value *= Sym("I_M")
   actual_value /= Sym("R_0") ^ 2
 
-  @test isapprox(expected_value, SymPy.N(actual_value), atol=5e-3)
+  @test isapprox(expected_value, SymPy.N(actual_value), rtol=1e-4)
 
 end
