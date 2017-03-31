@@ -1,9 +1,9 @@
 """
-    a(R_0)
+    a()
 
 Lorem ipsum dolor sit amet.
 """
-function a(R_0)
+function a()
 
   epsilon * R_0
 

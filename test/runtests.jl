@@ -1,7 +1,9 @@
 using Tokamak
 using Base.Test
+
 using Unitful
 using Unitful.DefaultSymbols
+using SymPy
 
 @testset "All Tests" begin
   if ( endswith(pwd(), "/test") ) ; cd("..") ; end

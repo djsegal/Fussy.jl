@@ -1,9 +1,9 @@
 """
-    n_bar(R_0, I_M)
+    n_bar(I_M)
 
 Lorem ipsum dolor sit amet.
 """
-function n_bar(R_0, I_M)
+function n_bar(I_M)
   cur_n_bar = 0.3183
 
   cur_n_bar *= N_G

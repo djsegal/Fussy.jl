@@ -2,12 +2,28 @@
 
   @test isdefined(Tokamak, :a) == true
 
-  @test isapprox( Tokamak.a(1u"m") , 0.25u"m" )
-  @test isapprox( Tokamak.a(4u"m") , 1.0u"m" )
+  expected_values = Dict(
+    0.25 => Dict(
+      "1u\"m\"" => 0.25u"m",
+      "4u\"m\"" => 1.0u"m"
+    ),
+    1 => Dict(
+      "1u\"m\"" => 1.0u"m",
+      "4u\"m\"" => 4.0u"m"
+    )
+  )
 
-  Tokamak.load_input( "epsilon = 1" )
+  for cur_epsilon in [ 0.25, 1 ]
+    Tokamak.load_input( "epsilon = $cur_epsilon" )
 
-  @test isapprox( Tokamak.a(1u"m") , 1u"m" )
-  @test isapprox( Tokamak.a(4u"m") , 4u"m" )
+    for cur_R_0 in [ "1u\"m\"", "4u\"m\"" ]
+      Tokamak.load_input( "R_0 = $cur_R_0" )
+
+      actual_value = Tokamak.a()
+      expected_value = expected_values[cur_epsilon][cur_R_0]
+
+      @test isapprox( expected_value , actual_value )
+    end
+  end
 
 end

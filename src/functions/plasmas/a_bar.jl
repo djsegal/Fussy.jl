@@ -1,10 +1,10 @@
 """
-    a_bar(R_0)
+    a_bar()
 
 Lorem ipsum dolor sit amet.
 """
-function a_bar(R_0)
+function a_bar()
 
-  sqrt(kappa) * a(R_0)
+  sqrt(kappa) * a()
 
 end

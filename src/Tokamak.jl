@@ -2,6 +2,7 @@ module Tokamak
 
   using Julz
   using QuadGK
+  using SymPy
 
   if ( endswith(pwd(), "/test") ) ; cd("..") ; end
 
