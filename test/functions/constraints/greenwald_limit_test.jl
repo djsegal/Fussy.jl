@@ -5,10 +5,9 @@
   function get_test_greenwald_limit()
     scale_factor = ( Sym("R_0") ) ^ 2
     scale_factor /= Sym("I_M")
-    scale_factor /= 1u"n20"
 
     cur_greenwald_limit = Tokamak.greenwald_limit()
-    cur_greenwald_limit += Tokamak.n_bar
+    cur_greenwald_limit += ( Tokamak.n_bar / 1u"n20" )
     cur_greenwald_limit *= scale_factor
 
     cur_greenwald_limit

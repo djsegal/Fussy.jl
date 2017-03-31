@@ -11,8 +11,7 @@ function greenwald_limit()
   cur_greenwald_limit /= epsilon ^ 2
   cur_greenwald_limit /= ( R_0 / 1u"m" ) ^ 2
 
-  cur_greenwald_limit *= 1u"n20"
-  cur_greenwald_limit -= n_bar
+  cur_greenwald_limit -= n_bar / 1u"n20"
 
   cur_greenwald_limit
 end
