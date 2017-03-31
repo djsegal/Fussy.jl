@@ -2,6 +2,6 @@
 
   @test isdefined(Tokamak, :f_CD) == true
 
-  @test Tokamak.f_CD(1u"MA") != Nullable
+  @test Tokamak.f_CD() != Nullable
 
 end

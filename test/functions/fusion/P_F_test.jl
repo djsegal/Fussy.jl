@@ -2,6 +2,6 @@
 
   @test isdefined(Tokamak, :P_F) == true
 
-  @test Tokamak.P_F(1u"MA") != Nullable
+  @test Tokamak.P_F() != Nullable
 
 end

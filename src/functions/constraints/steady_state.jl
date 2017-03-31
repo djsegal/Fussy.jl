@@ -1,11 +1,11 @@
 """
-    steady_state(I_M)
+    steady_state()
 
 Lorem ipsum dolor sit amet.
 """
-function steady_state(I_M)
-  cur_steady_state = f_CD(I_M)
-  cur_steady_state += f_B(I_M)
+function steady_state()
+  cur_steady_state = f_CD()
+  cur_steady_state += f_B()
   cur_steady_state -= 1
 
   cur_steady_state

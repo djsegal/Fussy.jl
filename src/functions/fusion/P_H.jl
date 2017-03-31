@@ -1,10 +1,10 @@
 """
-    P_H(I_M)
+    P_H()
 
 Lorem ipsum dolor sit amet.
 """
-function P_H(I_M)
+function P_H()
 
-  P_F(I_M) / Q
+  P_F() / Q
 
 end

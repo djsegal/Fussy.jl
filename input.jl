@@ -14,6 +14,10 @@ P_W = 2.5
 q_K = 2
 
 T_k = 15u"keV"
-R_0 = Sym("R_0")
+
+n_bar = Sym("n_bar") * 1u"n20"
+R_0 = Sym("R_0") * 1u"m"
 B_0 = Sym("B_0")
+I_M = Sym("I_M") * 1u"MA"
+
 rho_m = 0.6

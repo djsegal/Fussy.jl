@@ -2,11 +2,11 @@
 
   @test isdefined(Tokamak, :P_n) == true
 
-  @test Tokamak.P_n(1u"MA") != Nullable
+  @test Tokamak.P_n() != Nullable
 
-  P_F = Tokamak.P_F(1u"MA")
+  P_F = Tokamak.P_F()
 
-  P_n = Tokamak.P_n(1u"MA")
+  P_n = Tokamak.P_n()
 
   @test isapprox( SymPy.N( P_n / P_F ) , 0.8 , atol=5e-3 )
 
