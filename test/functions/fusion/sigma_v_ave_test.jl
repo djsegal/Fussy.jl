@@ -2,37 +2,23 @@
 
   @test isdefined(Tokamak, :sigma_v_ave) == true
 
-  Tokamak.load_input( "T = 1e0u\"keV\"" )
-  expected_value = Tokamak.sigma_v_ave()/1u"m^3*s^-1"
-  actual_value = 1e-27
-  @test isapprox(expected_value, actual_value, atol=1e-8)
+  # using nrl table for data (p. 45)
 
-  Tokamak.load_input( "T = 1e1u\"keV\"" )
-  expected_value = Tokamak.sigma_v_ave()/1u"m^3*s^-1"
-  actual_value = 1e-22
-  @test isapprox(expected_value, actual_value, atol=1e-8)
+  nrl_table = Dict(
+    "T_k = 1e0u\"keV\"" => 5.5e-21,
+    "T_k = 1e1u\"keV\"" => 1.1e-16,
+    "T_k = 1e2u\"keV\"" => 8.5e-16,
+  )
 
-  Tokamak.load_input( "T = 1e3u\"keV\"" )
-  expected_value = Tokamak.sigma_v_ave()/1u"m^3*s^-1"
-  actual_value = 1e-22
-  @test isapprox(expected_value, actual_value, atol=1e-8)
+  for (key, value) in nrl_table
+    Tokamak.load_input( key )
+    expected_value = Tokamak.sigma_v_ave()/1u"m^3*s^-1"
+    actual_value = value * ( 1u"(cm/m)^3" |> NoUnits )
 
-  T_m = 296u"keV"
-  sigma_m = 5.03u"b"
+    tolerance = log(10, min(actual_value, expected_value))
+    tolerance = 5 * 10 ^ tolerance
 
-  max_T = "T = $(27/8 * T_m/1u"keV")u\"keV\""
-  Tokamak.load_input( max_T )
-
-  expected_max = 4
-  expected_max *= (2/3)^(5/2)
-  expected_max *= uconvert(u"m^2", sigma_m)
-  expected_max *= sqrt( T_m )
-  expected_max /= sqrt( uconvert(u"MeV/c^2", Tokamak.m_r()) )
-
-  expected_max = uconvert(u"m^3/s", expected_max)
-
-  actual_max = Tokamak.sigma_v_ave()
-
-  @test isapprox(expected_max, actual_max)
+    @test isapprox(expected_value, actual_value, atol=tolerance)
+  end
 
 end

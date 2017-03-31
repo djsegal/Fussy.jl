@@ -5,17 +5,25 @@ Lorem ipsum dolor sit amet.
 """
 function sigma_v_ave()
 
-  T_m = 296u"keV"
-  sigma_m = 5.03u"b"
+  ln_T = log( T_k / 1u"keV" )
 
-  cur_sigma_v_ave = 4 * sqrt(2/3)
-  cur_sigma_v_ave *= uconvert(u"m^2", sigma_m)
-  cur_sigma_v_ave *= sqrt( T_m )
-  cur_sigma_v_ave /= sqrt( uconvert(u"MeV/c^2", m_r()) )
-  cur_sigma_v_ave *= ( T_m / T ) ^ (2/3)
-  cur_sigma_v_ave *= exp( -3 * ( T_m / T ) ^ (1/3) + 2 )
+  k_0 = -60.4593
+  k_1 = +6.1371
+  k_2 = -0.8609
+  k_3 = +0.0356
+  k_4 = -0.0045
 
-  cur_sigma_v_ave = uconvert(u"m^3/s", cur_sigma_v_ave)
+  cur_sigma_v_ave = k_0
+
+  cur_sigma_v_ave += k_1 * ln_T ^ 1
+  cur_sigma_v_ave += k_2 * ln_T ^ 2
+  cur_sigma_v_ave += k_3 * ln_T ^ 3
+  cur_sigma_v_ave += k_4 * ln_T ^ 4
+
+  cur_sigma_v_ave = exp( cur_sigma_v_ave )
+
+  cur_sigma_v_ave *= 1u"m^3/s"
+
   cur_sigma_v_ave
 
 end
