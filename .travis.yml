@@ -24,4 +24,5 @@ script:
   - julia -e 'Pkg.clone(pwd());'
   - (echo "y" && echo "Tokamak Test" && echo "danSegal2@gmail.com" && echo "Tokamak Test" && echo "n" && yes && cat) | julia -e 'using PkgDev; PkgDev.config();'
   - julia -e 'Pkg.checkout("Julz");'
+  - julia -e 'ENV["PYTHON"]=""; Pkg.build("PyCall");'
   - julia -e 'Pkg.build("Tokamak"); Pkg.test("Tokamak"; coverage=true)'
