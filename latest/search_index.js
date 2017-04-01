@@ -73,11 +73,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "index.html#Tokamak.I_CD-Tuple{Any,Any}",
+    "location": "index.html#Tokamak.I_CD-Tuple{}",
     "page": "Home",
     "title": "Tokamak.I_CD",
     "category": "Method",
-    "text": "I_CD(R_0, I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "I_CD()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -105,43 +105,43 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "index.html#Tokamak.P_F-Tuple{Any,Any}",
+    "location": "index.html#Tokamak.P_F-Tuple{}",
     "page": "Home",
     "title": "Tokamak.P_F",
     "category": "Method",
-    "text": "P_F(R_0, I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "P_F()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
-    "location": "index.html#Tokamak.P_H-Tuple{Any,Any}",
+    "location": "index.html#Tokamak.P_H-Tuple{}",
     "page": "Home",
     "title": "Tokamak.P_H",
     "category": "Method",
-    "text": "P_H(R_0, I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "P_H()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
-    "location": "index.html#Tokamak.P_T-Tuple{Any,Any}",
+    "location": "index.html#Tokamak.P_T-Tuple{}",
     "page": "Home",
     "title": "Tokamak.P_T",
     "category": "Method",
-    "text": "P_T(R_0, I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "P_T()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
-    "location": "index.html#Tokamak.P_alpha-Tuple{Any,Any}",
+    "location": "index.html#Tokamak.P_alpha-Tuple{}",
     "page": "Home",
     "title": "Tokamak.P_alpha",
     "category": "Method",
-    "text": "P_alpha(R_0, I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "P_alpha()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
-    "location": "index.html#Tokamak.P_n-Tuple{Any,Any}",
+    "location": "index.html#Tokamak.P_n-Tuple{}",
     "page": "Home",
     "title": "Tokamak.P_n",
     "category": "Method",
-    "text": "P_n(R_0, I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "P_n()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -153,19 +153,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "index.html#Tokamak.a-Tuple{Any}",
+    "location": "index.html#Tokamak.a-Tuple{}",
     "page": "Home",
     "title": "Tokamak.a",
     "category": "Method",
-    "text": "a(R_0)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "a()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
-    "location": "index.html#Tokamak.a_bar-Tuple{Any}",
+    "location": "index.html#Tokamak.a_bar-Tuple{}",
     "page": "Home",
     "title": "Tokamak.a_bar",
     "category": "Method",
-    "text": "a_bar(R_0)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "a_bar()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -177,19 +177,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "index.html#Tokamak.f_B-Tuple{Any,Any}",
+    "location": "index.html#Tokamak.f_B-Tuple{}",
     "page": "Home",
     "title": "Tokamak.f_B",
     "category": "Method",
-    "text": "f_B(R_0, I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "f_B()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
-    "location": "index.html#Tokamak.f_CD-Tuple{Any,Any}",
+    "location": "index.html#Tokamak.f_CD-Tuple{}",
     "page": "Home",
     "title": "Tokamak.f_CD",
     "category": "Method",
-    "text": "f_CD(R_0, I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "f_CD()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -201,19 +201,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "index.html#Tokamak.greenwald_limit-Tuple{}",
+    "page": "Home",
+    "title": "Tokamak.greenwald_limit",
+    "category": "Method",
+    "text": "greenwald_limit()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "index.html#Tokamak.m_r-Tuple{}",
     "page": "Home",
     "title": "Tokamak.m_r",
     "category": "Method",
     "text": "m_r()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
-},
-
-{
-    "location": "index.html#Tokamak.n_bar-Tuple{Any,Any}",
-    "page": "Home",
-    "title": "Tokamak.n_bar",
-    "category": "Method",
-    "text": "n_bar(R_0, I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -241,11 +241,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "index.html#Tokamak.steady_state-Tuple{Any,Any}",
+    "location": "index.html#Tokamak.simplified_density-Tuple{}",
+    "page": "Home",
+    "title": "Tokamak.simplified_density",
+    "category": "Method",
+    "text": "simplified_density()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "index.html#Tokamak.steady_state-Tuple{}",
     "page": "Home",
     "title": "Tokamak.steady_state",
     "category": "Method",
-    "text": "steady_state(R_0, I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "steady_state()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
