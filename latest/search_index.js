@@ -105,6 +105,38 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "index.html#Tokamak.K_L-Tuple{}",
+    "page": "Home",
+    "title": "Tokamak.K_L",
+    "category": "Method",
+    "text": "K_L()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "index.html#Tokamak.K_R-Tuple{}",
+    "page": "Home",
+    "title": "Tokamak.K_R",
+    "category": "Method",
+    "text": "K_R()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "index.html#Tokamak.K_kappa-Tuple{}",
+    "page": "Home",
+    "title": "Tokamak.K_kappa",
+    "category": "Method",
+    "text": "K_kappa()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "index.html#Tokamak.K_rad-Tuple{}",
+    "page": "Home",
+    "title": "Tokamak.K_rad",
+    "category": "Method",
+    "text": "K_rad()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "index.html#Tokamak.P_F-Tuple{}",
     "page": "Home",
     "title": "Tokamak.P_F",
@@ -137,11 +169,27 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "index.html#Tokamak.P_kappa-Tuple{}",
+    "page": "Home",
+    "title": "Tokamak.P_kappa",
+    "category": "Method",
+    "text": "P_kappa()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "index.html#Tokamak.P_n-Tuple{}",
     "page": "Home",
     "title": "Tokamak.P_n",
     "category": "Method",
     "text": "P_n()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "index.html#Tokamak.P_rad-Tuple{}",
+    "page": "Home",
+    "title": "Tokamak.P_rad",
+    "category": "Method",
+    "text": "P_rad()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -209,11 +257,43 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "index.html#Tokamak.lawson_criterion-Tuple{}",
+    "page": "Home",
+    "title": "Tokamak.lawson_criterion",
+    "category": "Method",
+    "text": "lawson_criterion()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "index.html#Tokamak.m_r-Tuple{}",
     "page": "Home",
     "title": "Tokamak.m_r",
     "category": "Method",
     "text": "m_r()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "index.html#Tokamak.power_balance-Tuple{}",
+    "page": "Home",
+    "title": "Tokamak.power_balance",
+    "category": "Method",
+    "text": "power_balance()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "index.html#Tokamak.power_sinks-Tuple{}",
+    "page": "Home",
+    "title": "Tokamak.power_sinks",
+    "category": "Method",
+    "text": "power_sinks()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "index.html#Tokamak.power_sources-Tuple{}",
+    "page": "Home",
+    "title": "Tokamak.power_sources",
+    "category": "Method",
+    "text": "power_sources()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
