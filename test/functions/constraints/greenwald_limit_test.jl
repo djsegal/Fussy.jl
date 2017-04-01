@@ -3,7 +3,7 @@
   @test isdefined(Tokamak, :greenwald_limit) == true
 
   function get_test_greenwald_limit()
-    scale_factor = ( Sym("R_0") ) ^ 2
+    scale_factor = Sym("R_0") ^ 2
     scale_factor /= Sym("I_M")
 
     cur_greenwald_limit = Tokamak.greenwald_limit()
