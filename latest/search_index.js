@@ -201,6 +201,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.calculate_sigma_v_hat",
+    "page": "Code",
+    "title": "Tokamak.calculate_sigma_v_hat",
+    "category": "Function",
+    "text": "calculate_sigma_v_hat()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.f_B-Tuple{}",
     "page": "Code",
     "title": "Tokamak.f_B",
@@ -286,14 +294,6 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.sigma_v_ave",
     "category": "Method",
     "text": "sigma_v_ave()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
-},
-
-{
-    "location": "code.html#Tokamak.sigma_v_hat-Tuple{}",
-    "page": "Code",
-    "title": "Tokamak.sigma_v_hat",
-    "category": "Method",
-    "text": "sigma_v_hat()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
