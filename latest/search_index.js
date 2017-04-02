@@ -385,14 +385,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Modules-1",
-    "page": "Code",
-    "title": "Modules",
-    "category": "section",
-    "text": "Modules = [Tokamak]\nOrder = [:module]"
-},
-
-{
     "location": "glossary.html#",
     "page": "Glossary",
     "title": "Glossary",
