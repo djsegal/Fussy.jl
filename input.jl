@@ -21,4 +21,6 @@ B_0 = Sym("B_0") * 1u"T"
 I_M = Sym("I_M") * 1u"MA"
 tau_E = Sym("tau_E") * 1u"s"
 
+sigma_v_hat = Sym("sigma_v_hat") * 1u"m^3/s"
+
 rho_m = 0.6
