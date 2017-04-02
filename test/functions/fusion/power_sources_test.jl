@@ -2,6 +2,8 @@
 
   @test isdefined(Tokamak, :power_sources) == true
 
+  Tokamak.load_input( "T_k = 15u\"keV\"" )
+
   scale_factor = 1u"MW"
   scale_factor *= Sym("R_0") ^ 3
   scale_factor *= Sym("n_bar") ^ 2

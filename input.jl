@@ -13,11 +13,11 @@ eta_RF = 0.4
 P_W = 2.5
 q_K = 2
 
-T_k = 15u"keV"
-
-n_bar = Sym("n_bar") * 1u"n20"
+T_k = Sym("T_k") * 1u"keV"
 R_0 = Sym("R_0") * 1u"m"
 B_0 = Sym("B_0") * 1u"T"
+
+n_bar = Sym("n_bar") * 1u"n20"
 I_M = Sym("I_M") * 1u"MA"
 tau_E = Sym("tau_E") * 1u"s"
 

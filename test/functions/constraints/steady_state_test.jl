@@ -4,6 +4,8 @@
 
   @test Tokamak.steady_state() != Nullable
 
+  Tokamak.load_input( "T_k = 15u\"keV\"" )
+
   cur_steady_state = Tokamak.steady_state()
   cur_steady_state += 1
 

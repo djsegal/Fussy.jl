@@ -2,6 +2,8 @@
 
   @test isdefined(Tokamak, :simplified_density) == true
 
+  Tokamak.load_input( "T_k = 15u\"keV\"" )
+
   actual_value = Tokamak.simplified_density()
   actual_value *= Sym("R_0") ^ 2
 

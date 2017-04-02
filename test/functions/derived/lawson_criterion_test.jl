@@ -2,6 +2,8 @@
 
   @test isdefined(Tokamak, :lawson_criterion) == true
 
+  Tokamak.load_input( "T_k = 15u\"keV\"" )
+
   actual_value = Tokamak.lawson_criterion()
 
   left_denom_value = Tokamak.sigma_v_hat
