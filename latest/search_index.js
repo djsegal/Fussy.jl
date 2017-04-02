@@ -33,14 +33,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.C_B-Tuple{}",
-    "page": "Code",
-    "title": "Tokamak.C_B",
-    "category": "Method",
-    "text": "C_B()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
-},
-
-{
     "location": "code.html#Tokamak.E_F-Tuple{}",
     "page": "Code",
     "title": "Tokamak.E_F",
@@ -70,6 +62,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.K_CD",
     "category": "Method",
     "text": "K_CD()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.K_C_B-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.K_C_B",
+    "category": "Method",
+    "text": "K_C_B()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
