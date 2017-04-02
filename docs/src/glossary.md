@@ -1,0 +1,6 @@
+# Glossary
+
+## Index
+
+```@index
+```
