@@ -27,10 +27,3 @@ Order = [:constant]
 Modules = [Tokamak]
 Order = [:macro]
 ```
-
-## Modules
-
-```@autodocs
-Modules = [Tokamak]
-Order = [:module]
-```
