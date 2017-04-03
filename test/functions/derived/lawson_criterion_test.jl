@@ -9,7 +9,7 @@
   left_denom_value = Tokamak.sigma_v_hat
   left_denom_value /= 1u"m^3/s"
 
-  right_denom_value = sqrt( Tokamak.T_k / 1u"keV" )
+  right_denom_value = ( Tokamak.T_k / 1u"keV" ) ^ (1/2)
   right_denom_value *= Tokamak.K_R()
 
   expected_value = left_denom_value

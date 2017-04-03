@@ -14,13 +14,19 @@
 
   cur_steady_state = SymPy.simplify( cur_steady_state |> NoUnits )
 
-  actual_value = SymPy.solve(cur_steady_state, Tokamak.symbol_dict["I_M"])[1]
+  sigma_v_hat, I_M = Sym("sigma_v_hat"), Sym("I_M")
+
+  cur_steady_state = SymPy.subs( cur_steady_state , Tokamak.symbol_dict["I_M"] , I_M )
+  cur_steady_state = SymPy.subs( cur_steady_state , Tokamak.symbol_dict["sigma_v_hat"] , sigma_v_hat )
+
+  actual_value = SymPy.solve(cur_steady_state, I_M)[1]
+
+  actual_value = Tokamak.calculate_sigma_v_hat(actual_value, sigma_v_hat)
 
   expected_value = -( 0.07181 / 0.2192 )
   expected_value *= ( Tokamak.T_k / 1u"keV" )
   expected_value /= ( Tokamak.sigma_v_hat / 1u"m^3/s" )
 
-  actual_value = Tokamak.calculate_sigma_v_hat(actual_value)
   expected_value = Tokamak.calculate_sigma_v_hat(expected_value)
 
   @test isapprox( expected_value , actual_value , rtol=5e-4 )

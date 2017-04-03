@@ -20,7 +20,7 @@ append!(symbol_list, ["sigma_v_hat"])
 
 symbol_dict = Dict()
 for cur_symbol in symbol_list
-  symbol_dict[cur_symbol] = symbols(cur_symbol, real=true)
+  symbol_dict[cur_symbol] = symbols(cur_symbol, positive=true)
 end
 
 T_k = symbol_dict["T_k"] * 1u"keV"
@@ -34,3 +34,4 @@ tau_E = symbol_dict["tau_E"] * 1u"s"
 sigma_v_hat = symbol_dict["sigma_v_hat"] * 1u"m^3/s"
 
 rho_m = 0.6
+M = 2.5
