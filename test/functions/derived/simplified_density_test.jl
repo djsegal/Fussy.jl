@@ -5,6 +5,7 @@
   Tokamak.load_input( "T_k = 15u\"keV\"" )
 
   actual_value = Tokamak.simplified_density()
+  actual_value /= 1u"n20"
   actual_value *= Tokamak.symbol_dict["R_0"] ^ 2
 
   expected_value = 1.917 * Tokamak.N_G

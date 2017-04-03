@@ -16,5 +16,7 @@ function calculate_sigma_v_hat(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=
     cur_value = SymPy.N(cur_value)
   end
 
+  cur_value *= 1u"m^3/s"
+
   cur_value
 end
