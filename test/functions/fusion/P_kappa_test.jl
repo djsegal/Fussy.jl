@@ -8,9 +8,9 @@
   actual_value /= ( Tokamak.T_k / 1u"keV" )
   actual_value /= 1u"MW"
 
-  actual_value /= Sym("R_0") ^ 3
-  actual_value /= Sym("n_bar")
-  actual_value *= Sym("tau_E")
+  actual_value /= Tokamak.symbol_dict["R_0"] ^ 3
+  actual_value /= Tokamak.symbol_dict["n_bar"]
+  actual_value *= Tokamak.symbol_dict["tau_E"]
 
   actual_value = SymPy.N(actual_value)
 

@@ -9,12 +9,12 @@
   cur_steady_state = Tokamak.steady_state()
   cur_steady_state += 1
 
-  cur_steady_state /= Sym("n_bar")
-  cur_steady_state /= ( Sym("R_0") ) ^ 2
+  cur_steady_state /= Tokamak.symbol_dict["n_bar"]
+  cur_steady_state /= ( Tokamak.symbol_dict["R_0"] ) ^ 2
 
   cur_steady_state = SymPy.simplify( cur_steady_state |> NoUnits )
 
-  actual_value = SymPy.solve(cur_steady_state, Sym("I_M"))[1]
+  actual_value = SymPy.solve(cur_steady_state, Tokamak.symbol_dict["I_M"])[1]
 
   expected_value = -( 0.07181 / 0.2192 )
   expected_value *= ( Tokamak.T_k / 1u"keV" )

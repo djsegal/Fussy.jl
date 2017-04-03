@@ -3,8 +3,8 @@
   @test isdefined(Tokamak, :greenwald_limit) == true
 
   function get_test_greenwald_limit()
-    scale_factor = Sym("R_0") ^ 2
-    scale_factor /= Sym("I_M")
+    scale_factor = Tokamak.symbol_dict["R_0"] ^ 2
+    scale_factor /= Tokamak.symbol_dict["I_M"]
 
     cur_greenwald_limit = Tokamak.greenwald_limit()
     cur_greenwald_limit += ( Tokamak.n_bar / 1u"n20" )
@@ -22,7 +22,7 @@
 
   expected_value *= 7
   actual_value = get_test_greenwald_limit()
-  actual_value *= Sym("I_M")
+  actual_value *= Tokamak.symbol_dict["I_M"]
 
   @test isapprox(expected_value, SymPy.N(actual_value), rtol=1e-4)
 
@@ -30,8 +30,8 @@
 
   expected_value /= 9
   actual_value = get_test_greenwald_limit()
-  actual_value *= Sym("I_M")
-  actual_value /= Sym("R_0") ^ 2
+  actual_value *= Tokamak.symbol_dict["I_M"]
+  actual_value /= Tokamak.symbol_dict["R_0"] ^ 2
 
   @test isapprox(expected_value, SymPy.N(actual_value), rtol=1e-4)
 

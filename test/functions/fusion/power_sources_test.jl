@@ -5,8 +5,8 @@
   Tokamak.load_input( "T_k = 15u\"keV\"" )
 
   scale_factor = 1u"MW"
-  scale_factor *= Sym("R_0") ^ 3
-  scale_factor *= Sym("n_bar") ^ 2
+  scale_factor *= Tokamak.symbol_dict["R_0"] ^ 3
+  scale_factor *= Tokamak.symbol_dict["n_bar"] ^ 2
 
   actual_value = Tokamak.power_sources()
   actual_value /= scale_factor
