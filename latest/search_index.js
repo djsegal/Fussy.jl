@@ -241,6 +241,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.h_mode_confinement_time-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.h_mode_confinement_time",
+    "category": "Method",
+    "text": "h_mode_confinement_time()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.lawson_criterion-Tuple{}",
     "page": "Code",
     "title": "Tokamak.lawson_criterion",
