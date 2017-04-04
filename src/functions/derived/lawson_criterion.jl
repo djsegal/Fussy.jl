@@ -13,5 +13,8 @@ function lawson_criterion()
   cur_lawson_criterion = solved_system[1]
   cur_lawson_criterion *= symbol_dict["n_bar"]
 
+  cur_lawson_criterion *= 1u"s"
+  cur_lawson_criterion *= 1u"n20"
+
   cur_lawson_criterion
 end

@@ -6,6 +6,9 @@
 
   actual_value = Tokamak.lawson_criterion()
 
+  actual_value /= 1u"s"
+  actual_value /= 1u"n20"
+
   left_denom_value = Tokamak.sigma_v_hat
   left_denom_value /= 1u"m^3/s"
 
