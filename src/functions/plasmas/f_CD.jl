@@ -4,7 +4,7 @@
 Lorem ipsum dolor sit amet.
 """
 function f_CD()
-  cur_f_CD = K_CD()
+  cur_f_CD = K_CD_hat()
 
   cur_f_CD *= ( n_bar / 1u"n20" )
   cur_f_CD *= ( R_0 / 1u"m" )^2
