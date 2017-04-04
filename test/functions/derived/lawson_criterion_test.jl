@@ -10,7 +10,7 @@
   left_denom_value /= 1u"m^3/s"
 
   right_denom_value = ( Tokamak.T_k / 1u"keV" ) ^ (1/2)
-  right_denom_value *= Tokamak.K_R()
+  right_denom_value *= Tokamak.K_BR()
 
   expected_value = left_denom_value
   expected_value -= right_denom_value

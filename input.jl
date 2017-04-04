@@ -17,7 +17,7 @@ eta_RF = 0.4
 Z_eff = 1.5
 q_K = 2
 rho_m = 0.6
-M = 2.5
+A = 2.5
 
 symbol_list = []
 append!(symbol_list, ["T_k", "R_0", "B_0"])

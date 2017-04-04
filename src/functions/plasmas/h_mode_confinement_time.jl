@@ -16,7 +16,7 @@ function h_mode_confinement_time()
   cur_tau_E *= ( n_bar / 1u"n20" ) ^ ( 41 // 100 )
   cur_tau_E *= ( B_0 / 1u"T" ) ^ ( 15 // 100 )
 
-  cur_tau_E *= M ^ ( 19 // 100 )
+  cur_tau_E *= A ^ ( 19 // 100 )
 
   cur_tau_E /= ( power_sources() / 1u"MW" ) ^ ( 69 // 100 )
 

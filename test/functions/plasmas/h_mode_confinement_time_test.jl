@@ -4,27 +4,24 @@
 
   actual_value = Tokamak.h_mode_confinement_time()
 
+  actual_value /= 1u"s"
+
   actual_value /= Tokamak.symbol_dict["B_0"] ^ ( 15 // 100 )
   actual_value /= Tokamak.symbol_dict["I_M"] ^ ( 93 // 100 )
-
-  actual_value /= 1u"s"
 
   actual_value *= Tokamak.symbol_dict["n_bar"] ^ ( 97 // 100 )
   actual_value *= Tokamak.symbol_dict["R_0"] ^ ( 10 // 100 )
   actual_value *= Tokamak.symbol_dict["sigma_v_hat"] ^ ( 69 // 100 )
 
-  expected_value = 5 + Tokamak.Q
-  expected_value = ( Tokamak.Q / expected_value ) ^ 0.69
+  expected_value = ( 5 * Tokamak.Q )
+  expected_value /= ( 5 + Tokamak.Q )
+  expected_value = expected_value ^ 0.69
 
-  expected_value *= 0.01739
+  expected_value *= 3.550e-3
   expected_value *= Tokamak.H
   expected_value *= Tokamak.kappa ^ 0.09
-  expected_value /= Tokamak.epsilon ^ 0.38
+  expected_value /= Tokamak.epsilon ^ 0.8
 
-  println("")
-  println("Skipping H-Mode confinement time")
-  println(" + actual: $actual_value")
-  println(" + expected: $expected_value")
-  println("")
+  @test isapprox(expected_value, actual_value, rtol=5e-3)
 
 end

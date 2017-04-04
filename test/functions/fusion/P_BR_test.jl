@@ -14,7 +14,7 @@
 
   actual_value = SymPy.N(actual_value)
 
-  expected_value = Tokamak.K_BR()
+  expected_value = Tokamak.K_rad()
 
   @test isapprox(expected_value, actual_value)
 
