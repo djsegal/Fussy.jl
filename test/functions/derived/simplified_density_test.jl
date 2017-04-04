@@ -15,8 +15,8 @@
   expected_value *= Tokamak.N_G^2
   expected_value *= ( Tokamak.T_k / 1u"keV" )
 
-  actual_value = Tokamak.calculate_sigma_v_hat(actual_value)
-  expected_value = Tokamak.calculate_sigma_v_hat(expected_value)
+  actual_value = Tokamak.calc_sigma_v_hat_value(actual_value)
+  expected_value = Tokamak.calc_sigma_v_hat_value(expected_value)
 
   @test isapprox( expected_value, actual_value , rtol=5e-1 )
 

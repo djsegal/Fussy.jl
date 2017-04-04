@@ -13,8 +13,8 @@
   normalization_value = 1 / ( 1 - normalization_value )
   normalization_value *= Tokamak.K_I()
 
-  actual_value = Tokamak.calculate_sigma_v_hat(actual_value)
-  normalization_value = Tokamak.calculate_sigma_v_hat(normalization_value)
+  actual_value = Tokamak.calc_sigma_v_hat_value(actual_value)
+  normalization_value = Tokamak.calc_sigma_v_hat_value(normalization_value)
 
   actual_value /= normalization_value
 

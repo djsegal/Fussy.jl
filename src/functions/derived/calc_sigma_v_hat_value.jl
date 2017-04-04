@@ -1,10 +1,11 @@
 """
-    calculate_sigma_v_hat()
+    calc_sigma_v_hat_value()
 
 Lorem ipsum dolor sit amet.
 """
-function calculate_sigma_v_hat(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=symbol_dict["sigma_v_hat"])
+function calc_sigma_v_hat_value(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=symbol_dict["sigma_v_hat"])
   cur_sigma_v_hat = sigma_v()
+
   cur_sigma_v_hat *= 10^21
   cur_sigma_v_hat /= 1u"m^3/s"
 
@@ -15,8 +16,6 @@ function calculate_sigma_v_hat(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=
   if cur_T_k_type != SymPy.Sym
     cur_value = SymPy.N(cur_value)
   end
-
-  cur_value *= 1u"m^3/s"
 
   cur_value
 end

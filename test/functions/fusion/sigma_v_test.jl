@@ -5,9 +5,11 @@
   @test Tokamak.sigma_v() != Nullable
 
   actual_value = Tokamak.sigma_v()
-  actual_value *= 10^21
 
-  actual_value /= Tokamak.calculate_sigma_v_hat()
+  actual_value *= 10^21
+  actual_value /= 1u"m^3/s"
+
+  actual_value /= Tokamak.calc_sigma_v_hat_value()
 
   T_k_symbol = Tokamak.symbol_dict["T_k"]
 
