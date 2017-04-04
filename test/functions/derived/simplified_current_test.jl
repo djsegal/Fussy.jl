@@ -26,7 +26,7 @@
     cur_value = subs(actual_value, T_k_symbol, cur_T_k)
     cur_value = SymPy.N( cur_value )
 
-    @test isapprox(cur_value, expected_value)
+    @test isapprox(cur_value, expected_value, rtol=1e-4)
   end
 
 end
