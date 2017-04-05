@@ -121,6 +121,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.K_kernel-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.K_kernel",
+    "category": "Method",
+    "text": "K_kernel()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.K_n-Tuple{}",
     "page": "Code",
     "title": "Tokamak.K_n",
@@ -225,11 +233,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.calculate_sigma_v_hat",
+    "location": "code.html#Tokamak.calc_sigma_v_hat_value",
     "page": "Code",
-    "title": "Tokamak.calculate_sigma_v_hat",
+    "title": "Tokamak.calc_sigma_v_hat_value",
     "category": "Function",
-    "text": "calculate_sigma_v_hat()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "calc_sigma_v_hat_value()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -342,14 +350,6 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.simplified_density",
     "category": "Method",
     "text": "simplified_density()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
-},
-
-{
-    "location": "code.html#Tokamak.simplified_n_bar_tau_E-Tuple{}",
-    "page": "Code",
-    "title": "Tokamak.simplified_n_bar_tau_E",
-    "category": "Method",
-    "text": "simplified_n_bar_tau_E()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
