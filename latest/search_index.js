@@ -113,6 +113,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.K_beta-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.K_beta",
+    "category": "Method",
+    "text": "K_beta()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.K_kappa-Tuple{}",
     "page": "Code",
     "title": "Tokamak.K_kappa",
@@ -321,6 +329,22 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.r_b_eq_from_beta_limit-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.r_b_eq_from_beta_limit",
+    "category": "Method",
+    "text": "r_b_eq_from_beta_limit()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.reduced_beta-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.reduced_beta",
+    "category": "Method",
+    "text": "reduced_beta()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.sigma_v-Tuple{}",
     "page": "Code",
     "title": "Tokamak.sigma_v",
@@ -358,6 +382,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.steady_state",
     "category": "Method",
     "text": "steady_state()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.troyon_beta_limit-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.troyon_beta_limit",
+    "category": "Method",
+    "text": "troyon_beta_limit()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
