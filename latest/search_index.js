@@ -297,14 +297,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.m_r-Tuple{}",
-    "page": "Code",
-    "title": "Tokamak.m_r",
-    "category": "Method",
-    "text": "m_r()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
-},
-
-{
     "location": "code.html#Tokamak.power_balance-Tuple{}",
     "page": "Code",
     "title": "Tokamak.power_balance",
@@ -430,22 +422,6 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.E_n",
     "category": "Constant",
     "text": "E_n\n\nLorem ipsum dolor sit amet.\n\n\n\n"
-},
-
-{
-    "location": "code.html#Tokamak.m_d",
-    "page": "Code",
-    "title": "Tokamak.m_d",
-    "category": "Constant",
-    "text": "m_d\n\nLorem ipsum dolor sit amet.\n\n\n\n"
-},
-
-{
-    "location": "code.html#Tokamak.m_t",
-    "page": "Code",
-    "title": "Tokamak.m_t",
-    "category": "Constant",
-    "text": "m_t\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
