@@ -2,12 +2,12 @@
 
   @test isdefined(Tokamak, :P_alpha) == true
 
-  @test Tokamak.P_alpha() != Nullable
+  actual_value = Tokamak.P_alpha()
 
-  P_F = Tokamak.P_F()
+  actual_value /= Tokamak.P_F()
 
-  P_alpha = Tokamak.P_alpha()
+  expected_value = 0.2
 
-  @test isapprox( SymPy.N( P_alpha / P_F ) , 0.2 , rtol=1e-2 )
+  @test isapprox(expected_value, actual_value, rtol=1e-2 )
 
 end

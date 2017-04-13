@@ -2,12 +2,12 @@
 
   @test isdefined(Tokamak, :P_H) == true
 
-  @test Tokamak.P_H() != Nullable
+  actual_value = Tokamak.P_H()
 
-  P_F = Tokamak.P_F()
+  actual_value /= Tokamak.P_F()
 
-  P_H = Tokamak.P_H()
+  expected_value = 0.02
 
-  @test isapprox( SymPy.N( P_H / P_F ) , 0.02 )
+  @test isapprox(expected_value, actual_value, rtol=5e-4 )
 
 end
