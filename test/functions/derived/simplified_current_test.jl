@@ -5,28 +5,31 @@
   actual_value = Tokamak.simplified_current()
 
   actual_value /= 1u"MA"
+
   actual_value /= Tokamak.symbol_dict["T_k"]
 
-  normalization_value = Tokamak.K_CD()
-  normalization_value *= Tokamak.symbol_dict["sigma_v_hat"]
+  actual_value /= Tokamak.K_I()
 
-  normalization_value = 1 / ( 1 - normalization_value )
-  normalization_value *= Tokamak.K_I()
+  expected_value = Tokamak.K_CD()
+  expected_value *= Tokamak.symbol_dict["sigma_v_hat"]
+
+  expected_value = 1 / ( 1 - expected_value )
 
   actual_value = Tokamak.calc_sigma_v_hat_value(actual_value)
-  normalization_value = Tokamak.calc_sigma_v_hat_value(normalization_value)
-
-  actual_value /= normalization_value
+  expected_value = Tokamak.calc_sigma_v_hat_value(expected_value)
 
   T_k_symbol = Tokamak.symbol_dict["T_k"]
 
-  expected_value = 1
+  test_count = 4
 
-  for cur_T_k in [1e1, 1e2, 1e3]
-    cur_value = subs(actual_value, T_k_symbol, cur_T_k)
-    cur_value = SymPy.N( cur_value )
+  for cur_T_k in logspace(1, test_count, test_count)
+    cur_expected_value = subs(expected_value, T_k_symbol, cur_T_k)
+    cur_actual_value = subs(actual_value, T_k_symbol, cur_T_k)
 
-    @test isapprox(cur_value, expected_value, rtol=1e-4)
+    cur_expected_value = SymPy.N( cur_expected_value )
+    cur_actual_value = SymPy.N( cur_actual_value )
+
+    @test isapprox(cur_actual_value, cur_expected_value, rtol=1e-4)
   end
 
 end

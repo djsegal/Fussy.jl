@@ -2,22 +2,35 @@
 
   @test isdefined(Tokamak, :simplified_density) == true
 
-  Tokamak.load_input( "T_k = 15u\"keV\"" )
-
   actual_value = Tokamak.simplified_density()
+
   actual_value /= 1u"n20"
+
+  actual_value /= Tokamak.symbol_dict["T_k"]
   actual_value *= Tokamak.symbol_dict["R_0"] ^ 2
 
-  expected_value = 1.917 * Tokamak.N_G
-  expected_value *= ( Tokamak.sigma_v_hat / 1u"m^3/s" )
+  actual_value /= Tokamak.K_n()
 
-  expected_value = 1.591 / ( 1 - expected_value )
-  expected_value *= Tokamak.N_G^2
-  expected_value *= ( Tokamak.T_k / 1u"keV" )
+  expected_value = Tokamak.K_CD()
+  expected_value *= Tokamak.symbol_dict["sigma_v_hat"]
+
+  expected_value = 1 / ( 1 - expected_value )
 
   actual_value = Tokamak.calc_sigma_v_hat_value(actual_value)
   expected_value = Tokamak.calc_sigma_v_hat_value(expected_value)
 
-  @test isapprox( expected_value, actual_value , rtol=5e-1 )
+  T_k_symbol = Tokamak.symbol_dict["T_k"]
+
+  test_count = 4
+
+  for cur_T_k in logspace(1, test_count, test_count)
+    cur_expected_value = subs(expected_value, T_k_symbol, cur_T_k)
+    cur_actual_value = subs(actual_value, T_k_symbol, cur_T_k)
+
+    cur_expected_value = SymPy.N( cur_expected_value )
+    cur_actual_value = SymPy.N( cur_actual_value )
+
+    @test isapprox(cur_actual_value, cur_expected_value, rtol=1e-4)
+  end
 
 end
