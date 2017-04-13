@@ -2,8 +2,6 @@
 
   @test isdefined(Tokamak, :f_CD) == true
 
-  @test Tokamak.f_CD() != Nullable
-
   actual_value = Tokamak.f_CD()
 
   actual_value /= Tokamak.symbol_dict["n_bar"]

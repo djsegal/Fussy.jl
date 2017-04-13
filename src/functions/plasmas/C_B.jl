@@ -5,11 +5,15 @@ Lorem ipsum dolor sit amet.
 """
 function C_B()
   cur_func = function (rho)
-    numerator = rho ^ (5/2)
-    numerator *= ( 1 - rho^2 ) ^ ( nu_n + nu_T - 1 )
+    cur_value = 1 - rho^2
 
-    denominator = b_theta(rho)
-    numerator / denominator
+    cur_value ^= nu_n + nu_T - 1
+
+    cur_value *= rho ^ (5/2)
+
+    cur_value /= b_theta(rho)
+
+    cur_value
   end
 
   cur_C_B = ( 1 + nu_n )

@@ -15,7 +15,7 @@
 
   expected_value = ( 5 * Tokamak.Q )
   expected_value /= ( 5 + Tokamak.Q )
-  expected_value = expected_value ^ 0.69
+  expected_value ^= 0.69
 
   expected_value *= 3.550e-3
   expected_value *= Tokamak.H
