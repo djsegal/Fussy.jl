@@ -97,6 +97,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.K_H-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.K_H",
+    "category": "Method",
+    "text": "K_H()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.K_I-Tuple{}",
     "page": "Code",
     "title": "Tokamak.K_I",
@@ -110,6 +118,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.K_L",
     "category": "Method",
     "text": "K_L()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.K_N_G-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.K_N_G",
+    "category": "Method",
+    "text": "K_N_G()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -366,6 +382,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.simplified_density",
     "category": "Method",
     "text": "simplified_density()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.simplified_n_bar_tau_E-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.simplified_n_bar_tau_E",
+    "category": "Method",
+    "text": "simplified_n_bar_tau_E()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
