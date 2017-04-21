@@ -1,26 +1,36 @@
 """
-    sigma_v_ave()
+    sigma_v_ave(rho)
 
 Lorem ipsum dolor sit amet.
 """
-function sigma_v_ave()
+function sigma_v_ave(rho)
 
-  ln_T = log( T_k / 1u"keV" )
+  l_fit = [
+    +8.47607337488889,
+    -15.0271611662417,
+    +3.54811022268999,
+    -0.113845397989482,
+    +1.42248439810972e-3,
+    -6.27906321523389e-6
+  ]
 
-  k_0 = -60.4593
-  k_1 = +6.1371
-  k_2 = -0.8609
-  k_3 = +0.0356
-  k_4 = -0.0045
+  l_fit *= 1e-24
 
-  cur_sigma_v_ave = k_0
+  cur_param = 1
+  cur_param -= rho ^ 2
+  cur_param ^= nu_T
 
-  cur_sigma_v_ave += k_1 * ln_T ^ 1
-  cur_sigma_v_ave += k_2 * ln_T ^ 2
-  cur_sigma_v_ave += k_3 * ln_T ^ 3
-  cur_sigma_v_ave += k_4 * ln_T ^ 4
+  cur_param *= ( T_k / 1u"keV" )
+  cur_param *= 1 + nu_T
 
-  cur_sigma_v_ave = exp( cur_sigma_v_ave )
+  cur_sigma_v_ave = l_fit[1]
+
+  for i in 1:5
+    cur_term = l_fit[i+1]
+    cur_term *= cur_param ^ i
+
+    cur_sigma_v_ave += cur_term
+  end
 
   cur_sigma_v_ave *= 1u"m^3/s"
 

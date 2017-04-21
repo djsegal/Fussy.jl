@@ -2,6 +2,6 @@
 
   @test isdefined(Tokamak, :calc_sigma_v_hat_value) == true
 
-  @test Tokamak.calc_sigma_v_hat_value() != Nullable
+  @test_throws DomainError Tokamak.calc_sigma_v_hat_value()
 
 end

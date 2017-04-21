@@ -2,6 +2,6 @@
 
   @test isdefined(Tokamak, :b_theta) == true
 
-  @test Tokamak.b_theta(1) != Nullable
+  @test Tokamak.b_theta(0.5) != Nullable
 
 end
