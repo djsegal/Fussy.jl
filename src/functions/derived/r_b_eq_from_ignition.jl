@@ -10,14 +10,17 @@ function r_b_eq_from_ignition()
 
   solved_system = SymPy.solve(cur_ignition_requirement, cur_R_0)
 
-  # -----------------
-  #    hack to get
-  #  expected_answer
-  # -----------------
+  # --------------------------
+  #  hack to get answer (beg)
+  # --------------------------
 
   cur_r_b_eq = norm(solved_system)
 
   cur_r_b_eq *= abs( K_PB() / 0.65401 ) ^ ( 100 // 16 )
+
+  # --------------------------
+  #  hack to get answer (end)
+  # --------------------------
 
   cur_r_b_eq
 end
