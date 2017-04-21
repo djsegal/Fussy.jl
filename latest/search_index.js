@@ -129,6 +129,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.K_PB-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.K_PB",
+    "category": "Method",
+    "text": "K_PB()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.K_beta-Tuple{}",
     "page": "Code",
     "title": "Tokamak.K_beta",
@@ -305,6 +313,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.ignition_requirement-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.ignition_requirement",
+    "category": "Method",
+    "text": "ignition_requirement()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.lawson_criterion-Tuple{}",
     "page": "Code",
     "title": "Tokamak.lawson_criterion",
@@ -342,6 +358,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.r_b_eq_from_beta_limit",
     "category": "Method",
     "text": "r_b_eq_from_beta_limit()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.r_b_eq_from_ignition-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.r_b_eq_from_ignition",
+    "category": "Method",
+    "text": "r_b_eq_from_ignition()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
