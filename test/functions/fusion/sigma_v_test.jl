@@ -18,7 +18,7 @@
     actual_value *= 10^21
     actual_value /= 1u"m^3/s"
 
-    actual_value /= Tokamak.calc_sigma_v_hat_value()
+    actual_value /= Tokamak.calc_possible_values()
 
     @test isapprox(actual_value, expected_value)
   end

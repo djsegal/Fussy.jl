@@ -31,7 +31,7 @@
   for cur_T_k in logspace(1, 4, test_count)
     Tokamak.load_input( "T_k = $(cur_T_k)u\"keV\"" )
 
-    cur_actual_value = Tokamak.calc_sigma_v_hat_value(actual_value)
+    cur_actual_value = Tokamak.calc_possible_values(actual_value)
 
     @test isapprox(cur_actual_value, expected_value, rtol=5e-4)
   end

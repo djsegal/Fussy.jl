@@ -21,7 +21,7 @@
 
   actual_value = SymPy.solve(cur_steady_state, I_M)[1]
 
-  actual_value = Tokamak.calc_sigma_v_hat_value(actual_value, sigma_v_hat)
+  actual_value = Tokamak.calc_possible_values(actual_value, sigma_v_hat)
 
   expected_value = -1
 
@@ -31,7 +31,7 @@
   expected_value /= Tokamak.K_CD_hat()
   expected_value /= ( Tokamak.sigma_v_hat / 1u"m^3/s" )
 
-  expected_value = Tokamak.calc_sigma_v_hat_value(expected_value)
+  expected_value = Tokamak.calc_possible_values(expected_value)
 
   @test isapprox( expected_value , actual_value , rtol=5e-4 )
 

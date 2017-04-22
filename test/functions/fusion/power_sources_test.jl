@@ -11,21 +11,21 @@
   actual_value = Tokamak.power_sources()
   actual_value /= scale_factor
 
-  actual_value = Tokamak.calc_sigma_v_hat_value(actual_value)
+  actual_value = Tokamak.calc_possible_values(actual_value)
 
   expected_value = Tokamak.P_F()
   expected_value *= 5 + Tokamak.Q
   expected_value /= 5 * Tokamak.Q
   expected_value /= scale_factor
 
-  expected_value = Tokamak.calc_sigma_v_hat_value(expected_value)
+  expected_value = Tokamak.calc_possible_values(expected_value)
 
   @test isapprox( expected_value , actual_value , rtol=1e-2)
 
   expected_value = 6.888
   expected_value *= ( Tokamak.sigma_v_hat / 1u"m^3/s" )
 
-  expected_value = Tokamak.calc_sigma_v_hat_value(expected_value)
+  expected_value = Tokamak.calc_possible_values(expected_value)
 
   @test isapprox( expected_value , actual_value , rtol=1e-2)
 
