@@ -137,6 +137,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.K_W-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.K_W",
+    "category": "Method",
+    "text": "K_W()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.K_beta-Tuple{}",
     "page": "Code",
     "title": "Tokamak.K_beta",
@@ -241,6 +249,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.S_W-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.S_W",
+    "category": "Method",
+    "text": "S_W()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.a-Tuple{}",
     "page": "Code",
     "title": "Tokamak.a",
@@ -257,6 +273,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.a_hat-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.a_hat",
+    "category": "Method",
+    "text": "a_hat()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.b_theta-Tuple{Any}",
     "page": "Code",
     "title": "Tokamak.b_theta",
@@ -265,11 +289,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.calc_sigma_v_hat_value",
+    "location": "code.html#Tokamak.calc_possible_values",
     "page": "Code",
-    "title": "Tokamak.calc_sigma_v_hat_value",
+    "title": "Tokamak.calc_possible_values",
     "category": "Function",
-    "text": "calc_sigma_v_hat_value()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "calc_possible_values()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -321,6 +345,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.l_over_2_pi_a-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.l_over_2_pi_a",
+    "category": "Method",
+    "text": "l_over_2_pi_a()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.lawson_criterion-Tuple{}",
     "page": "Code",
     "title": "Tokamak.lawson_criterion",
@@ -366,6 +398,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.r_b_eq_from_ignition",
     "category": "Method",
     "text": "r_b_eq_from_ignition()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.r_b_eq_from_wall_loading-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.r_b_eq_from_wall_loading",
+    "category": "Method",
+    "text": "r_b_eq_from_wall_loading()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -430,6 +470,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.troyon_beta_limit",
     "category": "Method",
     "text": "troyon_beta_limit()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.wall_loading_limit-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.wall_loading_limit",
+    "category": "Method",
+    "text": "wall_loading_limit()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
