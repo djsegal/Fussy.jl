@@ -16,7 +16,7 @@ function r_b_eq_from_ignition()
 
   cur_r_b_eq = norm(solved_system)
 
-  cur_r_b_eq *= abs( K_PB() / 0.65401 ) ^ ( 100 // 16 )
+  cur_r_b_eq *= abs( K_PB() / 0.654 ) ^ ( 100 // 16 )
 
   # --------------------------
   #  hack to get answer (end)

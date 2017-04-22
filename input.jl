@@ -22,7 +22,7 @@ A = 2.5
 symbol_list = []
 append!(symbol_list, ["T_k", "R_0", "B_0"])
 append!(symbol_list, ["I_M", "n_bar", "tau_E"])
-append!(symbol_list, ["sigma_v_hat"])
+append!(symbol_list, ["sigma_v_hat", "K_CD_denom"])
 
 symbol_dict = Dict()
 for cur_symbol in symbol_list
@@ -38,3 +38,4 @@ I_M = symbol_dict["I_M"] * 1u"MA"
 tau_E = symbol_dict["tau_E"] * 1u"s"
 
 sigma_v_hat = symbol_dict["sigma_v_hat"] * 1u"m^3/s"
+K_CD_denom = symbol_dict["K_CD_denom"]
