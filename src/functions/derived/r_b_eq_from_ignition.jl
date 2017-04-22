@@ -22,5 +22,7 @@ function r_b_eq_from_ignition()
   #  hack to get answer (end)
   # --------------------------
 
+  cur_r_b_eq -= cur_R_0
+
   cur_r_b_eq
 end

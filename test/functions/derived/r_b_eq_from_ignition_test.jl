@@ -6,6 +6,8 @@
 
   actual_value = Tokamak.r_b_eq_from_ignition()
 
+  actual_value += Tokamak.symbol_dict["R_0"]
+
   actual_value ^= 16 // 100
 
   actual_value *= Tokamak.symbol_dict["K_CD_denom"] ^ ( 96 // 100 )
