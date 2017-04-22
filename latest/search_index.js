@@ -385,11 +385,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.sigma_v_ave-Tuple{}",
+    "location": "code.html#Tokamak.sigma_v_ave-Tuple{Any}",
     "page": "Code",
     "title": "Tokamak.sigma_v_ave",
     "category": "Method",
-    "text": "sigma_v_ave()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "sigma_v_ave(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
