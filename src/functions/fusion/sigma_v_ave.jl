@@ -32,6 +32,8 @@ function sigma_v_ave(rho)
     cur_sigma_v_ave += cur_term
   end
 
+  cur_sigma_v_ave = max(0, cur_sigma_v_ave)
+
   cur_sigma_v_ave *= 1u"m^3/s"
 
   cur_sigma_v_ave
