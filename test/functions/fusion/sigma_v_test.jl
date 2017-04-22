@@ -23,4 +23,14 @@
     @test isapprox(actual_value, expected_value)
   end
 
+  Tokamak.load_input( "nu_T = 0" )
+  Tokamak.load_input( "nu_n = 0" )
+
+  actual_value = Tokamak.sigma_v()
+
+  expected_value = Tokamak.sigma_v_ave(0.5)
+  expected_value /= 2
+
+  @test isapprox(actual_value, expected_value)
+
 end
