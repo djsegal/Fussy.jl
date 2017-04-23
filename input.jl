@@ -7,6 +7,7 @@ H = 1
 
 beta_N = 0.026
 P_W = 3 * ( 1u"MW" / 1u"m^2" )
+h_parallel = 500 * ( 1u"MW" * 1u"T" / 1u"m" )
 
 nu_n = 0.3
 nu_T = 1.2
