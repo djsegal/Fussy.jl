@@ -20,6 +20,10 @@ function r_b_eq_from_heat_loading()
 
   cur_r_b_eq = solved_system[2]
 
+  if !isreal(SymPy.N(coeff(cur_r_b_eq, symbol_dict["B_0"])))
+    cur_r_b_eq = 0
+  end
+
   cur_r_b_eq -= cur_R_0
 
   cur_r_b_eq
