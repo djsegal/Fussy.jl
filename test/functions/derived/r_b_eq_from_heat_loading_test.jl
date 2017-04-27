@@ -29,7 +29,7 @@
 
     cur_actual_value = Tokamak.calc_possible_values(actual_value)
 
-    @test isapprox(cur_actual_value, expected_value, rtol=5e-3)
+    @test isapprox(cur_actual_value, expected_value, rtol=5e-2)
   end
 
 end

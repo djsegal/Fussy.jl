@@ -6,7 +6,7 @@ Lorem ipsum dolor sit amet.
 function calc_possible_values(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=symbol_dict["sigma_v_hat"])
   cur_sigma_v_hat = sigma_v()
 
-  cur_sigma_v_hat *= 10^21
+  cur_sigma_v_hat *= 1e21
   cur_sigma_v_hat /= 1u"m^3/s"
 
   cur_value = subs(cur_value, cur_symbol, cur_sigma_v_hat)
