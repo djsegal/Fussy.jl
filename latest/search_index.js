@@ -89,6 +89,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.K_DV-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.K_DV",
+    "category": "Method",
+    "text": "K_DV()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.K_F-Tuple{}",
     "page": "Code",
     "title": "Tokamak.K_F",
@@ -337,6 +345,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.heat_load_limit-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.heat_load_limit",
+    "category": "Method",
+    "text": "heat_load_limit()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.ignition_requirement-Tuple{}",
     "page": "Code",
     "title": "Tokamak.ignition_requirement",
@@ -393,6 +409,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.r_b_eq_from_heat_loading-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.r_b_eq_from_heat_loading",
+    "category": "Method",
+    "text": "r_b_eq_from_heat_loading()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.r_b_eq_from_ignition-Tuple{}",
     "page": "Code",
     "title": "Tokamak.r_b_eq_from_ignition",
@@ -406,6 +430,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.r_b_eq_from_wall_loading",
     "category": "Method",
     "text": "r_b_eq_from_wall_loading()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.r_b_eq_hard_coded-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.r_b_eq_hard_coded",
+    "category": "Method",
+    "text": "r_b_eq_hard_coded()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
