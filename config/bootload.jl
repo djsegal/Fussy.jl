@@ -11,7 +11,7 @@ end
 
 function load_input(raw_input, is_file=false)
   if is_file
-    open("$main_folder/input.jl") do file
+    open("$main_folder/$raw_input") do file
       file_lines = map(x -> strip(x), readlines(file))
       raw_input = join(file_lines, ";")
     end
@@ -20,5 +20,5 @@ function load_input(raw_input, is_file=false)
   eval( parse(raw_input) )
 end
 
-input_file_name = "$main_folder/input.jl"
-load_input(input_file_name, true)
+defaults_file_name = "defaults.jl"
+load_input(defaults_file_name, true)

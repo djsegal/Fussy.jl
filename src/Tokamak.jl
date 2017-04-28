@@ -10,6 +10,8 @@ module Tokamak
   include("../config/bootload.jl")
 
   function main(num_points=50)
+    load_input("input.jl", true)
+
     cur_R_0 = symbol_dict["R_0"]
     cur_B_0 = symbol_dict["B_0"]
     cur_T_k = symbol_dict["T_k"]
