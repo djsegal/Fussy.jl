@@ -1,11 +1,12 @@
 using Tokamak
 using Base.Test
+using TestSetExtensions
 
 using Unitful
 using Unitful.DefaultSymbols
 using SymPy
 
-@testset "All Tests" begin
+@testset DottedTestSet "All Tests" begin
   if ( endswith(pwd(), "/test") ) ; cd("..") ; end
 
   seed_int = abs(rand(Int16))
