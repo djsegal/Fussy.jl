@@ -26,9 +26,9 @@ module Tokamak
       cur_eq -> (cur_eq[1](), cur_eq[2], cur_eq[3]), solved_equations
     )
 
-    Tokamak.load_input( "beta_N = $(Tokamak.max_beta_N)" )
-    Tokamak.load_input( "P_W = $( Tokamak.max_P_W / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
-    Tokamak.load_input( "h_parallel = $( Tokamak.max_h_parallel / ( 1u"MW" * 1u"T" / 1u"m" ) ) * ( 1u\"MW\" * 1u\"T\" / 1u\"m\" )" )
+    load_input( "beta_N = $(max_beta_N)" )
+    load_input( "P_W = $( max_P_W / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
+    load_input( "h_parallel = $( max_h_parallel / ( 1u"MW" * 1u"T" / 1u"m" ) ) * ( 1u\"MW\" * 1u\"T\" / 1u\"m\" )" )
 
     solved_R_0_s = map(
       cur_eq -> solve(cur_eq[1](), cur_R_0)[1],
@@ -47,7 +47,7 @@ module Tokamak
     other_limits = [ [ [] for j=1:length(solved_equations) ] for i=1:length(solved_equations) ]
 
     @showprogress 1 "Computing..." for cur_T in T_list
-      Tokamak.load_input( "T_k = $(cur_T)u\"keV\"" )
+      load_input( "T_k = $(cur_T)u\"keV\"" )
 
       cur_ignitions = map(
         solved_ignition -> calc_possible_values(solved_ignition),

@@ -9,7 +9,7 @@ function simplified_current()
 
   cur_I_M = symbol_dict["I_M"]
   cur_n_bar = symbol_dict["n_bar"]
-  cur_sigma_v_hat = Tokamak.symbol_dict["sigma_v_hat"]
+  cur_sigma_v_hat = symbol_dict["sigma_v_hat"]
 
   solved_system = SymPy.solve([eq_1, eq_2], [cur_I_M, cur_n_bar])
 
@@ -17,7 +17,7 @@ function simplified_current()
 
   cur_numerator, cur_denominator = fraction(cur_simplified_current)
 
-  scale_factor = -Tokamak.K_CD() / coeff(cur_denominator, cur_sigma_v_hat)
+  scale_factor = -K_CD() / coeff(cur_denominator, cur_sigma_v_hat)
 
   cur_numerator *= scale_factor
   cur_denominator *= scale_factor
