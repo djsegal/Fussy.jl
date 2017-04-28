@@ -2,6 +2,8 @@
 
   @test isdefined(Tokamak, :r_b_eq_from_beta_limit) == true
 
+  Tokamak.load_input( "beta_N = $(Tokamak.max_beta_N)" )
+
   expected_value = Tokamak.K_beta()
 
   actual_value = Tokamak.r_b_eq_from_beta_limit()

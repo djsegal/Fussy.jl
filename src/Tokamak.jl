@@ -22,6 +22,10 @@ module Tokamak
       r_b_eq_from_heat_loading
     ]
 
+    Tokamak.load_input( "beta_N = $(Tokamak.max_beta_N)" )
+    Tokamak.load_input( "P_W = $( Tokamak.max_P_W / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
+    Tokamak.load_input( "h_parallel = $( Tokamak.max_h_parallel / ( 1u"MW" * 1u"T" / 1u"m" ) ) * ( 1u\"MW\" * 1u\"T\" / 1u\"m\" )" )
+
     solved_R_0_s = map(
       cur_eq -> solve(cur_eq(), cur_R_0)[1],
       solved_equations

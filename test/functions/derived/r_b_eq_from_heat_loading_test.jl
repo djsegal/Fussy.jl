@@ -2,6 +2,8 @@
 
   @test isdefined(Tokamak, :r_b_eq_from_heat_loading) == true
 
+  Tokamak.load_input( "h_parallel = $( Tokamak.max_h_parallel / ( 1u"MW" * 1u"T" / 1u"m" ) ) * ( 1u\"MW\" * 1u\"T\" / 1u\"m\" )" )
+
   expected_value = Tokamak.K_DV()
 
   actual_value = Tokamak.r_b_eq_from_heat_loading()

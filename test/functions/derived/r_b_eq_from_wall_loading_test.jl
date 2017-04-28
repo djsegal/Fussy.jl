@@ -2,6 +2,8 @@
 
   @test isdefined(Tokamak, :r_b_eq_from_wall_loading) == true
 
+  Tokamak.load_input( "P_W = $( Tokamak.max_P_W / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
+
   expected_value = Tokamak.K_W()
 
   actual_value = Tokamak.r_b_eq_from_wall_loading()

@@ -2,6 +2,8 @@
 
   @test isdefined(Tokamak, :troyon_beta_limit) == true
 
+  Tokamak.load_input( "beta_N = $(Tokamak.max_beta_N)" )
+
   @test Tokamak.troyon_beta_limit() != Nullable
 
   cur_beta_limit = Tokamak.troyon_beta_limit()

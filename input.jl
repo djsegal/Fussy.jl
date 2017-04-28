@@ -5,9 +5,9 @@ epsilon = 0.25
 N_G = 0.8
 H = 1
 
-beta_N = 0.026
-P_W = 3 * ( 1u"MW" / 1u"m^2" )
-h_parallel = 500 * ( 1u"MW" * 1u"T" / 1u"m" )
+max_beta_N = 0.026
+max_P_W = 3 * ( 1u"MW" / 1u"m^2" )
+max_h_parallel = 500 * ( 1u"MW" * 1u"T" / 1u"m" )
 
 nu_n = 0.3
 nu_T = 1.2
@@ -24,6 +24,7 @@ symbol_list = []
 append!(symbol_list, ["T_k", "R_0", "B_0"])
 append!(symbol_list, ["I_M", "n_bar", "tau_E"])
 append!(symbol_list, ["sigma_v_hat", "K_CD_denom"])
+append!(symbol_list, ["beta_N", "P_W", "h_parallel"])
 
 symbol_dict = Dict()
 for cur_symbol in symbol_list
@@ -40,3 +41,7 @@ tau_E = symbol_dict["tau_E"] * 1u"s"
 
 sigma_v_hat = symbol_dict["sigma_v_hat"] * 1u"m^3/s"
 K_CD_denom = symbol_dict["K_CD_denom"]
+
+beta_N = symbol_dict["beta_N"]
+P_W = symbol_dict["P_W"] * ( 1u"MW" / 1u"m^2" )
+h_parallel = symbol_dict["h_parallel"] * ( 1u"MW" * 1u"T" / 1u"m" )
