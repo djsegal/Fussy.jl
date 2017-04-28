@@ -17,17 +17,21 @@ module Tokamak
     ignition_relation = r_b_eq_hard_coded()
 
     solved_equations = [
-      r_b_eq_from_beta_limit,
-      r_b_eq_from_wall_loading,
-      r_b_eq_from_heat_loading
+      (r_b_eq_from_beta_limit, symbol_dict["beta_N"], max_beta_N),
+      (r_b_eq_from_wall_loading, symbol_dict["P_W"], max_P_W / ( 1u"MW" / 1u"m^2" )),
+      (r_b_eq_from_heat_loading, symbol_dict["h_parallel"], max_h_parallel / ( 1u"MW" * 1u"T" / 1u"m" ))
     ]
+
+    unlimited_equations = map(
+      cur_eq -> (cur_eq[1](), cur_eq[2], cur_eq[3]), solved_equations
+    )
 
     Tokamak.load_input( "beta_N = $(Tokamak.max_beta_N)" )
     Tokamak.load_input( "P_W = $( Tokamak.max_P_W / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
     Tokamak.load_input( "h_parallel = $( Tokamak.max_h_parallel / ( 1u"MW" * 1u"T" / 1u"m" ) ) * ( 1u\"MW\" * 1u\"T\" / 1u\"m\" )" )
 
     solved_R_0_s = map(
-      cur_eq -> solve(cur_eq(), cur_R_0)[1],
+      cur_eq -> solve(cur_eq[1](), cur_R_0)[1],
       solved_equations
     )
 
@@ -39,6 +43,8 @@ module Tokamak
 
     R_0_lists = [ [] for i=1:length(solved_equations) ]
     B_0_lists = [ [] for i=1:length(solved_equations) ]
+
+    other_limits = [ [ [] for j=1:length(solved_equations) ] for i=1:length(solved_equations) ]
 
     @showprogress 1 "Computing..." for cur_T in T_list
       Tokamak.load_input( "T_k = $(cur_T)u\"keV\"" )
@@ -64,6 +70,17 @@ module Tokamak
           subs(solved_R_0_s[cur_index], cur_B_0, solved_B_0)
         )
 
+        for (sub_index, unlimited_eq) in enumerate(unlimited_equations)
+          cur_equation = calc_possible_values(unlimited_eq[1])
+          cur_equation = subs(cur_equation, cur_R_0, solved_R_0)
+          cur_equation = subs(cur_equation, cur_B_0, solved_B_0)
+
+          cur_limit = solve(cur_equation, unlimited_eq[2])[1]
+          cur_limit /= unlimited_eq[3]
+
+          push!(other_limits[cur_index][sub_index], cur_limit)
+        end
+
         push!(R_0_lists[cur_index], solved_R_0)
         push!(B_0_lists[cur_index], solved_B_0)
       end
@@ -71,10 +88,15 @@ module Tokamak
 
     for (cur_index, solved_eq) in enumerate(solved_equations)
       println("\n$(solved_eq)\n")
+
       println("R_0 = ")
       println(R_0_lists[cur_index])
+
       println("B_0 = ")
       println(B_0_lists[cur_index])
+
+      println("limits = ")
+      println(other_limits[cur_index])
     end
 
     println("done.")
