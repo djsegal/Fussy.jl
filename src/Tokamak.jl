@@ -79,11 +79,9 @@ module Tokamak
 
           cur_solved_eq = solve(cur_equation, unlimited_eq[2])
 
-          if length(cur_solved_eq) == 0
-            cur_limit = 0
-          else
-            cur_limit = cur_solved_eq[1]
-          end
+          has_no_solution = ( length(cur_solved_eq) == 0 )
+
+          cur_limit = has_no_solution ? 0 : cur_solved_eq[1]
 
           cur_limit /= unlimited_eq[3]
 
