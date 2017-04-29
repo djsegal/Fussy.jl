@@ -9,7 +9,7 @@ module Tokamak
 
   include("../config/bootload.jl")
 
-  function main(num_points=50)
+  function main(num_points=10)
     load_input("input.jl", true)
 
     cur_R_0 = symbol_dict["R_0"]
