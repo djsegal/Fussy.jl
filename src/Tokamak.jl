@@ -41,7 +41,7 @@ module Tokamak
       solved_R_0 -> subs(ignition_relation, cur_R_0, solved_R_0)
       , solved_R_0_s)
 
-    T_list = logspace(0,2,num_points)
+    T_list = linspace(10, 20, num_points)
 
     R_0_lists = [ [] for i=1:length(solved_equations) ]
     B_0_lists = [ [] for i=1:length(solved_equations) ]
