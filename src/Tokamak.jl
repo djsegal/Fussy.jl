@@ -77,7 +77,14 @@ module Tokamak
           cur_equation = subs(cur_equation, cur_R_0, solved_R_0)
           cur_equation = subs(cur_equation, cur_B_0, solved_B_0)
 
-          cur_limit = solve(cur_equation, unlimited_eq[2])[1]
+          cur_solved_eq = solve(cur_equation, unlimited_eq[2])
+
+          if length(cur_solved_eq) == 0
+            cur_limit = 0
+          else
+            cur_limit = cur_solved_eq[1]
+          end
+
           cur_limit /= unlimited_eq[3]
 
           push!(other_limits[cur_index][sub_index], cur_limit)
