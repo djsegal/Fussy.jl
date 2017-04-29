@@ -20,6 +20,8 @@ q_K = 2
 rho_m = 0.6
 A = 2.5
 
+enable_bremsstrahlung = true
+
 symbol_list = []
 append!(symbol_list, ["T_k", "R_0", "B_0"])
 append!(symbol_list, ["I_M", "n_bar", "tau_E"])
