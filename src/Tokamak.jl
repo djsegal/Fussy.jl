@@ -41,7 +41,7 @@ module Tokamak
       solved_R_0 -> subs(ignition_relation, cur_R_0, solved_R_0)
       , solved_R_0_s)
 
-    T_list = linspace(10, 20, num_points)
+    T_list = [13.36]
 
     R_0_lists = [ [] for i=1:length(solved_equations) ]
     B_0_lists = [ [] for i=1:length(solved_equations) ]
@@ -72,6 +72,20 @@ module Tokamak
           subs(solved_R_0_s[cur_index], cur_B_0, solved_B_0)
         )
 
+        if cur_index == 1
+          nbar = calc_possible_values(subs(simplified_density() / 1u"n20", cur_R_0, solved_R_0))
+          i_m = calc_possible_values(simplified_current() / 1u"MA")
+          println(subs(calc_possible_values(subs(P_F() / 1u"MW", symbol_dict["n_bar"], nbar)), cur_R_0, solved_R_0))
+          println(i_m)
+          println(solved_R_0)
+          println(solved_R_0*epsilon)
+          println(cur_T)
+          println(nbar)
+          println(calc_possible_values(subs(subs(subs(f_CD(), symbol_dict["n_bar"], nbar), cur_R_0, solved_R_0), symbol_dict["I_M"], i_m)))
+          println(subs(subs(subs(f_B(), symbol_dict["n_bar"], nbar), cur_R_0, solved_R_0), symbol_dict["I_M"], i_m))
+          println(calc_possible_values(subs(subs(P_H() / 1u"MW", symbol_dict["n_bar"], nbar), cur_R_0, solved_R_0)))
+        end
+
         for (sub_index, unlimited_eq) in enumerate(unlimited_equations)
           cur_equation = calc_possible_values(unlimited_eq[1])
           cur_equation = subs(cur_equation, cur_R_0, solved_R_0)
@@ -82,6 +96,10 @@ module Tokamak
           has_no_solution = ( length(cur_solved_eq) == 0 )
 
           cur_limit = has_no_solution ? 0 : cur_solved_eq[1]
+
+          if cur_index == 1 && cur_index != sub_index
+            println(cur_limit)
+          end
 
           cur_limit /= unlimited_eq[3]
 
