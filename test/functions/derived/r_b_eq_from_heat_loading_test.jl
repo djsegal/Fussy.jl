@@ -2,7 +2,7 @@
 
   @test isdefined(Tokamak, :r_b_eq_from_heat_loading) == true
 
-  Tokamak.load_input( "h_parallel = $( Tokamak.max_h_parallel / ( 1u"MW" * 1u"T" / 1u"m" ) ) * ( 1u\"MW\" * 1u\"T\" / 1u\"m\" )" )
+  Tokamak.load_input( "h_parallel = $( Tokamak.max_h_parallel / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
 
   expected_value = Tokamak.K_DV()
 
@@ -10,19 +10,23 @@
 
   actual_value += Tokamak.symbol_dict["R_0"]
 
-  actual_value ^= 2
+  actual_value /= Tokamak.symbol_dict["T_k"]
 
-  actual_value /= Tokamak.symbol_dict["B_0"]
+  actual_value *= Tokamak.symbol_dict["K_CD_denom"]
 
-  actual_value /= Tokamak.symbol_dict["T_k"] ^ 2
+  actual_value ^= ( 32 // 10 )
 
-  actual_value *= Tokamak.symbol_dict["K_CD_denom"] ^ 2
+  actual_value *= Tokamak.h_parallel
 
-  cur_numerator = -Tokamak.K_BR()
-  cur_numerator *= sqrt(Tokamak.symbol_dict["T_k"])
-  cur_numerator += Tokamak.symbol_dict["sigma_v_hat"]
+  cur_block = -Tokamak.K_BR()
+  cur_block *= sqrt(Tokamak.symbol_dict["T_k"])
+  cur_block += Tokamak.symbol_dict["sigma_v_hat"]
 
-  actual_value /= cur_numerator
+  actual_value /= cur_block
+
+  actual_value *= 1u"m^2"
+
+  actual_value /= 1u"MW"
 
   test_count = 4
 

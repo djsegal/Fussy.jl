@@ -7,10 +7,11 @@ H = 1
 
 max_beta_N = 0.026
 max_P_W = 3 * ( 1u"MW" / 1u"m^2" )
-max_h_parallel = 500 * ( 1u"MW" * 1u"T" / 1u"m" )
+max_h_parallel = 500 * ( 1u"MW" / 1u"m^2" )
 
 nu_n = 0.3
 nu_T = 1.2
+
 eta_CD = 0.35
 eta_T = 0.4
 eta_RF = 0.4
@@ -19,6 +20,9 @@ Z_eff = 1.5
 q_K = 2
 rho_m = 0.6
 A = 2.5
+
+divertor_beta = pi / 4
+rho_vol_loss = 0.5
 
 enable_bremsstrahlung = true
 
@@ -46,4 +50,4 @@ K_CD_denom = symbol_dict["K_CD_denom"]
 
 beta_N = symbol_dict["beta_N"]
 P_W = symbol_dict["P_W"] * ( 1u"MW" / 1u"m^2" )
-h_parallel = symbol_dict["h_parallel"] * ( 1u"MW" * 1u"T" / 1u"m" )
+h_parallel = symbol_dict["h_parallel"] * ( 1u"MW" / 1u"m^2" )

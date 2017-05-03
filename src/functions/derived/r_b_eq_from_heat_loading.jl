@@ -6,8 +6,8 @@ Lorem ipsum dolor sit amet.
 function r_b_eq_from_heat_loading()
   cur_heat_load = heat_load_limit()
 
-  cur_heat_load *= 1u"m"
-  cur_heat_load /= ( 1u"MW" * 1u"T" )
+  cur_heat_load /= 1u"MW"
+  cur_heat_load *= 1u"m^2"
 
   cur_R_0 = symbol_dict["R_0"]
 

@@ -21,7 +21,7 @@ module Tokamak
     solved_equations = [
       (r_b_eq_from_beta_limit, symbol_dict["beta_N"], max_beta_N),
       (r_b_eq_from_wall_loading, symbol_dict["P_W"], max_P_W / ( 1u"MW" / 1u"m^2" )),
-      (r_b_eq_from_heat_loading, symbol_dict["h_parallel"], max_h_parallel / ( 1u"MW" * 1u"T" / 1u"m" ))
+      (r_b_eq_from_heat_loading, symbol_dict["h_parallel"], max_h_parallel / ( 1u"MW" / 1u"m^2" ))
     ]
 
     unlimited_equations = map(
@@ -30,7 +30,7 @@ module Tokamak
 
     load_input( "beta_N = $(max_beta_N)" )
     load_input( "P_W = $( max_P_W / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
-    load_input( "h_parallel = $( max_h_parallel / ( 1u"MW" * 1u"T" / 1u"m" ) ) * ( 1u\"MW\" * 1u\"T\" / 1u\"m\" )" )
+    load_input( "h_parallel = $( max_h_parallel / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
 
     solved_R_0_s = map(
       cur_eq -> solve(cur_eq[1](), cur_R_0)[1],

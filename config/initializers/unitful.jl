@@ -4,6 +4,7 @@ using Unitful.DefaultSymbols
 cd = Base.cd
 
 eps_0 = Unitful.ϵ0
+mu_0 = uconvert(u"T*m/MA", Unitful.μ0)
 
 module PlasmaUnits
   using Unitful
