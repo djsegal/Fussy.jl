@@ -6,3 +6,5 @@
 /tmp/*
 docs/build/
 docs/site/
+
+*-checkpoint.ipynb
