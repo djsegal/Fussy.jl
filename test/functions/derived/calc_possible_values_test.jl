@@ -9,17 +9,26 @@
 
   test_count = 4
 
-  for cur_T_k in logspace(0, log10(50), test_count)
+    for cur_bool in [false, true]
 
-    Tokamak.load_input( "T_k = $(cur_T_k)u\"keV\"" )
+    if cur_bool
+      test_count = Int(round( test_count / 2 ))
+      Tokamak.load_input("test/support/input_files/random.jl", true)
+    end
 
-    actual_value = Tokamak.calc_possible_values()
-    actual_value *= 1u"m^3/s"
+    for cur_T_k in logspace(0, log10(50), test_count)
 
-    expected_value = Tokamak.sigma_v()
-    expected_value *= 1e21
+      Tokamak.load_input( "T_k = $(cur_T_k)u\"keV\"" )
 
-    @test isapprox(expected_value, actual_value, rtol=5e-3)
+      actual_value = Tokamak.calc_possible_values()
+      actual_value *= 1u"m^3/s"
+
+      expected_value = Tokamak.sigma_v()
+      expected_value *= 1e21
+
+      @test isapprox(expected_value, actual_value, rtol=5e-3)
+
+    end
 
   end
 

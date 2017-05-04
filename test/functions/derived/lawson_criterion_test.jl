@@ -19,13 +19,22 @@
 
   test_count = 4
 
-  for cur_T_k in logspace(0, log10(50), test_count)
-    Tokamak.load_input( "T_k = $(cur_T_k)u\"keV\"" )
+  for cur_bool in [false, true]
 
-    cur_actual_value = Tokamak.calc_possible_values(actual_value)
-    cur_expected_value = Tokamak.calc_possible_values(expected_value)
+    if cur_bool
+      test_count = Int(round( test_count / 2 ))
+      Tokamak.load_input("test/support/input_files/random.jl", true)
+    end
 
-    @test isapprox(cur_actual_value, cur_expected_value, rtol=5e-2)
+    for cur_T_k in logspace(0, log10(50), test_count)
+      Tokamak.load_input( "T_k = $(cur_T_k)u\"keV\"" )
+
+      cur_actual_value = Tokamak.calc_possible_values(actual_value)
+      cur_expected_value = Tokamak.calc_possible_values(expected_value)
+
+      @test isapprox(cur_actual_value, cur_expected_value, rtol=5e-2)
+    end
+
   end
 
 end

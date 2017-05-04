@@ -30,25 +30,34 @@
 
   expected_value /= Tokamak.symbol_dict["B_0"] ^ ( 15 // 100 )
 
-  test_count = 11
+  test_count = 7
 
-  num_bad_answers = 0
+  for cur_bool in [false, true]
 
-  for cur_T_k in linspace(0, 50, test_count)
-    Tokamak.load_input( "T_k = $(cur_T_k)u\"keV\"" )
-
-    cur_actual_value = Tokamak.calc_possible_values(actual_value)
-
-    if cur_actual_value < 0
-      num_bad_answers += 1
-      continue
+    if cur_bool
+      test_count = Int(round( test_count / 2 ))
+      Tokamak.load_input("test/support/input_files/random.jl", true)
     end
 
-    cur_expected_value = abs(Tokamak.calc_possible_values(expected_value))
+    num_bad_answers = 0
 
-    @test isapprox(cur_actual_value, cur_expected_value, rtol=5e-2)
+    for cur_T_k in linspace(0, 50, test_count)
+      Tokamak.load_input( "T_k = $(cur_T_k)u\"keV\"" )
+
+      cur_actual_value = Tokamak.calc_possible_values(actual_value)
+
+      if cur_actual_value < 0
+        num_bad_answers += 1
+        continue
+      end
+
+      cur_expected_value = abs(Tokamak.calc_possible_values(expected_value))
+
+      @test isapprox(cur_actual_value, cur_expected_value, rtol=5e-2)
+    end
+
+    @test num_bad_answers < 3
+
   end
-
-  @test num_bad_answers < 3
 
 end
