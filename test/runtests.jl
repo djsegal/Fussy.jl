@@ -13,8 +13,12 @@ using SymPy
   srand(seed_int)
   println("\n Seed: $seed_int \n")
 
-  Julz.include_all_files(
-    "$(pwd())/test", is_testing=true,
+  test_dir = "$(pwd())/test"
+
+  is_focused = Julz.check_for_focus(test_dir)
+
+  Julz.include_all_files( test_dir,
+    is_testing=true, is_focused=is_focused,
     reload_function=Tokamak.load_input
   )
 end
