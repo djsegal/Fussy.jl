@@ -26,6 +26,18 @@ rho_vol_loss = 0.5
 
 enable_bremsstrahlung = true
 
+confinement_scaling = Dict(
+  "constant" => 0.145,
+  "I_M" => ( 93 // 100 ),
+  "R_0" => ( 139 // 100 ),
+  "a" => ( 58 // 100 ),
+  "kappa" => ( 78 // 100 ),
+  "n_bar" => ( 41 // 100 ),
+  "B_0" => ( 15 // 100 ),
+  "A" => ( 19 // 100 ),
+  "P" => ( 69 // 100 )
+)
+
 symbol_list = []
 append!(symbol_list, ["T_k", "R_0", "B_0"])
 append!(symbol_list, ["I_M", "n_bar", "tau_E"])

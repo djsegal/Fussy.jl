@@ -6,7 +6,7 @@ Lorem ipsum dolor sit amet.
 function simplified_n_bar_tau_E()
   cur_I_M = simplified_current()
   cur_n_bar = simplified_density()
-  cur_tau_E = h_mode_confinement_time()
+  cur_tau_E = confinement_time_from_scaling()
 
   cur_I_M /= 1u"MA"
   cur_n_bar /= 1u"n20"

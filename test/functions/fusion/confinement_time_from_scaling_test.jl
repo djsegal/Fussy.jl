@@ -1,8 +1,8 @@
-@testset "H Mode Confinement Time Function Tests" begin
+@testset "Confinement Time From Scaling Function Tests" begin
 
-  @test isdefined(Tokamak, :h_mode_confinement_time) == true
+  @test isdefined(Tokamak, :confinement_time_from_scaling) == true
 
-  actual_value = Tokamak.h_mode_confinement_time()
+  actual_value = Tokamak.confinement_time_from_scaling()
 
   actual_value /= 1u"s"
 
