@@ -11,10 +11,12 @@ module Tokamak
 
   include("../config/bootload.jl")
 
-  function main(num_points=10)
+  function main()
     load_input("input.jl", true)
 
-    T_list = linspace(10, 15, num_points)
+    cur_T_k = scan_for_R_0(3.3)
+
+    T_list = [cur_T_k]
 
     solved_equations = sweep_T_k(T_list)
 

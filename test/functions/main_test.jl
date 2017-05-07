@@ -12,7 +12,7 @@
   (errRead, errWrite) = redirect_stderr()
   (outRead, outWrite) = redirect_stdout()
 
-  Tokamak.main(2)
+  Tokamak.main()
 
   close(outWrite)
 
