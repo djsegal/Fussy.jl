@@ -84,21 +84,6 @@ function sweep_T_k(T_list)
     end
   end
 
-  for (key, value) in solved_equations
-    println("\n$(key)\n")
-
-    println("R_0 = ")
-    println(solved_equations[key]["R_0"])
-
-    println("B_0 = ")
-    println(solved_equations[key]["B_0"])
-
-    println("other_limits = ")
-    for sub_key in keys(solved_equations)
-      println("$sub_key: $(solved_equations[key]["other_limits"][sub_key])")
-    end
-  end
-
   return solved_equations
 
 end
