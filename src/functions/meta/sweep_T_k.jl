@@ -22,20 +22,20 @@ function sweep_T_k(T_list)
   for key in keys(given_equations)
     solved_equations[key] = OrderedDict()
 
-    solved_equations[key]["R_0"] = SharedArray(Float64, length(T_list))
-    solved_equations[key]["B_0"] = SharedArray(Float64, length(T_list))
+    solved_equations[key]["R_0"] = Array(Float64, length(T_list))
+    solved_equations[key]["B_0"] = Array(Float64, length(T_list))
 
     solved_equations[key]["other_limits"] = OrderedDict()
 
     for sub_key in keys(given_equations)
-      solved_equations[key]["other_limits"][sub_key] = SharedArray(Float64, length(T_list))
+      solved_equations[key]["other_limits"][sub_key] = Array(Float64, length(T_list))
     end
   end
 
   cur_solved_steady_density = solved_steady_density() / 1u"n20"
   cur_solved_steady_current = solved_steady_current() / 1u"MA"
 
-  @inbounds @sync @parallel for cur_index in 1:length(T_list)
+  @inbounds for cur_index in 1:length(T_list)
     cur_T = T_list[cur_index]
 
     load_input( "T_k = $(cur_T)u\"keV\"" )
