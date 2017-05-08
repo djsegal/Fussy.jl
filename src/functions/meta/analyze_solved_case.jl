@@ -16,8 +16,8 @@ function analyze_solved_case(found_data)
   solved_case["T_k"] = found_data["T_k"]
   solved_case["B_0"] = found_data["B_0"]
 
-  solved_case["n_bar"] = Tokamak.calc_possible_values(subs(Tokamak.simplified_density() / 1u"n20", cur_R_0, solved_case["R_0"]))
-  solved_case["I_M"] = Tokamak.calc_possible_values(Tokamak.simplified_current() / 1u"MA")
+  solved_case["n_bar"] = Tokamak.calc_possible_values(subs(Tokamak.solved_steady_density() / 1u"n20", cur_R_0, solved_case["R_0"]))
+  solved_case["I_M"] = Tokamak.calc_possible_values(Tokamak.solved_steady_current() / 1u"MA")
 
   solved_case["P_F"] = SymPy.N(subs(Tokamak.calc_possible_values(subs(Tokamak.P_F() / 1u"MW", cur_n_bar, solved_case["n_bar"])), cur_R_0, solved_case["R_0"]))
 

@@ -34,9 +34,9 @@ function sweep_T_k(T_list)
 
   for cur_T in T_list
     load_input( "T_k = $(cur_T)u\"keV\"" )
+  cur_solved_steady_density = solved_steady_density() / 1u"n20"
+  cur_solved_steady_current = solved_steady_current() / 1u"MA"
 
-    cur_simplified_density = simplified_density() / 1u"n20"
-    cur_simplified_current = simplified_current() / 1u"MA"
 
     for (key, value) in given_equations
       cur_solved_R_0 = given_equations[key]["R_0"]() / 1u"m"

@@ -8,11 +8,11 @@ function heat_load_limit()
   cur_heat_load += power_balance()
 
   cur_n_bar = symbol_dict["n_bar"]
-  cur_simplified_density = simplified_density()
-  cur_simplified_density /= 1u"n20"
+  cur_solved_steady_density = solved_steady_density()
+  cur_solved_steady_density /= 1u"n20"
 
   cur_heat_load /= 1u"MW"
-  cur_heat_load = subs(cur_heat_load, cur_n_bar, cur_simplified_density)
+  cur_heat_load = subs(cur_heat_load, cur_n_bar, cur_solved_steady_density)
   cur_heat_load *= 1u"MW"
 
   cur_heat_load *= ( 1 - rho_vol_loss )
@@ -20,7 +20,7 @@ function heat_load_limit()
   cur_heat_load *= 3/2 * u"1/mm"
 
   b_core_term = mu_0
-  b_core_term *= simplified_current()
+  b_core_term *= solved_steady_current()
   b_core_term /= ( 2 * pi )
 
   cur_b_theta = b_theta(1.0)
