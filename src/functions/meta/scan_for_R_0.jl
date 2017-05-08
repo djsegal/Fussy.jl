@@ -3,9 +3,17 @@
 
 Lorem ipsum dolor sit amet.
 """
-function scan_for_R_0(R_0_value, T_list=linspace(5,25,7); rel_tol=1e-3)
+function scan_for_R_0(R_0_value, T_list=linspace(5,25,5); rel_tol=1e-3, is_first_call=true)
 
-  cur_data = sweep_T_k(T_list)["beta"]
+  T_count = length(T_list)
+
+  if is_first_call
+    cur_data = sweep_T_k(T_list)["beta"]
+  else
+    sub_section = 2 : ( T_count - 1 )
+    cur_data = sweep_T_k(T_list[sub_section])["beta"]
+  end
+
   current_R_0_s = cur_data["R_0"]
   current_B_0_s = cur_data["B_0"]
 
@@ -28,10 +36,14 @@ function scan_for_R_0(R_0_value, T_list=linspace(5,25,7); rel_tol=1e-3)
     reverse!(T_list)
   end
 
-  spans_R_0 = first_R_0 <= R_0_value && last_R_0 >= R_0_value
+  if is_first_call
 
-  if !spans_R_0
-    error("T_k range does not include R_0")
+    spans_R_0 = first_R_0 <= R_0_value && last_R_0 >= R_0_value
+
+    if !spans_R_0
+      error("T_k range does not include R_0")
+    end
+
   end
 
   error_list = ( current_R_0_s - R_0_value )
@@ -52,7 +64,18 @@ function scan_for_R_0(R_0_value, T_list=linspace(5,25,7); rel_tol=1e-3)
   low_index = findlast(map(x -> x <= R_0_value, current_R_0_s))
   high_index = findfirst(map(x -> x >= R_0_value, current_R_0_s))
 
-  new_T_list = linspace(T_list[low_index], T_list[high_index], 7)
+  if !is_first_call
 
-  return scan_for_R_0(R_0_value, new_T_list, rel_tol=rel_tol)
+    low_index += 1
+    high_index += 1
+
+    if high_index == 1
+      high_index = T_count
+    end
+
+  end
+
+  new_T_list = linspace(T_list[low_index], T_list[high_index], 3)
+
+  return scan_for_R_0(R_0_value, new_T_list, rel_tol=rel_tol, is_first_call=false)
 end
