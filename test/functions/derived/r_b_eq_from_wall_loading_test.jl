@@ -1,3 +1,5 @@
+# skip: true
+
 @testset "R B Eq From Wall Loading Function Tests" begin
 
   @test isdefined(Tokamak, :r_b_eq_from_wall_loading) == true
