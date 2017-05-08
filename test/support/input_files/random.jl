@@ -17,6 +17,5 @@ eta_T = 0.53
 eta_RF = 0.59
 
 Z_eff = 1.1
-q_K = 3
 rho_m = 0.4
 A = 2.8
