@@ -22,28 +22,30 @@ function sweep_T_k(T_list)
   for key in keys(given_equations)
     solved_equations[key] = OrderedDict()
 
-    solved_equations[key]["R_0"] = []
-    solved_equations[key]["B_0"] = []
+    solved_equations[key]["R_0"] = SharedArray(Float64, length(T_list))
+    solved_equations[key]["B_0"] = SharedArray(Float64, length(T_list))
 
     solved_equations[key]["other_limits"] = OrderedDict()
 
     for sub_key in keys(given_equations)
-      solved_equations[key]["other_limits"][sub_key] = []
+      solved_equations[key]["other_limits"][sub_key] = SharedArray(Float64, length(T_list))
     end
   end
 
-  for cur_T in T_list
-    load_input( "T_k = $(cur_T)u\"keV\"" )
   cur_solved_steady_density = solved_steady_density() / 1u"n20"
   cur_solved_steady_current = solved_steady_current() / 1u"MA"
 
+  @inbounds @sync @parallel for cur_index in 1:length(T_list)
+    cur_T = T_list[cur_index]
+
+    load_input( "T_k = $(cur_T)u\"keV\"" )
 
     for (key, value) in given_equations
       cur_solved_R_0 = given_equations[key]["R_0"]() / 1u"m"
       cur_solved_B_0 = given_equations[key]["B_0"]() / 1u"T"
 
-      push!(solved_equations[key]["R_0"], cur_solved_R_0)
-      push!(solved_equations[key]["B_0"], cur_solved_B_0)
+      solved_equations[key]["R_0"][cur_index] = cur_solved_R_0
+      solved_equations[key]["B_0"][cur_index] = cur_solved_B_0
 
       for (sub_key, sub_value) in given_equations
         tmp_value = sub_value["cur_limit"]
@@ -58,7 +60,7 @@ function sweep_T_k(T_list)
 
         tmp_value /= sub_value["max_limit"]
 
-        push!(solved_equations[key]["other_limits"][sub_key], tmp_value)
+        solved_equations[key]["other_limits"][sub_key][cur_index] = tmp_value
       end
     end
   end
