@@ -50,13 +50,17 @@ function sweep_T_k(T_list)
       for (sub_key, sub_value) in given_equations
         tmp_value = sub_value["cur_limit"]
 
-        tmp_value = subs(tmp_value, cur_n_bar, cur_simplified_density)
-        tmp_value = subs(tmp_value, cur_I_M, cur_simplified_current)
+        tmp_value = subs(tmp_value,
+          cur_n_bar => cur_solved_steady_density,
+          cur_I_M => cur_solved_steady_current
+        )
 
         tmp_value = calc_possible_values(tmp_value)
 
-        tmp_value = subs(tmp_value, cur_R_0, cur_solved_R_0)
-        tmp_value = subs(tmp_value, cur_B_0, cur_solved_B_0)
+        tmp_value = subs(tmp_value,
+          cur_R_0 => cur_solved_R_0,
+          cur_B_0 => cur_solved_B_0
+        )
 
         tmp_value /= sub_value["max_limit"]
 
