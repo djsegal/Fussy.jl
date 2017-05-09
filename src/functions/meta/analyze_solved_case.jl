@@ -31,29 +31,29 @@ function analyze_solved_case(found_data)
   given_equations = Tokamak.setup_given_equations()
 
   for (key, value) in given_equations
-      tmp_value = value["cur_limit"]
+    tmp_value = value["cur_limit"]
 
-      tmp_value = subs(tmp_value, cur_n_bar, solved_case["n_bar"])
-      tmp_value = subs(tmp_value, cur_I_M, solved_case["I_M"])
+    tmp_value = subs(tmp_value, cur_n_bar, solved_case["n_bar"])
+    tmp_value = subs(tmp_value, cur_I_M, solved_case["I_M"])
 
-      tmp_value = Tokamak.calc_possible_values(tmp_value)
+    tmp_value = Tokamak.calc_possible_values(tmp_value)
 
-      tmp_value = subs(tmp_value, cur_R_0, solved_case["R_0"])
-      tmp_value = subs(tmp_value, cur_B_0, solved_case["B_0"])
+    tmp_value = subs(tmp_value, cur_R_0, solved_case["R_0"])
+    tmp_value = subs(tmp_value, cur_B_0, solved_case["B_0"])
 
-      tmp_value = SymPy.N(tmp_value)
+    tmp_value = SymPy.N(tmp_value)
 
-      println("$key = $( @sprintf("%.3g", tmp_value / value["max_limit"] ) )")
+    println("$key = $( @sprintf("%.3g", tmp_value / value["max_limit"] ) )")
 
-      if key == "beta"
-          solved_case["beta"] = tmp_value
-      elseif key == "wall"
-          solved_case["P_W"] = tmp_value
-      elseif key == "heat"
-          solved_case["h_parallel"] = tmp_value
-      else
-          error("Bad constraint key")
-      end
+    if key == "beta"
+      solved_case["beta"] = tmp_value
+    elseif key == "wall"
+      solved_case["P_W"] = tmp_value
+    elseif key == "heat"
+      solved_case["h_parallel"] = tmp_value
+    else
+      error("Bad constraint key")
+    end
   end
 
   solved_case
