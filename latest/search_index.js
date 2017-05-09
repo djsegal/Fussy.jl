@@ -289,6 +289,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.analyze_solved_case-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.analyze_solved_case",
+    "category": "Method",
+    "text": "analyze_solved_case()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.b_theta-Tuple{Any}",
     "page": "Code",
     "title": "Tokamak.b_theta",
@@ -297,11 +305,27 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.b_theta_target-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.b_theta_target",
+    "category": "Method",
+    "text": "b_theta_target()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.calc_possible_values",
     "page": "Code",
     "title": "Tokamak.calc_possible_values",
     "category": "Function",
     "text": "calc_possible_values()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.confinement_time_from_scaling-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.confinement_time_from_scaling",
+    "category": "Method",
+    "text": "confinement_time_from_scaling()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -334,14 +358,6 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.greenwald_limit",
     "category": "Method",
     "text": "greenwald_limit()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
-},
-
-{
-    "location": "code.html#Tokamak.h_mode_confinement_time-Tuple{}",
-    "page": "Code",
-    "title": "Tokamak.h_mode_confinement_time",
-    "category": "Method",
-    "text": "h_mode_confinement_time()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -449,6 +465,22 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.scan_for_R_0",
+    "page": "Code",
+    "title": "Tokamak.scan_for_R_0",
+    "category": "Function",
+    "text": "scan_for_R_0()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.setup_given_equations-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.setup_given_equations",
+    "category": "Method",
+    "text": "setup_given_equations()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.sigma_v-Tuple{}",
     "page": "Code",
     "title": "Tokamak.sigma_v",
@@ -489,11 +521,107 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.solved_B_0_from_R_0-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.solved_B_0_from_R_0",
+    "category": "Method",
+    "text": "solved_B_0_from_R_0()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.solved_B_0_from_beta-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.solved_B_0_from_beta",
+    "category": "Method",
+    "text": "solved_B_0_from_beta()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.solved_B_0_from_heat-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.solved_B_0_from_heat",
+    "category": "Method",
+    "text": "solved_B_0_from_heat()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.solved_B_0_from_wall-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.solved_B_0_from_wall",
+    "category": "Method",
+    "text": "solved_B_0_from_wall()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.solved_R_0_from_B_0-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.solved_R_0_from_B_0",
+    "category": "Method",
+    "text": "solved_R_0_from_B_0(B_0)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.solved_R_0_from_beta-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.solved_R_0_from_beta",
+    "category": "Method",
+    "text": "solved_R_0_from_beta()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.solved_R_0_from_heat-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.solved_R_0_from_heat",
+    "category": "Method",
+    "text": "solved_R_0_from_heat()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.solved_R_0_from_wall-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.solved_R_0_from_wall",
+    "category": "Method",
+    "text": "solved_R_0_from_wall()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.solved_steady_current-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.solved_steady_current",
+    "category": "Method",
+    "text": "solved_steady_current()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.solved_steady_density-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.solved_steady_density",
+    "category": "Method",
+    "text": "solved_steady_density()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.steady_state-Tuple{}",
     "page": "Code",
     "title": "Tokamak.steady_state",
     "category": "Method",
     "text": "steady_state()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.sweep_T_k-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.sweep_T_k",
+    "category": "Method",
+    "text": "sweep_T_k()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.target_angle-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.target_angle",
+    "category": "Method",
+    "text": "target_angle()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
