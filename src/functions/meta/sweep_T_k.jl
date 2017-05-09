@@ -13,6 +13,10 @@ function sweep_T_k(T_list)
 
   given_equations = setup_given_equations()
 
+  original_beta_N = beta_N
+  original_P_W = P_W
+  original_h_parallel = h_parallel
+
   load_input( "beta_N = $(max_beta_N)" )
   load_input( "P_W = $( max_P_W / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
   load_input( "h_parallel = $( max_h_parallel / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
@@ -65,6 +69,10 @@ function sweep_T_k(T_list)
       end
     end
   end
+
+  load_input( "beta_N = $(original_beta_N)" )
+  load_input( "P_W = $( original_P_W / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
+  load_input( "h_parallel = $( original_h_parallel / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
 
   return solved_equations
 
