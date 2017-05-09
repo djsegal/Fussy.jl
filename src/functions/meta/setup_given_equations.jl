@@ -21,12 +21,12 @@ function setup_given_equations()
     "max_limit" => max_P_W / ( 1u"MW" / 1u"m^2" )
   )
 
-  given_equations["heat"] = OrderedDict(
-    "R_0" => solved_R_0_from_heat,
-    "B_0" => solved_B_0_from_heat,
-    "cur_limit" => ( heat_load_limit() + h_parallel ) / ( 1u"MW" / 1u"m^2" ),
-    "max_limit" => max_h_parallel / ( 1u"MW" / 1u"m^2" )
-  )
+  # given_equations["heat"] = OrderedDict(
+  #   "R_0" => solved_R_0_from_heat,
+  #   "B_0" => solved_B_0_from_heat,
+  #   "cur_limit" => ( heat_load_limit() + h_parallel ) / ( 1u"MW" / 1u"m^2" ),
+  #   "max_limit" => max_h_parallel / ( 1u"MW" / 1u"m^2" )
+  # )
 
   given_equations
 
