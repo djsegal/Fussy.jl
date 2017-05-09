@@ -35,14 +35,26 @@ function sweep_T_k(T_list)
   cur_solved_steady_density = solved_steady_density() / 1u"n20"
   cur_solved_steady_current = solved_steady_current() / 1u"MA"
 
+  has_complex_value = [ false for i=1:length(given_equations) ]
+
   @inbounds for cur_index in 1:length(T_list)
     cur_T = T_list[cur_index]
 
     load_input( "T_k = $(cur_T)u\"keV\"" )
 
-    for (key, value) in given_equations
+    for (eq_index, (key, value)) in enumerate(given_equations)
       cur_solved_R_0 = given_equations[key]["R_0"]() / 1u"m"
       cur_solved_B_0 = given_equations[key]["B_0"]() / 1u"T"
+
+      if !has_complex_value[eq_index] && !isreal(cur_solved_R_0)
+        has_complex_value[eq_index] = true
+        println("Complex R_0 detected")
+      end
+
+      if has_complex_value[eq_index]
+        cur_solved_R_0 = Inf
+        cur_solved_B_0 = 0
+      end
 
       solved_equations[key]["R_0"][cur_index] = cur_solved_R_0
       solved_equations[key]["B_0"][cur_index] = cur_solved_B_0

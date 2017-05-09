@@ -17,8 +17,11 @@ function scan_for_R_0(R_0_value, T_list=linspace(5,25,5); rel_tol=1e-3, is_first
   current_R_0_s = cur_data["R_0"]
   current_B_0_s = cur_data["B_0"]
 
-  is_monotonic = all( x -> x >= 0 , diff(current_R_0_s) )
-  is_monotonic |= all( x -> x <= 0 , diff(current_R_0_s) )
+  R_0_diff = diff(current_R_0_s)
+  R_0_diff = R_0_diff[!isnan(R_0_diff)]
+
+  is_monotonic = all( x -> x >= 0 , R_0_diff )
+  is_monotonic |= all( x -> x <= 0 , R_0_diff )
 
   if !is_monotonic
     error("Non-monotonic R_0 values")
