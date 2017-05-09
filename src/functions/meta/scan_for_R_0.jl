@@ -3,7 +3,7 @@
 
 Lorem ipsum dolor sit amet.
 """
-function scan_for_R_0(R_0_value, T_list=linspace(5,25,5); rel_tol=1e-3, is_first_call=true)
+function scan_for_R_0(R_0_value, T_list=linspace(5,30,5); rel_tol=1e-3, is_first_call=true)
 
   T_count = length(T_list)
 
