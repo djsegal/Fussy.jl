@@ -26,6 +26,9 @@ function analyze_solved_case(found_data)
 
   solved_case["P_H"] = Tokamak.calc_possible_values(subs(subs(Tokamak.P_H() / 1u"MW", cur_n_bar, solved_case["n_bar"]), cur_R_0, solved_case["R_0"]))
 
+  solved_case["P_alpha"] = Tokamak.calc_possible_values(subs(subs(Tokamak.P_alpha() / 1u"MW", cur_n_bar, solved_case["n_bar"]), cur_R_0, solved_case["R_0"]))
+  solved_case["P_BR"] = Tokamak.calc_possible_values(subs(subs(Tokamak.P_BR() / 1u"MW", cur_n_bar, solved_case["n_bar"]), cur_R_0, solved_case["R_0"]))
+
   solved_case["a"] = solved_case["R_0"]*Tokamak.epsilon;
 
   given_equations = Tokamak.setup_given_equations()
