@@ -5,10 +5,6 @@ epsilon = 0.25
 N_G = 0.8
 H = 1
 
-max_beta_N = 0.026
-max_P_W = 3 * ( 1u"MW" / 1u"m^2" )
-max_h_parallel = 500 * ( 1u"MW" / 1u"m^2" )
-
 nu_n = 0.3
 nu_T = 1.2
 
@@ -20,8 +16,9 @@ Z_eff = 1.5
 rho_m = 0.6
 A = 2.5
 
-divertor_beta = pi / 4
-rho_vol_loss = 0.5
+max_beta_N = 0.026
+max_P_W = 3 * ( 1u"MW" / 1u"m^2" )
+max_h_parallel = 500 * ( 1u"MW" / 1u"m^2" )
 
 enable_bremsstrahlung = true
 
