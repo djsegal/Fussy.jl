@@ -1,3 +1,5 @@
+# skip: true
+
 @testset "K DV Function Tests" begin
 
   @test isdefined(Tokamak, :K_DV) == true

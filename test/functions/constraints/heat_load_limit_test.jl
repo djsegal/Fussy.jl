@@ -1,3 +1,5 @@
+# skip: true
+
 @testset "Heat Load Limit Function Tests" begin
 
   @test isdefined(Tokamak, :heat_load_limit) == true
