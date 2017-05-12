@@ -2,7 +2,7 @@ Q = 25.0
 kappa = 2.2
 delta = 0.63
 epsilon = 0.25
-N_G = 0.77
+N_G = 1.3
 H = 1.22
 
 nu_n = 0.41
