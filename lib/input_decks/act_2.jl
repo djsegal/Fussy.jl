@@ -12,6 +12,5 @@ eta_CD = 0.4
 
 Z_eff = 2.12
 
-# max_beta_N = 0.0225
 max_beta_N = 0.026
 max_P_W = 1.46 * ( 1u"MW" / 1u"m^2" )
