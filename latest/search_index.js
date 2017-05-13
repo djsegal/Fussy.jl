@@ -353,6 +353,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.geometry_scaling-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.geometry_scaling",
+    "category": "Method",
+    "text": "geometry_scaling()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.greenwald_limit-Tuple{}",
     "page": "Code",
     "title": "Tokamak.greenwald_limit",
@@ -609,6 +617,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.surface_area-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.surface_area",
+    "category": "Method",
+    "text": "surface_area()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.sweep_T_k-Tuple{Any}",
     "page": "Code",
     "title": "Tokamak.sweep_T_k",
@@ -633,11 +649,27 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.volume-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.volume",
+    "category": "Method",
+    "text": "volume()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.wall_loading_limit-Tuple{}",
     "page": "Code",
     "title": "Tokamak.wall_loading_limit",
     "category": "Method",
     "text": "wall_loading_limit()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.x_aa_of_pi-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.x_aa_of_pi",
+    "category": "Method",
+    "text": "x_aa_of_pi()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
