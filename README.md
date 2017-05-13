@@ -14,3 +14,7 @@ To get working locally, type these lines into the terminal:
 > Pkg.clone("https://github.com/djsegal/Tokamak.jl.git")
 > using Tokamak
 ```
+
+Then you can edit code in your Julia package directory.
+
+// i.e. in `~/.julia/v0.5/Tokamak` (possibly)
