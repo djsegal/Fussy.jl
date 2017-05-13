@@ -1,11 +1,16 @@
 # Tokamak
 
-[![Build Status](https://travis-ci.org/djsegal/Tokamak.jl.svg?branch=master)](https://travis-ci.org/djsegal/Tokamak.jl)
+[![Build Status](https://travis-ci.org/djsegal/Tokamak.jl.svg?branch=master)](https://travis-ci.org/djsegal/Tokamak.jl) [![codecov.io](http://codecov.io/github/djsegal/Tokamak.jl/coverage.svg?branch=master)](http://codecov.io/github/djsegal/Tokamak.jl?branch=master)
 
-[![Coverage Status](https://coveralls.io/repos/djsegal/Tokamak.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/djsegal/Tokamak.jl?branch=master)
+[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://djsegal.github.io/Tokamak.jl/stable) [![](https://img.shields.io/badge/docs-latest-blue.svg)](https://djsegal.github.io/Tokamak.jl/latest)
 
-[![codecov.io](http://codecov.io/github/djsegal/Tokamak.jl/coverage.svg?branch=master)](http://codecov.io/github/djsegal/Tokamak.jl?branch=master)
+-----
 
-[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://djsegal.github.io/Tokamak.jl/stable)
+To get working locally, type these lines into the terminal:
 
-[![](https://img.shields.io/badge/docs-latest-blue.svg)](https://djsegal.github.io/Tokamak.jl/latest)
+```
+> julia
+> Pkg.clone("https://github.com/djsegal/Julz.jl.git")
+> Pkg.clone("https://github.com/djsegal/Tokamak.jl.git")
+> using Tokamak
+```
