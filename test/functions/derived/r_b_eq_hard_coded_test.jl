@@ -38,7 +38,7 @@
 
     if cur_bool
       test_count = Int(round( test_count / 2 ))
-      Tokamak.load_input("test/support/input_files/random.jl", true)
+      Tokamak.load_input("random.jl", true)
     end
 
     num_bad_answers = 0

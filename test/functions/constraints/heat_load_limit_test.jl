@@ -38,7 +38,7 @@
 
     if cur_bool
       test_count = Int(round( test_count / 2 ))
-      Tokamak.load_input("test/support/input_files/random.jl", true)
+      Tokamak.load_input("random.jl", true)
     end
 
     for cur_T_k in logspace(log10(5), log10(50), test_count)

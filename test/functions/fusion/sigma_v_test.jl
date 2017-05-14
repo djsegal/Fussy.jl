@@ -13,7 +13,7 @@
   for cur_bool in [false, true]
 
     if cur_bool
-      Tokamak.load_input("test/support/input_files/random.jl", true)
+      Tokamak.load_input("random.jl", true)
     end
 
     for cur_T_k in logspace(0, log10(50), test_count)
@@ -51,7 +51,7 @@
   for cur_bool in [false, true]
 
     if cur_bool
-      Tokamak.load_input("test/support/input_files/random.jl", true)
+      Tokamak.load_input("random.jl", true)
     end
 
     sigma_v_expected = []
