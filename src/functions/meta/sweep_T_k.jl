@@ -5,12 +5,6 @@ Lorem ipsum dolor sit amet.
 """
 function sweep_T_k(T_list)
 
-  cur_R_0 = symbol_dict["R_0"]
-  cur_B_0 = symbol_dict["B_0"]
-
-  cur_n_bar = symbol_dict["n_bar"]
-  cur_I_M = symbol_dict["I_M"]
-
   given_equations = setup_given_equations()
 
   load_input( "beta_N = $(max_beta_N)" )
@@ -40,42 +34,17 @@ function sweep_T_k(T_list)
   @inbounds for cur_index in 1:length(T_list)
     cur_T = T_list[cur_index]
 
-    load_input( "T_k = $(cur_T)u\"keV\"" )
+    cur_solved_equation = solve_equation_set(cur_T, given_equations)
 
     for (eq_index, (key, value)) in enumerate(given_equations)
-      cur_solved_R_0 = given_equations[key]["R_0"]() / 1u"m"
-      cur_solved_B_0 = given_equations[key]["B_0"]() / 1u"T"
-
-      if !has_complex_value[eq_index] && !isreal(cur_solved_R_0)
-        has_complex_value[eq_index] = true
-        println("Complex R_0 detected")
-      end
-
-      if has_complex_value[eq_index]
-        cur_solved_R_0 = Inf
-        cur_solved_B_0 = 0
-      end
-
-      solved_equations[key]["R_0"][cur_index] = cur_solved_R_0
-      solved_equations[key]["B_0"][cur_index] = cur_solved_B_0
+      solved_equations[key]["R_0"][cur_index] = cur_solved_equation[key]["R_0"]
+      solved_equations[key]["B_0"][cur_index] = cur_solved_equation[key]["R_0"]
 
       for (sub_key, sub_value) in given_equations
-        tmp_value = sub_value["cur_limit"]
-
-        tmp_value = subs(tmp_value,
-          cur_n_bar => cur_solved_steady_density,
-          cur_I_M => cur_solved_steady_current,
-          cur_R_0 => cur_solved_R_0,
-          cur_B_0 => cur_solved_B_0
-        )
-
-        tmp_value = calc_possible_values(tmp_value)
-
-        tmp_value /= sub_value["max_limit"]
-
-        solved_equations[key]["other_limits"][sub_key][cur_index] = tmp_value
+        solved_equations[key]["other_limits"][sub_key][cur_index] = cur_solved_equation[key]["other_limits"][sub_key]
       end
     end
+
   end
 
   return solved_equations
