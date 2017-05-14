@@ -529,6 +529,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.solve_equation_set-Tuple{Any,Any}",
+    "page": "Code",
+    "title": "Tokamak.solve_equation_set",
+    "category": "Method",
+    "text": "solve_equation_set(cur_T, given_equations)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.solved_B_0_from_R_0-Tuple{Any}",
     "page": "Code",
     "title": "Tokamak.solved_B_0_from_R_0",
