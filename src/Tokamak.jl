@@ -14,7 +14,7 @@ module Tokamak
   function main()
     load_input("input.jl", true)
 
-    T_list = linspace(5, 25, 11)
+    T_list = linspace(5, 25, 6)
 
     solved_equations = sweep_T_k(T_list)
 

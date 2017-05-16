@@ -16,6 +16,10 @@ Z_eff = 1.5
 rho_m = 0.6
 A = 2.5
 
+f_DT = 1.0 # 0.85
+
+rad_scaling = 1.0
+
 max_beta_N = 0.026
 max_P_W = 3 * ( 1u"MW" / 1u"m^2" )
 max_h_parallel = 500 * ( 1u"MW" / 1u"m^2" )

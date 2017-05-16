@@ -14,5 +14,7 @@ function K_BR()
   cur_K_BR /= 5 + Q
   cur_K_BR *= Z_eff
 
+  cur_K_BR *= rad_scaling
+
   cur_K_BR
 end

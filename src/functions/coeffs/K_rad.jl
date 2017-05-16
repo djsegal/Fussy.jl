@@ -14,5 +14,7 @@ function K_rad()
   cur_K_rad *= epsilon ^ 2
   cur_K_rad *= kappa
 
+  cur_K_rad *= rad_scaling
+
   cur_K_rad
 end

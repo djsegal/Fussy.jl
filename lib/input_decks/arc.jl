@@ -10,4 +10,7 @@ nu_T = 0.929
 
 eta_CD = 0.32
 
+Z_eff = 1.2
+f_DT = 0.9
+
 enable_bremsstrahlung = false
