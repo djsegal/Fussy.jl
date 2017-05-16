@@ -15,24 +15,24 @@ function solve_equation_set(cur_T, given_equations)
   solved_equation = OrderedDict()
 
   for key in keys(given_equations)
-    solved_equation[key] = OrderedDict(
-      "other_limits" => OrderedDict()
-    )
+    solved_equation[key] = OrderedDict()
+    solved_equation[key]["other_limits"] = OrderedDict()
   end
 
+  cur_solved_steady_density = solved_steady_density() / 1u"n20"
+  cur_solved_steady_current = solved_steady_current() / 1u"MA"
+
+  initial_eta_CD = eta_CD
+
   for (eq_index, (key, value)) in enumerate(given_equations)
-    cur_solved_R_0 = given_equations[key]["R_0"]() / 1u"m"
-    cur_solved_B_0 = given_equations[key]["B_0"]() / 1u"T"
 
-    if !has_complex_value[eq_index] && !isreal(cur_solved_R_0)
-      has_complex_value[eq_index] = true
-      println("Complex R_0 detected")
-    end
+    println(" \n\n $key \n ")
 
-    if has_complex_value[eq_index]
-      cur_solved_R_0 = Inf
-      cur_solved_B_0 = 0
-    end
+    cur_solved_R_0, cur_solved_B_0, cur_eta_CD = converge_eta_CD(given_equations[key])
+
+    solved_equation[key]["eta_CD"] = cur_eta_CD
+
+    load_input("eta_CD = $initial_eta_CD")
 
     solved_equation[key]["R_0"] = cur_solved_R_0
     solved_equation[key]["B_0"] = cur_solved_B_0
@@ -53,6 +53,7 @@ function solve_equation_set(cur_T, given_equations)
 
       solved_equation[key]["other_limits"][sub_key] = tmp_value
     end
+
   end
 
   solved_equation

@@ -3,7 +3,7 @@
 
 Lorem ipsum dolor sit amet.
 """
-function sweep_T_k(T_list)
+function sweep_T_k(T_list; verbose=true)
 
   given_equations = setup_given_equations()
 
@@ -19,6 +19,8 @@ function sweep_T_k(T_list)
     solved_equations[key]["R_0"] = Array(Float64, length(T_list))
     solved_equations[key]["B_0"] = Array(Float64, length(T_list))
 
+    solved_equations[key]["eta_CD"] = Array(Float64, length(T_list))
+
     solved_equations[key]["other_limits"] = OrderedDict()
 
     for sub_key in keys(given_equations)
@@ -26,19 +28,17 @@ function sweep_T_k(T_list)
     end
   end
 
-  cur_solved_steady_density = solved_steady_density() / 1u"n20"
-  cur_solved_steady_current = solved_steady_current() / 1u"MA"
-
-  has_complex_value = [ false for i=1:length(given_equations) ]
-
   @inbounds for cur_index in 1:length(T_list)
     cur_T = T_list[cur_index]
+    if verbose ; print("\n\n$cur_T") ; end
 
     cur_solved_equation = solve_equation_set(cur_T, given_equations)
 
     for (eq_index, (key, value)) in enumerate(given_equations)
       solved_equations[key]["R_0"][cur_index] = cur_solved_equation[key]["R_0"]
-      solved_equations[key]["B_0"][cur_index] = cur_solved_equation[key]["R_0"]
+      solved_equations[key]["B_0"][cur_index] = cur_solved_equation[key]["B_0"]
+
+      solved_equations[key]["eta_CD"][cur_index] = cur_solved_equation[key]["eta_CD"]
 
       for (sub_key, sub_value) in given_equations
         solved_equations[key]["other_limits"][sub_key][cur_index] = cur_solved_equation[key]["other_limits"][sub_key]

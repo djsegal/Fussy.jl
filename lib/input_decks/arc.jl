@@ -11,3 +11,4 @@ nu_T = 0.929
 eta_CD = 0.32
 
 enable_bremsstrahlung = false
+enable_eta_CD_derive = false

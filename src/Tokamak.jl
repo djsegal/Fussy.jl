@@ -4,6 +4,7 @@ module Tokamak
   using QuadGK
   using SymPy
   using DataStructures
+  using NLsolve
 
   if ( endswith(pwd(), "/test") ) ; cd("..") ; end
 
@@ -26,6 +27,9 @@ module Tokamak
 
       println("B_0 = ")
       println(solved_equations[key]["B_0"])
+
+      println("eta_CD = ")
+      println(solved_equations[key]["eta_CD"])
 
       println("other_limits = ")
       for sub_key in keys(solved_equations)

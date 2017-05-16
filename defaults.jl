@@ -16,11 +16,14 @@ Z_eff = 1.5
 rho_m = 0.6
 A = 2.5
 
+wave_theta = 0
+
 max_beta_N = 0.026
 max_P_W = 3 * ( 1u"MW" / 1u"m^2" )
 max_h_parallel = 500 * ( 1u"MW" / 1u"m^2" )
 
 enable_bremsstrahlung = true
+enable_eta_CD_derive = true
 
 confinement_scaling = Dict(
   "constant" => 0.145,

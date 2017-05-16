@@ -4,3 +4,4 @@ Unitful
 QuadGK
 SymPy
 DataStructures
+NLsolve
