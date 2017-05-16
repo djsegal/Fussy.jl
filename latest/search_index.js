@@ -281,11 +281,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.a-Tuple{}",
+    "location": "code.html#Tokamak.a",
     "page": "Code",
     "title": "Tokamak.a",
-    "category": "Method",
-    "text": "a()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "a(cur_R_0=R_0)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -333,7 +333,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.blanket_thickness",
     "category": "Method",
-    "text": "blanket_thickness(mag_max, P_W, T)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "blanket_thickness(mag_max, P_W)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -729,11 +729,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.surface_area-Tuple{}",
+    "location": "code.html#Tokamak.surface_area",
     "page": "Code",
     "title": "Tokamak.surface_area",
-    "category": "Method",
-    "text": "surface_area()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "surface_area(cur_R_0=R_0)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -769,11 +769,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.volume-Tuple{}",
+    "location": "code.html#Tokamak.volume",
     "page": "Code",
     "title": "Tokamak.volume",
-    "category": "Method",
-    "text": "volume()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "volume(cur_R_0=R_0)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
