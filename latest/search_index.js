@@ -33,6 +33,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.B_M-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.B_M",
+    "category": "Method",
+    "text": "B_M(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.C_B-Tuple{}",
     "page": "Code",
     "title": "Tokamak.C_B",
@@ -265,6 +273,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.T_profile-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.T_profile",
+    "category": "Method",
+    "text": "T_profile(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.a-Tuple{}",
     "page": "Code",
     "title": "Tokamak.a",
@@ -313,6 +329,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.calc_cur_eta_cd-Tuple",
+    "page": "Code",
+    "title": "Tokamak.calc_cur_eta_cd",
+    "category": "Method",
+    "text": "calc_cur_eta_cd(cur_vars...)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.calc_possible_values",
     "page": "Code",
     "title": "Tokamak.calc_possible_values",
@@ -326,6 +350,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.confinement_time_from_scaling",
     "category": "Method",
     "text": "confinement_time_from_scaling()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.converge_eta_CD-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.converge_eta_CD",
+    "category": "Method",
+    "text": "converge_eta_CD()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -358,6 +390,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.geometry_scaling",
     "category": "Method",
     "text": "geometry_scaling()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.get_new_eta_CD-Tuple{Any,Any}",
+    "page": "Code",
+    "title": "Tokamak.get_new_eta_CD",
+    "category": "Method",
+    "text": "get_new_eta_CD(cur_solved_R_0, cur_solved_B_0)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -398,6 +438,46 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.lawson_criterion",
     "category": "Method",
     "text": "lawson_criterion()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.local_B",
+    "page": "Code",
+    "title": "Tokamak.local_B",
+    "category": "Function",
+    "text": "local_B(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.n_profile-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.n_profile",
+    "category": "Method",
+    "text": "n_profile(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.omega_ce-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.omega_ce",
+    "category": "Method",
+    "text": "omega_ce(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.omega_ci-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.omega_ci",
+    "category": "Method",
+    "text": "omega_ci(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.omega_pe2-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.omega_pe2",
+    "category": "Method",
+    "text": "omega_pe2(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -537,6 +617,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.solve_wave_equations-Tuple{Any,Any}",
+    "page": "Code",
+    "title": "Tokamak.solve_wave_equations",
+    "category": "Method",
+    "text": "solve_wave_equations(cur_solved_R_0, cur_solved_B_0)\n\nFunction to solve for n_para, rho_J, omega_nor2.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.solved_B_0_from_R_0-Tuple{Any}",
     "page": "Code",
     "title": "Tokamak.solved_B_0_from_R_0",
@@ -657,6 +745,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.v_e-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.v_e",
+    "category": "Method",
+    "text": "v_e(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.volume-Tuple{}",
     "page": "Code",
     "title": "Tokamak.volume",
@@ -670,6 +766,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.wall_loading_limit",
     "category": "Method",
     "text": "wall_loading_limit()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.wave_chi-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.wave_chi",
+    "category": "Method",
+    "text": "wave_chi(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -726,6 +830,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Constants",
     "category": "section",
     "text": "Modules = [Tokamak]\nOrder = [:constant]"
+},
+
+{
+    "location": "code.html#Tokamak.@generate_wave_equation_set-Tuple{Any,Any}",
+    "page": "Code",
+    "title": "Tokamak.@generate_wave_equation_set",
+    "category": "Macro",
+    "text": "@generate_wave_equation_set\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
