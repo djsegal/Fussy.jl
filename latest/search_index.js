@@ -329,6 +329,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.blanket_thickness-Tuple{Any,Any}",
+    "page": "Code",
+    "title": "Tokamak.blanket_thickness",
+    "category": "Method",
+    "text": "blanket_thickness(mag_max, P_W, T)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.calc_cur_eta_cd-Tuple",
     "page": "Code",
     "title": "Tokamak.calc_cur_eta_cd",
@@ -454,6 +462,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.n_profile",
     "category": "Method",
     "text": "n_profile(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.neutron_source_rate-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.neutron_source_rate",
+    "category": "Method",
+    "text": "neutron_source_rate(P_W)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
