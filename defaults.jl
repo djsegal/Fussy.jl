@@ -18,12 +18,15 @@ A = 2.5
 
 wave_theta = 0
 
+blanket_given_thickness = 0.89u"m"
+
 max_beta_N = 0.026
 max_P_W = 3 * ( 1u"MW" / 1u"m^2" )
 max_h_parallel = 500 * ( 1u"MW" / 1u"m^2" )
 
 enable_bremsstrahlung = true
 enable_eta_CD_derive = true
+enable_blanket_derive = true
 
 confinement_scaling = Dict(
   "constant" => 0.145,
@@ -62,3 +65,5 @@ K_CD_denom = symbol_dict["K_CD_denom"]
 beta_N = symbol_dict["beta_N"]
 P_W = symbol_dict["P_W"] * ( 1u"MW" / 1u"m^2" )
 h_parallel = symbol_dict["h_parallel"] * ( 1u"MW" / 1u"m^2" )
+
+Tokamak.load_input("magnet_defaults.jl", true)

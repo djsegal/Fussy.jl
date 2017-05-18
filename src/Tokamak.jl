@@ -5,6 +5,8 @@ module Tokamak
   using SymPy
   using DataStructures
   using NLsolve
+  using Elliptic
+  using Polynomials
 
   if ( endswith(pwd(), "/test") ) ; cd("..") ; end
 
