@@ -2,4 +2,27 @@
 
   @test isdefined(Tokamak, :wave_chi) == true
 
+  Tokamak.load_input(" Z_eff = 1.0 ")
+  Tokamak.load_input(" n_bar = 0.86 * 1u\"n20\" ")
+  Tokamak.load_input(" T_k = 17.8 * 1u\"keV\" ")
+
+  cur_solved_R_0 = 4.0
+  cur_solved_B_0 = 10.0
+
+  test_hash = Dict(
+    0.0 => 0.1151,
+    0.5 => 0.1336,
+    1.0 => 0.0000
+  )
+
+  for (cur_key, expected_value) in test_hash
+    actual_value = Tokamak.wave_chi(cur_key)
+
+    actual_value = subs(
+      actual_value, Tokamak.symbol_dict["B_0"], cur_solved_B_0
+    )
+
+    @test isapprox(expected_value, actual_value, rtol=5e-4)
+  end
+
 end
