@@ -1,5 +1,3 @@
-# skip: true
-
 @testset "Get New Eta CD Function Tests" begin
 
   @test isdefined(Tokamak, :get_new_eta_CD) == true
@@ -14,8 +12,6 @@
   actual_value = Tokamak.get_new_eta_CD(cur_solved_R_0, cur_solved_B_0)
 
   expected_value = 0.36657
-
-  println(actual_value)
 
   @test isapprox(expected_value, actual_value, rtol=5e-4)
 
