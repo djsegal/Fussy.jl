@@ -3,7 +3,7 @@
 
 Function to solve for n_para, rho_J, omega_nor2.
 """
-function solve_wave_equations(cur_solved_R_0, cur_solved_B_0)
+function solve_wave_equations(cur_solved_R_0, cur_solved_B_0; verbose=false)
   cur_solution = nothing
 
   for cur_attempt in 1:20
@@ -28,12 +28,12 @@ function solve_wave_equations(cur_solved_R_0, cur_solved_B_0)
 
     if !did_work ; continue ; end
 
-    print("✓")
+    if verbose ; print("✓") ; end
     break
   end
 
   if cur_solution == nothing
-    print("x")
+    if verbose ; print("x") ; end
     cur_solution = [ 0 , 0 , 0 ]
   end
 
