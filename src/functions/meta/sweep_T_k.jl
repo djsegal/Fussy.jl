@@ -32,7 +32,7 @@ function sweep_T_k(T_list; verbose=true)
     cur_T = T_list[cur_index]
     if verbose ; print("\n\n$cur_T") ; end
 
-    cur_solved_equation = solve_equation_set(cur_T, given_equations)
+    cur_solved_equation = solve_equation_set(cur_T, given_equations, verbose=verbose)
 
     for (eq_index, (key, value)) in enumerate(given_equations)
       solved_equations[key]["R_0"][cur_index] = cur_solved_equation[key]["R_0"]

@@ -3,8 +3,8 @@
 
 Lorem ipsum dolor sit amet.
 """
-function get_new_eta_CD(cur_solved_R_0, cur_solved_B_0)
-  cur_solution = solve_wave_equations(cur_solved_R_0, cur_solved_B_0)
+function get_new_eta_CD(cur_solved_R_0, cur_solved_B_0; verbose=false)
+  cur_solution = solve_wave_equations(cur_solved_R_0, cur_solved_B_0, verbose=verbose)
 
   n_para = cur_solution[1]
   rho_J = cur_solution[2]

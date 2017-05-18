@@ -3,7 +3,7 @@
 
 Lorem ipsum dolor sit amet.
 """
-function solve_equation_set(cur_T, given_equations)
+function solve_equation_set(cur_T, given_equations; verbose=false)
   load_input( "T_k = $(cur_T)u\"keV\"" )
 
   cur_n_bar = symbol_dict["n_bar"]
@@ -28,7 +28,7 @@ function solve_equation_set(cur_T, given_equations)
 
     println(" \n\n $key \n ")
 
-    cur_solved_R_0, cur_solved_B_0, cur_eta_CD = converge_eta_CD(given_equations[key])
+    cur_solved_R_0, cur_solved_B_0, cur_eta_CD = converge_eta_CD(given_equations[key], verbose=verbose)
 
     solved_equation[key]["eta_CD"] = cur_eta_CD
 
