@@ -13,7 +13,13 @@ macro generate_wave_equation_set(cur_solved_R_0, cur_solved_B_0)
       rho = cur_vars[2]
       omega_nor2 = cur_vars[3]
 
-      cur_wave_chi = subs(wave_chi(rho),
+      cur_n_bar = calc_possible_values(
+        solved_steady_density() / 1u"n20"
+      )
+
+      cur_wave_chi = subs(
+        wave_chi(rho),
+        symbol_dict["n_bar"] => cur_n_bar,
         symbol_dict["R_0"] => $cur_solved_R_0,
         symbol_dict["B_0"] => $cur_solved_B_0
       )
