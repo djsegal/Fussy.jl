@@ -5,7 +5,7 @@ Lorem ipsum dolor sit amet.
 """
 macro generate_wave_equation_set(cur_solved_R_0, cur_solved_B_0)
   quote
-    function wave_equation_set!(cur_vars, cur_F)
+    function (cur_vars, cur_F)
       gamma0 = 8.562
       coeff = 1.0
 
