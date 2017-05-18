@@ -67,3 +67,4 @@ P_W = symbol_dict["P_W"] * ( 1u"MW" / 1u"m^2" )
 h_parallel = symbol_dict["h_parallel"] * ( 1u"MW" / 1u"m^2" )
 
 Tokamak.load_input("magnet_defaults.jl", true)
+Tokamak.load_input("econ_defaults.jl", true)
