@@ -43,6 +43,8 @@ function solve_wave_equations(cur_solved_R_0, cur_solved_B_0; verbose=false)
 
   omega = sqrt(omega_nor2.*omega_ce(rho_J).*omega_ci(rho_J))   #(eqn15)
 
+  omega = subs(omega, symbol_dict["B_0"], cur_solved_B_0)
+
   output = Array(Any, 3)
 
   output[1] = n_para
