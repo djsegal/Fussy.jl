@@ -37,7 +37,7 @@ function converge_eta_CD(cur_equations; verbose=false)
 
   end
 
-  output = Array(Any, 3)
+  output = Array{Any}(3)
 
   output[1] = cur_solved_R_0
   output[2] = cur_solved_B_0

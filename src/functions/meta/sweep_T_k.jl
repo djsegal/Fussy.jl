@@ -16,15 +16,15 @@ function sweep_T_k(T_list; verbose=true)
   for key in keys(given_equations)
     solved_equations[key] = OrderedDict()
 
-    solved_equations[key]["R_0"] = Array(Float64, length(T_list))
-    solved_equations[key]["B_0"] = Array(Float64, length(T_list))
+    solved_equations[key]["R_0"] = Array{Float64}(length(T_list))
+    solved_equations[key]["B_0"] = Array{Float64}(length(T_list))
 
-    solved_equations[key]["eta_CD"] = Array(Float64, length(T_list))
+    solved_equations[key]["eta_CD"] = Array{Float64}(length(T_list))
 
     solved_equations[key]["other_limits"] = OrderedDict()
 
     for sub_key in keys(given_equations)
-      solved_equations[key]["other_limits"][sub_key] = Array(Float64, length(T_list))
+      solved_equations[key]["other_limits"][sub_key] = Array{Float64}(length(T_list))
     end
   end
 

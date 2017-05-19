@@ -45,7 +45,7 @@ function solve_wave_equations(cur_solved_R_0, cur_solved_B_0; verbose=false)
 
   omega = subs(omega, symbol_dict["B_0"], cur_solved_B_0)
 
-  output = Array(Any, 3)
+  output = Array{Any}(3)
 
   output[1] = n_para
   output[2] = rho_J
