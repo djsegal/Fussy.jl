@@ -9,7 +9,7 @@ function magnet_L2()
 
   func = (x) -> sqrt((( a() / 1u"m" ) + ( magnet_b() / 1u"m")).^2.*(2*k1*x + 4*k2*x.^3 + 6*k3*x.^5) .^2 +
       (kappa.*( a() / 1u"m" ) + ( magnet_b() / 1u"m")).^2.*(c1 - 3*c2*x.^2).^2)
-  L2 = quadgk(func,0,1)[1] # Curved Section Arc Length
+  L2 = QuadGK.quadgk(func,0,1)[1] # Curved Section Arc Length
 
   L2
 end
