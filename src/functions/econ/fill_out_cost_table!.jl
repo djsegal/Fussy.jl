@@ -17,19 +17,19 @@ function fill_out_cost_table!(MCT::CostTable)
   #multiply volume of flibe needed for tank by two to account for HX etc
   cur_item.price_per = 154 * 1940 # $$/kg * kg/m^3 of Flibe
 
-  cur_item.quantity = 2* 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+0.7004)*(( blanket_b() / 1u"m" )+0.7004) - ( ( a() / 1u"m" )+0.0804)*(( blanket_b() / 1u"m" )+0.0804) ) #volume
+  cur_item.quantity = 2* 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+0.7004)*(( a_kappa() / 1u"m" )+0.7004) - ( ( a() / 1u"m" )+0.0804)*(( a_kappa() / 1u"m" )+0.0804) ) #volume
   cur_item.fab_factor = 1.8 #min set by arc for tank etc
 
   cur_item = add_line_item!(MCT, "First_Wall")
 
   cur_item.price_per = 29 * 19250 # $$/kg * kg/m^3 of tungsten
-  cur_item.quantity = 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+.005)*(( blanket_b() / 1u"m" )+.005) -  ( a() / 1u"m" )*( blanket_b() / 1u"m" ) ) ##volume
+  cur_item.quantity = 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+.005)*(( a_kappa() / 1u"m" )+.005) -  ( a() / 1u"m" )*( a_kappa() / 1u"m" ) ) ##volume
   cur_item.fab_factor = 10 #arbitrary default FF
 
   cur_item = add_line_item!(MCT, "Be_multiplier")
 
   cur_item.price_per = 257 * 1850  # $$/kg * kg/m^3 of beryllium
-  cur_item.quantity = 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+.0804)*(( blanket_b() / 1u"m" )+0.0804) - ( ( a() / 1u"m" )+0.0304)*(( blanket_b() / 1u"m" )+0.0304) ) #volume
+  cur_item.quantity = 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+.0804)*(( a_kappa() / 1u"m" )+0.0804) - ( ( a() / 1u"m" )+0.0304)*(( a_kappa() / 1u"m" )+0.0304) ) #volume
   cur_item.fab_factor = 10 #arbitrary default FF
 
   cur_item = add_line_item!(MCT, "RF")
@@ -73,7 +73,7 @@ function fill_out_cost_table!(MCT::CostTable)
   cur_item = add_line_item!(MCT, "VacuumVessel")
 
   cur_item.price_per = 56 * 8192  #T$$/kg * kg/m^3 of inconel 718
-  cur_item.quantity = 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+.0304)*(( blanket_b() / 1u"m" )+.0304) - ( ( a() / 1u"m" )+.005)*(( blanket_b() / 1u"m" )+.005) + ( ( a() / 1u"m" )+0.7258)*(( blanket_b() / 1u"m" )+0.7258) - ( ( a() / 1u"m" )+0.7004)*(( blanket_b() / 1u"m" )+0.7004) ) #volume
+  cur_item.quantity = 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+.0304)*(( a_kappa() / 1u"m" )+.0304) - ( ( a() / 1u"m" )+.005)*(( a_kappa() / 1u"m" )+.005) + ( ( a() / 1u"m" )+0.7258)*(( a_kappa() / 1u"m" )+0.7258) - ( ( a() / 1u"m" )+0.7004)*(( a_kappa() / 1u"m" )+0.7004) ) #volume
   cur_item.fab_factor = 20 #arbitrary default FF
 
   cur_item = add_line_item!(MCT, "MachineAssem")
@@ -88,7 +88,7 @@ function fill_out_cost_table!(MCT::CostTable)
   cur_item = add_line_item!(MCT, "ThermalShields")
 
   cur_item.price_per = 26.4 * 3760 # T$$/kg * kg/m^3 of TiH2
-  cur_item.quantity = 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+0.7258 + ( shield_thickness() / 1u"m" ))*(( blanket_b() / 1u"m" )+0.7258 + ( shield_thickness() / 1u"m" )) - ( ( a() / 1u"m" )+0.7258)*(( blanket_b() / 1u"m" )+0.7258) ) #volume
+  cur_item.quantity = 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+0.7258 + ( shield_thickness() / 1u"m" ))*(( a_kappa() / 1u"m" )+0.7258 + ( shield_thickness() / 1u"m" )) - ( ( a() / 1u"m" )+0.7258)*(( a_kappa() / 1u"m" )+0.7258) ) #volume
   cur_item.fab_factor = 5 #arbitrary default FF
 
   cur_item = add_line_item!(MCT, "VacuumPumpingandFueling")
