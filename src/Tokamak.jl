@@ -7,6 +7,8 @@ module Tokamak
   using NLsolve
   using Elliptic
   using Polynomials
+  using DataFrames
+  using Grid
 
   if ( endswith(pwd(), "/test") ) ; cd("..") ; end
 

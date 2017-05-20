@@ -10,8 +10,14 @@ lcoe_solar = 125.3
 
 N_cl = 26 # number of current leads (constant)
 
-plant_life_in_years = 50 # lifetime of plant from start of construction to end of decomissioning
-construction_time_in_years = 7 # construction time
-discount_rate = 8 // 100 # discount rate for the project
+plant_life = 50 # lifetime of plant from start of construction to end of decomissioning -- years
+construction_time = 7 # construction time -- years
+discount_rate = 0.08 # discount rate for the project
 econ_availability = 0.7
+econ_efficency = 0.6
 
+eta_BOP = 0.5 # we want to be able to sweep over this b/w 0.4 & 0.6
+
+if !isdefined(Tokamak, :P_th)
+  P_th() = 1 # TODO: change this!
+end
