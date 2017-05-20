@@ -1,3 +1,5 @@
+# skip: true
+
 @testset "C TF Function Tests" begin
 
   Tokamak.load_input(" R_0 = 3.3 * 1u\"m\" ")

@@ -1,3 +1,5 @@
+# skip: true
+
 @testset "B0pnew Function Tests" begin
 
   Tokamak.load_input(" R_0 = 3.3 * 1u\"m\" ")
