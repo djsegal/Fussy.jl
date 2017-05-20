@@ -18,8 +18,6 @@ A = 2.5
 
 wave_theta = 0
 
-blanket_given_thickness = 0.89u"m"
-
 max_beta_N = 0.026
 max_P_W = 3 * ( 1u"MW" / 1u"m^2" )
 max_h_parallel = 500 * ( 1u"MW" / 1u"m^2" )

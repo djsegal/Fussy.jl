@@ -1,4 +1,4 @@
-@testset "magnet_b Coil Max Function Tests" begin
+@testset "B Coil Max Function Tests" begin
 
   Tokamak.load_input(" R_0 = 3.3 * 1u\"m\" ")
   Tokamak.load_input(" B_0 = 9.2 * 1u\"T\" ")

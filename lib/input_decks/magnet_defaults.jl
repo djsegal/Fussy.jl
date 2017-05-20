@@ -26,3 +26,5 @@ FOS = 0.6 # Stability margin
 magnet_PF_coil_length=0.3
 
 WP_AR = 2 # Winding pack aspect ratio
+
+magnet_max_neutron_fluence = 1e23 * 1u"m^-2"

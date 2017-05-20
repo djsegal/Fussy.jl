@@ -21,7 +21,7 @@ function magnet_material_thickness()
   cur_right_term = magnet_centering_force()
   cur_right_term /= 2
   cur_right_term /= magnet_straight_factor
-  cur_right_term /= kappa * ( a() / 1u"m" ) + ( magnet_b() / 1u"m" )
+  cur_right_term /= kappa * ( a() / 1u"m" ) + ( blanket_thickness() / 1u"m" )
 
   cur_c = cur_left_term
   cur_c += cur_right_term

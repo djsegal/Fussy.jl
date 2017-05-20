@@ -1,32 +1,18 @@
 """
-    blanket_thickness(mag_max, P_W)
+    blanket_thickness()
 
 Lorem ipsum dolor sit amet.
 """
-function blanket_thickness(mag_max, P_W)
+function blanket_thickness()
 
-  cur_a = 7.51e-08
-  cur_b = -0.1539
+  if !enable_blanket_derive
+    return 0.89u"m"
+  end
 
-  cur_neutron_source_rate = neutron_source_rate(P_W)
+  blanket_thickness = 0.7258u"m"
 
-  # mag_max is from magnet team and is in neutrons / m^2
+  blanket_thickness += shield_thickness()
 
-  # max neutrons / m^2 /s
-  mag_max_flux = mag_max
-  mag_max_flux /= Tokamak.T_k
-  mag_max_flux /= 3.154e7
-
-  # n / SourceN-cm^2
-  max_N_per_source_N = mag_max_flux
-  max_N_per_source_N /= cur_neutron_source_rate
-  max_N_per_source_N /= 1e4
-
-  cur_blanket_thickness = max_N_per_source_N
-  cur_blanket_thickness /= cur_a
-  cur_blanket_thickness = log(cur_blanket_thickness)
-  cur_blanket_thickness /= cur_b
-
-  cur_blanket_thickness = max(0, cur_blanket_thickness)
+  blanket_thickness
 
 end

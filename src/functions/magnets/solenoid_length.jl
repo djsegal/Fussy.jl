@@ -7,7 +7,7 @@ function solenoid_length()
 
   cur_solenoid_length = kappa * a()
 
-  cur_solenoid_length += magnet_b()
+  cur_solenoid_length += blanket_thickness()
 
   cur_solenoid_length /= 1u"m"
 
