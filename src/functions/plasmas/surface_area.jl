@@ -13,10 +13,10 @@ function surface_area(cur_R_0=R_0)
   cur_c_part /= 8.0
 
   cur_c_array = [
-    c0 = -delta / 2.0
-    c1 = 1.0 + cur_c_part
-    c2 = +delta / 2.0
-    c3 = 0.0 - ( 1 - ( 2 * delta + x_aa_of_pi() ) ) / 8.0
+    0 - delta / 2.0
+    1 + cur_c_part
+    0 + delta / 2.0
+    0 - cur_c_part
   ]
 
   cur_func = function (cur_t)
