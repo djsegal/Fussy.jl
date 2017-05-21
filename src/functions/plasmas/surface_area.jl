@@ -28,7 +28,7 @@ function surface_area(cur_R_0=R_0)
 
   cur_surface_area = QuadGK.quadgk( cur_func , 0 , (2*pi) )[1]
 
-  cur_surface_area *= 1u"m"
+  cur_surface_area *= a()
 
   cur_surface_area *= 2 * pi * cur_R_0
 
