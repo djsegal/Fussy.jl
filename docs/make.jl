@@ -13,6 +13,7 @@ makedocs(
 
 deploydocs(
   repo = "github.com/djsegal/Tokamak.jl.git",
+  julia  = "release",
   target = "build",
   deps = nothing,
   make = nothing
