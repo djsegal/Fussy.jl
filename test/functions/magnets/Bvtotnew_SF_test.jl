@@ -1,5 +1,3 @@
-# skip: true
-
 @testset "Bvtotnew SF Function Tests" begin
 
   Tokamak.load_input(" R_0 = 3.3 * 1u\"m\" ")

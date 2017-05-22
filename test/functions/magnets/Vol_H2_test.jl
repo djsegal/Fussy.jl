@@ -1,5 +1,3 @@
-# skip: true
-
 @testset "Vol H2 Function Tests" begin
 
   Tokamak.load_input(" R_0 = 3.3 * 1u\"m\" ")

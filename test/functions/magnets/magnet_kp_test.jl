@@ -1,5 +1,3 @@
-# skip: true
-
 @testset "Magnet Kp Function Tests" begin
 
   Tokamak.load_input(" R_0 = 3.3 * 1u\"m\" ")
