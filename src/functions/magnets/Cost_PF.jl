@@ -5,9 +5,11 @@ Lorem ipsum dolor sit amet.
 """
 function Cost_PF()
 
+  cur_Vsc_PF = Vsc_PF()
+
   cur_left_term = magnet_hts_fraction
 
-  cur_left_term *= sum( Vsc_PF() )
+  cur_left_term *= sum( cur_Vsc_PF )
 
   cur_left_term *= Price_HTS
 
@@ -15,7 +17,7 @@ function Cost_PF()
 
   cur_right_term = ( 1 - magnet_hts_fraction )
 
-  cur_right_term *= sum( Vsc_PF() )
+  cur_right_term *= sum( cur_Vsc_PF )
 
   cur_right_term += sum( Vst_PF() )
 

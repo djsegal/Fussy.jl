@@ -5,9 +5,11 @@ Lorem ipsum dolor sit amet.
 """
 function Cost_CS(cur_solution=solve_magnet_equations())
 
+  cur_VJ_CS = VJ_CS(cur_solution)
+
   cur_left_term = 1 - magnet_hts_fraction
 
-  cur_left_term *= VJ_CS(cur_solution)
+  cur_left_term *= cur_VJ_CS
 
   cur_left_term += VM_CS(cur_solution)
 
@@ -17,7 +19,7 @@ function Cost_CS(cur_solution=solve_magnet_equations())
 
   cur_right_term = magnet_hts_fraction
 
-  cur_right_term *= VJ_CS(cur_solution)
+  cur_right_term *= cur_VJ_CS
 
   cur_right_term *= Price_HTS
 
