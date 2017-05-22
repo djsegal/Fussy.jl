@@ -4,6 +4,7 @@
 Lorem ipsum dolor sit amet.
 """
 function BzPFnew()
+
   cur_BzPFnew = zeros(1,4)
 
   for i = 1:4
@@ -11,4 +12,5 @@ function BzPFnew()
   end
 
   cur_BzPFnew
+
 end

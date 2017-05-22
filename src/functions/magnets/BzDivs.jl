@@ -4,6 +4,7 @@
 Divertor Field Contribution.
 """
 function BzDivs()
+
   B0d = (standard_mu_0/2)*magnet_Id_array()./magnet_rd_array()
 
   BzDiv = zeros(1,6)
@@ -14,4 +15,5 @@ function BzDivs()
   cur_BzDivs = sum(BzDiv) # Total Divertor Field at Center of Plasma
 
   cur_BzDivs
+
 end

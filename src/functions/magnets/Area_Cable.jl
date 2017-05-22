@@ -1,10 +1,18 @@
 """
     Area_Cable()
 
-Lorem ipsum dolor sit amet.
+Area of total cable.
 """
 function Area_Cable()
-  cur_Area_Cable = (Area_Cu() + Area_HTS() + Area_H2() + Area_St()) # area of total cable
+
+  cur_Area_Cable = Area_Cu()
+
+  cur_Area_Cable += Area_HTS()
+
+  cur_Area_Cable += Area_H2()
+
+  cur_Area_Cable += Area_St()
 
   cur_Area_Cable
+
 end

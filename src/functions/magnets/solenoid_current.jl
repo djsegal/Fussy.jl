@@ -4,5 +4,13 @@
 Lorem ipsum dolor sit amet.
 """
 function solenoid_current()
-  Tokamak.magnet_B_1*Tokamak.solenoid_length()/Tokamak.standard_mu_0
+
+  cur_solenoid_current = magnet_B_1
+
+  cur_solenoid_current *= solenoid_length()
+
+  cur_solenoid_current /= standard_mu_0
+
+  cur_solenoid_current
+
 end

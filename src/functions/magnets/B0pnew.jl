@@ -4,5 +4,15 @@
 Lorem ipsum dolor sit amet.
 """
 function B0pnew()
-  (standard_mu_0/2)*ItPF()[7:10]'./magnet_rp_array()
+
+  cur_B0pnew = standard_mu_0
+
+  cur_B0pnew /= 2
+
+  cur_B0pnew *= ItPF()[7:10]'
+
+  cur_B0pnew ./= magnet_rp_array()
+
+  cur_B0pnew
+
 end

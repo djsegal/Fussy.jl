@@ -1,10 +1,14 @@
 """
     Area_HTS()
 
-Lorem ipsum dolor sit amet.
+Area of HTS in winding pack.
 """
 function Area_HTS()
-  cur_Area_HTS = Tape_w^2 # Area of HTS in winding pack
+
+  cur_Area_HTS = Tape_w
+
+  cur_Area_HTS ^= 2
 
   cur_Area_HTS
+
 end

@@ -4,12 +4,18 @@
 Lorem ipsum dolor sit amet.
 """
 function magnet_Ip_array()
-  Ip2 = -0.1750*( I_M / 1u"A" )
-  Ip5 = -0.1750*( I_M / 1u"A" )
-  Ip3 = -0.4250*( I_M / 1u"A" )
-  Ip4 = -0.4250*( I_M / 1u"A" )
 
-  Ip = -[Ip2 Ip5 Ip3 Ip4]
+  Ip2 = -0.1750
+  Ip5 = -0.1750
+  Ip3 = -0.4250
+  Ip4 = -0.4250
 
-  Ip
+  cur_Ip_array = [ Ip2 Ip5 Ip3 Ip4 ]
+
+  cur_Ip_array *= -1
+
+  cur_Ip_array *= ( I_M / 1u"A" )
+
+  cur_Ip_array
+
 end

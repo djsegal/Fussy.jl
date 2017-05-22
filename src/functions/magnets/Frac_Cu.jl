@@ -1,8 +1,14 @@
 """
     Frac_Cu()
 
-Lorem ipsum dolor sit amet.
+Fraction of copper.
 """
 function Frac_Cu()
-  Area_Cu()/Area_Cable() # fraction of copper
+
+  cur_Frac = Area_Cu()
+
+  cur_Frac /= Area_Cable()
+
+  cur_Frac
+
 end

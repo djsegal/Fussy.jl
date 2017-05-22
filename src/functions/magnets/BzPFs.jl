@@ -4,6 +4,7 @@
 Lorem ipsum dolor sit amet.
 """
 function BzPFs()
+
   B0p = (standard_mu_0/2)*magnet_Ip_array()./magnet_rp_array()
 
   BzPF = zeros(1,4)
@@ -14,4 +15,5 @@ function BzPFs()
   cur_BzPFs = sum(BzPF) # Total PF Field at Center of Plasma
 
   cur_BzPFs
+
 end

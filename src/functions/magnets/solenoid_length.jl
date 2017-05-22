@@ -16,4 +16,5 @@ function solenoid_length()
   cur_solenoid_length *= 1.15
 
   cur_solenoid_length
+
 end

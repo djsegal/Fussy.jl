@@ -1,10 +1,16 @@
 """
     Coil_P()
 
-Lorem ipsum dolor sit amet.
+Coil perimeter [m].
 """
 function Coil_P()
-  cur_Coil_P = 2*magnet_L1() + 2*magnet_L2() # Coil peremeter [m]
+
+  cur_Coil_P = magnet_L1()
+
+  cur_Coil_P += magnet_L2()
+
+  cur_Coil_P *= 2
 
   cur_Coil_P
+
 end

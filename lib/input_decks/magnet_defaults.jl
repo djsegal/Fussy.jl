@@ -28,3 +28,12 @@ magnet_PF_coil_length=0.3
 WP_AR = 2 # Winding pack aspect ratio
 
 magnet_max_neutron_fluence = 1e23 * 1u"m^-2"
+
+Cu_Rho = 8950 # Density of copper
+
+magnet_Tcs = 60 # lowest current sharing temperature
+
+magnet_Cp_H2 = 10000 # Average specific heat of supercritical hydrogen @ 30bar from 20-55K
+magnet_dT_H2 = 10 # Allowable temperature rise in the fluid
+magnet_friction_factor=0.015 # Cooling channel friction factor
+magnet_dP_max = 0.01e6 # Allowable pressure drop in the cable

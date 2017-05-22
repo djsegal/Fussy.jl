@@ -1,10 +1,18 @@
 """
     WP_d()
 
-Lorem ipsum dolor sit amet.
+Winding pack radial depth [m].
 """
 function WP_d()
-  cur_WP_d = ceil((magnet_Turns1()/WP_AR)^0.5) # Winding pack radial depth [m]
+
+  cur_WP_d = magnet_Turns1()
+
+  cur_WP_d /= WP_AR
+
+  cur_WP_d ^= 0.5
+
+  cur_WP_d = ceil(cur_WP_d)
 
   cur_WP_d
+
 end

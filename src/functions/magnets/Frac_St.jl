@@ -1,8 +1,14 @@
 """
     Frac_St()
 
-Lorem ipsum dolor sit amet.
+Fraction of steel.
 """
 function Frac_St()
-  Area_St()/Area_Cable() # fraction of steel
+
+  cur_Frac = Area_St()
+
+  cur_Frac /= Area_Cable()
+
+  cur_Frac
+
 end

@@ -4,6 +4,7 @@
 Total hydrogen cooling @ 15K [kW].
 """
 function magnet_Q_15(cur_solution=solve_magnet_equations())
+
   cur_p_f_part = 14.4
   cur_p_f_part *= calc_possible_values( P_F() / 1u"MW" )
   cur_p_f_part /= 500
@@ -25,4 +26,5 @@ function magnet_Q_15(cur_solution=solve_magnet_equations())
   cur_Q_15 += 4 * ( N_cl / 30 )
 
   cur_Q_15
+
 end

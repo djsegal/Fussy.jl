@@ -4,6 +4,7 @@
 Lorem ipsum dolor sit amet.
 """
 function magnet_inward_centering()
+
   FR1 = -( B_0 / 1u"T" )^2
   FR1 *= ( R_0 / 1u"m" )^2
 
@@ -14,4 +15,5 @@ function magnet_inward_centering()
   FR1 /= ( R_0 / 1u"m" ) - magnet_inner_radius()
 
   FR1
+
 end

@@ -1,8 +1,14 @@
 """
     Tape_L()
 
-Lorem ipsum dolor sit amet.
+Length of tape per cable [m].
 """
 function Tape_L()
-  Tape_N()*Cable_L() # Length of tape per cable [m]
+
+  cur_Tape_L = Tape_N()
+
+  cur_Tape_L *= Cable_L()
+
+  cur_Tape_L
+
 end

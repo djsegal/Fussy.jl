@@ -4,16 +4,51 @@
 Determine Cooling Channel Dimensions.
 """
 function Area_H2()
-  A = (Area_St()+Area_Cu())
-  Cp_H2 = 10000 # Average specific heat of supercritical hydrogen @ 30bar from 20-55K
-  dT_H2 = 10 # Allowable temperature rise in the fluid
-  Q_int = (magnet_Q_max/0.029)*(1-exp(-.029*(WP_d()))) # Integrated heat flux along one cable length [W/m^2]
-  Q_H2 = Q_int*(A) # Heat required to be removed from winding pack
-  Cable_mdot = Q_H2/Cp_H2/dT_H2 # Required mass flow rate to remove winding pack heat load per coil
-  friction_factor=0.015 # Cooling channel friction factor
-  dP_max = 0.01e6 # Allowable pressure drop in the cable
-  Cable_Dh = (friction_factor*Cable_L()*(Cable_mdot)^2*8/(69.7*pi^2*(dP_max)))^(1/5) # finds cooling diameter based on mdot and max pressure drop allowed
-  cur_Area_H2 = (pi/4)*Cable_Dh^2 # area of H2 cooling
+
+  tmp_area = Area_St() + Area_Cu()
+
+  # Integrated heat flux along one cable length [W/m^2]
+
+  Q_int = 1 - exp( -0.029 * WP_d() )
+
+  Q_int *= magnet_Q_max
+
+  Q_int /= 0.029
+
+  # Heat required to be removed from winding pack
+
+  Q_H2 = Q_int * tmp_area
+
+  # Required mass flow rate to remove winding pack heat load per coil
+
+  Cable_mdot = Q_H2
+
+  Cable_mdot /= magnet_Cp_H2
+
+  Cable_mdot /= magnet_dT_H2
+
+  # finds cooling diameter based on mdot and max pressure drop allowed
+
+  Cable_Dh = magnet_friction_factor
+
+  Cable_Dh *= Cable_L()
+
+  Cable_Dh *= Cable_mdot ^ 2
+
+  Cable_Dh *= 8
+
+  Cable_Dh /= 69.7
+
+  Cable_Dh /= pi ^ 2
+
+  Cable_Dh /= magnet_dP_max
+
+  Cable_Dh ^= 1 / 5
+
+  # area of H2 cooling
+
+  cur_Area_H2 = ( pi / 4 ) * Cable_Dh ^ 2
 
   cur_Area_H2
+
 end

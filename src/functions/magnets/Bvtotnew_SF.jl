@@ -4,5 +4,11 @@
 Lorem ipsum dolor sit amet.
 """
 function Bvtotnew_SF()
-  BzDivsnew() + BzPFsnew()
+
+  cur_Bvtotnew_SF = BzDivsnew()
+
+  cur_Bvtotnew_SF += BzPFsnew()
+
+  cur_Bvtotnew_SF
+
 end

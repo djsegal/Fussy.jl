@@ -4,5 +4,11 @@
 Volume of PF Coils (HTS and Structure).
 """
 function Vol_PF()
-  sum(Vsc_PF()) + sum(Vst_PF())
+
+  cur_Vol_PF = sum( Vsc_PF() )
+
+  cur_Vol_PF += sum( Vst_PF() )
+
+  cur_Vol_PF
+
 end

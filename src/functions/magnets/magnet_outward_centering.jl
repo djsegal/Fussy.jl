@@ -4,6 +4,7 @@
 Lorem ipsum dolor sit amet.
 """
 function magnet_outward_centering()
+
   k1, k2, k3 = magnet_k_array()
   c1, c2 = magnet_c_array()
   z1, z2, z3 = magnet_z_array()
@@ -23,4 +24,5 @@ function magnet_outward_centering()
   )
 
   FR2
+
 end

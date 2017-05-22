@@ -1,8 +1,14 @@
 """
     Frac_HTS()
 
-Lorem ipsum dolor sit amet.
+Fraction of HTS.
 """
 function Frac_HTS()
-  Area_HTS()/Area_Cable() # fraction of HTS
+
+  cur_Frac = Area_HTS()
+
+  cur_Frac /= Area_Cable()
+
+  cur_Frac
+
 end

@@ -1,9 +1,24 @@
 """
     magnet_Ic()
 
-Lorem ipsum dolor sit amet.
+Current per coil.
 """
 function magnet_Ic()
-  ITF = 2*pi*( B_0 / 1u"T" )*( R_0 / 1u"m" )/standard_mu_0 # Total Current for given ( B_0 / 1u"T" )
-  Ic = ITF/magnet_num_coils # Current per coil
+
+  # Total Current for given ( B_0 / 1u"T" )
+
+  ITF = 2 * pi
+
+  ITF *= ( B_0 / 1u"T" )
+
+  ITF *= ( R_0 / 1u"m" )
+
+  ITF /= standard_mu_0
+
+  Ic = ITF
+
+  Ic /= magnet_num_coils
+
+  Ic
+
 end
