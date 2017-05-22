@@ -5,7 +5,7 @@ Lorem ipsum dolor sit amet.
 """
 function solenoid_length()
 
-  cur_solenoid_length = kappa * a()
+  cur_solenoid_length = a_kappa()
 
   cur_solenoid_length += blanket_thickness()
 

@@ -10,11 +10,16 @@ function magnet_outward_centering()
   z1, z2, z3 = magnet_z_array()
 
   # Outward Centering
-  FR2 = -( B_0 / 1u"T" )^2
-  FR2 *= ( R_0 / 1u"m" )^2
-  FR2 /= (2*standard_mu_0)
-  FR2 *= (c1/k3)
-  FR2 *= ( kappa * a() + blanket_thickness() ) / 1u"m"
+
+  FR2 = ( B_0 / 1u"T" )
+  FR2 *= ( R_0 / 1u"m" )
+  FR2 ^= 2
+
+  FR2 *= -1
+  FR2 /= 2 * standard_mu_0
+  FR2 *= c1 / k3
+
+  FR2 *= ( a_kappa() + blanket_thickness() ) / 1u"m"
   FR2 /= magnet_inner_radius()
 
   FR2 *= (
