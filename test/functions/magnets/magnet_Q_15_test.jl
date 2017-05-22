@@ -1,6 +1,6 @@
-@testset "Econ Q 15 Function Tests" begin
+@testset "Magnet Q 15 Function Tests" begin
 
-  @test isdefined(Tokamak, :econ_Q_15) == true
+  @test isdefined(Tokamak, :magnet_Q_15) == true
 
   Tokamak.load_input(" R_0 = 5.7 * 1u\"m\" ")
   Tokamak.load_input(" T_k = 15 * 1u\"keV\" ")
@@ -10,7 +10,7 @@
   # chosen to get P_F = 500
   Tokamak.load_input(" n_bar = 0.55229943350020245 * 1u\"n20\" ")
 
-  actual_value = Tokamak.econ_Q_15()
+  actual_value = Tokamak.magnet_Q_15()
 
   expected_value = 80.612344086021510
 

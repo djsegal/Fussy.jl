@@ -1,6 +1,6 @@
-@testset "Econ Cold Mass Function Tests" begin
+@testset "Magnet Cold Mass Function Tests" begin
 
-  @test isdefined(Tokamak, :econ_cold_mass) == true
+  @test isdefined(Tokamak, :magnet_cold_mass) == true
 
   Tokamak.load_input(" R_0 = 5.7 * 1u\"m\" ")
   Tokamak.load_input(" T_k = 15 * 1u\"keV\" ")
@@ -10,7 +10,7 @@
   # chosen to get P_F = 500
   Tokamak.load_input(" n_bar = 0.55229943350020245 * 1u\"n20\" ")
 
-  actual_value = Tokamak.econ_cold_mass()
+  actual_value = Tokamak.magnet_cold_mass()
 
   expected_value = 10135
 
