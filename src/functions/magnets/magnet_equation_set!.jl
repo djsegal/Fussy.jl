@@ -5,6 +5,12 @@ Lorem ipsum dolor sit amet.
 """
 function magnet_equation_set!(x, F)
 
+  cur_solenoid_current = solenoid_current()
+
+  cur_solenoid_length = solenoid_length()
+
+  cur_hts_thickness = hts_thickness()
+
   # Flux Equation
 
   cur_left_part = standard_mu_0
@@ -39,15 +45,15 @@ function magnet_equation_set!(x, F)
 
   cur_second_part *= magnet_B_1
 
-  cur_second_part *= solenoid_current()
+  cur_second_part *= cur_solenoid_current
 
   cur_second_part /= 2
 
-  cur_second_part /= solenoid_length()
+  cur_second_part /= cur_solenoid_length
 
   cur_second_part /= x[2]
 
-  cur_second_part /= x[2] - hts_thickness()
+  cur_second_part /= x[2] - cur_hts_thickness
 
   cur_second_part *= x[2] ^ 2/6 + x[2] * x[1] / 2
 
@@ -61,17 +67,17 @@ function magnet_equation_set!(x, F)
 
   cur_third_part *= standard_mu_0
 
-  cur_third_part *= solenoid_current() ^ 2
+  cur_third_part *= cur_solenoid_current ^ 2
 
   cur_third_part /= 4
 
-  cur_third_part /= solenoid_length() ^ 2
+  cur_third_part /= cur_solenoid_length ^ 2
 
   cur_third_part /= x[2] ^ 2
 
-  cur_denom = ( ( 2 * x[1] + x[2] ) - hts_thickness() ) ^ 2
+  cur_denom = ( ( 2 * x[1] + x[2] ) - cur_hts_thickness ) ^ 2
 
-  cur_denom -= ( ( 2 * x[1] + x[2] ) + hts_thickness() ) ^ 2
+  cur_denom -= ( ( 2 * x[1] + x[2] ) + cur_hts_thickness ) ^ 2
 
   cur_denom /= 4
 
