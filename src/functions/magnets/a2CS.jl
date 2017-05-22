@@ -1,12 +1,14 @@
 """
-    a2CS()
+    a2CS(cur_solution=solve_magnet_equations())
 
-Lorem ipsum dolor sit amet.
+Outer Radius.
 """
-function a2CS()
-  a1, da = solve_magnet_equations()
+function a2CS(cur_solution=solve_magnet_equations())
 
-  cur_a2CS = a1+da # Outer Radius
+  a1, da = cur_solution
+
+  cur_a2CS = a1 + da
 
   cur_a2CS
+
 end

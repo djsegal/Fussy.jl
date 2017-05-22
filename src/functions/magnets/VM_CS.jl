@@ -1,10 +1,22 @@
 """
-    VM_CS()
+    VM_CS(cur_solution=solve_magnet_equations())
 
-Lorem ipsum dolor sit amet.
+Volume of Structure.
 """
-function VM_CS()
-  a1, da = solve_magnet_equations()
-  cur_VM_CS = pi*( (a2CS())^2 - ((a2CS()+a1)/2 + hts_thickness()/2)^2 + ((a2CS()+a1)/2 - hts_thickness()/2)^2 - a1^2)*Tokamak.solenoid_length() # Volume of Structure
+function VM_CS(cur_solution=solve_magnet_equations())
+
+  a1, da = cur_solution
+
+  cur_VM_CS = a2CS(cur_solution) ^ 2 - a1 ^ 2
+
+  cur_VM_CS -= ( ( a2CS(cur_solution) + a1 ) + hts_thickness() ) ^ 2 / 4
+
+  cur_VM_CS += ( ( a2CS(cur_solution) + a1 ) - hts_thickness() ) ^ 2 / 4
+
+  cur_VM_CS *= Tokamak.solenoid_length()
+
+  cur_VM_CS *= pi
+
   cur_VM_CS
+
 end

@@ -1,10 +1,22 @@
 """
-    VJ_CS()
+    VJ_CS(cur_solution=solve_magnet_equations())
 
-Lorem ipsum dolor sit amet.
+Volume of HTS.
 """
-function VJ_CS()
-  a1, da = solve_magnet_equations()
-  cur_VJ_CS = pi*( ((a2CS()+a1)/2 + hts_thickness()/2)^2 - ((a2CS()+a1)/2 - hts_thickness()/2)^2)*Tokamak.solenoid_length() # Volume of HTS
+function VJ_CS(cur_solution=solve_magnet_equations())
+
+  a1, da = cur_solution
+
+  cur_VJ_CS = 0.0
+
+  cur_VJ_CS += ( ( a2CS(cur_solution) + a1 ) + hts_thickness() ) ^ 2 / 4
+
+  cur_VJ_CS -= ( ( a2CS(cur_solution) + a1 ) - hts_thickness() ) ^ 2 / 4
+
+  cur_VJ_CS *= Tokamak.solenoid_length()
+
+  cur_VJ_CS *= pi
+
   cur_VJ_CS
+
 end
