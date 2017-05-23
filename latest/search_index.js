@@ -37,7 +37,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Area_Cable",
     "category": "Method",
-    "text": "Area_Cable()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Area_Cable()\n\nArea of total cable.\n\n\n\n"
 },
 
 {
@@ -45,7 +45,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Area_Cu",
     "category": "Method",
-    "text": "Area_Cu()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Area_Cu()\n\nDetermine Copper Stablizer Dimensions.\n\n\n\n"
 },
 
 {
@@ -61,7 +61,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Area_HTS",
     "category": "Method",
-    "text": "Area_HTS()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Area_HTS()\n\nArea of HTS in winding pack.\n\n\n\n"
 },
 
 {
@@ -181,7 +181,23 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Cable_L",
     "category": "Method",
-    "text": "Cable_L()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Cable_L()\n\nLength of one cable [m].\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.Coil_Energy-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.Coil_Energy",
+    "category": "Method",
+    "text": "Coil_Energy()\n\nTF coil magnetic energy.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.Coil_Inductance-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.Coil_Inductance",
+    "category": "Method",
+    "text": "Coil_Inductance()\n\nTF coil inductance.\n\n\n\n"
 },
 
 {
@@ -189,15 +205,15 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Coil_P",
     "category": "Method",
-    "text": "Coil_P()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Coil_P()\n\nCoil perimeter [m].\n\n\n\n"
 },
 
 {
-    "location": "code.html#Tokamak.Cost_CS-Tuple{}",
+    "location": "code.html#Tokamak.Cost_CS",
     "page": "Code",
     "title": "Tokamak.Cost_CS",
-    "category": "Method",
-    "text": "Cost_CS()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "Cost_CS(cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -209,11 +225,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.Cost_HTS_Total-Tuple{}",
+    "location": "code.html#Tokamak.Cost_HTS_Total",
     "page": "Code",
     "title": "Tokamak.Cost_HTS_Total",
-    "category": "Method",
-    "text": "Cost_HTS_Total()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "Cost_HTS_Total(cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -225,11 +241,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.Cost_ST_Total-Tuple{}",
+    "location": "code.html#Tokamak.Cost_ST_Total",
     "page": "Code",
     "title": "Tokamak.Cost_ST_Total",
-    "category": "Method",
-    "text": "Cost_ST_Total()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "Cost_ST_Total(cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -281,6 +297,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.Cu_Cp-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.Cu_Cp",
+    "category": "Method",
+    "text": "Cu_Cp(T)\n\nSpecific heat of copper as func of temperature.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.E_F-Tuple{}",
     "page": "Code",
     "title": "Tokamak.E_F",
@@ -293,7 +317,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Frac_Cu",
     "category": "Method",
-    "text": "Frac_Cu()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Frac_Cu()\n\nFraction of copper.\n\n\n\n"
 },
 
 {
@@ -301,7 +325,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Frac_H2",
     "category": "Method",
-    "text": "Frac_H2()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Frac_H2()\n\nFraction of H2.\n\n\n\n"
 },
 
 {
@@ -309,7 +333,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Frac_HTS",
     "category": "Method",
-    "text": "Frac_HTS()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Frac_HTS()\n\nFraction of HTS.\n\n\n\n"
 },
 
 {
@@ -317,7 +341,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Frac_St",
     "category": "Method",
-    "text": "Frac_St()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Frac_St()\n\nFraction of steel.\n\n\n\n"
 },
 
 {
@@ -565,7 +589,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Tape_L",
     "category": "Method",
-    "text": "Tape_L()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Tape_L()\n\nLength of tape per cable [m].\n\n\n\n"
 },
 
 {
@@ -573,23 +597,23 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Tape_N",
     "category": "Method",
-    "text": "Tape_N()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Tape_N()\n\nNumber of tapes per 12x12 mm HTS stack.\n\n\n\n"
 },
 
 {
-    "location": "code.html#Tokamak.VJ_CS-Tuple{}",
+    "location": "code.html#Tokamak.VJ_CS",
     "page": "Code",
     "title": "Tokamak.VJ_CS",
-    "category": "Method",
-    "text": "VJ_CS()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "VJ_CS(cur_solution=solve_magnet_equations())\n\nVolume of HTS.\n\n\n\n"
 },
 
 {
-    "location": "code.html#Tokamak.VM_CS-Tuple{}",
+    "location": "code.html#Tokamak.VM_CS",
     "page": "Code",
     "title": "Tokamak.VM_CS",
-    "category": "Method",
-    "text": "VM_CS()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "VM_CS(cur_solution=solve_magnet_equations())\n\nVolume of Structure.\n\n\n\n"
 },
 
 {
@@ -625,11 +649,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.Vol_CS-Tuple{}",
+    "location": "code.html#Tokamak.Vol_CS",
     "page": "Code",
     "title": "Tokamak.Vol_CS",
-    "category": "Method",
-    "text": "Vol_CS()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "Vol_CS(cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -657,11 +681,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.Vol_HTS_Total-Tuple{}",
+    "location": "code.html#Tokamak.Vol_HTS_Total",
     "page": "Code",
     "title": "Tokamak.Vol_HTS_Total",
-    "category": "Method",
-    "text": "Vol_HTS_Total()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "Vol_HTS_Total(cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -673,11 +697,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.Vol_ST_Total-Tuple{}",
+    "location": "code.html#Tokamak.Vol_ST_Total",
     "page": "Code",
     "title": "Tokamak.Vol_ST_Total",
-    "category": "Method",
-    "text": "Vol_ST_Total()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "Vol_ST_Total(cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -733,7 +757,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.WP_d",
     "category": "Method",
-    "text": "WP_d()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "WP_d()\n\nWinding pack radial depth [m].\n\n\n\n"
 },
 
 {
@@ -741,7 +765,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.WP_w",
     "category": "Method",
-    "text": "WP_w()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "WP_w()\n\nWiding pack toroidal width [m].\n\n\n\n"
 },
 
 {
@@ -753,11 +777,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.a2CS-Tuple{}",
+    "location": "code.html#Tokamak.a2CS",
     "page": "Code",
     "title": "Tokamak.a2CS",
-    "category": "Method",
-    "text": "a2CS()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "a2CS(cur_solution=solve_magnet_equations())\n\nOuter Radius.\n\n\n\n"
 },
 
 {
@@ -913,43 +937,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.econ_Q_15-Tuple{}",
-    "page": "Code",
-    "title": "Tokamak.econ_Q_15",
-    "category": "Method",
-    "text": "econ_Q_15()\n\nTotal hydrogen cooling @ 15K [kW].\n\n\n\n"
-},
-
-{
-    "location": "code.html#Tokamak.econ_Q_80-Tuple{}",
-    "page": "Code",
-    "title": "Tokamak.econ_Q_80",
-    "category": "Method",
-    "text": "econ_Q_80()\n\nHeating due to thermal shielding @ 80K [kW].\n\n\n\n"
-},
-
-{
-    "location": "code.html#Tokamak.econ_Q_total-Tuple{}",
-    "page": "Code",
-    "title": "Tokamak.econ_Q_total",
-    "category": "Method",
-    "text": "econ_Q_total()\n\nTotal cooling equivalent at 4.5 K to use in Green formula [kW].\n\n\n\n"
-},
-
-{
     "location": "code.html#Tokamak.econ_V_steel-Tuple{}",
     "page": "Code",
     "title": "Tokamak.econ_V_steel",
     "category": "Method",
     "text": "econ_V_steel()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
-},
-
-{
-    "location": "code.html#Tokamak.econ_cold_mass-Tuple{}",
-    "page": "Code",
-    "title": "Tokamak.econ_cold_mass",
-    "category": "Method",
-    "text": "econ_cold_mass()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1065,11 +1057,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.magnet_Cost_Total-Tuple{}",
+    "location": "code.html#Tokamak.magnet_Cost_Total",
     "page": "Code",
     "title": "Tokamak.magnet_Cost_Total",
-    "category": "Method",
-    "text": "magnet_Cost_Total()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "magnet_Cost_Total(cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1125,7 +1117,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.magnet_Ic",
     "category": "Method",
-    "text": "magnet_Ic()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "magnet_Ic()\n\nCurrent per coil.\n\n\n\n"
 },
 
 {
@@ -1157,7 +1149,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.magnet_L1",
     "category": "Method",
-    "text": "magnet_L1()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "magnet_L1()\n\nStraight Section Arc Length.\n\n\n\n"
 },
 
 {
@@ -1165,7 +1157,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.magnet_L2",
     "category": "Method",
-    "text": "magnet_L2()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "magnet_L2()\n\nCurved Section Arc Length.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.magnet_Q_15",
+    "page": "Code",
+    "title": "Tokamak.magnet_Q_15",
+    "category": "Function",
+    "text": "magnet_Q_15(cur_solution=solve_magnet_equations())\n\nTotal hydrogen cooling @ 15K [kW].\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.magnet_Q_80-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.magnet_Q_80",
+    "category": "Method",
+    "text": "magnet_Q_80()\n\nHeating due to thermal shielding @ 80K [kW].\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.magnet_Q_total",
+    "page": "Code",
+    "title": "Tokamak.magnet_Q_total",
+    "category": "Function",
+    "text": "magnet_Q_total(cur_solution=solve_magnet_equations())\n\nTotal cooling equivalent at 4.5 K to use in Green formula [kW].\n\n\n\n"
 },
 
 {
@@ -1173,7 +1189,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.magnet_Turns1",
     "category": "Method",
-    "text": "magnet_Turns1()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "magnet_Turns1()\n\nNumber of cable turns per coil.\n\n\n\n"
 },
 
 {
@@ -1206,6 +1222,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.magnet_cj",
     "category": "Method",
     "text": "magnet_cj()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.magnet_cold_mass",
+    "page": "Code",
+    "title": "Tokamak.magnet_cold_mass",
+    "category": "Function",
+    "text": "magnet_cold_mass(cur_solution=solve_magnet_equations())\n\nTotal volume of magnets times density (~8000 kg/m3) in [tons].\n\n\n\n"
 },
 
 {
@@ -1342,6 +1366,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.magnet_rpp",
     "category": "Method",
     "text": "magnet_rpp()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.magnet_turns-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.magnet_turns",
+    "category": "Method",
+    "text": "magnet_turns()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1585,11 +1617,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.solve_magnet_equations-Tuple{}",
+    "location": "code.html#Tokamak.solve_magnet_equations",
     "page": "Code",
     "title": "Tokamak.solve_magnet_equations",
-    "category": "Method",
-    "text": "solve_magnet_equations()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "solve_magnet_equations()\n\nDefine Inner Radius and Total Thickness.\n\n\n\n"
 },
 
 {
