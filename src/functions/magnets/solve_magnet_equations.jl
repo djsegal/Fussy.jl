@@ -1,16 +1,20 @@
 """
     solve_magnet_equations()
 
-Lorem ipsum dolor sit amet.
+Define Inner Radius and Total Thickness.
 """
-function solve_magnet_equations()
+function solve_magnet_equations(verbose=false)
 
-  ## Call fsolve to find roots of system of Flux & Stress Equations
-  x0 = [0.4,0.2]
-  x = nlsolve(magnet_equation_set!,x0).zero
+  # find roots of system of Flux & Stress Equations
 
-  ## Define Inner Radius and Total Thickness
-  a1, da = x
+  cur_initial_values = [ 0.4 , 0.2 ]
+
+  cur_solution = nlsolve(
+    magnet_equation_set!,
+    cur_initial_values, xtol = 1e-8, show_trace = verbose
+  ).zero
+
+  a1, da = cur_solution
 
   return a1, da
 
