@@ -7,6 +7,10 @@
   Tokamak.load_input(" epsilon = 0.2807017544 ")
   Tokamak.load_input(" kappa = 2.0 ")
 
+  Tokamak.load_input(" I_M = 8 * 1u\"MA\" ")
+  Tokamak.load_input(" enable_cold_mass_calc = false ")
+  Tokamak.load_input(" B_0 = 9.2 * 1u\"T\" ")
+
   # chosen to get P_F = 500
   Tokamak.load_input(" n_bar = 0.55229943350020245 * 1u\"n20\" ")
 
