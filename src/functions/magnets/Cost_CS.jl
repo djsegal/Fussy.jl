@@ -13,7 +13,7 @@ function Cost_CS(cur_solution=solve_magnet_equations())
 
   cur_left_term += VM_CS(cur_solution)
 
-  cur_left_term *= 8000
+  cur_left_term *= St_Rho
 
   cur_left_term *= Price_St
 

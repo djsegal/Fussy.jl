@@ -9,7 +9,7 @@ function C_TF()
 
   cur_C_TF *= Price_St
 
-  cur_C_TF *= 8000
+  cur_C_TF *= St_Rho
 
   cur_C_TF
 

@@ -9,7 +9,7 @@ function Cost_St()
 
   cur_Cost_St *= Vol_St()
 
-  cur_Cost_St *= 8000
+  cur_Cost_St *= St_Rho
 
   cur_Cost_St
 

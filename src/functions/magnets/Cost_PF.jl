@@ -23,7 +23,7 @@ function Cost_PF()
 
   cur_right_term *= Price_St
 
-  cur_right_term *= 8000
+  cur_right_term *= St_Rho
 
   cur_Cost_PF = cur_left_term + cur_right_term
 
