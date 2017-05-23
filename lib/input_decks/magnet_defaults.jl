@@ -29,6 +29,10 @@ WP_AR = 2 # Winding pack aspect ratio
 
 magnet_max_neutron_fluence = 1e23 * 1u"m^-2"
 
+magnet_standard_cold_mass = 10135
+
+St_Rho = 8000 # Density of steel
+
 Cu_Rho = 8950 # Density of copper
 
 magnet_Tcs = 60 # lowest current sharing temperature

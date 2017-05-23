@@ -2,17 +2,21 @@
 
   @test isdefined(Tokamak, :magnet_cold_mass) == true
 
-  Tokamak.load_input(" R_0 = 5.7 * 1u\"m\" ")
+  Tokamak.load_input(" R_0 = 3.3 * 1u\"m\" ")
+  Tokamak.load_input(" B_0 = 9.2 * 1u\"T\" ")
+  Tokamak.load_input(" I_M = 8 * 1u\"MA\" ")
   Tokamak.load_input(" T_k = 15 * 1u\"keV\" ")
-  Tokamak.load_input(" epsilon = 0.2807017544 ")
-  Tokamak.load_input(" kappa = 2.0 ")
-
-  # chosen to get P_F = 500
-  Tokamak.load_input(" n_bar = 0.55229943350020245 * 1u\"n20\" ")
+  Tokamak.load_input(" n_bar = 1.5 * 1u\"n20\" ")
+  Tokamak.load_input(" nu_T = 1.3 ")
+  Tokamak.load_input(" nu_n = 0.5 ")
+  Tokamak.load_input(" delta = 0.45 ")
+  Tokamak.load_input(" epsilon = 0.3424242424 ")
+  Tokamak.load_input(" enable_blanket_derive = false ")
 
   actual_value = Tokamak.magnet_cold_mass()
 
-  expected_value = 10135
+  expected_value = 9.467301448145846e+05
+  expected_value /= 1e3
 
   @test isapprox(expected_value, actual_value, rtol=5e-4)
 

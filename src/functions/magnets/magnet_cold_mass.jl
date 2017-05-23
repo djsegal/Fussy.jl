@@ -1,16 +1,22 @@
 """
     magnet_cold_mass(cur_solution=solve_magnet_equations())
 
-Lorem ipsum dolor sit amet.
+Total volume of magnets times density (~8000 kg/m3) in [tons].
 """
 function magnet_cold_mass(cur_solution=solve_magnet_equations())
-  # comes from total volume of magnets x density (~8000 kg/m3) in [tons]
 
-  # cur_cold_mass = Vol_ST_Total(cur_solution)
+  if !enable_cold_mass_calc
+    return magnet_standard_cold_mass
+  end
 
-  # cur_cold_mass += Vol_HTS_Total(cur_solution)
+  cur_cold_mass = Vol_ST_Total(cur_solution)
 
-  # cur_cold_mass *= 8000 # density
+  cur_cold_mass += Vol_HTS_Total(cur_solution)
 
-  10135
+  cur_cold_mass *= St_Rho
+
+  cur_cold_mass *= 1e-3
+
+  cur_cold_mass
+
 end

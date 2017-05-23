@@ -27,6 +27,7 @@ max_h_parallel = 500 * ( 1u"MW" / 1u"m^2" )
 enable_bremsstrahlung = true
 enable_eta_CD_derive = true
 enable_blanket_derive = true
+enable_cold_mass_calc = true
 
 confinement_scaling = Dict(
   "constant" => 0.145,
