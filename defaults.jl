@@ -16,6 +16,8 @@ Z_eff = 1.5
 rho_m = 0.6
 A = 2.5
 
+f_DT = 0.85
+
 wave_theta = 0
 
 shape_sigma = 0.1
