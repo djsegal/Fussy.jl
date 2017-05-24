@@ -10,11 +10,9 @@ module Tokamak
   using DataFrames
   using Grid
 
-  if ( endswith(pwd(), "/test") ) ; cd("..") ; end
-
-  if ( endswith(pwd(), "/lib/notebooks") ) ; cd("../..") ; end
-
-  include("../config/bootload.jl")
+  Base.cd("$(dirname(@__FILE__))/..") do
+    include("../config/bootload.jl")
+  end
 
   function main(num_points=11; min_T=5, max_T=25)
     load_input("input.jl", true)
