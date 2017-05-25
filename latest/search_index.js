@@ -817,11 +817,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.add_line_item!-Tuple{Tokamak.CostTable,AbstractString}",
+    "location": "code.html#Tokamak.add_line_item!",
     "page": "Code",
     "title": "Tokamak.add_line_item!",
-    "category": "Method",
-    "text": "add_line_item!(cur_table::CostTable, name::AbstractString)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "add_line_item!(cur_table::CostTable, name::AbstractString, cur_fields::Dict=Dict())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
