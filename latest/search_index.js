@@ -1797,7 +1797,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.volume",
     "category": "Function",
-    "text": "volume(cur_R_0=R_0)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "volume(cur_R_0=R_0; offset=0u\"m\")\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
