@@ -32,19 +32,19 @@ RF:
 
 BOP_turbine:
 
-  price_per: 360e6*(thermal_power()/2000)^0.8*(eta_BOP/.6)
+  price_per: 360e6 * ( thermal_power() / 2000 ) ^ 0.8 * ( eta_BOP / 0.6 )
 
 BOP_heatRej:
 
-  price_per:  87e6 * (1- eta_BOP) * thermal_power() / 2300
+  price_per:  87e6 * ( thermal_power() / 2300 ) * ( 1 - eta_BOP )
 
 BOP_ElecGen:
 
-  price_per: 183e6*(econ_MW_e()/1200)^0.5
+  price_per: 183e6 * ( econ_MW_e() / 1200 ) ^ 0.5
 
 BOP_other:
 
-  price_per:  197e6*(econ_MW_e()/1000)^0.8
+  price_per: 197e6 * ( econ_MW_e() / 1000 ) ^ 0.8
 
 MagnetPower:
 
@@ -71,7 +71,7 @@ VacuumVessel:
 
 MachineAssem:
 
-  price_per: 82.6e3 * 1.34 * 1552 * ( R_0 / 1u"m" )  / 6.2 * 1.10 # 1.10 is the inflation conversion
+  price_per: 82.6e3 * 1.34 * 1552 * ( R_0 / 1u"m" ) / 6.2 * 1.10 # 1.10 is the inflation conversion
 
 Cryostat:
 
@@ -86,7 +86,7 @@ ThermalShields:
 
 VacuumPumpingandFueling:
 
-  price_per: 78e6*( calc_possible_values( P_F() / 1u"MW" ) /1758)^0.8+78e6 # from aries
+  price_per: 78e6 * ( 1 + ( calc_possible_values( P_F() / 1u"MW" ) / 1758 ) ^ 0.8 ) # from aries
 
 CoolingWater:
 
