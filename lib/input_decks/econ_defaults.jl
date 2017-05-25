@@ -17,7 +17,3 @@ econ_availability = 0.7
 econ_efficency = 0.6
 
 eta_BOP = 0.5 # we want to be able to sweep over this b/w 0.4 & 0.6
-
-if !isdefined(Tokamak, :P_th)
-  P_th() = 1 # TODO: change this!
-end

@@ -11,6 +11,7 @@ nu_T = 1.2
 eta_CD = 0.35
 eta_T = 0.4
 eta_RF = 0.4
+eta_a = 0.7
 
 Z_eff = 1.5
 rho_m = 0.6

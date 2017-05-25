@@ -39,11 +39,11 @@ function fill_out_cost_table!(MCT::CostTable)
 
   cur_item = add_line_item!(MCT, "BOP_turbine")
 
-  cur_item.price_per = 360e6*(P_th()/2000)^.8*(eta_BOP/.6)
+  cur_item.price_per = 360e6*(thermal_power()/2000)^.8*(eta_BOP/.6)
 
   cur_item = add_line_item!(MCT, "BOP_heatRej")
 
-  cur_item.price_per =  87e6 * (1- eta_BOP) * P_th() / 2300
+  cur_item.price_per =  87e6 * (1- eta_BOP) * thermal_power() / 2300
 
   cur_item = add_line_item!(MCT, "BOP_ElecGen")
 
