@@ -10,19 +10,19 @@ Blanket:
 
   # multiply volume of flibe needed for tank by two to account for HX etc
   price_per: 154 * 1940 # cost/kg * kg/m^3 of Flibe
-  quantity: 2* 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+0.7004)*(( a_kappa() / 1u"m" )+0.7004) - ( ( a() / 1u"m" )+0.0804)*(( a_kappa() / 1u"m" )+0.0804) ) # volume
+  quantity: 2 * ( volume(offset=blanket_r_4) - volume(offset=blanket_r_3) ) / 1u"m^3"
   fab_factor: 1.8 # min set by arc for tank etc
 
 First_Wall:
 
   price_per: 29 * 19250 # cost/kg * kg/m^3 of tungsten
-  quantity: 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+.005)*(( a_kappa() / 1u"m" )+.005) -  ( a() / 1u"m" )*( a_kappa() / 1u"m" ) ) # volume
+  quantity: ( volume(offset=blanket_r_1) - volume() ) / 1u"m^3"
   fab_factor: 10 # arbitrary default FF
 
 Be_multiplier:
 
   price_per: 257 * 1850  # cost/kg * kg/m^3 of beryllium
-  quantity: 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+.0804)*(( a_kappa() / 1u"m" )+0.0804) - ( ( a() / 1u"m" )+0.0304)*(( a_kappa() / 1u"m" )+0.0304) ) # volume
+  quantity: ( volume(offset=blanket_r_3) - volume(offset=blanket_r_2) ) / 1u"m^3"
   fab_factor: 10 # arbitrary default FF
 
 RF:
@@ -66,7 +66,7 @@ DivertorCool:
 VacuumVessel:
 
   price_per: 56 * 8192  # cost/kg * kg/m^3 of inconel 718
-  quantity: 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+.0304)*(( a_kappa() / 1u"m" )+.0304) - ( ( a() / 1u"m" )+.005)*(( a_kappa() / 1u"m" )+.005) + ( ( a() / 1u"m" )+0.7258)*(( a_kappa() / 1u"m" )+0.7258) - ( ( a() / 1u"m" )+0.7004)*(( a_kappa() / 1u"m" )+0.7004) ) # volume
+  quantity: ( volume(offset=blanket_r_2) - volume(offset=blanket_r_1) + volume(offset=blanket_r_5) - volume(offset=blanket_r_4) ) / 1u"m^3"
   fab_factor: 20 # arbitrary default FF
 
 MachineAssem:
@@ -81,7 +81,7 @@ Cryostat:
 ThermalShields:
 
   price_per: 26.4 * 3760 # cost/kg * kg/m^3 of TiH2
-  quantity: 2*pi^2* ( R_0 / 1u"m" ) * ( ( ( a() / 1u"m" )+0.7258 + ( shield_thickness() / 1u"m" ))*(( a_kappa() / 1u"m" )+0.7258 + ( shield_thickness() / 1u"m" )) - ( ( a() / 1u"m" )+0.7258)*(( a_kappa() / 1u"m" )+0.7258) ) # volume
+  quantity: ( volume(offset=blanket_thickness()) - volume(offset=blanket_r_5) ) / 1u"m^3"
   fab_factor: 5 # arbitrary default FF
 
 VacuumPumpingandFueling:
