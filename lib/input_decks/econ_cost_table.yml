@@ -3,7 +3,7 @@
 
 Magnets:
 
-  price_per: 1 # total cost of raw materials for magnets from Cost_Total from Magnets_2262_Final.m
+  price_per: magnet_Cost_Total() # total cost of raw materials for magnets
   fab_factor: 2 # arbitrary default FF
 
 Blanket:
