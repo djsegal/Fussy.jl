@@ -313,6 +313,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.E_n-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.E_n",
+    "category": "Method",
+    "text": "E_n()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.Frac_Cu-Tuple{}",
     "page": "Code",
     "title": "Tokamak.Frac_Cu",
@@ -1745,6 +1753,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.thermal_power-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.thermal_power",
+    "category": "Method",
+    "text": "thermal_power()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.total_costs_per_year-Tuple{Tokamak.CostTable}",
     "page": "Code",
     "title": "Tokamak.total_costs_per_year",
@@ -1854,14 +1870,6 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.E_alpha",
     "category": "Constant",
     "text": "E_alpha\n\nLorem ipsum dolor sit amet.\n\n\n\n"
-},
-
-{
-    "location": "code.html#Tokamak.E_n",
-    "page": "Code",
-    "title": "Tokamak.E_n",
-    "category": "Constant",
-    "text": "E_n\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
