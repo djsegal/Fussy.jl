@@ -9,6 +9,7 @@ module Tokamak
   using Polynomials
   using DataFrames
   using Grid
+  using YAML
 
   Base.cd("$(dirname(@__FILE__))/..") do
     include("../config/bootload.jl")
