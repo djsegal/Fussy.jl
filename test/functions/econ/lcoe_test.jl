@@ -14,6 +14,6 @@
 
   Tokamak.update_cost_data_frame!(MCT)
 
-  @test Tokamak.lcoe(MCT) < 200
+  @test Tokamak.lcoe(MCT) < 250
 
 end
