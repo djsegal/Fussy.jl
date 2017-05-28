@@ -9,21 +9,17 @@ function magnet_a2PF()
 
   cur_magnet_cj = magnet_cj()
   cur_magnet_rpp = magnet_rpp()
-  cur_magnet_Frc = magnet_Frc()
+  cur_magnet_cm = magnet_cm()
 
   for p = 1:10
 
-    a2PF[p] = abs( cur_magnet_Frc[p] )
+    a2PF[p] = cur_magnet_cj[p]
 
-    a2PF[p] /= 2
+    a2PF[p] += cur_magnet_cm[p]
 
-    a2PF[p] /= magnet_PF_coil_length
-
-    a2PF[p] /= magnet_Sy
+    a2PF[p] /= +2
 
     a2PF[p] += cur_magnet_rpp[p]
-
-    a2PF[p] += cur_magnet_cj[p]
 
   end
 

@@ -7,13 +7,13 @@ function Vst_PF()
 
   cur_Vst_PF = zeros(1, 10)
 
-  cur_magnet_rpp = magnet_rpp()
+  cur_magnet_a1PF = magnet_a1PF()
   cur_magnet_a2PF = magnet_a2PF()
   cur_magnet_cj = magnet_cj()
 
   for i = 1:10
 
-    cur_left_part = cur_magnet_rpp[i] + cur_magnet_a2PF[i]
+    cur_left_part = cur_magnet_a1PF[i] + cur_magnet_a2PF[i]
 
     cur_right_part = cur_magnet_cj[i]
 
@@ -25,7 +25,7 @@ function Vst_PF()
 
     cur_Vst_PF[i] += cur_magnet_a2PF[i] ^ 2
 
-    cur_Vst_PF[i] -= cur_magnet_rpp[i] ^ 2
+    cur_Vst_PF[i] -= cur_magnet_a1PF[i] ^ 2
 
     cur_Vst_PF[i] *= pi
 
