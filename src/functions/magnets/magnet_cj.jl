@@ -10,7 +10,13 @@ function magnet_cj()
   cur_ItPF = ItPF()
 
   for p = 1:10
-    cj[p] = abs(cur_ItPF[p])/(magnet_PF_coil_length*magnet_Jmax)
+
+    cj[p] = abs(cur_ItPF[p])
+
+    cj[p] /= magnet_PF_coil_length
+
+    cj[p] /= magnet_Jmax
+
   end
 
   cj
