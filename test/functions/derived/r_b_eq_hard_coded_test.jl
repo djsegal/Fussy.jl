@@ -1,5 +1,3 @@
-# skip: true
-
 @testset "R B Eq Hard Coded Function Tests" begin
 
   @test isdefined(Tokamak, :r_b_eq_hard_coded) == true
