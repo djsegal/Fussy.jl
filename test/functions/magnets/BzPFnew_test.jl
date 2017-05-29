@@ -1,19 +1,19 @@
 @testset "BzPFnew Function Tests" begin
 
-  Tokamak.load_input(" R_0 = 3.3 * 1u\"m\" ")
-  Tokamak.load_input(" B_0 = 9.2 * 1u\"T\" ")
-  Tokamak.load_input(" I_M = 8 * 1u\"MA\" ")
+  Tokamak.load_input(" R_0 = 6.3 * 1u\"m\" ")
+  Tokamak.load_input(" B_0 = 5.2 * 1u\"T\" ")
+  Tokamak.load_input(" I_M = 15 * 1u\"MA\" ")
   Tokamak.load_input(" T_k = 15 * 1u\"keV\" ")
   Tokamak.load_input(" n_bar = 1.5 * 1u\"n20\" ")
   Tokamak.load_input(" nu_T = 1.3 ")
   Tokamak.load_input(" nu_n = 0.5 ")
   Tokamak.load_input(" delta = 0.45 ")
-  Tokamak.load_input(" epsilon = 0.3424242424 ")
+  Tokamak.load_input(" epsilon = 0.3174603175 ")
   Tokamak.load_input(" enable_blanket_derive = false ")
 
   actual_value = Tokamak.BzPFnew()
 
-  expected_value = [0.108206608422615,0.108206608422615,0.336032451348701,0.336032451348701]
+  expected_value = [0.105420295480624,0.105420295480624,0.326224727983698,0.326224727983698]
 
   @test length(actual_value) == length(expected_value)
 

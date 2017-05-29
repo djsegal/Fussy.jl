@@ -1,24 +1,19 @@
 @testset "Vsc PF Function Tests" begin
 
-  Tokamak.load_input(" R_0 = 3.3 * 1u\"m\" ")
-  Tokamak.load_input(" B_0 = 9.2 * 1u\"T\" ")
-  Tokamak.load_input(" I_M = 8 * 1u\"MA\" ")
+  Tokamak.load_input(" R_0 = 6.3 * 1u\"m\" ")
+  Tokamak.load_input(" B_0 = 5.2 * 1u\"T\" ")
+  Tokamak.load_input(" I_M = 15 * 1u\"MA\" ")
   Tokamak.load_input(" T_k = 15 * 1u\"keV\" ")
   Tokamak.load_input(" n_bar = 1.5 * 1u\"n20\" ")
   Tokamak.load_input(" nu_T = 1.3 ")
   Tokamak.load_input(" nu_n = 0.5 ")
   Tokamak.load_input(" delta = 0.45 ")
-  Tokamak.load_input(" epsilon = 0.3424242424 ")
+  Tokamak.load_input(" epsilon = 0.3174603175 ")
   Tokamak.load_input(" enable_blanket_derive = false ")
 
   actual_value = Tokamak.Vsc_PF()
 
-  expected_value = [
-    0.478886397908549,2.254163029169698,1.840172884244298,
-    0.556553640142244,2.250178085927083,1.604942659886159,
-    0.709060144891461,0.711731298038187,1.901595372321970,
-    1.909347003314564
-  ]
+  expected_value = [1.626060820122523,1.626060820122523,5.822919833803068,5.822919833803068,6.981242596441335,6.981242596441335,2.269750072792144,2.269750072792144,6.016639081845838,6.016639081845838]
 
   @test length(actual_value) == length(expected_value)
 

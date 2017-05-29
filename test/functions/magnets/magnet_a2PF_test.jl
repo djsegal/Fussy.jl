@@ -1,24 +1,19 @@
 @testset "Magnet A2PF Function Tests" begin
 
-  Tokamak.load_input(" R_0 = 3.3 * 1u\"m\" ")
-  Tokamak.load_input(" B_0 = 9.2 * 1u\"T\" ")
-  Tokamak.load_input(" I_M = 8 * 1u\"MA\" ")
+  Tokamak.load_input(" R_0 = 6.3 * 1u\"m\" ")
+  Tokamak.load_input(" B_0 = 5.2 * 1u\"T\" ")
+  Tokamak.load_input(" I_M = 15 * 1u\"MA\" ")
   Tokamak.load_input(" T_k = 15 * 1u\"keV\" ")
   Tokamak.load_input(" n_bar = 1.5 * 1u\"n20\" ")
   Tokamak.load_input(" nu_T = 1.3 ")
   Tokamak.load_input(" nu_n = 0.5 ")
   Tokamak.load_input(" delta = 0.45 ")
-  Tokamak.load_input(" epsilon = 0.3424242424 ")
+  Tokamak.load_input(" epsilon = 0.3174603175 ")
   Tokamak.load_input(" enable_blanket_derive = false ")
 
   actual_value = Tokamak.magnet_a2PF()
 
-  expected_value = [
-    1.580778853633794,5.250909740538154,5.038280844879045,
-    1.610494191736765,5.233233150088996,5.071990348033497,
-    6.059419474741106,6.104715825718467,6.743909271113307,
-    6.798035358933428
-  ]
+  expected_value = [3.170083170358529,3.170083170358529,9.256621758820630,9.256621758820630,9.541270887689360,9.541270887689360,11.155437334078448,11.155437334078448,12.222006263997713,12.222006263997713]
 
   @test length(actual_value) == length(expected_value)
 
