@@ -35,3 +35,6 @@ end
 
 defaults_file_name = "defaults.jl"
 load_input(defaults_file_name, true)
+
+defaults_file_name = "tmp/scratch.jl"
+load_input(defaults_file_name, true)
