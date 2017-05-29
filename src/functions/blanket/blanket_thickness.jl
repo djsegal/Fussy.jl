@@ -7,7 +7,7 @@ first wall, vacuum vessel, flibe blanket, be multiplier, and shielding..
 function blanket_thickness()
 
   if !enable_blanket_derive
-    return 0.89u"m"
+    return 1.19u"m"
   end
 
   blanket_thickness = 0.7258u"m"

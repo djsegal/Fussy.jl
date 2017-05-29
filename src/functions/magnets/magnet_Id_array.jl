@@ -12,7 +12,7 @@ function magnet_Id_array()
   I5 = -0.558
   I6 = +0.669
 
-  cur_Id_array = [ I1 I6 I2 I5 I3 I4 ]
+  cur_Id_array = [ I1 I4 I2 I5 I3 I6 ]
 
   cur_Id_array *= -1
 
