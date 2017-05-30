@@ -1201,6 +1201,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.magnet_a1PF-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.magnet_a1PF",
+    "category": "Method",
+    "text": "magnet_a1PF()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.magnet_a2PF-Tuple{}",
     "page": "Code",
     "title": "Tokamak.magnet_a2PF",
@@ -1230,6 +1238,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.magnet_cj",
     "category": "Method",
     "text": "magnet_cj()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.magnet_cm-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.magnet_cm",
+    "category": "Method",
+    "text": "magnet_cm()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1406,6 +1422,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.magnet_zp_array",
     "category": "Method",
     "text": "magnet_zp_array()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.magnet_zpp-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.magnet_zpp",
+    "category": "Method",
+    "text": "magnet_zpp()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
