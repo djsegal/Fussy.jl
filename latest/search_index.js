@@ -941,7 +941,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.econ_MW_e",
     "category": "Method",
-    "text": "econ_MW_e()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "econ_MW_e()\n\npower output of the plant in MW.\n\n\n\n"
 },
 
 {
