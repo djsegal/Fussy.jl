@@ -4,13 +4,17 @@
 Lorem ipsum dolor sit amet.
 """
 function construction_distribution()
-  parson_dist = [ 0.1 , 0.2 , 0.4 , 0.2 , 0.1 ]
 
-  dummy_years = linspace(1, length(parson_dist), construction_time)
-  cur_grid = InterpGrid(parson_dist, BCnil, InterpLinear)
+  dummy_years = linspace(1, length(parson_distribution), construction_time)
 
-  y = map( x -> cur_grid[x] , dummy_years )
-  ConstructDist = y / sum(y)
+  cur_grid = InterpGrid(parson_distribution, BCnil, InterpLinear)
 
-  ConstructDist
+  mapped_grid = map( x -> cur_grid[x] , dummy_years )
+
+  construct_dist = mapped_grid
+
+  construct_dist /= sum(mapped_grid)
+
+  construct_dist
+
 end
