@@ -1,6 +1,9 @@
 
 ---
 
+# assume that FW, Be, VV, Blanket, and
+# Thermal Shield are hollow elliptic tori
+
 Magnets:
 
   price_per: magnet_Cost_Total() # total cost of raw materials for magnets

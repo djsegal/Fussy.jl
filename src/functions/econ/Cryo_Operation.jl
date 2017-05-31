@@ -13,9 +13,9 @@ function Cryo_Operation()
 
   cur_Cryo_Operation /= ( 0.141 * cur_magnet_Q_total ^ 0.26 )
 
-  cur_Cryo_Operation *= ( 24 * 365 )
+  cur_Cryo_Operation *= ( 24 * 365 ) # hours per year
 
-  cur_Cryo_Operation *= 0.1
+  cur_Cryo_Operation *= 0.1 # $/kWhr
 
   cur_Cryo_Operation *= 1.08
 

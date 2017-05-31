@@ -4,6 +4,7 @@
 Lorem ipsum dolor sit amet.
 """
 function add_line_item!(cur_table::CostTable, name::AbstractString, cur_fields::Dict=Dict())
+
   new_line_item = LineItem(name)
 
   for (cur_key, cur_val) in cur_fields
@@ -17,4 +18,5 @@ function add_line_item!(cur_table::CostTable, name::AbstractString, cur_fields::
   cur_table.line_items[name] = new_line_item
 
   new_line_item
+
 end

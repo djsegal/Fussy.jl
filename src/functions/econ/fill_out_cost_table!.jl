@@ -5,8 +5,6 @@ Lorem ipsum dolor sit amet.
 """
 function fill_out_cost_table!(MCT::CostTable)
 
-  #assume that FW, Be, VV, Blanket, and Thermal Shield are hollow elliptic tori
-
   econ_table_yaml = "lib/input_decks/econ_cost_table.yml"
 
   for (cur_key, cur_val) in YAML.load_file(econ_table_yaml)
