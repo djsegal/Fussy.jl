@@ -1,5 +1,5 @@
 """
-    scan_for_R_0()
+    scan_for_R_0(R_0_value, T_list=linspace(5,30,5); rel_tol=1e-3, is_first_call=true)
 
 Lorem ipsum dolor sit amet.
 """
