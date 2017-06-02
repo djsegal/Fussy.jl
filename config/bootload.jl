@@ -37,6 +37,8 @@ function load_input(raw_input, is_file_input=false, can_be_missing=false)
   eval( parse(raw_input) )
 end
 
+print_workspace() = Julz.print_workspace(Tokamak)
+
 defaults_file_name = "defaults.jl"
 load_input(defaults_file_name, true)
 
