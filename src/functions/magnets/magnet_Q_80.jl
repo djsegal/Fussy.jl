@@ -5,7 +5,7 @@ Heating due to thermal shielding @ 80K [kW].
 """
 function magnet_Q_80()
 
-  cur_Q_80 = 800
+  cur_Q_80 = 800.0
 
   cur_Q_80 *= 1 + kappa ^ 2
 

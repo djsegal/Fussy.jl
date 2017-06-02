@@ -1,17 +1,24 @@
 """
     MWh_electric_per_year()
 
-Lorem ipsum dolor sit amet.
+Discount electricity per year.
 """
 function MWh_electric_per_year()
-  ElecProd = zeros(2, plant_life + construction_time)
 
-  ElecProd[1,construction_time+1:end] = fill!(zeros(1, plant_life), econ_availability * econ_MW_e() * 365 * 24)
+  total_years = construction_time + plant_life
 
-  # discount electricity per year
-  for i = 1:(construction_time + plant_life)
-    ElecProd[2,i] = ElecProd[1,i] / ( 1.0 + discount_rate )^i
+  cur_prod = zeros(2, total_years)
+
+  cur_prod[1, construction_time+1:end] = econ_availability * econ_MW_e() * 365 * 24
+
+  for cur_year in 1:total_years
+
+    cur_prod[2, cur_year] = cur_prod[1, cur_year]
+
+    cur_prod[2, cur_year] /= ( 1.0 + discount_rate ) ^ cur_year
+
   end
 
-  ElecProd
+  cur_prod
+
 end
