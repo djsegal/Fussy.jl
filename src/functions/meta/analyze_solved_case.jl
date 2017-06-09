@@ -1,9 +1,9 @@
 """
-    analyze_solved_case()
+    analyze_solved_case(found_data; verbose=true)
 
 Lorem ipsum dolor sit amet.
 """
-function analyze_solved_case(found_data)
+function analyze_solved_case(found_data; verbose=true)
 
   cur_R_0 = Tokamak.symbol_dict["R_0"]
   cur_B_0 = Tokamak.symbol_dict["B_0"]
@@ -13,8 +13,8 @@ function analyze_solved_case(found_data)
   solved_case = Dict()
 
   solved_case["R_0"] = found_data["R_0"]
-  solved_case["T_k"] = found_data["T_k"]
   solved_case["B_0"] = found_data["B_0"]
+  solved_case["T_k"] = found_data["T_k"]
 
   solved_case["n_bar"] = Tokamak.calc_possible_values(subs(Tokamak.solved_steady_density() / 1u"n20", cur_R_0, solved_case["R_0"]))
   solved_case["I_M"] = Tokamak.calc_possible_values(Tokamak.solved_steady_current() / 1u"MA")
@@ -46,7 +46,9 @@ function analyze_solved_case(found_data)
 
     tmp_value = SymPy.N(tmp_value)
 
-    println("$key = $( @sprintf("%.3g", tmp_value / value["max_limit"] ) )")
+    if verbose
+      println("$key = $( @sprintf("%.3g", tmp_value / value["max_limit"] ) )")
+    end
 
     if key == "beta"
       solved_case["beta"] = tmp_value

@@ -1,5 +1,5 @@
 """
-    solve_wave_equations(cur_solved_R_0, cur_solved_B_0)
+    solve_wave_equations(cur_solved_R_0, cur_solved_B_0; verbose=false)
 
 Function to solve for n_para, rho_J, omega_nor2.
 """

@@ -1,5 +1,5 @@
 """
-    solve_equation_set(cur_T, given_equations)
+    solve_equation_set(cur_T, given_equations; verbose=false)
 
 Lorem ipsum dolor sit amet.
 """
@@ -26,7 +26,7 @@ function solve_equation_set(cur_T, given_equations; verbose=false)
 
   for (eq_index, (key, value)) in enumerate(given_equations)
 
-    println(" \n\n $key \n ")
+    if verbose ; println(" \n\n $key \n ") ; end
 
     cur_solved_R_0, cur_solved_B_0, cur_eta_CD = converge_eta_CD(given_equations[key], verbose=verbose)
 

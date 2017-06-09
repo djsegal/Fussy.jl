@@ -1,5 +1,5 @@
 """
-    converge_eta_CD()
+    converge_eta_CD(cur_equations; verbose=false)
 
 Lorem ipsum dolor sit amet.
 """

@@ -1,17 +1,17 @@
 """
-    scan_for_R_0(R_0_value, T_list=linspace(5,30,5); rel_tol=1e-3, is_first_call=true)
+    scan_for_R_0(R_0_value, T_list=linspace(5,30,5); rel_tol=1e-3, is_first_call=true, verbose=false)
 
 Lorem ipsum dolor sit amet.
 """
-function scan_for_R_0(R_0_value, T_list=linspace(5,30,5); rel_tol=1e-3, is_first_call=true)
+function scan_for_R_0(R_0_value, T_list=linspace(5,30,5); rel_tol=1e-3, is_first_call=true, verbose=false)
 
   T_count = length(T_list)
 
   if is_first_call
-    cur_data = sweep_T_k(T_list)["beta"]
+    cur_data = sweep_T_k(T_list, verbose=verbose)["beta"]
   else
     sub_section = 2 : ( T_count - 1 )
-    cur_data = sweep_T_k(T_list[sub_section])["beta"]
+    cur_data = sweep_T_k(T_list[sub_section], verbose=verbose)["beta"]
   end
 
   current_R_0_s = cur_data["R_0"]

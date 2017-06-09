@@ -1,5 +1,5 @@
 """
-    get_new_eta_CD(cur_solved_R_0, cur_solved_B_0)
+    get_new_eta_CD(cur_solved_R_0, cur_solved_B_0; verbose=false)
 
 Lorem ipsum dolor sit amet.
 """

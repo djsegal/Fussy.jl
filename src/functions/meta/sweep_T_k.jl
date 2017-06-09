@@ -1,5 +1,5 @@
 """
-    sweep_T_k()
+    sweep_T_k(T_list; verbose=true)
 
 Lorem ipsum dolor sit amet.
 """
