@@ -5,7 +5,7 @@ Lorem ipsum dolor sit amet.
 """
 function Vst_PF()
 
-  cur_Vst_PF = zeros(1, 10)
+  cur_Vst_PF = Array{Any}(1, 10)
 
   cur_magnet_a1PF = magnet_a1PF()
   cur_magnet_a2PF = magnet_a2PF()

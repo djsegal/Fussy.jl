@@ -5,7 +5,9 @@ Lorem ipsum dolor sit amet.
 """
 function magnet_Frc()
 
-  Frc = zeros(1, 10)
+  Frc = Array{Any}(1, 10)
+
+  fill!(Frc, 0.0)
 
   cur_ItPF = ItPF()
   cur_zpp = magnet_zpp()

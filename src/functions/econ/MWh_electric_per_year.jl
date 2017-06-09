@@ -7,7 +7,9 @@ function MWh_electric_per_year()
 
   total_years = construction_time + plant_life
 
-  cur_prod = zeros(2, total_years)
+  cur_prod = Array{Any}(2, total_years)
+
+  fill!(cur_prod, 0.0)
 
   cur_prod[1, construction_time+1:end] = econ_availability * econ_MW_e() * 365 * 24
 

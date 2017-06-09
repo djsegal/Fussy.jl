@@ -5,7 +5,7 @@ Lorem ipsum dolor sit amet.
 """
 function magnet_cj()
 
-  cj = zeros(1, 10)
+  cj = Array{Any}(1, 10)
 
   cur_ItPF = ItPF()
 

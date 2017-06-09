@@ -13,7 +13,7 @@ function BzDivs()
 
   B0d /= 2
 
-  BzDiv = zeros(1, 6)
+  BzDiv = Array{Any}(1, 6)
 
   cur_magnet_rhod = magnet_rhod()
   cur_magnet_etad = magnet_etad()

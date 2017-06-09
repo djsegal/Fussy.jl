@@ -5,7 +5,7 @@ Lorem ipsum dolor sit amet.
 """
 function magnet_cm()
 
-  cm = zeros(1, 10)
+  cm = Array{Any}(1, 10)
 
   cur_magnet_Frc = magnet_Frc()
 

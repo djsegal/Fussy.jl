@@ -5,7 +5,7 @@ Lorem ipsum dolor sit amet.
 """
 function magnet_a2PF()
 
-  a2PF = zeros(1, 10)
+  a2PF = Array{Any}(1, 10)
 
   cur_magnet_cj = magnet_cj()
   cur_magnet_rpp = magnet_rpp()

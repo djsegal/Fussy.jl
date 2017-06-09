@@ -13,7 +13,7 @@ function BzPFs()
 
   B0p /= 2
 
-  BzPF = zeros(1, 4)
+  BzPF = Array{Any}(1, 4)
 
   cur_magnet_rhop = magnet_rhop()
   cur_magnet_etap = magnet_etap()
