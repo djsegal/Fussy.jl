@@ -33,12 +33,17 @@ function shield_thickness()
   cur_shield_thickness = max_N_per_source_N
   cur_shield_thickness /= cur_a
 
-  cur_shield_thickness = log(cur_shield_thickness)
+  cur_shield_thickness = log( cur_shield_thickness )
+
   cur_shield_thickness /= cur_b
 
   cur_shield_thickness = uconvert(u"m", cur_shield_thickness)
 
-  cur_shield_thickness = max(0u"m", cur_shield_thickness)
+  cur_shield_thickness /= 1u"m"
+
+  cur_shield_thickness = max(cur_shield_thickness, 0)
+
+  cur_shield_thickness *= 1u"m"
 
   cur_shield_thickness
 
