@@ -44,6 +44,9 @@ function scan_for_R_0(R_0_value, T_list=linspace(5,30,5); rel_tol=1e-3, is_first
     spans_R_0 = first_R_0 <= R_0_value && last_R_0 >= R_0_value
 
     if !spans_R_0
+      println(T_list)
+      println(R_0_value)
+      println(current_R_0_s)
       error("T_k range does not include R_0")
     end
 

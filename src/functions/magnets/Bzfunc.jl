@@ -9,9 +9,9 @@ function Bzfunc(rho, eta, curB, k)
 
   cur_Bzfunc /= ( (1-rho)^2 + eta^2 )
 
-  cur_Bzfunc *= Elliptic.E(k)
+  cur_Bzfunc *= elliptice(k)
 
-  cur_Bzfunc += Elliptic.K(k)
+  cur_Bzfunc += elliptick(k)
 
   cur_Bzfunc *= curB
 

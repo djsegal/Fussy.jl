@@ -1,11 +1,13 @@
 """
-    Area_H2()
+    Area_H2(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Determine Cooling Channel Dimensions.
 """
-function Area_H2()
+function Area_H2(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
-  tmp_area = Area_St() + Area_Cu()
+  tmp_area = Area_St(cur_R_0, cur_n_bar, cur_I_M)
+
+  tmp_area += Area_Cu(cur_R_0, cur_n_bar, cur_I_M)
 
   # Integrated heat flux along one cable length [W/m^2]
 
@@ -31,7 +33,7 @@ function Area_H2()
 
   Cable_Dh = magnet_friction_factor
 
-  Cable_Dh *= Cable_L()
+  Cable_Dh *= Cable_L(cur_R_0, cur_n_bar, cur_I_M)
 
   Cable_Dh *= Cable_mdot ^ 2
 

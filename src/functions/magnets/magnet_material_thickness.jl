@@ -1,9 +1,9 @@
 """
-    magnet_material_thickness()
+    magnet_material_thickness(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_material_thickness()
+function magnet_material_thickness(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   cur_magnet_normalized_radius = magnet_normalized_radius()
 
@@ -26,7 +26,7 @@ function magnet_material_thickness()
   cur_left_term /= ( R_0 / 1u"m" )^2
   cur_left_term /= 2 - 2 * cur_magnet_normalized_radius
 
-  cur_right_term = magnet_centering_force()
+  cur_right_term = magnet_centering_force(cur_R_0, cur_n_bar, cur_I_M)
   cur_right_term /= 2
   cur_right_term /= magnet_straight_factor
   cur_right_term /= kappa * ( a() / 1u"m" ) + ( blanket_thickness() / 1u"m" )

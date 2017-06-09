@@ -1,15 +1,15 @@
 """
-    Area_St()
+    Area_St(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Determine Steel Structure Dimensions.
 """
-function Area_St()
+function Area_St(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   # estimate of force on cable due to magnetic field
 
   Force_St = magnet_Imax()
 
-  Force_St *= Cable_L()
+  Force_St *= Cable_L(cur_R_0, cur_n_bar, cur_I_M)
 
   Force_St *= B_coil_max()
 

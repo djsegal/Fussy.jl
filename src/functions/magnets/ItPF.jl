@@ -5,7 +5,7 @@ Lorem ipsum dolor sit amet.
 """
 function ItPF()
 
-  Bv = betap()
+  Bv = betap() |> NoUnits
 
   Bv += log( 8 * R_0 / a() )
 
@@ -36,13 +36,15 @@ function ItPF()
 
   # Scale the currents with safety factor 1.25
 
-  if cur_scale > 1
-    cur_ItPF = 1.25*cur_ItPF/cur_scale
-  else
-    cur_ItPF = 1.25*cur_ItPF*cur_scale
-  end
+  cur_ItPF *= 1.25
 
-  push!(cur_ItPF, ( I_M / 1u"A" ) |> NoUnits)
+  cur_scale = Bvtotal / Bv
+
+  cur_ItPF /= max(cur_scale, 1/cur_scale)
+
+  push!(cur_ItPF, ( I_M / 1u"A" ))
+
+  cur_ItPF = map( x -> ( x |> NoUnits ) , cur_ItPF )
 
   cur_ItPF
 

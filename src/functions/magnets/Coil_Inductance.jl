@@ -1,11 +1,11 @@
 """
-    Coil_Inductance()
+    Coil_Inductance(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 TF coil inductance.
 """
-function Coil_Inductance()
+function Coil_Inductance(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
-  cur_dR = magnet_inner_radius() + magnet_material_thickness() / 2
+  cur_dR = magnet_inner_radius() + magnet_material_thickness(cur_R_0, cur_n_bar, cur_I_M) / 2
 
   R1 = ( R_0 / 1u"m" ) - cur_dR # Radius from center of CS to TF straight leg
   R2 = ( R_0 / 1u"m" ) + cur_dR # Radius from center of CS to TF outter D

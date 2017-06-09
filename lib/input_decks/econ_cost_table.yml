@@ -55,8 +55,13 @@ thermal_shields:
 
 magnets:
 
-  price_per: magnet_Cost_Total() # total cost of raw materials for magnets
-  fab_factor: 25 # arbitrary default value
+  price_per: Cost_HTS_Total() # total cost of raw materials for magnets
+  fab_factor: 1.2 # arbitrary default value
+
+magnets_structure:
+
+  price_per: Cost_ST_Total() # total cost of raw materials for magnets
+  fab_factor: 10 # arbitrary default value
 
 land:
 

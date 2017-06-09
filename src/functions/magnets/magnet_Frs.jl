@@ -1,5 +1,5 @@
 """
-    magnet_Frs()
+    magnet_Frs(Ii)
 
 Radial Self Force.
 """
