@@ -8,9 +8,18 @@
   Tokamak.load_input(" T_k = 15 * 1u\"keV\" ")
   Tokamak.load_input(" n_bar = 1.5 * 1u\"n20\" ")
 
-  MCT = Tokamak.CostTable()
 
-  Tokamak.fill_out_cost_table!(MCT)
+  cur_solution = Dict(
+    "R_0" => ( Tokamak.R_0 / 1u"m" ),
+    "B_0" => ( Tokamak.B_0 / 1u"T" ),
+    "T_k" => ( Tokamak.T_k / 1u"keV" ),
+  )
+
+  analyzed_solution = Tokamak.analyze_solved_case(cur_solution, verbose=false)
+
+  MCT = Tokamak.CostTable(analyzed_solution=analyzed_solution)
+
+  Tokamak.fill_out_cost_table!(MCT, analyzed_solution)
 
   Tokamak.update_cost_data_frame!(MCT)
 

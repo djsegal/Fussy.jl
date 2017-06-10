@@ -11,7 +11,11 @@
   Tokamak.load_input(" epsilon = 0.3174603175 ")
   Tokamak.load_input(" enable_blanket_derive = false ")
 
-  actual_value = Tokamak.Cost_HTS_Total()
+  cur_solution = Tokamak.solve_magnet_equations(
+    Tokamak.R_0, Tokamak.n_bar, Tokamak.I_M
+  )
+
+  actual_value = Tokamak.Cost_HTS_Total(cur_solution=cur_solution)
 
   expected_value = 9.456750404476904e+08
 

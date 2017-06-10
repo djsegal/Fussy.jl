@@ -14,7 +14,11 @@
   # chosen to get P_F = 500
   Tokamak.load_input(" n_bar = 0.55229943350020245 * 1u\"n20\" ")
 
-  actual_value = Tokamak.Cryo_Operation()
+  cur_solution = Tokamak.solve_magnet_equations(
+    Tokamak.R_0, Tokamak.n_bar, Tokamak.I_M
+  )
+
+  actual_value = Tokamak.Cryo_Operation(cur_solution=cur_solution)
 
   expected_value = 2.465831510485003e+06
 

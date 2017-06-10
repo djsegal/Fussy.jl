@@ -39,13 +39,18 @@ function cost_schedule(cur_table::CostTable)
 
   cur_o_and_m_cost = operations_cost + decommision_cost
 
-  cur_cost_schedule[2,construction_time+1:end] = subs(
-    cur_o_and_m_cost,
-    symbol_dict["R_0"] => cur_R_0,
-    symbol_dict["n_bar"] => cur_n_bar,
-    symbol_dict["I_M"] => cur_I_M,
-    symbol_dict["B_0"] => cur_B_0
-  )
+  if eltype(cur_o_and_m_cost) == SymPy.Sym
+    cur_o_and_m_cost = subs(
+      cur_o_and_m_cost,
+      symbol_dict["R_0"] => cur_R_0,
+      symbol_dict["n_bar"] => cur_n_bar,
+      symbol_dict["I_M"] => cur_I_M,
+      symbol_dict["B_0"] => cur_B_0
+    )
+  end
+
+  cur_cost_schedule[2,construction_time+1:end] = cur_o_and_m_cost
+
 
   cur_cost_schedule
 

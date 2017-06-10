@@ -1,5 +1,5 @@
 """
-    CostTable(cur_R_0, cur_B_0, cur_T_k)
+    CostTable(cur_R_0=R_0, cur_B_0=B_0, cur_T_k=T_k; analyzed_solution=Dict())
 
 Lorem ipsum dolor sit amet.
 """
@@ -15,7 +15,7 @@ type CostTable
 
   data_frame::DataFrame
 
-  CostTable(cur_R_0, cur_B_0, cur_T_k, analyzed_solution=Dict()) = new(
+  CostTable(cur_R_0=R_0, cur_B_0=B_0, cur_T_k=T_k; analyzed_solution=Dict()) = new(
     cur_R_0, cur_B_0, cur_T_k, analyzed_solution,
     OrderedDict{AbstractString,LineItem}(), DataFrame()
   )
