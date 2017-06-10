@@ -33,27 +33,27 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.Area_Cable-Tuple{}",
+    "location": "code.html#Tokamak.Area_Cable",
     "page": "Code",
     "title": "Tokamak.Area_Cable",
-    "category": "Method",
-    "text": "Area_Cable()\n\nArea of total cable.\n\n\n\n"
+    "category": "Function",
+    "text": "Area_Cable(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nArea of total cable.\n\n\n\n"
 },
 
 {
-    "location": "code.html#Tokamak.Area_Cu-Tuple{}",
+    "location": "code.html#Tokamak.Area_Cu",
     "page": "Code",
     "title": "Tokamak.Area_Cu",
-    "category": "Method",
-    "text": "Area_Cu()\n\nDetermine Copper Stablizer Dimensions.\n\n\n\n"
+    "category": "Function",
+    "text": "Area_Cu(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nDetermine Copper Stablizer Dimensions.\n\n\n\n"
 },
 
 {
-    "location": "code.html#Tokamak.Area_H2-Tuple{}",
+    "location": "code.html#Tokamak.Area_H2",
     "page": "Code",
     "title": "Tokamak.Area_H2",
-    "category": "Method",
-    "text": "Area_H2()\n\nDetermine Cooling Channel Dimensions.\n\n\n\n"
+    "category": "Function",
+    "text": "Area_H2(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nDetermine Cooling Channel Dimensions.\n\n\n\n"
 },
 
 {
@@ -65,11 +65,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.Area_St-Tuple{}",
+    "location": "code.html#Tokamak.Area_St",
     "page": "Code",
     "title": "Tokamak.Area_St",
-    "category": "Method",
-    "text": "Area_St()\n\nDetermine Steel Structure Dimensions.\n\n\n\n"
+    "category": "Function",
+    "text": "Area_St(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nDetermine Steel Structure Dimensions.\n\n\n\n"
 },
 
 {
@@ -177,35 +177,35 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.Cable_L-Tuple{}",
+    "location": "code.html#Tokamak.Cable_L",
     "page": "Code",
     "title": "Tokamak.Cable_L",
-    "category": "Method",
-    "text": "Cable_L()\n\nLength of one cable [m].\n\n\n\n"
+    "category": "Function",
+    "text": "Cable_L(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nLength of one cable [m].\n\n\n\n"
 },
 
 {
-    "location": "code.html#Tokamak.Coil_Energy-Tuple{}",
+    "location": "code.html#Tokamak.Coil_Energy",
     "page": "Code",
     "title": "Tokamak.Coil_Energy",
-    "category": "Method",
-    "text": "Coil_Energy()\n\nTF coil magnetic energy.\n\n\n\n"
+    "category": "Function",
+    "text": "Coil_Energy(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nTF coil magnetic energy.\n\n\n\n"
 },
 
 {
-    "location": "code.html#Tokamak.Coil_Inductance-Tuple{}",
+    "location": "code.html#Tokamak.Coil_Inductance",
     "page": "Code",
     "title": "Tokamak.Coil_Inductance",
-    "category": "Method",
-    "text": "Coil_Inductance()\n\nTF coil inductance.\n\n\n\n"
+    "category": "Function",
+    "text": "Coil_Inductance(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nTF coil inductance.\n\n\n\n"
 },
 
 {
-    "location": "code.html#Tokamak.Coil_P-Tuple{}",
+    "location": "code.html#Tokamak.Coil_P",
     "page": "Code",
     "title": "Tokamak.Coil_P",
-    "category": "Method",
-    "text": "Coil_P()\n\nCoil perimeter [m].\n\n\n\n"
+    "category": "Function",
+    "text": "Coil_P(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nCoil perimeter [m].\n\n\n\n"
 },
 
 {
@@ -229,7 +229,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Cost_HTS_Total",
     "category": "Function",
-    "text": "Cost_HTS_Total(cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Cost_HTS_Total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=nothing)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -245,7 +245,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Cost_ST_Total",
     "category": "Function",
-    "text": "Cost_ST_Total(cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Cost_ST_Total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=nothing)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -273,19 +273,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.Cryo_Operation-Tuple{}",
+    "location": "code.html#Tokamak.Cryo_Operation",
     "page": "Code",
     "title": "Tokamak.Cryo_Operation",
-    "category": "Method",
-    "text": "Cryo_Operation()\n\nCost of power @ 0.1 /kWhr to power the cryoplant annually.\n\n\n\n"
+    "category": "Function",
+    "text": "Cryo_Operation(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=nothing)\n\nCost of power @ 0.1 /kWhr to power the cryoplant annually.\n\n\n\n"
 },
 
 {
-    "location": "code.html#Tokamak.Cryoplant_Cost-Tuple{}",
+    "location": "code.html#Tokamak.Cryoplant_Cost",
     "page": "Code",
     "title": "Tokamak.Cryoplant_Cost",
-    "category": "Method",
-    "text": "Cryoplant_Cost()\n\nCost of cryoplant scaled to various heat loads, scaled to 4.5K and estimated using Green's Formula.\n\n\n\n"
+    "category": "Function",
+    "text": "Cryoplant_Cost(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=nothing)\n\nCost of cryoplant scaled to various heat loads, scaled to 4.5K and estimated using Green's Formula.\n\n\n\n"
 },
 
 {
@@ -337,11 +337,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.Frac_HTS-Tuple{}",
+    "location": "code.html#Tokamak.Frac_HTS",
     "page": "Code",
     "title": "Tokamak.Frac_HTS",
-    "category": "Method",
-    "text": "Frac_HTS()\n\nFraction of HTS.\n\n\n\n"
+    "category": "Function",
+    "text": "Frac_HTS(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nFraction of HTS.\n\n\n\n"
 },
 
 {
@@ -509,7 +509,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.MWh_electric_per_year",
     "category": "Method",
-    "text": "MWh_electric_per_year()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "MWh_electric_per_year()\n\nDiscount electricity per year.\n\n\n\n"
 },
 
 {
@@ -625,11 +625,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.V_TF-Tuple{}",
+    "location": "code.html#Tokamak.V_TF",
     "page": "Code",
     "title": "Tokamak.V_TF",
-    "category": "Method",
-    "text": "V_TF()\n\nVolume of TF Coil Structure not including HTS.\n\n\n\n"
+    "category": "Function",
+    "text": "V_TF(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nVolume of TF Coil Structure not including HTS.\n\n\n\n"
 },
 
 {
@@ -693,7 +693,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Vol_HTS_Total",
     "category": "Function",
-    "text": "Vol_HTS_Total(cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Vol_HTS_Total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -709,7 +709,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Vol_ST_Total",
     "category": "Function",
-    "text": "Vol_ST_Total(cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Vol_ST_Total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -729,11 +729,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.Vol_WP-Tuple{}",
+    "location": "code.html#Tokamak.Vol_WP",
     "page": "Code",
     "title": "Tokamak.Vol_WP",
-    "category": "Method",
-    "text": "Vol_WP()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "Vol_WP(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -753,11 +753,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.WP_Area-Tuple{}",
+    "location": "code.html#Tokamak.WP_Area",
     "page": "Code",
     "title": "Tokamak.WP_Area",
-    "category": "Method",
-    "text": "WP_Area()\n\nDetermine Total Cable Cross Secional Area.\n\n\n\n"
+    "category": "Function",
+    "text": "WP_Area(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nDetermine Total Cable Cross Secional Area.\n\n\n\n"
 },
 
 {
@@ -829,7 +829,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.analyze_solved_case",
     "category": "Method",
-    "text": "analyze_solved_case()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "analyze_solved_case(found_data; verbose=true)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -909,7 +909,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.converge_eta_CD",
     "category": "Method",
-    "text": "converge_eta_CD()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "converge_eta_CD(cur_equations; verbose=false)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -953,6 +953,30 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.econ_kW_h_per_year-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.econ_kW_h_per_year",
+    "category": "Method",
+    "text": "econ_kW_h_per_year()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.elliptice-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.elliptice",
+    "category": "Method",
+    "text": "elliptice(cur_val)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.elliptick-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.elliptick",
+    "category": "Method",
+    "text": "elliptick(cur_val)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.f_B-Tuple{}",
     "page": "Code",
     "title": "Tokamak.f_B",
@@ -977,11 +1001,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.fill_out_cost_table!-Tuple{Tokamak.CostTable}",
+    "location": "code.html#Tokamak.fill_out_cost_table!-Tuple{Tokamak.CostTable,Dict}",
     "page": "Code",
     "title": "Tokamak.fill_out_cost_table!",
     "category": "Method",
-    "text": "fill_out_cost_table!(MCT::CostTable)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "fill_out_cost_table!(MCT::CostTable, analyzed_solution::Dict)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -997,7 +1021,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.get_new_eta_CD",
     "category": "Method",
-    "text": "get_new_eta_CD(cur_solved_R_0, cur_solved_B_0)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "get_new_eta_CD(cur_solved_R_0, cur_solved_B_0; verbose=false)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1069,7 +1093,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.magnet_Cost_Total",
     "category": "Function",
-    "text": "magnet_Cost_Total(cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "magnet_Cost_Total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=nothing)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1077,7 +1101,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.magnet_Fr",
     "category": "Method",
-    "text": "magnet_Fr()\n\nForces on PF and Divertor Coils (Radial Force).\n\n\n\n"
+    "text": "magnet_Fr(ri,rj,zi,zj,Ii,Ij)\n\nForces on PF and Divertor Coils (Radial Force).\n\n\n\n"
 },
 
 {
@@ -1093,7 +1117,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.magnet_Frp",
     "category": "Method",
-    "text": "magnet_Frp()\n\nForce due to plasma.\n\n\n\n"
+    "text": "magnet_Frp(ri,rm,zi,zm,Ii,Im)\n\nForce due to plasma.\n\n\n\n"
 },
 
 {
@@ -1101,7 +1125,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.magnet_Frs",
     "category": "Method",
-    "text": "magnet_Frs()\n\nRadial Self Force.\n\n\n\n"
+    "text": "magnet_Frs(Ii)\n\nRadial Self Force.\n\n\n\n"
 },
 
 {
@@ -1109,7 +1133,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.magnet_Fz",
     "category": "Method",
-    "text": "magnet_Fz()\n\nForces on PF and Divertor Coils (Axial Force).\n\n\n\n"
+    "text": "magnet_Fz(ri,rj,zi,zj,Ii,Ij)\n\nForces on PF and Divertor Coils (Axial Force).\n\n\n\n"
 },
 
 {
@@ -1117,7 +1141,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.magnet_Fzp",
     "category": "Method",
-    "text": "magnet_Fzp()\n\nForce due to plasma.\n\n\n\n"
+    "text": "magnet_Fzp(ri,rm,zi,zm,Ii,Im)\n\nForce due to plasma.\n\n\n\n"
 },
 
 {
@@ -1161,11 +1185,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.magnet_L2-Tuple{}",
+    "location": "code.html#Tokamak.magnet_L2",
     "page": "Code",
     "title": "Tokamak.magnet_L2",
-    "category": "Method",
-    "text": "magnet_L2()\n\nCurved Section Arc Length.\n\n\n\n"
+    "category": "Function",
+    "text": "magnet_L2(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nCurved Section Arc Length.\n\n\n\n"
 },
 
 {
@@ -1173,7 +1197,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.magnet_Q_15",
     "category": "Function",
-    "text": "magnet_Q_15(cur_solution=solve_magnet_equations())\n\nTotal hydrogen cooling @ 15K [kW].\n\n\n\n"
+    "text": "magnet_Q_15(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())\n\nTotal hydrogen cooling @ 15K [kW].\n\n\n\n"
 },
 
 {
@@ -1189,7 +1213,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.magnet_Q_total",
     "category": "Function",
-    "text": "magnet_Q_total(cur_solution=solve_magnet_equations())\n\nTotal cooling equivalent at 4.5 K to use in Green formula [kW].\n\n\n\n"
+    "text": "magnet_Q_total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())\n\nTotal cooling equivalent at 4.5 K to use in Green formula [kW].\n\n\n\n"
 },
 
 {
@@ -1225,11 +1249,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.magnet_centering_force-Tuple{}",
+    "location": "code.html#Tokamak.magnet_centering_force",
     "page": "Code",
     "title": "Tokamak.magnet_centering_force",
-    "category": "Method",
-    "text": "magnet_centering_force()\n\nNet Centering Force.\n\n\n\n"
+    "category": "Function",
+    "text": "magnet_centering_force(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nNet Centering Force.\n\n\n\n"
 },
 
 {
@@ -1253,15 +1277,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.magnet_cold_mass",
     "category": "Function",
-    "text": "magnet_cold_mass(cur_solution=solve_magnet_equations())\n\nTotal volume of magnets times density (~8000 kg/m3) in [tons].\n\n\n\n"
-},
-
-{
-    "location": "code.html#Tokamak.magnet_equation_set!-Tuple{Any,Any}",
-    "page": "Code",
-    "title": "Tokamak.magnet_equation_set!",
-    "category": "Method",
-    "text": "magnet_equation_set!(x, F)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "magnet_cold_mass(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())\n\nTotal volume of magnets times density (~8000 kg/m3) in [tons].\n\n\n\n"
 },
 
 {
@@ -1329,11 +1345,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.magnet_material_thickness-Tuple{}",
+    "location": "code.html#Tokamak.magnet_material_thickness",
     "page": "Code",
     "title": "Tokamak.magnet_material_thickness",
-    "category": "Method",
-    "text": "magnet_material_thickness()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "magnet_material_thickness(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1345,11 +1361,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.magnet_outward_centering-Tuple{}",
+    "location": "code.html#Tokamak.magnet_outward_centering",
     "page": "Code",
     "title": "Tokamak.magnet_outward_centering",
-    "category": "Method",
-    "text": "magnet_outward_centering()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "magnet_outward_centering(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1393,6 +1409,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.magnet_subs",
+    "page": "Code",
+    "title": "Tokamak.magnet_subs",
+    "category": "Function",
+    "text": "magnet_subs(cur_var, cur_R_0, cur_n_bar, cur_I_M, cur_B_0=B_0)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.magnet_turns-Tuple{}",
     "page": "Code",
     "title": "Tokamak.magnet_turns",
@@ -1401,11 +1425,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.magnet_z_array-Tuple{}",
+    "location": "code.html#Tokamak.magnet_z_array",
     "page": "Code",
     "title": "Tokamak.magnet_z_array",
-    "category": "Method",
-    "text": "magnet_z_array()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "magnet_z_array(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1565,7 +1589,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.scan_for_R_0",
     "category": "Function",
-    "text": "scan_for_R_0()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "scan_for_R_0(R_0_value, T_list=linspace(5,30,5); rel_tol=1e-3, is_first_call=true, verbose=false)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1645,7 +1669,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.solve_equation_set",
     "category": "Method",
-    "text": "solve_equation_set(cur_T, given_equations)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "solve_equation_set(cur_T, given_equations; verbose=false)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1653,7 +1677,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.solve_magnet_equations",
     "category": "Function",
-    "text": "solve_magnet_equations()\n\nDefine Inner Radius and Total Thickness.\n\n\n\n"
+    "text": "solve_magnet_equations(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; verbose=false)\n\nDefine Inner Radius and Total Thickness.\n\n\n\n"
 },
 
 {
@@ -1661,7 +1685,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.solve_wave_equations",
     "category": "Method",
-    "text": "solve_wave_equations(cur_solved_R_0, cur_solved_B_0)\n\nFunction to solve for n_para, rho_J, omega_nor2.\n\n\n\n"
+    "text": "solve_wave_equations(cur_solved_R_0, cur_solved_B_0; verbose=false)\n\nFunction to solve for n_para, rho_J, omega_nor2.\n\n\n\n"
 },
 
 {
@@ -1765,7 +1789,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.sweep_T_k",
     "category": "Method",
-    "text": "sweep_T_k()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "sweep_T_k(T_list; verbose=true)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1789,7 +1813,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.total_costs_per_year",
     "category": "Method",
-    "text": "total_costs_per_year(cur_table::CostTable)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "total_costs_per_year(cur_table::CostTable)\n\nDiscount cost per year.\n\n\n\n"
 },
 
 {
@@ -1861,7 +1885,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.CostTable",
     "category": "Type",
-    "text": "CostTable()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "CostTable(cur_R_0=R_0, cur_B_0=B_0, cur_T_k=T_k; analyzed_solution=Dict())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1910,6 +1934,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Constants",
     "category": "section",
     "text": "Modules = [Tokamak]\nOrder = [:constant]"
+},
+
+{
+    "location": "code.html#Tokamak.@generate_magnet_equation_set-Tuple{Any,Any,Any}",
+    "page": "Code",
+    "title": "Tokamak.@generate_magnet_equation_set",
+    "category": "Macro",
+    "text": "@generate_magnet_equation_set\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
