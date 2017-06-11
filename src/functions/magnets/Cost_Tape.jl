@@ -1,9 +1,9 @@
-"""
+@doc """
     Cost_Tape()
 
 Lorem ipsum dolor sit amet.
 """
-function Cost_Tape()
+@memoize function Cost_Tape()
 
   cur_Cost_Tape = Price_HTS
 

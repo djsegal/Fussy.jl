@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_subs(cur_var, cur_R_0, cur_n_bar, cur_I_M, cur_B_0=B_0)
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_subs(cur_var, cur_R_0, cur_n_bar, cur_I_M, cur_B_0=B_0)
+@memoize function magnet_subs(cur_var, cur_R_0, cur_n_bar, cur_I_M, cur_B_0=B_0)
 
   if eltype(cur_var) != SymPy.Sym
     return cur_var

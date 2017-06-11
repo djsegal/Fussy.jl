@@ -1,9 +1,9 @@
-"""
+@doc """
     Cost_PF()
 
 Lorem ipsum dolor sit amet.
 """
-function Cost_PF()
+@memoize function Cost_PF()
 
   cur_Vsc_PF = Vsc_PF()
 

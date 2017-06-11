@@ -1,9 +1,9 @@
-"""
+@doc """
     V_TF(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Volume of TF Coil Structure not including HTS.
 """
-function V_TF(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
+@memoize function V_TF(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   cur_magnet_material_thickness =
     magnet_material_thickness(cur_R_0, cur_n_bar, cur_I_M)

@@ -1,9 +1,9 @@
-"""
+@doc """
     Vol_TF()
 
 Lorem ipsum dolor sit amet.
 """
-function Vol_TF()
+@memoize function Vol_TF()
 
   cur_Vol_TF = Vol_WP()
 

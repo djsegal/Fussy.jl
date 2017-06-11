@@ -1,9 +1,9 @@
-"""
+@doc """
     Frac_HTS(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Fraction of HTS.
 """
-function Frac_HTS(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
+@memoize function Frac_HTS(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   cur_Frac = Area_HTS()
 

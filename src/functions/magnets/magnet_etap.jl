@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_etap()
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_etap()
+@memoize function magnet_etap()
 
   cur_magnet_etap = magnet_zp_array()
 

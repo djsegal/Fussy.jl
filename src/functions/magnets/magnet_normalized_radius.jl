@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_normalized_radius()
 
 Normalized Inner Thickness.
 """
-function magnet_normalized_radius()
+@memoize function magnet_normalized_radius()
 
   cur_normalized_thickness = magnet_inner_radius()
 

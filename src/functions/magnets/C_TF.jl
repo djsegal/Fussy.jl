@@ -1,9 +1,9 @@
-"""
+@doc """
     C_TF()
 
 Lorem ipsum dolor sit amet.
 """
-function C_TF()
+@memoize function C_TF()
 
   cur_C_TF = V_TF()
 

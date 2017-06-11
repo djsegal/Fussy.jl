@@ -1,9 +1,9 @@
-"""
+@doc """
     WP_d()
 
 Winding pack radial depth [m].
 """
-function WP_d()
+@memoize function WP_d()
 
   cur_WP_d = magnet_Turns1()
 

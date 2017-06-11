@@ -1,9 +1,9 @@
-"""
+@doc """
     Area_H2(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Determine Cooling Channel Dimensions.
 """
-function Area_H2(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
+@memoize function Area_H2(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   tmp_area = Area_St(cur_R_0, cur_n_bar, cur_I_M)
 

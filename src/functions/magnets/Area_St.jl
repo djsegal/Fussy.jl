@@ -1,9 +1,9 @@
-"""
+@doc """
     Area_St(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Determine Steel Structure Dimensions.
 """
-function Area_St(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
+@memoize function Area_St(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   # estimate of force on cable due to magnetic field
 

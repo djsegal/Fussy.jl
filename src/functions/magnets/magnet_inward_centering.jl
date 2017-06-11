@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_inward_centering()
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_inward_centering()
+@memoize function magnet_inward_centering()
 
   FR1 = -( B_0 / 1u"T" )^2
   FR1 *= ( R_0 / 1u"m" )^2

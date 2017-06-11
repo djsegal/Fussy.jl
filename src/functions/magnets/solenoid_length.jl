@@ -1,9 +1,9 @@
-"""
+@doc """
     solenoid_length()
 
 Lorem ipsum dolor sit amet.
 """
-function solenoid_length()
+@memoize function solenoid_length()
 
   cur_solenoid_length = a_kappa()
 

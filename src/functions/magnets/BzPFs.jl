@@ -1,9 +1,9 @@
-"""
+@doc """
     BzPFs()
 
 Lorem ipsum dolor sit amet.
 """
-function BzPFs()
+@memoize function BzPFs()
 
   B0p = magnet_Ip_array()
 

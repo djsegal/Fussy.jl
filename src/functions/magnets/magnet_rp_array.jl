@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_rp_array()
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_rp_array()
+@memoize function magnet_rp_array()
 
   rp2 = ( R_0 / 1u"m" ) + ( a() / 1u"m" ) * ( 1.56 * kappa - delta )
   rp5 = ( R_0 / 1u"m" ) + ( a() / 1u"m" ) * ( 1.56 * kappa - delta )

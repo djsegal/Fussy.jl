@@ -1,9 +1,9 @@
-"""
+@doc """
     betap()
 
 Lorem ipsum dolor sit amet.
 """
-function betap()
+@memoize function betap()
 
   # Bta Calculation
 

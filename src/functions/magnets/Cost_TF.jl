@@ -1,9 +1,9 @@
-"""
+@doc """
     Cost_TF()
 
 Lorem ipsum dolor sit amet.
 """
-function Cost_TF()
+@memoize function Cost_TF()
 
   cur_Cost_TF = Cost_Tape()
 

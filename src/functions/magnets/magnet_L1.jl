@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_L1()
 
 Straight Section Arc Length.
 """
-function magnet_L1()
+@memoize function magnet_L1()
 
   L1 = a_kappa()
 

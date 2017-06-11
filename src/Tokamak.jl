@@ -10,6 +10,7 @@ module Tokamak
   using DataFrames
   using Grid
   using YAML
+  using Memoize
 
   Base.cd("$(dirname(@__FILE__))/..") do
     include("../config/bootload.jl")

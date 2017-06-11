@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_zd_array()
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_zd_array()
+@memoize function magnet_zd_array()
 
   zd = [
     +1.464,

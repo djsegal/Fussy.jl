@@ -1,9 +1,9 @@
-"""
+@doc """
     BzPFnew()
 
 Lorem ipsum dolor sit amet.
 """
-function BzPFnew()
+@memoize function BzPFnew()
 
   cur_BzPFnew = zeros(1, 4)
 

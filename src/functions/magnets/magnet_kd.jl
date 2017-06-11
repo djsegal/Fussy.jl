@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_kd()
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_kd()
+@memoize function magnet_kd()
 
   cur_magnet_rhod = magnet_rhod()
 

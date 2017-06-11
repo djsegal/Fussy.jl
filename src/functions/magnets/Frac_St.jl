@@ -1,9 +1,9 @@
-"""
+@doc """
     Frac_St()
 
 Fraction of steel.
 """
-function Frac_St()
+@memoize function Frac_St()
 
   cur_Frac = Area_St()
 

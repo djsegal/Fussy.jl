@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_L2(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Curved Section Arc Length.
 """
-function magnet_L2(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
+@memoize function magnet_L2(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   k1, k2, k3 = magnet_k_array()
   c1, c2 = magnet_c_array()

@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_Imax()
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_Imax()
+@memoize function magnet_Imax()
 
   It = 4670*B_coil_max()^-0.796 # Critical current of 12mm tape @ 20K [A/mm2]
 

@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_inner_radius()
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_inner_radius()
+@memoize function magnet_inner_radius()
 
   cur_inner_radius = a()
 

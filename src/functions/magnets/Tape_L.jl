@@ -1,9 +1,9 @@
-"""
+@doc """
     Tape_L()
 
 Length of tape per cable [m].
 """
-function Tape_L()
+@memoize function Tape_L()
 
   cur_Tape_L = Tape_N()
 

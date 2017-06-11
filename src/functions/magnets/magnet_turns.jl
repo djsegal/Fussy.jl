@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_turns()
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_turns()
+@memoize function magnet_turns()
 
   cur_magnet_turns = WP_d()
 

@@ -1,9 +1,9 @@
-"""
+@doc """
     Vol_St()
 
 Lorem ipsum dolor sit amet.
 """
-function Vol_St()
+@memoize function Vol_St()
 
   cur_Vol_St = WP_Area()
 

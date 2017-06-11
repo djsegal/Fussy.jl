@@ -1,9 +1,9 @@
-"""
+@doc """
     Vol_PF()
 
 Volume of PF Coils (HTS and Structure).
 """
-function Vol_PF()
+@memoize function Vol_PF()
 
   cur_Vol_PF = sum( Vsc_PF() )
 

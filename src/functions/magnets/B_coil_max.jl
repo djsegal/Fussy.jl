@@ -1,9 +1,9 @@
-"""
+@doc """
     B_coil_max()
 
 Lorem ipsum dolor sit amet.
 """
-function B_coil_max()
+@memoize function B_coil_max()
 
   cur_B_coil_max = ( B_0 / 1u"T" )
 

@@ -1,9 +1,9 @@
-"""
+@doc """
     a2CS(cur_solution=solve_magnet_equations())
 
 Outer Radius.
 """
-function a2CS(cur_solution=solve_magnet_equations())
+@memoize function a2CS(cur_solution=solve_magnet_equations())
 
   a1, da = cur_solution
 

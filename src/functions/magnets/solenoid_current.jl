@@ -1,9 +1,9 @@
-"""
+@doc """
     solenoid_current()
 
 Lorem ipsum dolor sit amet.
 """
-function solenoid_current()
+@memoize function solenoid_current()
 
   cur_solenoid_current = magnet_B_1
 

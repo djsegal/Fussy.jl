@@ -1,9 +1,9 @@
-"""
+@doc """
     Cable_L(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Length of one cable [m].
 """
-function Cable_L(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
+@memoize function Cable_L(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   cur_Cable_L = WP_d()
 

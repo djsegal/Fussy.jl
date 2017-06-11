@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_Ip_array()
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_Ip_array()
+@memoize function magnet_Ip_array()
 
   Ip2 = -0.1750
   Ip5 = -0.1750

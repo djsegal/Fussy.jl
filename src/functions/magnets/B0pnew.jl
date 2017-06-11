@@ -1,9 +1,9 @@
-"""
+@doc """
     B0pnew()
 
 Lorem ipsum dolor sit amet.
 """
-function B0pnew()
+@memoize function B0pnew()
 
   cur_B0pnew = standard_mu_0
 

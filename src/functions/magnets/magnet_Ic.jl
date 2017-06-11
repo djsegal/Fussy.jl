@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_Ic()
 
 Current per coil.
 """
-function magnet_Ic()
+@memoize function magnet_Ic()
 
   # Total Current for given ( B_0 / 1u"T" )
 

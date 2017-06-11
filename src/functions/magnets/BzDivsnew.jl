@@ -1,9 +1,9 @@
-"""
+@doc """
     BzDivsnew()
 
 Calculate New BV due to Divertor.
 """
-function BzDivsnew()
+@memoize function BzDivsnew()
 
   B0dnew = ItPF()[1:6]'
 

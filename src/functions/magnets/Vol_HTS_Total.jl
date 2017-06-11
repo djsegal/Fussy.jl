@@ -1,9 +1,9 @@
-"""
+@doc """
     Vol_HTS_Total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())
 
 Lorem ipsum dolor sit amet.
 """
-function Vol_HTS_Total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())
+@memoize function Vol_HTS_Total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())
 
   cur_left_part = VJ_CS(cur_solution)
 

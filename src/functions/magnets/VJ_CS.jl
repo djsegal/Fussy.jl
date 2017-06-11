@@ -1,9 +1,9 @@
-"""
+@doc """
     VJ_CS(cur_solution=solve_magnet_equations())
 
 Volume of HTS.
 """
-function VJ_CS(cur_solution=solve_magnet_equations())
+@memoize function VJ_CS(cur_solution=solve_magnet_equations())
 
   a1, da = cur_solution
 

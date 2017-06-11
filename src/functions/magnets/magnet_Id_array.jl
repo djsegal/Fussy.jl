@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_Id_array()
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_Id_array()
+@memoize function magnet_Id_array()
 
   I1 = +0.485
   I2 = -0.558

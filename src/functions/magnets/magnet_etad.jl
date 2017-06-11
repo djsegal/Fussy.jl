@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_etad()
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_etad()
+@memoize function magnet_etad()
 
   cur_magnet_etad = magnet_zd_array()
 

@@ -1,9 +1,9 @@
-"""
+@doc """
     BzDivs()
 
 Divertor Field Contribution.
 """
-function BzDivs()
+@memoize function BzDivs()
 
   B0d = magnet_Id_array()
 

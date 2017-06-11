@@ -1,9 +1,9 @@
-"""
+@doc """
     WP_w()
 
 Widing pack toroidal width [m].
 """
-function WP_w()
+@memoize function WP_w()
 
   cur_WP_w = magnet_Turns1()
 

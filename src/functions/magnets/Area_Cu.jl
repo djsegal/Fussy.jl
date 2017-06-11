@@ -1,9 +1,9 @@
-"""
+@doc """
     Area_Cu(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Determine Copper Stablizer Dimensions.
 """
-function Area_Cu(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
+@memoize function Area_Cu(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   cur_Area_Cu = Coil_Energy(cur_R_0, cur_n_bar, cur_I_M)
 

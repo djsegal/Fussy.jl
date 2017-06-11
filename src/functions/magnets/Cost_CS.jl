@@ -1,9 +1,9 @@
-"""
+@doc """
     Cost_CS(cur_solution=solve_magnet_equations())
 
 Lorem ipsum dolor sit amet.
 """
-function Cost_CS(cur_solution=solve_magnet_equations())
+@memoize function Cost_CS(cur_solution=solve_magnet_equations())
 
   cur_VJ_CS = VJ_CS(cur_solution)
 

@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_Q_15(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())
 
 Total hydrogen cooling @ 15K [kW].
 """
-function magnet_Q_15(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())
+@memoize function magnet_Q_15(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())
 
   normalized_cold_mass = magnet_cold_mass(cur_R_0, cur_n_bar, cur_I_M, cur_solution=cur_solution)
 

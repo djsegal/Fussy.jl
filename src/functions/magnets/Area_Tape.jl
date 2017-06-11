@@ -1,9 +1,9 @@
-"""
+@doc """
     Area_Tape()
 
 Lorem ipsum dolor sit amet.
 """
-function Area_Tape()
+@memoize function Area_Tape()
 
   cur_Area_Tape = Tape_w
 

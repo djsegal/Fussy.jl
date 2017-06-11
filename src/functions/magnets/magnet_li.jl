@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_li()
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_li()
+@memoize function magnet_li()
   rm = 0.6
   alpha = 1/(1-rm^2)
 

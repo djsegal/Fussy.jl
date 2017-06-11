@@ -1,9 +1,9 @@
-"""
+@doc """
     Coil_P(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Coil perimeter [m].
 """
-function Coil_P(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
+@memoize function Coil_P(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   cur_Coil_P = magnet_L1()
 

@@ -1,9 +1,9 @@
-"""
+@doc """
     Coil_Inductance(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 TF coil inductance.
 """
-function Coil_Inductance(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
+@memoize function Coil_Inductance(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   cur_dR = magnet_inner_radius() + magnet_material_thickness(cur_R_0, cur_n_bar, cur_I_M) / 2
 

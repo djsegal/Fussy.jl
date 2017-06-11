@@ -1,9 +1,9 @@
-"""
+@doc """
     Bvtotnew_SF()
 
 Lorem ipsum dolor sit amet.
 """
-function Bvtotnew_SF()
+@memoize function Bvtotnew_SF()
 
   cur_Bvtotnew_SF = BzDivsnew()
 

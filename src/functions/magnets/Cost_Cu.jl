@@ -1,9 +1,9 @@
-"""
+@doc """
     Cost_Cu()
 
 Lorem ipsum dolor sit amet.
 """
-function Cost_Cu()
+@memoize function Cost_Cu()
 
   cur_Cost_Cu = Price_Cu
 

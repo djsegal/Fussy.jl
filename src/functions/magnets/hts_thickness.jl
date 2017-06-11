@@ -1,9 +1,9 @@
-"""
+@doc """
     hts_thickness()
 
 Lorem ipsum dolor sit amet.
 """
-function hts_thickness()
+@memoize function hts_thickness()
 
   cur_hts_thickness = solenoid_current()
 

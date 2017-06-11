@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_Q_80()
 
 Heating due to thermal shielding @ 80K [kW].
 """
-function magnet_Q_80()
+@memoize function magnet_Q_80()
 
   cur_Q_80 = 800.0
 

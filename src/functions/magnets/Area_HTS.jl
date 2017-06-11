@@ -1,9 +1,9 @@
-"""
+@doc """
     Area_HTS()
 
 Area of HTS in winding pack.
 """
-function Area_HTS()
+@memoize function Area_HTS()
 
   cur_Area_HTS = Tape_w
 

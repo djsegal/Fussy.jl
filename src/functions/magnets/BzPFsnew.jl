@@ -1,9 +1,9 @@
-"""
+@doc """
     BzPFsnew()
 
 Lorem ipsum dolor sit amet.
 """
-function BzPFsnew()
+@memoize function BzPFsnew()
 
   cur_BzPFsnew = sum( BzPFnew() )
 

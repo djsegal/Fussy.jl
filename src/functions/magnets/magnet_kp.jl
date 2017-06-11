@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_kp()
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_kp()
+@memoize function magnet_kp()
 
   cur_magnet_rhop = magnet_rhop()
 

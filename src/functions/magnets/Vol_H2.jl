@@ -1,9 +1,9 @@
-"""
+@doc """
     Vol_H2()
 
 Lorem ipsum dolor sit amet.
 """
-function Vol_H2()
+@memoize function Vol_H2()
 
   cur_Vol_H2 = WP_Area()
 

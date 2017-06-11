@@ -1,9 +1,9 @@
-"""
+@doc """
     Vol_HTS()
 
 Lorem ipsum dolor sit amet.
 """
-function Vol_HTS()
+@memoize function Vol_HTS()
 
   cur_Vol_HTS = WP_Area()
 

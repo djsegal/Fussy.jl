@@ -1,9 +1,9 @@
-"""
+@doc """
     Frac_Cu()
 
 Fraction of copper.
 """
-function Frac_Cu()
+@memoize function Frac_Cu()
 
   cur_Frac = Area_Cu()
 

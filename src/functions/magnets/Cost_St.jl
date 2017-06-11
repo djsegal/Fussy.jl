@@ -1,9 +1,9 @@
-"""
+@doc """
     Cost_St()
 
 Lorem ipsum dolor sit amet.
 """
-function Cost_St()
+@memoize function Cost_St()
 
   cur_Cost_St = Price_St
 

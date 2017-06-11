@@ -1,9 +1,9 @@
-"""
+@doc """
     WP_Area(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Determine Total Cable Cross Secional Area.
 """
-function WP_Area(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
+@memoize function WP_Area(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   # square dimension of cable cross section
 

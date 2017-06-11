@@ -1,9 +1,9 @@
-"""
+@doc """
     Vol_Cu()
 
 Lorem ipsum dolor sit amet.
 """
-function Vol_Cu()
+@memoize function Vol_Cu()
 
   cur_Vol_Cu = WP_Area()
 

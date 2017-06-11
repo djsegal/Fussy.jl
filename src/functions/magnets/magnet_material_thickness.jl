@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_material_thickness(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_material_thickness(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
+@memoize function magnet_material_thickness(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   cur_magnet_normalized_radius = magnet_normalized_radius()
 

@@ -1,9 +1,9 @@
-"""
+@doc """
     magnet_outward_centering(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_outward_centering(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
+@memoize function magnet_outward_centering(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   k1, k2, k3 = magnet_k_array()
   c1, c2 = magnet_c_array()
