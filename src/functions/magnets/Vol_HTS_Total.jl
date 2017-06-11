@@ -7,7 +7,7 @@ Lorem ipsum dolor sit amet.
 
   cur_left_part = VJ_CS(cur_solution)
 
-  cur_left_part += sum( Vsc_PF() )
+  cur_left_part += sum( Vsc_PF(cur_R_0, cur_n_bar, cur_I_M) )
 
   cur_left_part *= magnet_hts_fraction
 

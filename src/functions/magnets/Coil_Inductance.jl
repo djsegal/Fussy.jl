@@ -7,8 +7,8 @@ TF coil inductance.
 
   cur_dR = magnet_inner_radius() + magnet_material_thickness(cur_R_0, cur_n_bar, cur_I_M) / 2
 
-  R1 = ( R_0 / 1u"m" ) - cur_dR # Radius from center of CS to TF straight leg
-  R2 = ( R_0 / 1u"m" ) + cur_dR # Radius from center of CS to TF outter D
+  R1 = ( cur_R_0 / 1u"m" ) - cur_dR # Radius from center of CS to TF straight leg
+  R2 = ( cur_R_0 / 1u"m" ) + cur_dR # Radius from center of CS to TF outter D
 
   Ro = ( R1 * R2 ) ^ 0.5
 

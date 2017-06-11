@@ -7,13 +7,13 @@ Lorem ipsum dolor sit amet.
 
   cur_first_part = VJ_CS(cur_solution)
 
-  cur_first_part += sum(Vsc_PF())
+  cur_first_part += sum( Vsc_PF(cur_R_0, cur_n_bar, cur_I_M) )
 
   cur_first_part *= ( 1 - magnet_hts_fraction )
 
   cur_second_part = VM_CS(cur_solution)
 
-  cur_second_part += sum(Vst_PF())
+  cur_second_part += sum( Vst_PF(cur_R_0, cur_n_bar, cur_I_M) )
 
   cur_Frac_HTS = Frac_HTS(cur_R_0, cur_n_bar, cur_I_M)
 

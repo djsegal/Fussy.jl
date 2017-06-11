@@ -8,9 +8,9 @@ Volume of TF Coil Structure not including HTS.
   cur_magnet_material_thickness =
     magnet_material_thickness(cur_R_0, cur_n_bar, cur_I_M)
 
-  cur_reduced_radius = R_0
+  cur_reduced_radius = cur_R_0
 
-  cur_reduced_radius -= a()
+  cur_reduced_radius -= a(cur_R_0)
 
   cur_reduced_radius -= blanket_thickness(cur_R_0, cur_n_bar, cur_I_M)
 

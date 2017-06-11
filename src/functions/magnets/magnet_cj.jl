@@ -1,13 +1,13 @@
-"""
-    magnet_cj()
+@doc """
+    magnet_cj(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_cj()
+@memoize function magnet_cj(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   cj = Array{Any}(1, 10)
 
-  cur_ItPF = ItPF()
+  cur_ItPF = ItPF(cur_R_0, cur_n_bar, cur_I_M)
 
   for p = 1:10
 

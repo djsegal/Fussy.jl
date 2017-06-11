@@ -1,13 +1,13 @@
-"""
-    magnet_cm()
+@doc """
+    magnet_cm(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
 Lorem ipsum dolor sit amet.
 """
-function magnet_cm()
+@memoize function magnet_cm(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   cm = Array{Any}(1, 10)
 
-  cur_magnet_Frc = magnet_Frc()
+  cur_magnet_Frc = magnet_Frc(cur_R_0, cur_n_bar, cur_I_M)
 
   for p = 1:10
 

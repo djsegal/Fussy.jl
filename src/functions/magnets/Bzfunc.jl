@@ -1,9 +1,9 @@
-"""
+@doc """
     Bzfunc(rho, eta, curB, k)
 
 Bz Field Contribution.
 """
-function Bzfunc(rho, eta, curB, k)
+@memoize function Bzfunc(rho, eta, curB, k)
 
   cur_Bzfunc = ( 1 - rho^2 - eta^2 )
 

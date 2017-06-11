@@ -1,9 +1,9 @@
-@doc """
+"""
     magnet_zp_array()
 
 Lorem ipsum dolor sit amet.
 """
-@memoize function magnet_zp_array()
+function magnet_zp_array()
 
   zp = [
     +1.35,

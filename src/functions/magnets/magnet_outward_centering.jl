@@ -12,7 +12,7 @@ Lorem ipsum dolor sit amet.
   # Outward Centering
 
   FR2 = ( B_0 / 1u"T" )
-  FR2 *= ( R_0 / 1u"m" )
+  FR2 *= ( cur_R_0 / 1u"m" )
   FR2 ^= 2
 
   FR2 *= -1
@@ -20,7 +20,7 @@ Lorem ipsum dolor sit amet.
   FR2 *= c1 / k3
 
   FR2 *= (
-    a_kappa() +
+    a_kappa(cur_R_0) +
     blanket_thickness(cur_R_0, cur_n_bar, cur_I_M)
   )
 

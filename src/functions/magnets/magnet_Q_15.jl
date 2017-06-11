@@ -19,7 +19,7 @@ Total hydrogen cooling @ 15K [kW].
 
   cur_Q_15 += cur_mass_part
   cur_Q_15 += 12.4 * normalized_cold_mass
-  cur_Q_15 += 6.4 * ( ( R_0 / 1u"m" ) * ( a() / 1u"m" )^2 / 24.8 )
+  cur_Q_15 += 6.4 * ( ( cur_R_0 / 1u"m" ) * ( a(cur_R_0) / 1u"m" )^2 / 24.8 )
 
   cur_q_part = cur_p_f_part + cur_mass_part
   cur_q_part *= 11.4

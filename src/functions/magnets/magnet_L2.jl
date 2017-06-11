@@ -12,7 +12,7 @@ Curved Section Arc Length.
   cur_blanket_thickness /= 1u"m"
 
   cur_a = magnet_subs(
-    ( a() / 1u"m" ),
+    ( a(cur_R_0) / 1u"m" ),
     cur_R_0, cur_n_bar, cur_I_M
   )
 
