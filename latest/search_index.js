@@ -229,7 +229,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Cost_HTS_Total",
     "category": "Function",
-    "text": "Cost_HTS_Total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=nothing)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Cost_HTS_Total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -245,7 +245,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Cost_ST_Total",
     "category": "Function",
-    "text": "Cost_ST_Total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=nothing)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "Cost_ST_Total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -277,7 +277,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Cryo_Operation",
     "category": "Function",
-    "text": "Cryo_Operation(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=nothing)\n\nCost of power @ 0.1 /kWhr to power the cryoplant annually.\n\n\n\n"
+    "text": "Cryo_Operation(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())\n\nCost of power @ 0.1 /kWhr to power the cryoplant annually.\n\n\n\n"
 },
 
 {
@@ -285,7 +285,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.Cryoplant_Cost",
     "category": "Function",
-    "text": "Cryoplant_Cost(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=nothing)\n\nCost of cryoplant scaled to various heat loads, scaled to 4.5K and estimated using Green's Formula.\n\n\n\n"
+    "text": "Cryoplant_Cost(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())\n\nCost of cryoplant scaled to various heat loads, scaled to 4.5K and estimated using Green's Formula.\n\n\n\n"
 },
 
 {
@@ -857,11 +857,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.blanket_thickness-Tuple{}",
+    "location": "code.html#Tokamak.blanket_thickness",
     "page": "Code",
     "title": "Tokamak.blanket_thickness",
-    "category": "Method",
-    "text": "blanket_thickness()\n\nTotal thickness of everything between plasma and magnets, ie: first wall, vacuum vessel, flibe blanket, be multiplier, and shielding..\n\n\n\n"
+    "category": "Function",
+    "text": "blanket_thickness(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nTotal thickness of everything between plasma and magnets, ie: first wall, vacuum vessel, flibe blanket, be multiplier, and shielding..\n\n\n\n"
 },
 
 {
@@ -1093,7 +1093,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.magnet_Cost_Total",
     "category": "Function",
-    "text": "magnet_Cost_Total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=nothing)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "magnet_Cost_Total(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1601,11 +1601,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.shield_thickness-Tuple{}",
+    "location": "code.html#Tokamak.shield_thickness",
     "page": "Code",
     "title": "Tokamak.shield_thickness",
-    "category": "Method",
-    "text": "shield_thickness()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "shield_thickness(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1885,7 +1885,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.CostTable",
     "category": "Type",
-    "text": "CostTable(cur_R_0=R_0, cur_B_0=B_0, cur_T_k=T_k; analyzed_solution=Dict())\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "CostTable(cur_R_0=R_0, cur_B_0=B_0, cur_T_k=T_k; analyzed_solution=Dict(), magnet_solution=nothing)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
