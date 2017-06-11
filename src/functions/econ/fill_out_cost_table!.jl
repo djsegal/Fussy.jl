@@ -20,13 +20,16 @@ function fill_out_cost_table!(MCT::CostTable, analyzed_solution::Dict)
     end
 
     for (cur_sub_key, cur_sub_val) in cur_val
+
       eval_sub_val = cur_sub_val
 
       if eltype(eval_sub_val) == Char
         for cur_function in incomplete_functions
-          replaced_string = "$cur_function($(analyzed_solution["R_0"]), "
-          replaced_string *= "$(analyzed_solution["n_bar"]), "
-          replaced_string *= "$(analyzed_solution["I_M"]))"
+          replaced_string = "$cur_function("
+          replaced_string *= "( $(analyzed_solution["R_0"] ) * 1u\"m\" ), "
+          replaced_string *= "( $(analyzed_solution["n_bar"] ) * 1u\"n20\" ), "
+          replaced_string *= "( $(analyzed_solution["I_M"] ) * 1u\"MA\" ), "
+          replaced_string *= "cur_solution=$(MCT.magnet_solution))"
 
           eval_sub_val =
             replace(eval_sub_val, "$cur_function()", replaced_string)

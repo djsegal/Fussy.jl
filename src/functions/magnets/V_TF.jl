@@ -12,7 +12,7 @@ function V_TF(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
   cur_reduced_radius -= a()
 
-  cur_reduced_radius -= blanket_thickness()
+  cur_reduced_radius -= blanket_thickness(cur_R_0, cur_n_bar, cur_I_M)
 
   cur_reduced_radius -= ( cur_magnet_material_thickness * 1u"m" ) / 2
 

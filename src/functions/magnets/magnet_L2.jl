@@ -8,10 +8,8 @@ function magnet_L2(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
   k1, k2, k3 = magnet_k_array()
   c1, c2 = magnet_c_array()
 
-  cur_blanket_thickness = magnet_subs(
-    ( blanket_thickness() / 1u"m" ),
-    cur_R_0, cur_n_bar, cur_I_M
-  )
+  cur_blanket_thickness = blanket_thickness(cur_R_0, cur_n_bar, cur_I_M)
+  cur_blanket_thickness /= 1u"m"
 
   cur_a = magnet_subs(
     ( a() / 1u"m" ),

@@ -27,7 +27,10 @@ function cost_schedule(cur_table::CostTable)
   operations_cost = 540e3 * econ_MW_e()
 
   operations_cost += Cryo_Operation(
-    cur_R_0, cur_n_bar, cur_I_M
+    ( cur_R_0 * 1u"m" ),
+    ( cur_n_bar * 1u"n20" ),
+    ( cur_I_M * 1u"MA" ),
+    cur_solution=cur_table.magnet_solution
   )
 
   # decommissioning cost is scaled with lifetime

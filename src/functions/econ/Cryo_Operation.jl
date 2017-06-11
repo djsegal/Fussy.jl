@@ -1,17 +1,9 @@
 """
-    Cryo_Operation(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=nothing)
+    Cryo_Operation(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())
 
 Cost of power @ 0.1 \$/kWhr to power the cryoplant annually.
 """
-function Cryo_Operation(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=nothing)
-
-  if cur_solution == nothing
-    cur_R_0 *= 1u"m"
-    cur_n_bar *= 1u"n20"
-    cur_I_M *= 1u"MA"
-
-    cur_solution = solve_magnet_equations(cur_R_0, cur_n_bar, cur_I_M)
-  end
+function Cryo_Operation(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M; cur_solution=solve_magnet_equations())
 
   cur_magnet_Q_total = magnet_Q_total(cur_R_0, cur_n_bar, cur_I_M, cur_solution=cur_solution)
 

@@ -18,10 +18,10 @@ function magnet_subs(cur_var, cur_R_0, cur_n_bar, cur_I_M, cur_B_0=B_0)
   end
 
   tmp_var = subs(cur_var,
-    symbol_dict["R_0"] => ( cur_R_0 / 1u"m" ),
-    symbol_dict["n_bar"] => ( cur_n_bar / 1u"n20" ),
-    symbol_dict["I_M"] => ( cur_I_M / 1u"MA" ),
-    symbol_dict["B_0"] => ( cur_B_0 / 1u"T" ),
+    symbol_dict["R_0"] => ( cur_R_0 / 1u"m" |> NoUnits ),
+    symbol_dict["n_bar"] => ( cur_n_bar / 1u"n20" |> NoUnits ),
+    symbol_dict["I_M"] => ( cur_I_M / 1u"MA" |> NoUnits ),
+    symbol_dict["B_0"] => ( cur_B_0 / 1u"T" |> NoUnits )
   )
 
   SymPy.N( tmp_var )

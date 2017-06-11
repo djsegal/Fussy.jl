@@ -19,7 +19,12 @@ function magnet_outward_centering(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
   FR2 /= 2 * standard_mu_0
   FR2 *= c1 / k3
 
-  FR2 *= ( a_kappa() + blanket_thickness() ) / 1u"m"
+  FR2 *= (
+    a_kappa() +
+    blanket_thickness(cur_R_0, cur_n_bar, cur_I_M)
+  )
+
+  FR2 /= 1u"m"
   FR2 /= magnet_inner_radius()
 
   FR2 *= (

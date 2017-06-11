@@ -65,9 +65,8 @@ function analyze_solved_case(found_data; verbose=true)
     if tmp_value == SymPy.Sym
       tmp_value = subs(tmp_value, cur_R_0, solved_case["R_0"])
       tmp_value = subs(tmp_value, cur_B_0, solved_case["B_0"])
+      tmp_value = SymPy.N(tmp_value)
     end
-
-    tmp_value = SymPy.N(tmp_value)
 
     if verbose
       println("$key = $( @sprintf("%.3g", tmp_value / value["max_limit"] ) )")

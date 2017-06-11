@@ -10,7 +10,9 @@ function magnet_inward_centering()
 
   FR1 /= 2 * standard_mu_0
   FR1 *= magnet_straight_factor
-  FR1 *= ( a_kappa() + blanket_thickness() ) / 1u"m"
+  FR1 *= a_kappa() + blanket_thickness()
+
+  FR1 /= 1u"m"
 
   FR1 /= ( R_0 / 1u"m" ) - magnet_inner_radius()
 

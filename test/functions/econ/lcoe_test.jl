@@ -8,7 +8,6 @@
   Tokamak.load_input(" T_k = 15 * 1u\"keV\" ")
   Tokamak.load_input(" n_bar = 1.5 * 1u\"n20\" ")
 
-
   cur_solution = Dict(
     "R_0" => ( Tokamak.R_0 / 1u"m" ),
     "B_0" => ( Tokamak.B_0 / 1u"T" ),
@@ -17,7 +16,16 @@
 
   analyzed_solution = Tokamak.analyze_solved_case(cur_solution, verbose=false)
 
-  MCT = Tokamak.CostTable(analyzed_solution=analyzed_solution)
+  magnet_solution = Tokamak.solve_magnet_equations(
+    ( analyzed_solution["R_0"] * 1u"m" ),
+    ( analyzed_solution["n_bar"] * 1u"n20" ),
+    ( analyzed_solution["I_M"] * 1u"MA" )
+  )
+
+  MCT = Tokamak.CostTable(
+    analyzed_solution=analyzed_solution,
+    magnet_solution=magnet_solution
+  )
 
   Tokamak.fill_out_cost_table!(MCT, analyzed_solution)
 
