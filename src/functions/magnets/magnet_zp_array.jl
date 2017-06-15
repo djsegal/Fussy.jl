@@ -1,9 +1,4 @@
-"""
-    magnet_zp_array()
-
-Lorem ipsum dolor sit amet.
-"""
-function magnet_zp_array()
+@memoize function magnet_zp_array_mem()
 
   zp = [
     +1.35,
@@ -19,3 +14,10 @@ function magnet_zp_array()
   zp
 
 end
+
+"""
+    magnet_zp_array()
+
+Lorem ipsum dolor sit amet.
+"""
+magnet_zp_array() = copy(magnet_zp_array_mem())

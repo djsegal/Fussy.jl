@@ -1,9 +1,4 @@
-"""
-    magnet_Ip_array()
-
-Lorem ipsum dolor sit amet.
-"""
-function magnet_Ip_array()
+@memoize function magnet_Ip_array_mem()
 
   Ip2 = -0.1750
   Ip5 = -0.1750
@@ -19,3 +14,10 @@ function magnet_Ip_array()
   cur_Ip_array
 
 end
+
+"""
+    magnet_Ip_array()
+
+Lorem ipsum dolor sit amet.
+"""
+magnet_Ip_array() = copy(magnet_Ip_array_mem())

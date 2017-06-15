@@ -1,9 +1,4 @@
-"""
-    magnet_zd_array()
-
-Lorem ipsum dolor sit amet.
-"""
-function magnet_zd_array()
+@memoize function magnet_zd_array_mem()
 
   zd = [
     +1.464,
@@ -21,3 +16,10 @@ function magnet_zd_array()
   zd
 
 end
+
+"""
+    magnet_zd_array()
+
+Lorem ipsum dolor sit amet.
+"""
+magnet_zd_array() = copy(magnet_zd_array_mem())

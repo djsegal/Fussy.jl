@@ -1,9 +1,4 @@
-"""
-    magnet_Id_array()
-
-Lorem ipsum dolor sit amet.
-"""
-function magnet_Id_array()
+@memoize function magnet_Id_array_mem()
 
   I1 = +0.485
   I2 = -0.558
@@ -21,3 +16,10 @@ function magnet_Id_array()
   cur_Id_array
 
 end
+
+"""
+    magnet_Id_array()
+
+Lorem ipsum dolor sit amet.
+"""
+magnet_Id_array() = copy(magnet_Id_array_mem())
