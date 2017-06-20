@@ -23,7 +23,7 @@ function converge_eta_CD(cur_equations; verbose=false)
     cur_new_eta_CD = get_new_eta_CD(cur_solved_R_0, cur_solved_B_0, verbose=verbose)
 
     if isnan(cur_new_eta_CD)
-      return [ -1 , -1 , -1 ]
+      return [ NaN , NaN , NaN ]
     end
 
     load_input( "eta_CD = $cur_new_eta_CD" )

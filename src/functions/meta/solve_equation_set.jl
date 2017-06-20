@@ -47,7 +47,9 @@ function solve_equation_set(cur_T, given_equations; verbose=false)
         cur_B_0 => cur_solved_B_0
       )
 
-      tmp_value = calc_possible_values(tmp_value)
+      if !isnan(tmp_value)
+        tmp_value = calc_possible_values(tmp_value)
+      end
 
       tmp_value /= sub_value["max_limit"]
 

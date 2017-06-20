@@ -1,26 +1,20 @@
 """
     solve_wave_equations(cur_solved_R_0, cur_solved_B_0; verbose=false)
 
-Function to solve for n_para, rho_J, omega_nor2.
+Function to solve for n_para, rho_J, omega.
 """
 function solve_wave_equations(cur_solved_R_0, cur_solved_B_0; verbose=false)
-  cur_solution = nothing
+  rho_J = nothing
 
   for cur_attempt in 1:20
     did_work = true
 
     try
-      cur_initial_values = [
-        rand(linspace(1.0, 3.0)),
-        rand(linspace(0.0, 1.0)),
-        rand(linspace(0.5, 3.0))
-      ]
-
-      cur_solution = mcpsolve(
+      rho_J = nlsolve(
         @generate_wave_equation_set(cur_solved_R_0, cur_solved_B_0),
-        [0.0, 0.0, 0.0], [20.0, 1.0, 15.0], cur_initial_values, factor=5.0,
-        show_trace = false, xtol = 1e-6, ftol = 5e-4, iterations=40
-      ).zero
+        [rand(linspace(0.25, 0.75))],
+        show_trace = false, xtol = 1e-2, ftol = 1e-5, iterations=40
+      ).zero[1]
 
     catch
       did_work = false
@@ -32,24 +26,35 @@ function solve_wave_equations(cur_solved_R_0, cur_solved_B_0; verbose=false)
     break
   end
 
-  if cur_solution == nothing
+  if rho_J == nothing
     if verbose ; print("x") ; end
-    cur_solution = [ 0 , 0 , 0 ]
+    return [ NaN , NaN , NaN ]
   end
 
-  n_para = cur_solution[1]
-  rho_J = cur_solution[2]
-  omega_nor2 = cur_solution[3]
+  cur_n_para = n_para(rho_J)
 
-  omega = sqrt(omega_nor2.*omega_ce(rho_J).*omega_ci(rho_J))   #(eqn15)
+  cur_omega_nor2 = omega_nor2(rho_J)
 
-  omega = subs(omega, symbol_dict["B_0"], cur_solved_B_0)
+  omega = sqrt(cur_omega_nor2.*omega_ce(rho_J).*omega_ci(rho_J))   #(eqn15)
 
   output = Array{Any}(3)
 
-  output[1] = n_para
+  output[1] = cur_n_para
   output[2] = rho_J
   output[3] = omega
+
+  cur_n_bar = calc_possible_values(
+    solved_steady_density() / 1u"n20"
+  )
+
+  output = map(
+    x -> subs(x,
+      symbol_dict["n_bar"] => cur_n_bar,
+      symbol_dict["R_0"] => cur_solved_R_0,
+      symbol_dict["B_0"] => cur_solved_B_0
+    ),
+    output
+  )
 
   return output
 end

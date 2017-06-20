@@ -20,6 +20,7 @@ A = 2.5
 f_DT = 0.85
 
 wave_theta = 0
+wave_gamma0 = 8.562
 
 shape_sigma = 0.1
 
