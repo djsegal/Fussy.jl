@@ -4,6 +4,10 @@
 Lorem ipsum dolor sit amet.
 """
 function r_b_eq_hard_coded()
+
+  # note:
+  # does not use confinement_scaling var
+
   cur_r_b_eq = -K_BR()
 
   cur_r_b_eq *= sqrt( T_k / 1u"keV" )
@@ -23,4 +27,5 @@ function r_b_eq_hard_coded()
   cur_r_b_eq -= ( R_0 / 1u"m" ) ^ ( 16 // 100 )
 
   cur_r_b_eq
+
 end
