@@ -33,6 +33,8 @@ enable_eta_CD_derive = true
 enable_blanket_derive = true
 enable_cold_mass_calc = true
 
+use_lin_sigma_v_funcs = true
+
 confinement_scaling = Dict(
   "constant" => 0.145,
   "I_M" => ( 93 // 100 ),

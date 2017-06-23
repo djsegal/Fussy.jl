@@ -2,7 +2,7 @@
 
   @test isdefined(Tokamak, :sigma_v) == true
 
-  @test_throws DomainError Tokamak.sigma_v()
+  # @test_throws DomainError Tokamak.sigma_v()
 
   T_k_symbol = Tokamak.symbol_dict["T_k"]
 
@@ -14,6 +14,9 @@
 
     if cur_bool
       Tokamak.load_input("random.jl", true)
+    else
+      Tokamak.load_input("defaults.jl", true)
+      Tokamak.load_input("test/input.jl", true)
     end
 
     for cur_T_k in logspace(0, log10(50), test_count)
@@ -27,6 +30,29 @@
       actual_value /= Tokamak.calc_possible_values()
 
       @test isapprox(actual_value, expected_value)
+    end
+
+  end
+
+  for cur_bool in [false, true]
+
+    if cur_bool
+      Tokamak.load_input("random.jl", true)
+    else
+      Tokamak.load_input("defaults.jl", true)
+      Tokamak.load_input("test/input.jl", true)
+    end
+
+    for cur_T_k in logspace(log10(5), log10(25), test_count)
+      Tokamak.load_input( "T_k = $(cur_T_k)u\"keV\"" )
+
+      Tokamak.load_input( "use_lin_sigma_v_funcs = false" )
+      expected_value = Tokamak.sigma_v()
+
+      Tokamak.load_input( "use_lin_sigma_v_funcs = true" )
+      actual_value = Tokamak.sigma_v()
+
+      @test isapprox(actual_value, expected_value, rtol=0.9)
     end
 
   end
@@ -52,6 +78,9 @@
 
     if cur_bool
       Tokamak.load_input("random.jl", true)
+    else
+      Tokamak.load_input("defaults.jl", true)
+      Tokamak.load_input("test/input.jl", true)
     end
 
     sigma_v_expected = []
