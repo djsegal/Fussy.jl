@@ -5,7 +5,7 @@ Lorem ipsum dolor sit amet.
 """
 @memoize function magnet_zpp(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
 
-  zm = 0
+  zm = 0.0
 
   cur_magnet_zpp = []
 

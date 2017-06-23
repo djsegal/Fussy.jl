@@ -3,7 +3,7 @@ kappa = 1.8
 delta = 0.5
 epsilon = 0.25
 N_G = 0.8
-H = 1
+H = 1.0
 
 nu_n = 0.3
 nu_T = 1.2
@@ -19,7 +19,7 @@ A = 2.5
 
 f_DT = 0.85
 
-wave_theta = 0
+wave_theta = 0.0
 wave_gamma0 = 8.562
 
 shape_sigma = 0.1

@@ -16,7 +16,7 @@ function calc_cur_eta_cd(cur_vars...)
 
   xt2 = ww.^2*(local_B(rho_J_m)./(B_M(rho_J_m)-local_B(rho_J_m)))
 
-  MM = 1
+  MM = 1.0
   nn = 0.77
   xr = 3.5
 
