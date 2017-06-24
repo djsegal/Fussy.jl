@@ -465,11 +465,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.converge_eta_CD-Tuple{Any}",
+    "location": "code.html#Tokamak.converge_eta_CD",
     "page": "Code",
     "title": "Tokamak.converge_eta_CD",
-    "category": "Method",
-    "text": "converge_eta_CD(cur_equations; verbose=false)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "converge_eta_CD(cur_equations, T_guess=12.5; verbose=false)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -589,7 +589,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.get_new_eta_CD",
     "category": "Method",
-    "text": "get_new_eta_CD(cur_solved_R_0, cur_solved_B_0; verbose=false)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "get_new_eta_CD(cur_solved_R_0, cur_solved_T_k; verbose=false)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -641,11 +641,43 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.lin_sigma_v-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.lin_sigma_v",
+    "category": "Method",
+    "text": "lin_sigma_v()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.lin_sigma_v_ave-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.lin_sigma_v_ave",
+    "category": "Method",
+    "text": "lin_sigma_v_ave(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.local_B",
     "page": "Code",
     "title": "Tokamak.local_B",
     "category": "Function",
     "text": "local_B(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.log_sigma_v-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.log_sigma_v",
+    "category": "Method",
+    "text": "log_sigma_v()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.log_sigma_v_ave-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.log_sigma_v_ave",
+    "category": "Method",
+    "text": "log_sigma_v_ave(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -681,6 +713,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.n_para",
+    "page": "Code",
+    "title": "Tokamak.n_para",
+    "category": "Function",
+    "text": "n_para(rho_J, cur_wave_chi=nothing)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.n_profile-Tuple{Any}",
     "page": "Code",
     "title": "Tokamak.n_profile",
@@ -710,6 +750,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.omega_ci",
     "category": "Method",
     "text": "omega_ci(rho)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.omega_nor2",
+    "page": "Code",
+    "title": "Tokamak.omega_nor2",
+    "category": "Function",
+    "text": "omega_nor2(rho_J, cur_wave_chi=nothing)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -849,6 +897,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.sigma_v_k_array-Tuple{}",
+    "page": "Code",
+    "title": "Tokamak.sigma_v_k_array",
+    "category": "Method",
+    "text": "sigma_v_k_array()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.simplified_current-Tuple{}",
     "page": "Code",
     "title": "Tokamak.simplified_current",
@@ -877,7 +933,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.solve_equation_set",
     "category": "Method",
-    "text": "solve_equation_set(cur_T, given_equations; verbose=false)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "text": "solve_equation_set(cur_B, given_equations; verbose=false)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -885,7 +941,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Code",
     "title": "Tokamak.solve_wave_equations",
     "category": "Method",
-    "text": "solve_wave_equations(cur_solved_R_0, cur_solved_B_0; verbose=false)\n\nFunction to solve for n_para, rho_J, omega_nor2.\n\n\n\n"
+    "text": "solve_wave_equations(cur_solved_R_0, cur_solved_T_k; verbose=false)\n\nFunction to solve for n_para, rho_J, omega.\n\n\n\n"
 },
 
 {
@@ -945,11 +1001,27 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "code.html#Tokamak.solved_R_0_from_power_balance",
+    "page": "Code",
+    "title": "Tokamak.solved_R_0_from_power_balance",
+    "category": "Function",
+    "text": "solved_R_0_from_power_balance(cur_T_k, cur_B_0)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
     "location": "code.html#Tokamak.solved_R_0_from_wall-Tuple{}",
     "page": "Code",
     "title": "Tokamak.solved_R_0_from_wall",
     "category": "Method",
     "text": "solved_R_0_from_wall()\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.solved_T_k_from_beta",
+    "page": "Code",
+    "title": "Tokamak.solved_T_k_from_beta",
+    "category": "Function",
+    "text": "solved_T_k_from_beta(T_guess, cur_B_0=B_0)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -982,6 +1054,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Tokamak.surface_area",
     "category": "Function",
     "text": "surface_area(cur_R_0=R_0)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+},
+
+{
+    "location": "code.html#Tokamak.sweep_B_0-Tuple{Any}",
+    "page": "Code",
+    "title": "Tokamak.sweep_B_0",
+    "category": "Method",
+    "text": "sweep_B_0(B_list; verbose=true)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
