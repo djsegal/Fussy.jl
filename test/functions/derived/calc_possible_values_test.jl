@@ -2,8 +2,6 @@
 
   @test isdefined(Tokamak, :calc_possible_values) == true
 
-  @test_throws DomainError Tokamak.calc_possible_values()
-
   Tokamak.load_input( "nu_T = 1e-6" )
   Tokamak.load_input( "nu_n = 1e-6" )
 

@@ -1,21 +1,20 @@
 """
-    solve_wave_equations(cur_solved_R_0, cur_solved_B_0; verbose=false)
+    solve_wave_equations(cur_solved_R_0, cur_solved_T_k; verbose=false)
 
 Function to solve for n_para, rho_J, omega.
 """
-function solve_wave_equations(cur_solved_R_0, cur_solved_B_0; verbose=false)
+function solve_wave_equations(cur_solved_R_0, cur_solved_T_k; verbose=false)
   rho_J = nothing
 
-  for cur_attempt in 1:20
+  for cur_attempt in 1:10
     did_work = true
 
     try
       rho_J = nlsolve(
-        @generate_wave_equation_set(cur_solved_R_0, cur_solved_B_0),
-        [rand(linspace(0.25, 0.75))],
+        @generate_wave_equation_set(cur_solved_R_0, cur_solved_T_k),
+        [rand(linspace(0.1, 0.9))],
         show_trace = false, xtol = 1e-2, ftol = 1e-5, iterations=40
       ).zero[1]
-
     catch
       did_work = false
     end
@@ -43,15 +42,17 @@ function solve_wave_equations(cur_solved_R_0, cur_solved_B_0; verbose=false)
   output[2] = rho_J
   output[3] = omega
 
-  cur_n_bar = calc_possible_values(
-    solved_steady_density() / 1u"n20"
+  cur_n_bar = subs(
+    calc_possible_values(
+      solved_steady_density() / 1u"n20"
+    ),
+    symbol_dict["T_k"] => cur_solved_T_k,
+    symbol_dict["R_0"] => cur_solved_R_0
   )
 
   output = map(
     x -> subs(x,
-      symbol_dict["n_bar"] => cur_n_bar,
-      symbol_dict["R_0"] => cur_solved_R_0,
-      symbol_dict["B_0"] => cur_solved_B_0
+      symbol_dict["n_bar"] => cur_n_bar
     ),
     output
   )

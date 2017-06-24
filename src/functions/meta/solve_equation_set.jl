@@ -1,16 +1,17 @@
 """
-    solve_equation_set(cur_T, given_equations; verbose=false)
+    solve_equation_set(cur_B, given_equations; verbose=false)
 
 Lorem ipsum dolor sit amet.
 """
-function solve_equation_set(cur_T, given_equations; verbose=false)
-  load_input( "T_k = $(cur_T)u\"keV\"" )
+function solve_equation_set(cur_B, given_equations; verbose=false)
+  load_input( "B_0 = $(cur_B)u\"T\"" )
 
   cur_n_bar = symbol_dict["n_bar"]
   cur_I_M = symbol_dict["I_M"]
 
   cur_R_0 = symbol_dict["R_0"]
   cur_B_0 = symbol_dict["B_0"]
+  cur_T_k = symbol_dict["T_k"]
 
   solved_equation = OrderedDict()
 
@@ -28,30 +29,34 @@ function solve_equation_set(cur_T, given_equations; verbose=false)
 
     if verbose ; println(" \n\n $key \n ") ; end
 
-    cur_solved_R_0, cur_solved_B_0, cur_eta_CD = converge_eta_CD(given_equations[key], verbose=verbose)
+    cur_solved_R_0, cur_solved_T_k, cur_eta_CD = converge_eta_CD(given_equations[key], verbose=verbose)
 
     solved_equation[key]["eta_CD"] = cur_eta_CD
 
     load_input("eta_CD = $initial_eta_CD")
 
     solved_equation[key]["R_0"] = cur_solved_R_0
-    solved_equation[key]["B_0"] = cur_solved_B_0
+    solved_equation[key]["B_0"] = cur_B
+    solved_equation[key]["T_k"] = cur_solved_T_k
 
     for (sub_key, sub_value) in given_equations
       tmp_value = sub_value["cur_limit"]
 
-      tmp_value = subs(tmp_value,
-        cur_n_bar => cur_solved_steady_density,
-        cur_I_M => cur_solved_steady_current,
-        cur_R_0 => cur_solved_R_0,
-        cur_B_0 => cur_solved_B_0
-      )
+      tmp_value /= sub_value["max_limit"]
 
       if !isnan(tmp_value)
-        tmp_value = calc_possible_values(tmp_value)
-      end
 
-      tmp_value /= sub_value["max_limit"]
+        tmp_value = calc_possible_values(tmp_value)
+
+        tmp_value = subs(tmp_value,
+          cur_n_bar => cur_solved_steady_density,
+          cur_I_M => cur_solved_steady_current,
+          cur_R_0 => cur_solved_R_0,
+          cur_T_k => cur_solved_T_k,
+          cur_B_0 => cur_B
+        )
+
+      end
 
       solved_equation[key]["other_limits"][sub_key] = tmp_value
     end

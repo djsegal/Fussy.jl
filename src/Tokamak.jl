@@ -16,12 +16,12 @@ module Tokamak
     include("../config/bootload.jl")
   end
 
-  function main(num_points=11; min_T=5, max_T=25)
+  function main(num_points=6; min_B=5, max_B=15)
     load_input("input.jl", true)
 
-    T_list = linspace(min_T, max_T, num_points)
+    B_list = linspace(min_B, max_B, num_points)
 
-    solved_equations = sweep_T_k(T_list)
+    solved_equations = sweep_B_0(B_list)
 
     for (key, value) in solved_equations
       println("\n$(key)\n")
@@ -31,6 +31,9 @@ module Tokamak
 
       println("B_0 = ")
       println(solved_equations[key]["B_0"])
+
+      println("T_k = ")
+      println(solved_equations[key]["T_k"])
 
       println("eta_CD = ")
       println(solved_equations[key]["eta_CD"])

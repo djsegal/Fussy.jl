@@ -19,21 +19,20 @@ function calc_possible_values(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=s
 
   cur_T_k_type = eltype( cur_T_k_value |> NoUnits )
 
-  if cur_T_k_type != SymPy.Sym
-    if has(cur_value, cur_T_k_symbol)
-      cur_value = subs(cur_value, cur_T_k_symbol, cur_T_k_value)
-    end
+  if has(cur_value, cur_T_k_symbol) && cur_T_k_type != SymPy.Sym
+    cur_value = subs(cur_value, cur_T_k_symbol, cur_T_k_value)
+  end
 
-    if has(cur_value, cur_K_CD_denom_symbol)
-      cur_value = subs(cur_value, cur_K_CD_denom_symbol, cur_K_CD_denom_value)
-    end
+  if has(cur_value, cur_K_CD_denom_symbol)
+    cur_value = subs(cur_value, cur_K_CD_denom_symbol, cur_K_CD_denom_value)
+  end
 
-    still_has_symbols = has(cur_value, symbol_dict["R_0"])
-    still_has_symbols |= has(cur_value, symbol_dict["B_0"])
+  still_has_symbols = has(cur_value, symbol_dict["R_0"])
+  still_has_symbols |= has(cur_value, symbol_dict["B_0"])
+  still_has_symbols |= has(cur_value, symbol_dict["T_k"])
 
-    if !still_has_symbols
-      cur_value = SymPy.N(cur_value)
-    end
+  if !still_has_symbols
+    cur_value = SymPy.N(cur_value)
   end
 
   cur_value
