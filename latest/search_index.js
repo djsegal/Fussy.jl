@@ -1065,14 +1065,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.sweep_T_k-Tuple{Any}",
-    "page": "Code",
-    "title": "Tokamak.sweep_T_k",
-    "category": "Method",
-    "text": "sweep_T_k(T_list; verbose=true)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
-},
-
-{
     "location": "code.html#Tokamak.target_angle-Tuple{}",
     "page": "Code",
     "title": "Tokamak.target_angle",
