@@ -1,6 +1,6 @@
 main_folder = "$(dirname(@__FILE__))/.."
 
-loaded_folders = [ "config/initializers", "src" ]
+loaded_folders = [ "config/initializers", "src", "lib/tasks" ]
 
 for loaded_folder in loaded_folders
   loaded_folder = "$main_folder/$loaded_folder"
