@@ -929,11 +929,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.solve_equation_set-Tuple{Any,Any}",
+    "location": "code.html#Tokamak.solve_equation_set",
     "page": "Code",
     "title": "Tokamak.solve_equation_set",
-    "category": "Method",
-    "text": "solve_equation_set(cur_B, given_equations; verbose=false)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "solve_equation_set(cur_B, given_equations, T_guess=12.5; verbose=false)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
@@ -1057,11 +1057,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "code.html#Tokamak.sweep_B_0-Tuple{Any}",
+    "location": "code.html#Tokamak.sweep_B_0",
     "page": "Code",
     "title": "Tokamak.sweep_B_0",
-    "category": "Method",
-    "text": "sweep_B_0(B_list; verbose=true)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
+    "category": "Function",
+    "text": "sweep_B_0(B_list, T_guess=12.5; verbose=true)\n\nLorem ipsum dolor sit amet.\n\n\n\n"
 },
 
 {
