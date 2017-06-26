@@ -14,6 +14,12 @@ function converge_eta_CD(cur_equations, T_guess=12.5; verbose=false)
   while !has_converged
 
     cur_solved_T_k = cur_equations["T_k"](T_guess) / 1u"keV"
+
+    if isnan(cur_solved_T_k)
+      if verbose ; print("x") ; end
+      return [ NaN , NaN , NaN ]
+    end
+
     cur_solved_R_0 = cur_equations["R_0"](cur_solved_T_k) / 1u"m"
 
     if !enable_eta_CD_derive

@@ -25,7 +25,11 @@ function solved_T_k_from_beta(T_guess, cur_B_0=B_0)
 
   cur_eq = calc_possible_values( cur_eq )
 
-  solved_T_k = nsolve(cur_eq, T_guess)
+  try
+    solved_T_k = nsolve(cur_eq, T_guess)
+  catch
+    solved_T_k = NaN
+  end
 
   solved_T_k *= 1u"keV"
 

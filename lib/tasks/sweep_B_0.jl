@@ -1,9 +1,9 @@
 """
-    sweep_B_0(B_list; verbose=true)
+    sweep_B_0(B_list, T_guess=12.5; verbose=true)
 
 Lorem ipsum dolor sit amet.
 """
-function sweep_B_0(B_list; verbose=true)
+function sweep_B_0(B_list, T_guess=12.5; verbose=true)
 
   given_equations = setup_given_equations()
 
@@ -33,7 +33,7 @@ function sweep_B_0(B_list; verbose=true)
     cur_B = B_list[cur_index]
     if verbose ; print("\n\n$cur_B") ; end
 
-    cur_solved_equation = solve_equation_set(cur_B, given_equations, verbose=verbose)
+    cur_solved_equation = solve_equation_set(cur_B, given_equations, T_guess, verbose=verbose)
 
     for (eq_index, (key, value)) in enumerate(given_equations)
       solved_equations[key]["R_0"][cur_index] = cur_solved_equation[key]["R_0"]
@@ -47,6 +47,9 @@ function sweep_B_0(B_list; verbose=true)
       end
     end
 
+    if !isnan(solved_equations["beta"]["T_k"][cur_index])
+      T_guess = solved_equations["beta"]["T_k"][cur_index]
+    end
   end
 
   return solved_equations
