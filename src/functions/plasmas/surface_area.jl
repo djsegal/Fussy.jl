@@ -12,7 +12,7 @@ function surface_area(cur_R_0=R_0)
 
     dxdt = 0.0
 
-    for cur_index in 0:3
+    for cur_index = 0:3
       cur_dxdt_part = cur_index * 1.0
 
       cur_dxdt_part *= cur_shape_array[cur_index+1]

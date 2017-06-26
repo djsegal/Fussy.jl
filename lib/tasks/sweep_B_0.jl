@@ -29,7 +29,7 @@ function sweep_B_0(B_list; verbose=true)
     end
   end
 
-  @inbounds for cur_index in 1:length(B_list)
+  @inbounds for cur_index = 1:length(B_list)
     cur_B = B_list[cur_index]
     if verbose ; print("\n\n$cur_B") ; end
 

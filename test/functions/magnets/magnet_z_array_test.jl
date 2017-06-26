@@ -16,7 +16,7 @@
   expected_value = [-2.699421530925315; 1.046420851749349 + 0.584213746340947im; 1.046420851749349 - 0.584213746340947im]
   @test length(actual_value) == length(expected_value)
 
-  for cur_index in 1:length(expected_value)
+  for cur_index = 1:length(expected_value)
     @test isapprox(expected_value[cur_index], actual_value[cur_index], rtol=5e-4)
   end
 

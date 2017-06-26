@@ -17,7 +17,7 @@
 
   @test length(actual_value) == length(expected_value)
 
-  for cur_index in 1:length(expected_value)
+  for cur_index = 1:length(expected_value)
     @test isapprox(expected_value[cur_index], actual_value[cur_index], rtol=5e-4)
   end
 
