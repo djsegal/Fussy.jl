@@ -8,6 +8,6 @@ NLsolve
 Elliptic
 Polynomials
 DataFrames
-Grid
+Interpolations
 YAML
 Memoize

@@ -8,7 +8,7 @@ module Tokamak
   using Elliptic
   using Polynomials
   using DataFrames
-  using Grid
+  using Interpolations
   using YAML
   using Memoize
 
