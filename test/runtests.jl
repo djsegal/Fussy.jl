@@ -6,7 +6,7 @@ using Unitful
 using Unitful.DefaultSymbols
 using SymPy
 
-@testset DottedTestSet "All Tests" begin
+@testset ExtendedTestSet "All Tests" begin
   if ( endswith(pwd(), "/test") ) ; Base.cd("..") ; end
 
   seed_int = abs(rand(Int16))
