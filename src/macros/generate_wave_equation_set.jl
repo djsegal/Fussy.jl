@@ -15,15 +15,15 @@ macro generate_wave_equation_set(cur_solved_R_0, cur_solved_T_k)
       cur_wave_chi = subs(
         wave_chi(rho),
         symbol_dict["n_bar"] => cur_n_bar,
-        symbol_dict["R_0"] => $cur_solved_R_0,
-        symbol_dict["T_k"] => $cur_solved_T_k
+        symbol_dict["R_0"] => $(esc(cur_solved_R_0)),
+        symbol_dict["T_k"] => $(esc(cur_solved_T_k))
       )
 
       cur_n_para = n_para(rho, cur_wave_chi)
 
       cur_F[1] = (1+nu_T)
       cur_F[1] *= (1-rho^2)^nu_T*cur_n_para^2
-      cur_F[1] -= 28.4/( cur_solved_T_k )
+      cur_F[1] -= 28.4/( $(esc(cur_solved_T_k)) )
 
       cur_F
     end

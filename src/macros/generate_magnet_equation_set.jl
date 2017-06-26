@@ -17,11 +17,11 @@ macro generate_magnet_equation_set(cur_R_0, cur_n_bar, cur_I_M)
 
       cur_left_part = standard_mu_0
 
-      cur_left_part *= ( cur_R_0 / 1u"m" )
+      cur_left_part *= ( $(esc(cur_R_0)) / 1u"m" )
 
       cur_left_part *= magnet_li()
 
-      cur_left_part *= ( cur_I_M / 1u"A" )
+      cur_left_part *= ( $(esc(cur_I_M)) / 1u"A" )
 
       cur_left_part /= 2
 
@@ -94,8 +94,8 @@ macro generate_magnet_equation_set(cur_R_0, cur_n_bar, cur_I_M)
       if eltype(cur_second_part) == SymPy.Sym
 
         cur_second_part = subs(cur_second_part,
-          symbol_dict["R_0"] => ( cur_R_0 / 1u"m" ),
-          symbol_dict["n_bar"] => ( cur_n_bar / 1u"n20" )
+          symbol_dict["R_0"] => ( $(esc(cur_R_0)) / 1u"m" ),
+          symbol_dict["n_bar"] => ( $(esc(cur_n_bar)) / 1u"n20" )
         )
 
       end
@@ -103,8 +103,8 @@ macro generate_magnet_equation_set(cur_R_0, cur_n_bar, cur_I_M)
       if eltype(cur_third_part) == SymPy.Sym
 
         cur_third_part = subs(cur_third_part,
-          symbol_dict["R_0"] => ( cur_R_0 / 1u"m" ),
-          symbol_dict["n_bar"] => ( cur_n_bar / 1u"n20" )
+          symbol_dict["R_0"] => ( $(esc(cur_R_0)) / 1u"m" ),
+          symbol_dict["n_bar"] => ( $(esc(cur_n_bar)) / 1u"n20" )
         )
 
       end
