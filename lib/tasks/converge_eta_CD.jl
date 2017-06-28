@@ -39,7 +39,7 @@ function converge_eta_CD(cur_B, cur_equations, T_guess=12.5; verbose=false)
 
     prev_eta_CD = cur_new_eta_CD
 
-    has_converged = ( rel_error < 5e-2 )
+    has_converged = ( rel_error < wave_error_level )
 
   end
 
