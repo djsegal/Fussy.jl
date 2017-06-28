@@ -4,8 +4,6 @@
 Lorem ipsum dolor sit amet.
 """
 function solve_equation_set(cur_B, given_equations, T_guess=12.5; verbose=false)
-  load_input( "B_0 = $(cur_B)u\"T\"" )
-
   cur_n_bar = symbol_dict["n_bar"]
   cur_I_M = symbol_dict["I_M"]
 
@@ -29,7 +27,7 @@ function solve_equation_set(cur_B, given_equations, T_guess=12.5; verbose=false)
 
     if verbose ; println(" \n\n $key \n ") ; end
 
-    cur_solved_R_0, cur_solved_T_k, cur_eta_CD = converge_eta_CD(given_equations[key], T_guess, verbose=verbose)
+    cur_solved_R_0, cur_solved_T_k, cur_eta_CD = converge_eta_CD(cur_B, given_equations[key], T_guess, verbose=verbose)
 
     if !isnan(cur_solved_T_k)
       T_guess = cur_solved_T_k

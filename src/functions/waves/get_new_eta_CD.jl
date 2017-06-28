@@ -1,10 +1,10 @@
 """
-    get_new_eta_CD(cur_solved_R_0, cur_solved_T_k; verbose=false)
+    get_new_eta_CD(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k; verbose=false)
 
 Lorem ipsum dolor sit amet.
 """
-function get_new_eta_CD(cur_solved_R_0, cur_solved_T_k; verbose=false)
-  cur_solution = solve_wave_equations(cur_solved_R_0, cur_solved_T_k, verbose=verbose)
+function get_new_eta_CD(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k; verbose=false)
+  cur_solution = solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, verbose=verbose)
 
   n_para = cur_solution[1]
   rho_J = cur_solution[2]

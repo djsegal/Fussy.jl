@@ -3,7 +3,7 @@
 
 Lorem ipsum dolor sit amet.
 """
-macro generate_wave_equation_set(cur_solved_R_0, cur_solved_T_k)
+macro generate_wave_equation_set(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k)
   quote
     function (cur_var, cur_F)
       rho = cur_var[1]
@@ -16,6 +16,7 @@ macro generate_wave_equation_set(cur_solved_R_0, cur_solved_T_k)
         wave_chi(rho),
         symbol_dict["n_bar"] => cur_n_bar,
         symbol_dict["R_0"] => $(esc(cur_solved_R_0)),
+        symbol_dict["B_0"] => $(esc(cur_solved_B_0)),
         symbol_dict["T_k"] => $(esc(cur_solved_T_k))
       )
 

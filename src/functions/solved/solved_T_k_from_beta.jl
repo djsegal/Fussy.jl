@@ -1,9 +1,9 @@
 """
-    solved_T_k_from_beta(T_guess, cur_B_0=B_0)
+    solved_T_k_from_beta(T_guess, cur_B_0=( B_0 / 1u"T" ))
 
 Lorem ipsum dolor sit amet.
 """
-function solved_T_k_from_beta(T_guess, cur_B_0=B_0)
+function solved_T_k_from_beta(T_guess, cur_B_0=( B_0 / 1u"T" ))
 
   cur_eq = -K_BR()
   cur_eq *= ( T_k / 1u"keV" ) ^ 0.5
@@ -21,7 +21,7 @@ function solved_T_k_from_beta(T_guess, cur_B_0=B_0)
 
   cur_eq ^= 3.225806452
 
-  cur_eq -= ( cur_B_0 / 1u"T" )
+  cur_eq -= cur_B_0
 
   cur_eq = calc_possible_values( cur_eq )
 

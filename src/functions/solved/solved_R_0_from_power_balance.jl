@@ -1,5 +1,5 @@
 """
-    solved_R_0_from_power_balance(cur_T_k, cur_B_0)
+    solved_R_0_from_power_balance(cur_T_k, cur_B_0=( B_0 / 1u"T" ))
 
 Lorem ipsum dolor sit amet.
 """

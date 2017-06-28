@@ -1,9 +1,9 @@
 """
-    solve_wave_equations(cur_solved_R_0, cur_solved_T_k; verbose=false)
+    solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k; verbose=false)
 
 Function to solve for n_para, rho_J, omega.
 """
-function solve_wave_equations(cur_solved_R_0, cur_solved_T_k; verbose=false)
+function solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k; verbose=false)
   rho_J = nothing
 
   for cur_attempt in 1:10
@@ -11,7 +11,7 @@ function solve_wave_equations(cur_solved_R_0, cur_solved_T_k; verbose=false)
 
     try
       rho_J = nlsolve(
-        @generate_wave_equation_set(cur_solved_R_0, cur_solved_T_k),
+        @generate_wave_equation_set(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k),
         [rand(linspace(0.1, 0.9))],
         show_trace = false, xtol = 1e-2, ftol = 1e-5, iterations=40
       ).zero[1]
@@ -52,6 +52,7 @@ function solve_wave_equations(cur_solved_R_0, cur_solved_T_k; verbose=false)
 
   output = map(
     x -> subs(x,
+      symbol_dict["B_0"] => cur_solved_B_0,
       symbol_dict["n_bar"] => cur_n_bar
     ),
     output
