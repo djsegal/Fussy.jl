@@ -3,7 +3,7 @@
 
 Lorem ipsum dolor sit amet.
 """
-function calc_possible_values(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=symbol_dict["sigma_v_hat"])
+function calc_possible_values(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=symbol_dict["sigma_v_hat"]; cur_T_k=T_k)
   cur_sigma_v_hat = sigma_v()
 
   cur_sigma_v_hat *= 1e21
@@ -11,7 +11,7 @@ function calc_possible_values(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=s
 
   cur_value = subs(cur_value, cur_symbol, cur_sigma_v_hat)
 
-  cur_T_k_value = T_k / 1u"keV"
+  cur_T_k_value = cur_T_k / 1u"keV"
   cur_T_k_symbol = symbol_dict["T_k"]
 
   cur_K_CD_denom_value = 1 - K_CD() * cur_sigma_v_hat
@@ -19,12 +19,12 @@ function calc_possible_values(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=s
 
   cur_T_k_type = eltype( cur_T_k_value |> NoUnits )
 
-  if has(cur_value, cur_T_k_symbol) && cur_T_k_type != SymPy.Sym
-    cur_value = subs(cur_value, cur_T_k_symbol, cur_T_k_value)
-  end
-
   if has(cur_value, cur_K_CD_denom_symbol)
     cur_value = subs(cur_value, cur_K_CD_denom_symbol, cur_K_CD_denom_value)
+  end
+
+  if has(cur_value, cur_T_k_symbol) && cur_T_k_type != SymPy.Sym
+    cur_value = subs(cur_value, cur_T_k_symbol, cur_T_k_value)
   end
 
   still_has_symbols = has(cur_value, symbol_dict["R_0"])
