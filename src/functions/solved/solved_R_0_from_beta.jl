@@ -8,11 +8,11 @@ function solved_R_0_from_beta()
   left_part *= ( T_k / 1u"keV" )
   left_part ^= 15
 
-  right_part = -K_BR()
+  right_part = -K_nu()
   right_part *= sqrt( T_k / 1u"keV" )
   right_part += ( sigma_v_hat / 1u"m^3/s" )
 
-  right_part *= K_PB()
+  right_part *= K_PB_legacy()
 
   right_part /= ( T_k / 1u"keV" ) ^ ( 4 // 100 )
   right_part /= ( sigma_v_hat / 1u"m^3/s" ) ^ ( 69 // 100 )

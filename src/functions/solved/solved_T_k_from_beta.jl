@@ -5,13 +5,13 @@ Lorem ipsum dolor sit amet.
 """
 function solved_T_k_from_beta(T_guess, cur_B_0=( B_0 / 1u"T" ))
 
-  cur_eq = -K_BR()
+  cur_eq = -K_nu()
   cur_eq *= ( T_k / 1u"keV" ) ^ 0.5
   cur_eq += ( sigma_v_hat / 1u"m^3/s" )
 
   cur_eq = 1 / cur_eq
 
-  cur_eq /= -K_PB()
+  cur_eq /= -K_PB_legacy()
 
   cur_eq *= ( T_k / 1u"keV" ) ^ 0.04
   cur_eq *= ( sigma_v_hat / 1u"m^3/s" ) ^ 0.69

@@ -5,11 +5,11 @@ Lorem ipsum dolor sit amet.
 """
 function solved_R_0_from_power_balance(cur_T_k, cur_B_0=( B_0 / 1u"T" ))
 
-  solved_R_0 = -K_BR()
+  solved_R_0 = -K_nu()
   solved_R_0 *= cur_T_k ^ 0.5
   solved_R_0 += ( sigma_v_hat / 1u"m^3/s" )
 
-  solved_R_0 *= -K_PB()
+  solved_R_0 *= -K_PB_legacy()
   solved_R_0 *= cur_B_0 ^ 0.15
 
   solved_R_0 /= cur_T_k ^ 0.04

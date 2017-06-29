@@ -14,7 +14,7 @@ function calc_possible_values(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=s
   cur_T_k_value = cur_T_k / 1u"keV"
   cur_T_k_symbol = symbol_dict["T_k"]
 
-  cur_K_CD_denom_value = 1 - K_CD() * cur_sigma_v_hat
+  cur_K_CD_denom_value = 1 - K_LH() * cur_sigma_v_hat
   cur_K_CD_denom_symbol = symbol_dict["K_CD_denom"]
 
   cur_T_k_type = eltype( cur_T_k_value |> NoUnits )

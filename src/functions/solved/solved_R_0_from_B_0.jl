@@ -4,11 +4,11 @@
 Lorem ipsum dolor sit amet.
 """
 function solved_R_0_from_B_0(solved_B_0)
-  cur_R_0 = -K_BR()
+  cur_R_0 = -K_nu()
   cur_R_0 *= sqrt( T_k / 1u"keV" )
   cur_R_0 += ( sigma_v_hat / 1u"m^3/s" )
 
-  cur_R_0 *= K_PB()
+  cur_R_0 *= K_PB_legacy()
 
   cur_R_0 ^= +100
 

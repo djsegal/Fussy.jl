@@ -4,7 +4,7 @@
 Lorem ipsum dolor sit amet.
 """
 function P_BR()
-  cur_P_BR = K_rad()
+  cur_P_BR = K_BR()
 
   cur_P_BR *= ( n_bar / 1u"n20" ) ^ 2
   cur_P_BR *= ( T_k / 1u"keV" ) ^ (1/2)

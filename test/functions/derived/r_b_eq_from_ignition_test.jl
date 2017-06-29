@@ -4,7 +4,7 @@
 
   @test isdefined(Tokamak, :r_b_eq_from_ignition) == true
 
-  expected_value = Tokamak.K_PB()
+  expected_value = Tokamak.K_PB_legacy()
 
   actual_value = Tokamak.r_b_eq_from_ignition()
 
@@ -22,7 +22,7 @@
 
   actual_value *= Tokamak.symbol_dict["T_k"] ^ ( 4 // 100 )
 
-  cur_numerator = -Tokamak.K_BR()
+  cur_numerator = -Tokamak.K_nu()
   cur_numerator *= ( Tokamak.symbol_dict["T_k"] ) ^ ( 1//2 )
   cur_numerator += Tokamak.symbol_dict["sigma_v_hat"]
 

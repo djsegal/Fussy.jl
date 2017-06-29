@@ -15,11 +15,11 @@ function solved_B_0_from_wall()
   cur_numerator *= ( sigma_v_hat / 1u"m^3/s" ) ^ 69
   cur_numerator *= K_CD_denom ^ 96
 
-  cur_denominator = -K_BR()
+  cur_denominator = -K_nu()
   cur_denominator *= sqrt( T_k / 1u"keV" )
 
   cur_denominator += ( sigma_v_hat / 1u"m^3/s" )
-  cur_denominator *= K_PB()
+  cur_denominator *= K_PB_legacy()
   cur_denominator ^= 100
 
   cur_B_0 = cur_numerator

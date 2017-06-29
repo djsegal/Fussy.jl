@@ -11,7 +11,7 @@
 
   cur_B_0 = subs(cur_B_0, Tokamak.symbol_dict["T_k"], expected_value / 1u"keV")
 
-  actual_value = Tokamak.solved_T_k_from_beta( ( expected_value / 1u"keV" ) * 1.1, cur_B_0 * 1u"T")
+  actual_value = Tokamak.solved_T_k_from_beta( ( expected_value / 1u"keV" ) * 1.1, cur_B_0)
 
   @test isapprox(expected_value, actual_value, rtol=5e-4)
 

@@ -4,13 +4,13 @@
 Lorem ipsum dolor sit amet.
 """
 function r_b_eq_hard_coded()
-  cur_r_b_eq = -K_BR()
+  cur_r_b_eq = -K_nu()
 
   cur_r_b_eq *= sqrt( T_k / 1u"keV" )
 
   cur_r_b_eq += ( sigma_v_hat / 1u"m^3/s" )
 
-  cur_r_b_eq *= -K_PB()
+  cur_r_b_eq *= -K_PB_legacy()
 
   cur_r_b_eq /= ( T_k / 1u"keV" ) ^ ( 4 // 100 )
 
