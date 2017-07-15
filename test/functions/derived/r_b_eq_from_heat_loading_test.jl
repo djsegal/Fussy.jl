@@ -20,7 +20,7 @@
 
   actual_value *= Tokamak.h_parallel
 
-  cur_block = -Tokamak.K_BR()
+  cur_block = -Tokamak.K_nu()
   cur_block *= sqrt(Tokamak.symbol_dict["T_k"])
   cur_block += Tokamak.symbol_dict["sigma_v_hat"]
 

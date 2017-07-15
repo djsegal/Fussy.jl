@@ -1,9 +1,9 @@
 """
-    sweep_B_0(B_list, T_guess=12.5; verbose=true)
+    sweep_B_0(B_list, T_guess=15.0; verbose=true)
 
 Lorem ipsum dolor sit amet.
 """
-function sweep_B_0(B_list, T_guess=12.5; verbose=true)
+function sweep_B_0(B_list, T_guess=15.0; verbose=true)
 
   given_equations = setup_given_equations()
 

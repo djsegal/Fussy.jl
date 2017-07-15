@@ -9,7 +9,8 @@ macro generate_wave_equation_set(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k)
       rho = cur_var[1]
 
       cur_n_bar = calc_possible_values(
-        solved_steady_density() / 1u"n20"
+        ( solved_steady_density() / 1u"n20" ),
+        cur_T_k = ( $(esc(cur_solved_T_k)) * 1u"keV" )
       )
 
       cur_wave_chi = subs(

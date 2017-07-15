@@ -2,8 +2,6 @@
 
   @test isdefined(Tokamak, :sigma_v) == true
 
-  # @test_throws DomainError Tokamak.sigma_v()
-
   T_k_symbol = Tokamak.symbol_dict["T_k"]
 
   expected_value = 1
@@ -46,10 +44,15 @@
     for cur_T_k in logspace(log10(5), log10(25), test_count)
       Tokamak.load_input( "T_k = $(cur_T_k)u\"keV\"" )
 
-      Tokamak.load_input( "use_lin_sigma_v_funcs = false" )
+      Tokamak.load_input( "use_slow_sigma_v_funcs = false" )
       expected_value = Tokamak.sigma_v()
 
-      Tokamak.load_input( "use_lin_sigma_v_funcs = true" )
+      Tokamak.load_input( "use_slow_sigma_v_funcs = true" )
+      actual_value = Tokamak.sigma_v()
+
+      @test isapprox(actual_value, expected_value, rtol=0.9)
+
+      Tokamak.load_input( "use_bosch_hale_sigma_v = true" )
       actual_value = Tokamak.sigma_v()
 
       @test isapprox(actual_value, expected_value, rtol=0.9)
@@ -65,7 +68,7 @@
   expected_value = Tokamak.sigma_v_ave(0.5)
   expected_value /= 2
 
-  @test isapprox(actual_value, expected_value)
+  @test isapprox(actual_value, expected_value, rtol=5e-4)
 
   Tokamak.load_input( "nu_T = 1e-6" )
   Tokamak.load_input( "nu_n = 1e-6" )

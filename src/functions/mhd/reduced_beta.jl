@@ -4,7 +4,7 @@
 Lorem ipsum dolor sit amet.
 """
 function reduced_beta()
-  cur_reduced_beta = 0.08054
+  cur_reduced_beta = 0.08139
 
   cur_reduced_beta *= 1 + nu_n
   cur_reduced_beta *= 1 + nu_T

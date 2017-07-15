@@ -1,30 +1,50 @@
 """
-    scan_for_R_0(R_0_value, T_list=linspace(5,30,5); rel_tol=1e-3, is_first_call=true, verbose=false)
+    scan_for_R_0(R_0_value, B_list=linspace(5,30,5); rel_tol=1e-3, is_first_call=true, verbose=false)
 
 Lorem ipsum dolor sit amet.
 """
-function scan_for_R_0(R_0_value, T_list=linspace(5,30,5); rel_tol=1e-3, is_first_call=true, verbose=false)
+function scan_for_R_0(R_0_value, B_list=linspace(1,31,5); rel_tol=1e-3, is_first_call=true, verbose=false)
 
-  T_count = length(T_list)
+  B_count = length(B_list)
 
   if is_first_call
-    cur_data = sweep_T_k(T_list, verbose=verbose)["beta"]
+    cur_data = sweep_B_0(B_list, verbose=verbose)["beta"]
   else
-    sub_section = 2 : ( T_count - 1 )
-    cur_data = sweep_T_k(T_list[sub_section], verbose=verbose)["beta"]
+    sub_section = 2 : ( B_count - 1 )
+    cur_data = sweep_B_0(B_list[sub_section], verbose=verbose)["beta"]
   end
 
+  bad_indices = findin(cur_data["T_k"], NaN)
+
   current_R_0_s = cur_data["R_0"]
-  current_B_0_s = cur_data["B_0"]
+  current_T_k_s = cur_data["T_k"]
 
   R_0_diff = diff(current_R_0_s)
-  R_0_diff = R_0_diff[!isnan(R_0_diff)]
+  R_0_diff = R_0_diff[.!isnan.(R_0_diff)]
 
   is_monotonic = all( x -> x >= 0 , R_0_diff )
   is_monotonic |= all( x -> x <= 0 , R_0_diff )
 
   if !is_monotonic
     error("Non-monotonic R_0 values")
+  end
+
+  if is_first_call
+    for cur_key in keys(cur_data)
+      cur_obj = cur_data[cur_key]
+
+      if isa(cur_obj, Array)
+        deleteat!(cur_obj, bad_indices)
+        continue
+      end
+
+      for cur_sub_key in keys(cur_obj)
+        deleteat!(cur_obj[cur_sub_key], bad_indices)
+      end
+    end
+
+    B_list = cur_data["B_0"]
+    B_count = length(B_list)
   end
 
   first_R_0 = current_R_0_s[1]
@@ -34,9 +54,9 @@ function scan_for_R_0(R_0_value, T_list=linspace(5,30,5); rel_tol=1e-3, is_first
     first_R_0, last_R_0 = last_R_0, first_R_0
 
     reverse!(current_R_0_s)
-    reverse!(current_B_0_s)
+    reverse!(current_T_k_s)
 
-    reverse!(T_list)
+    reverse!(B_list)
   end
 
   if is_first_call
@@ -44,10 +64,10 @@ function scan_for_R_0(R_0_value, T_list=linspace(5,30,5); rel_tol=1e-3, is_first
     spans_R_0 = first_R_0 <= R_0_value && last_R_0 >= R_0_value
 
     if !spans_R_0
-      println(T_list)
+      println(B_list)
       println(R_0_value)
       println(current_R_0_s)
-      error("T_k range does not include R_0")
+      error("B_0 range does not include R_0")
     end
 
   end
@@ -59,9 +79,9 @@ function scan_for_R_0(R_0_value, T_list=linspace(5,30,5); rel_tol=1e-3, is_first
     found_index = found_values[1]
 
     found_data = Dict(
-      "T_k" => T_list[found_index],
+      "B_0" => B_list[found_index],
       "R_0" => current_R_0_s[found_index],
-      "B_0" => current_B_0_s[found_index]
+      "T_k" => current_T_k_s[found_index]
     )
 
     return found_data
@@ -76,12 +96,12 @@ function scan_for_R_0(R_0_value, T_list=linspace(5,30,5); rel_tol=1e-3, is_first
     high_index += 1
 
     if high_index == 1
-      high_index = T_count
+      high_index = B_count
     end
 
   end
 
-  new_T_list = linspace(T_list[low_index], T_list[high_index], 3)
+  new_B_list = linspace(B_list[low_index], B_list[high_index], 3)
 
-  return scan_for_R_0(R_0_value, new_T_list, rel_tol=rel_tol, is_first_call=false)
+  return scan_for_R_0(R_0_value, new_B_list, rel_tol=rel_tol, is_first_call=false)
 end

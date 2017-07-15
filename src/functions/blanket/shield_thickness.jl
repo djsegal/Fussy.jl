@@ -9,7 +9,7 @@ function shield_thickness(cur_R_0=R_0, cur_n_bar=n_bar, cur_I_M=I_M)
   cur_b = -0.1539 * 1u"cm^-1"
 
   cur_P_W = calc_possible_values(
-    ( wall_loading_limit() + P_W ) / ( 1u"MW" / 1u"m^2" )
+    wall_loading_limit() + ( P_W / 1u"MW/m^2" )
   )
 
   cur_P_W *= 1e6 # MW to W

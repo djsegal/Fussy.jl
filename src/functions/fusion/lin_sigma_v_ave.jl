@@ -1,24 +1,19 @@
 """
-    lin_sigma_v_ave(rho)
+    lin_sigma_v_ave(rho; cur_T_k=T_k)
 
 Lorem ipsum dolor sit amet.
 """
-function lin_sigma_v_ave(rho)
+function lin_sigma_v_ave(rho; cur_T_k=T_k)
 
   cur_k_array = sigma_v_k_array()
 
-  cur_param = 1.0
-  cur_param -= rho ^ 2
-  cur_param ^= nu_T
-
-  cur_param *= ( T_k / 1u"keV" )
-  cur_param *= 1 + nu_T
+  cur_local_T = local_T_k(rho, cur_T_k)
 
   cur_sigma_v_ave = 0.0
 
   for i in 0:length(cur_k_array)-1
     cur_term = cur_k_array[i+1]
-    cur_term *= cur_param ^ i
+    cur_term *= cur_local_T ^ i
 
     cur_sigma_v_ave += cur_term
   end

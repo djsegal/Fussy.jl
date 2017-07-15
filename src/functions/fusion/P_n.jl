@@ -7,7 +7,7 @@ function P_n()
 
   cur_P_n = P_F()
 
-  cur_P_n *= E_n()
+  cur_P_n *= E_n
 
   cur_P_n /= E_F()
 

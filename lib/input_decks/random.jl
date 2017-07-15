@@ -10,7 +10,7 @@ max_P_W = 7 * ( 1u"MW" / 1u"m^2" )
 max_h_parallel = 670 * ( 1u"MW" / 1u"m^2" )
 
 nu_n = 0.23
-nu_T = 1.9
+nu_T = 1.4
 
 eta_CD = 0.37
 eta_T = 0.53

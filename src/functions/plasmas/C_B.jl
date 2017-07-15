@@ -18,8 +18,8 @@ function C_B()
 
   cur_C_B = ( 1 + nu_n )
   cur_C_B *= ( 1 + nu_T )
-  cur_C_B *= ( nu_n + 0.055 * nu_T )
-  cur_C_B *= QuadGK.quadgk(cur_func, 0.0, 1.0)[1]
+  cur_C_B *= ( nu_n + 0.054 * nu_T )
+  cur_C_B *= QuadGK.quadgk(cur_func, integral_zero, integral_one)[1]
 
   cur_C_B
 end

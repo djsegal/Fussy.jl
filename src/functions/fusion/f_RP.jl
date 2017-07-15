@@ -5,6 +5,12 @@ Lorem ipsum dolor sit amet.
 """
 function f_RP()
 
-  1 / ( Q_E() + 1 )
+  cur_f_RP = Q_E()
+
+  cur_f_RP += 1
+
+  cur_f_RP ^= -1
+
+  cur_f_RP
 
 end

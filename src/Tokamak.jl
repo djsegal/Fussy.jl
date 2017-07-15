@@ -18,8 +18,11 @@ module Tokamak
 
   function main(num_points=6; min_B=5, max_B=15)
     load_input("input.jl", true)
+    load_input("arc.jl", true)
 
     B_list = linspace(min_B, max_B, num_points)
+
+    load_input(" use_slow_sigma_v_funcs = true ")
 
     solved_equations = sweep_B_0(B_list)
 

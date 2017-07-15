@@ -1,9 +1,9 @@
 """
-    lin_sigma_v()
+    lin_sigma_v(cur_T_k=T_k)
 
 Lorem ipsum dolor sit amet.
 """
-function lin_sigma_v()
+function lin_sigma_v(cur_T_k=T_k)
 
   cur_k_array = sigma_v_k_array()
 
@@ -13,7 +13,7 @@ function lin_sigma_v()
 
     cur_part = ( 1 + nu_T )
 
-    cur_part *= ( T_k / 1u"keV" )
+    cur_part *= ( cur_T_k / 1u"keV" )
 
     cur_part ^= i
 

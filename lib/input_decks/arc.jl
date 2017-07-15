@@ -1,17 +1,23 @@
-Q = 18.86
+Q = 13.6
 kappa = 1.84
 
 epsilon = 0.342
-N_G = 0.7
+N_G = 0.67
 H = 1.8
 
 nu_n = 0.385
 nu_T = 0.929
 
-eta_CD = 0.32
+max_beta_N = 0.0259
+
+eta_CD = 0.321
+
+# wave_theta = 135.0 * ( pi / 180 )
 
 Z_eff = 1.2
 f_DT = 0.9
 
-enable_bremsstrahlung = false
+enable_bremsstrahlung = true
 enable_eta_CD_derive = false
+
+use_bosch_hale_sigma_v = false

@@ -3,16 +3,29 @@
   @test isdefined(Tokamak, :solved_T_k_from_beta) == true
 
   Tokamak.load_input("arc.jl", true)
+
   Tokamak.load_input( "beta_N = $(Tokamak.max_beta_N)" )
 
-  expected_value = 14.8u"keV"
+  solved_B_0 = 5.0u"T"
 
-  cur_B_0 = Tokamak.solved_B_0_from_beta() / 1u"T"
+  Tokamak.load_input( "B_0 = $( solved_B_0 / 1u"T") * 1u\"T\"" )
 
-  cur_B_0 = subs(cur_B_0, Tokamak.symbol_dict["T_k"], expected_value / 1u"keV")
+  solved_T_k = Tokamak.solved_T_k_from_beta(15.0, verbose=false)
 
-  actual_value = Tokamak.solved_T_k_from_beta( ( expected_value / 1u"keV" ) * 1.1, cur_B_0 * 1u"T")
+  Tokamak.load_input( "T_k = $( solved_T_k / 1u"keV") * 1u\"keV\"" )
 
-  @test isapprox(expected_value, actual_value, rtol=5e-4)
+  solved_R_0 = Tokamak.solved_R_0_from_T_k(solved_T_k / 1u"keV")
+
+  Tokamak.load_input( "R_0 = $( solved_R_0 / 1u"m") * 1u\"m\"" )
+
+  expected_value = Tokamak.K_2()
+
+  actual_value = ( Tokamak.R_0 / 1u"m" )
+
+  actual_value *= ( Tokamak.B_0 / 1u"T" )
+
+  actual_value /= ( Tokamak.T_k / 1u"keV" )
+
+  @test isapprox(expected_value, actual_value)
 
 end

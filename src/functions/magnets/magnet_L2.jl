@@ -30,7 +30,7 @@ Curved Section Arc Length.
     cur_value
   end
 
-  L2 = QuadGK.quadgk(cur_func, 0, 1)[1]
+  L2 = QuadGK.quadgk(cur_func, integral_zero, integral_one)[1]
 
   L2
 

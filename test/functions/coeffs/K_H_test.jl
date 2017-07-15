@@ -2,6 +2,6 @@
 
   @test isdefined(Tokamak, :K_H) == true
 
-  @test isapprox( Tokamak.K_H() , 1.034e-2 , rtol=5e-4 )
+  @test isapprox( Tokamak.K_H() , 0.01031 , rtol=5e-4 )
 
 end

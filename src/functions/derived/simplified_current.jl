@@ -17,7 +17,7 @@ function simplified_current()
 
   cur_numerator, cur_denominator = fraction(cur_simplified_current)
 
-  scale_factor = -K_CD() / coeff(cur_denominator, cur_sigma_v_hat)
+  scale_factor = -K_LH() / coeff(cur_denominator, cur_sigma_v_hat)
 
   cur_numerator *= scale_factor
   cur_denominator *= scale_factor

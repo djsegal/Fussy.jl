@@ -44,9 +44,9 @@ function solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k; ve
 
   cur_n_bar = subs(
     calc_possible_values(
-      solved_steady_density() / 1u"n20"
+      ( solved_steady_density() / 1u"n20" ),
+      cur_T_k = ( cur_solved_T_k * 1u"keV" )
     ),
-    symbol_dict["T_k"] => cur_solved_T_k,
     symbol_dict["R_0"] => cur_solved_R_0
   )
 

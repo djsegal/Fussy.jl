@@ -1,34 +1,53 @@
 """
-    solved_T_k_from_beta(T_guess, cur_B_0=( B_0 / 1u"T" ))
+    solved_T_k_from_beta(T_guess, cur_B_0=( B_0 / 1u"T" ); verbose=true)
 
 Lorem ipsum dolor sit amet.
 """
-function solved_T_k_from_beta(T_guess, cur_B_0=( B_0 / 1u"T" ))
+function solved_T_k_from_beta(T_guess, cur_B_0=( B_0 / 1u"T" ); verbose=true)
 
-  cur_eq = -K_BR()
-  cur_eq *= ( T_k / 1u"keV" ) ^ 0.5
-  cur_eq += ( sigma_v_hat / 1u"m^3/s" )
+  cur_eq_exp = power_balance_r_exp()
 
-  cur_eq = 1 / cur_eq
+  cur_eq = K_2() * G_2()
 
-  cur_eq /= -K_PB()
+  cur_eq ^= cur_eq_exp
 
-  cur_eq *= ( T_k / 1u"keV" ) ^ 0.04
-  cur_eq *= ( sigma_v_hat / 1u"m^3/s" ) ^ 0.69
-  cur_eq *= K_CD_denom ^ 0.96
+  cur_eq /= K_1() * G_1()
 
-  cur_eq *= ( K_beta() * ( T_k / 1u"keV" ) ) ^ 0.16
+  cur_eq -= cur_B_0 ^ ( alphas["B_0"] + cur_eq_exp )
 
-  cur_eq ^= 3.225806452
+  attempt_list = Array{AbstractFloat}([T_guess])
 
-  cur_eq -= cur_B_0
+  for cur_scaling = 2.0:4.0
+    push!(attempt_list, T_guess * cur_scaling)
+    push!(attempt_list, T_guess / cur_scaling)
+  end
 
-  cur_eq = calc_possible_values( cur_eq )
+  solved_T_k = NaN
 
-  try
-    solved_T_k = nsolve(cur_eq, T_guess)
-  catch
-    solved_T_k = NaN
+  for cur_attempt in attempt_list
+    did_work = true
+
+    try
+      solved_T_k = nlsolve(
+        @generate_fusion_equation_set(cur_eq), [cur_attempt],
+        show_trace = false, iterations=100
+      ).zero[1]
+
+      cur_F = calc_possible_values(cur_eq, cur_T_k=solved_T_k*1u"keV")
+
+      if abs(cur_F) > 1e-4
+        did_work = false
+        solved_T_k = NaN
+        continue
+      end
+    catch
+      did_work = false
+    end
+
+    if !did_work ; continue ; end
+
+    if verbose ; print("✓") ; end
+    break
   end
 
   solved_T_k *= 1u"keV"

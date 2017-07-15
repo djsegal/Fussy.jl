@@ -1,32 +1,19 @@
 """
-    log_sigma_v_ave(rho)
+    log_sigma_v_ave(rho; cur_T_k=T_k)
 
 Lorem ipsum dolor sit amet.
 """
-function log_sigma_v_ave(rho)
+function log_sigma_v_ave(rho; cur_T_k=T_k)
 
-  l_fit = [
-    -60.4593,
-    +6.1371,
-    -0.8609,
-    +0.0356,
-    -0.0045
-  ]
+  cur_l_array = sigma_v_l_array()
 
-  cur_param = 1.0
-  cur_param -= rho ^ 2
-  cur_param ^= nu_T
-
-  cur_param *= ( T_k / 1u"keV" )
-  cur_param *= 1 + nu_T
-
-  cur_param = log( cur_param )
+  cur_local_T = log( local_T_k(rho, cur_T_k) )
 
   cur_sigma_v_ave = 0.0
 
-  for i in 0:4
-    cur_term = l_fit[i+1]
-    cur_term *= cur_param ^ i
+  for i in 0:length(cur_l_array)-1
+    cur_term = cur_l_array[i+1]
+    cur_term *= cur_local_T ^ i
 
     cur_sigma_v_ave += cur_term
   end

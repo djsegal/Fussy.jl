@@ -26,7 +26,7 @@
 
   actual_value /= right_term
 
-  left_term = -Tokamak.K_BR()
+  left_term = -Tokamak.K_nu()
   left_term *= sqrt( Tokamak.T_k / 1u"keV" )
   left_term += ( Tokamak.sigma_v_hat / 1u"m^3/s" )
 

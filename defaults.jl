@@ -1,6 +1,6 @@
-Q = 50
+Q = 40
 kappa = 1.8
-delta = 0.5
+delta = 0.4
 epsilon = 0.25
 N_G = 0.8
 H = 1.0
@@ -10,14 +10,14 @@ nu_T = 1.2
 
 eta_CD = 0.35
 eta_T = 0.4
-eta_RF = 0.4
+eta_RF = 0.5
 eta_a = 0.7
 
 Z_eff = 1.5
 rho_m = 0.6
 A = 2.5
 
-f_DT = 0.85
+f_DT = 0.9
 
 wave_theta = 0.0
 wave_gamma0 = 8.562
@@ -26,7 +26,7 @@ wave_error_level = 1e-3
 shape_sigma = 0.1
 
 max_beta_N = 0.026
-max_P_W = 3 * ( 1u"MW" / 1u"m^2" )
+max_P_W = 2.5 * ( 1u"MW" / 1u"m^2" )
 max_h_parallel = 500 * ( 1u"MW" / 1u"m^2" )
 
 enable_bremsstrahlung = true
@@ -34,7 +34,13 @@ enable_eta_CD_derive = true
 enable_blanket_derive = true
 enable_cold_mass_calc = true
 
-use_lin_sigma_v_funcs = true
+use_slow_sigma_v_funcs = true
+use_bosch_hale_sigma_v = true
+
+integral_delta = 1e-4
+
+integral_zero = 0.0 + integral_delta
+integral_one = 1.0 - integral_delta
 
 confinement_scaling = Dict(
   "constant" => 0.145,
@@ -47,6 +53,8 @@ confinement_scaling = Dict(
   "A" => ( 19 // 100 ),
   "P" => ( 69 // 100 )
 )
+
+alphas = confinement_scaling
 
 symbol_list = []
 append!(symbol_list, ["T_k", "R_0", "B_0"])

@@ -11,7 +11,7 @@
 
   actual_value /= Tokamak.K_L()
 
-  expected_value = -Tokamak.K_BR()
+  expected_value = -Tokamak.K_nu()
   expected_value *= Tokamak.symbol_dict["T_k"] ^ (1/2)
 
   expected_value += Tokamak.symbol_dict["sigma_v_hat"]

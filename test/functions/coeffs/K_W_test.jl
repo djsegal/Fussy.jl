@@ -2,8 +2,8 @@
 
   @test isdefined(Tokamak, :K_W) == true
 
-  Tokamak.load_input( "P_W = $( Tokamak.max_P_W / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
+  Tokamak.load_input(" f_DT = 0.9 ")
 
-  @test isapprox( Tokamak.K_W() , 0.7764 , rtol=5e-4 )
+  @test isapprox( Tokamak.K_W() , 1.20 , rtol=5e-3 )
 
 end

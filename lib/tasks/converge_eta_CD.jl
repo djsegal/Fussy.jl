@@ -1,9 +1,9 @@
 """
-    converge_eta_CD(cur_B, cur_equations, T_guess=12.5; verbose=false)
+    converge_eta_CD(cur_B, cur_equation, T_guess=15.0; verbose=false)
 
 Lorem ipsum dolor sit amet.
 """
-function converge_eta_CD(cur_B, cur_equations, T_guess=12.5; verbose=false)
+function converge_eta_CD(cur_B, cur_equation, T_guess=15.0; verbose=false)
   prev_eta_CD = eta_CD
 
   cur_solved_R_0 = nothing
@@ -13,14 +13,14 @@ function converge_eta_CD(cur_B, cur_equations, T_guess=12.5; verbose=false)
 
   while !has_converged
 
-    cur_solved_T_k = cur_equations["T_k"](T_guess, cur_B) / 1u"keV"
+    cur_solved_T_k = cur_equation["T_k"](T_guess, cur_B) / 1u"keV"
 
-    if isnan(cur_solved_T_k)
+    if isnan(cur_solved_T_k) || !isreal(cur_solved_T_k)
       if verbose ; print("x") ; end
       return [ NaN , NaN , NaN ]
     end
 
-    cur_solved_R_0 = cur_equations["R_0"](cur_solved_T_k, cur_B) / 1u"m"
+    cur_solved_R_0 = cur_equation["R_0"](cur_solved_T_k, cur_B) / 1u"m"
 
     if !enable_eta_CD_derive
       break

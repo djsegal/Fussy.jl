@@ -10,7 +10,7 @@
 
   cur_n_bar = Tokamak.symbol_dict["n_bar"]
 
-  expected_value = 12.42
+  expected_value = 12.29
 
   actual_value = SymPy.solve(cur_beta_limit, cur_n_bar)[1]
   actual_value *= Tokamak.symbol_dict["T_k"]
