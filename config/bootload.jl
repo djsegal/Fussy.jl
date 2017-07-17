@@ -27,8 +27,11 @@ function load_input(raw_input, is_file_input=false, can_be_missing=false)
 
       raw_input = join(file_lines, ";")
 
-      raw_input = replace(raw_input, "(;", "(")
-      raw_input = replace(raw_input, ",;", ",")
+      botched_chars = [ "(" , "," , "[" ]
+
+      for cur_char in botched_chars
+        raw_input = replace(raw_input, "$cur_char;", "$cur_char")
+      end
 
       raw_input *= "; nothing ;"
     end
