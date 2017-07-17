@@ -13,42 +13,60 @@ function sweep_B_0(B_list, T_guess=15.0; verbose=true)
 
   solved_equations = OrderedDict()
 
-  for key in keys(given_equations)
-    solved_equations[key] = OrderedDict()
+  solved_equations["R_0"] = Array{Float64}(length(B_list))
+  solved_equations["B_0"] = Array{Float64}(length(B_list))
+  solved_equations["T_k"] = Array{Float64}(length(B_list))
 
-    solved_equations[key]["R_0"] = Array{Float64}(length(B_list))
-    solved_equations[key]["B_0"] = Array{Float64}(length(B_list))
-    solved_equations[key]["T_k"] = Array{Float64}(length(B_list))
+  solved_equations["eta_CD"] = Array{Float64}(length(B_list))
 
-    solved_equations[key]["eta_CD"] = Array{Float64}(length(B_list))
+  solved_equations["constraint"] = Array{AbstractString}(length(B_list))
 
-    solved_equations[key]["other_limits"] = OrderedDict()
+  solved_equations["limits"] = OrderedDict()
 
-    for sub_key in keys(given_equations)
-      solved_equations[key]["other_limits"][sub_key] = Array{Float64}(length(B_list))
-    end
+  for cur_key in keys(given_equations)
+    solved_equations["limits"][cur_key] = Array{Float64}(length(B_list))
   end
 
-  @inbounds for cur_index = 1:length(B_list)
+  cur_constraint = "beta"
+  cur_eta_CD = default_eta_CD
+
+  for cur_index = 1:length(B_list)
     cur_B = B_list[cur_index]
-    if verbose ; print("\n\n$cur_B") ; end
+    if verbose ; print("\n\n$cur_B\n") ; end
 
-    cur_solved_equation = solve_equation_set(cur_B, given_equations, T_guess, verbose=verbose)
+    cur_solved_equation = solve_given_equation(cur_B, given_equations, T_guess, verbose=verbose, cur_constraint=cur_constraint, cur_eta_CD=cur_eta_CD)
 
-    for (eq_index, (key, value)) in enumerate(given_equations)
-      solved_equations[key]["R_0"][cur_index] = cur_solved_equation[key]["R_0"]
-      solved_equations[key]["B_0"][cur_index] = cur_solved_equation[key]["B_0"]
-      solved_equations[key]["T_k"][cur_index] = cur_solved_equation[key]["T_k"]
+    new_constraint = collect(keys(cur_solved_equation["limits"]))[indmax(collect(values(cur_solved_equation["limits"])))]
 
-      solved_equations[key]["eta_CD"][cur_index] = cur_solved_equation[key]["eta_CD"]
+    if new_constraint != cur_constraint
+      cur_constraint = new_constraint
 
-      for (sub_key, sub_value) in given_equations
-        solved_equations[key]["other_limits"][sub_key][cur_index] = cur_solved_equation[key]["other_limits"][sub_key]
-      end
+      cur_solved_equation = solve_given_equation(cur_B, given_equations, T_guess, verbose=verbose, cur_constraint=cur_constraint, cur_eta_CD=cur_eta_CD)
+
+      new_constraint = collect(keys(cur_solved_equation["limits"]))[indmax(collect(values(cur_solved_equation["limits"])))]
     end
 
-    if !isnan(solved_equations["beta"]["T_k"][cur_index])
-      T_guess = solved_equations["beta"]["T_k"][cur_index]
+    if new_constraint != cur_constraint
+      error("Unable to satisfy all constraints")
+    end
+
+    solved_equations["constraint"][cur_index] = cur_constraint
+
+    solved_equations["R_0"][cur_index] = cur_solved_equation["R_0"]
+    solved_equations["B_0"][cur_index] = cur_solved_equation["B_0"]
+    solved_equations["T_k"][cur_index] = cur_solved_equation["T_k"]
+
+    solved_equations["eta_CD"][cur_index] = cur_solved_equation["eta_CD"]
+
+    for (sub_key, sub_value) in given_equations
+      solved_equations["limits"][sub_key][cur_index] = cur_solved_equation["limits"][sub_key]
+    end
+
+    is_successful_run = !isnan(solved_equations["T_k"][cur_index])
+
+    if is_successful_run
+      T_guess = solved_equations["T_k"][cur_index]
+      cur_eta_CD = solved_equations["eta_CD"][cur_index]
     end
   end
 

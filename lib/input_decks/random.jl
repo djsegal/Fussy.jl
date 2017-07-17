@@ -12,7 +12,7 @@ max_h_parallel = 670 * ( 1u"MW" / 1u"m^2" )
 nu_n = 0.23
 nu_T = 1.4
 
-eta_CD = 0.37
+default_eta_CD = 0.37
 eta_T = 0.53
 eta_RF = 0.59
 

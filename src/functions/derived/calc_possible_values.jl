@@ -3,7 +3,7 @@
 
 Lorem ipsum dolor sit amet.
 """
-function calc_possible_values(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=symbol_dict["sigma_v_hat"]; cur_T_k=T_k)
+function calc_possible_values(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=symbol_dict["sigma_v_hat"]; cur_T_k=T_k, cur_eta_CD=eta_CD)
   cur_sigma_v_hat = sigma_v(cur_T_k)
 
   cur_sigma_v_hat *= 1e21
@@ -16,6 +16,12 @@ function calc_possible_values(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=s
 
   cur_K_CD_denom_value = 1 - K_LH() * cur_sigma_v_hat
   cur_K_CD_denom_symbol = symbol_dict["K_CD_denom"]
+
+  cur_K_CD_denom_value = subs(
+    cur_K_CD_denom_value,
+    symbol_dict["eta_CD"],
+    cur_eta_CD
+  )
 
   cur_T_k_type = eltype( cur_T_k_value |> NoUnits )
 

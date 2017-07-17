@@ -8,7 +8,6 @@ H = 1.0
 nu_n = 0.3
 nu_T = 1.2
 
-eta_CD = 0.35
 eta_T = 0.4
 eta_RF = 0.5
 eta_a = 0.7
@@ -24,6 +23,8 @@ wave_gamma0 = 8.562
 wave_error_level = 1e-3
 
 shape_sigma = 0.1
+
+default_eta_CD = 0.35
 
 max_beta_N = 0.026
 max_P_W = 2.5 * ( 1u"MW" / 1u"m^2" )
@@ -57,6 +58,8 @@ confinement_scaling = Dict(
 alphas = confinement_scaling
 
 symbol_list = []
+
+append!(symbol_list, ["eta_CD"])
 append!(symbol_list, ["T_k", "R_0", "B_0"])
 append!(symbol_list, ["I_M", "n_bar", "tau_E"])
 append!(symbol_list, ["sigma_v_hat", "K_CD_denom"])
@@ -66,6 +69,8 @@ symbol_dict = Dict()
 for cur_symbol in symbol_list
   symbol_dict[cur_symbol] = symbols(cur_symbol, positive=true)
 end
+
+eta_CD = symbol_dict["eta_CD"]
 
 T_k = symbol_dict["T_k"] * 1u"keV"
 R_0 = symbol_dict["R_0"] * 1u"m"

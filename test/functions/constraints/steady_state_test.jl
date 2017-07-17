@@ -6,6 +6,8 @@
 
   Tokamak.load_input( "T_k = 15u\"keV\"" )
 
+  Tokamak.load_input(" eta_CD = $(Tokamak.default_eta_CD) ")
+
   cur_steady_state = Tokamak.steady_state()
   cur_steady_state += 1
 

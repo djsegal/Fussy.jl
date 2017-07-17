@@ -2,6 +2,8 @@
 
   @test isdefined(Tokamak, :I_CD) == true
 
+  Tokamak.load_input(" eta_CD = $(Tokamak.default_eta_CD) ")
+
   actual_value = Tokamak.I_CD()
 
   actual_value /= 1u"MA"

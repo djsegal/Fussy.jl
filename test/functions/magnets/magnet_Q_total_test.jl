@@ -12,7 +12,10 @@
   Tokamak.load_input(" B_0 = 9.2 * 1u\"T\" ")
 
   # chosen to get P_F = 500
-  Tokamak.load_input(" n_bar = 0.55229943350020245 * 1u\"n20\" ")
+  Tokamak.load_input( "use_slow_sigma_v_funcs = true" )
+  Tokamak.load_input(" n_bar = 0.551186983424829 * 1u\"n20\" ")
+
+  Tokamak.load_input(" eta_CD = $(Tokamak.default_eta_CD) ")
 
   actual_value = Tokamak.magnet_Q_total()
 

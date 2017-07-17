@@ -1,9 +1,9 @@
 """
-    solved_T_k_from_beta(T_guess, cur_B_0=( B_0 / 1u"T" ); verbose=true)
+    solved_T_k_from_beta(T_guess, cur_B_0=( B_0 / 1u"T" ), cur_eta_CD=default_eta_CD; verbose=true)
 
 Lorem ipsum dolor sit amet.
 """
-function solved_T_k_from_beta(T_guess, cur_B_0=( B_0 / 1u"T" ); verbose=true)
+function solved_T_k_from_beta(T_guess, cur_B_0=( B_0 / 1u"T" ), cur_eta_CD=default_eta_CD; verbose=true)
 
   cur_eq_exp = power_balance_r_exp()
 
@@ -29,7 +29,7 @@ function solved_T_k_from_beta(T_guess, cur_B_0=( B_0 / 1u"T" ); verbose=true)
 
     try
       solved_T_k = nlsolve(
-        @generate_fusion_equation_set(cur_eq), [cur_attempt],
+        @generate_fusion_equation_set(cur_eq, cur_eta_CD), [cur_attempt],
         show_trace = false, iterations=100
       ).zero[1]
 
@@ -40,7 +40,7 @@ function solved_T_k_from_beta(T_guess, cur_B_0=( B_0 / 1u"T" ); verbose=true)
         solved_T_k = NaN
         continue
       end
-    catch
+    catch DomainError
       did_work = false
     end
 

@@ -2,6 +2,8 @@
 
   @test isdefined(Tokamak, :K_LH) == true
 
+  Tokamak.load_input(" eta_CD = $(Tokamak.default_eta_CD) ")
+
   @test isapprox( Tokamak.K_LH(), 0.8929, rtol=5e-4 )
 
   Tokamak.load_input(" Q = 40 ")

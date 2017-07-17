@@ -10,7 +10,7 @@ nu_T = 0.929
 
 max_beta_N = 0.0259
 
-eta_CD = 0.321
+default_eta_CD = 0.321
 
 # wave_theta = 135.0 * ( pi / 180 )
 

@@ -1,10 +1,10 @@
 """
-    get_new_eta_CD(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k; verbose=false)
+    get_new_eta_CD(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, prev_eta_CD; verbose=false)
 
 Lorem ipsum dolor sit amet.
 """
-function get_new_eta_CD(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k; verbose=false)
-  cur_solution = solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, verbose=verbose)
+function get_new_eta_CD(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, prev_eta_CD; verbose=false)
+  cur_solution = solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, prev_eta_CD, verbose=verbose)
 
   n_para = cur_solution[1]
   rho_J = cur_solution[2]
@@ -17,7 +17,9 @@ function get_new_eta_CD(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k; verbose=
   cur_eta_CD = calc_cur_eta_cd(n_para_m, rho_J_m, omega)
 
   cur_eta_CD = subs(
-    cur_eta_CD, Tokamak.symbol_dict["T_k"], cur_solved_T_k
+    cur_eta_CD,
+    symbol_dict["T_k"] => cur_solved_T_k,
+    symbol_dict["eta_CD"] => prev_eta_CD
   )
 
   cur_eta_CD

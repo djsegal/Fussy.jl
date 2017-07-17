@@ -15,6 +15,8 @@
   Tokamak.load_input( "use_slow_sigma_v_funcs = true" )
   Tokamak.load_input(" n_bar = 0.551186983424829 * 1u\"n20\" ")
 
+  Tokamak.load_input(" eta_CD = $(Tokamak.default_eta_CD) ")
+
   actual_value = Tokamak.magnet_Q_15()
 
   expected_value = 80.612344086021510

@@ -14,6 +14,8 @@
     "T_k" => ( Tokamak.T_k / 1u"keV" ),
   )
 
+  Tokamak.load_input(" eta_CD = $(Tokamak.default_eta_CD) ")
+
   analyzed_solution = Tokamak.analyze_solved_case(cur_solution, verbose=false)
 
   magnet_solution = Tokamak.solve_magnet_equations(

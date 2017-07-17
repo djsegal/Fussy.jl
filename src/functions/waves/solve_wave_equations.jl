@@ -1,9 +1,9 @@
 """
-    solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k; verbose=false)
+    solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, prev_eta_CD; verbose=false)
 
 Function to solve for n_para, rho_J, omega.
 """
-function solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k; verbose=false)
+function solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, prev_eta_CD; verbose=false)
   rho_J = nothing
 
   for cur_attempt in 1:10
@@ -11,11 +11,11 @@ function solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k; ve
 
     try
       rho_J = nlsolve(
-        @generate_wave_equation_set(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k),
+        @generate_wave_equation_set(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, prev_eta_CD),
         [rand(linspace(0.1, 0.9))],
         show_trace = false, xtol = 1e-2, ftol = 1e-5, iterations=40
       ).zero[1]
-    catch
+    catch DomainError
       did_work = false
     end
 
@@ -45,7 +45,8 @@ function solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k; ve
   cur_n_bar = subs(
     calc_possible_values(
       ( solved_steady_density() / 1u"n20" ),
-      cur_T_k = ( cur_solved_T_k * 1u"keV" )
+      cur_T_k = ( cur_solved_T_k * 1u"keV" ),
+      cur_eta_CD = prev_eta_CD
     ),
     symbol_dict["R_0"] => cur_solved_R_0
   )

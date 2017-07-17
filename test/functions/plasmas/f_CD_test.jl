@@ -2,6 +2,8 @@
 
   @test isdefined(Tokamak, :f_CD) == true
 
+  Tokamak.load_input(" eta_CD = $(Tokamak.default_eta_CD) ")
+
   actual_value = Tokamak.f_CD()
 
   actual_value /= Tokamak.symbol_dict["n_bar"]

@@ -8,7 +8,7 @@ H = 1.22
 nu_n = 0.41
 nu_T = 1.15
 
-eta_CD = 0.4
+default_eta_CD = 0.4
 
 Z_eff = 2.12
 
