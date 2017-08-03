@@ -6,7 +6,7 @@ Function to solve for n_para, rho_J, omega.
 function solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, prev_eta_CD; verbose=false)
   rho_J = nothing
 
-  for cur_attempt in 1:10
+  for cur_attempt in 1:7
     did_work = true
 
     try
@@ -19,14 +19,13 @@ function solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, pr
       did_work = false
     end
 
-    if !did_work ; continue ; end
+    if verbose ; print( did_work ? "+" : "*" ) ; end
 
-    if verbose ; print("✓") ; end
-    break
+    if did_work ; break ; end
   end
 
   if rho_J == nothing
-    if verbose ; print("x") ; end
+    if verbose ; print("o") ; end
     return [ NaN , NaN , NaN ]
   end
 
