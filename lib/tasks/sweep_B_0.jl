@@ -47,7 +47,11 @@ function sweep_B_0(B_list, T_guess=15.0; verbose=true)
     end
 
     if new_constraint != cur_constraint
-      error("Unable to satisfy all constraints")
+      println("Unable to satisfy all constraints")
+
+      cur_solved_equation["R_0"] = NaN
+      cur_solved_equation["T_k"] = NaN
+      cur_solved_equation["eta_CD"] = NaN
     end
 
     solved_equations["constraint"][cur_index] = cur_constraint
