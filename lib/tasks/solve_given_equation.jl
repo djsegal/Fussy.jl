@@ -10,7 +10,22 @@ function solve_given_equation(cur_B, given_equations, T_guess=15.0; verbose=fals
   cur_solved_steady_density = solved_steady_density() / 1u"n20"
   cur_solved_steady_current = solved_steady_current() / 1u"MA"
 
-  cur_solved_R_0, cur_solved_T_k, cur_eta_CD = converge_eta_CD(cur_B, given_equations[cur_constraint], cur_eta_CD, T_guess, verbose=verbose)
+  eta_CD_attempt_list = Array{AbstractFloat}([cur_eta_CD])
+
+  for cur_scaling = linspace(1.25, 1.75, 2)
+    push!(eta_CD_attempt_list, cur_eta_CD * cur_scaling)
+    push!(eta_CD_attempt_list, cur_eta_CD / cur_scaling)
+  end
+
+  cur_solved_R_0 = NaN
+  cur_solved_T_k = NaN
+  cur_eta_CD = NaN
+
+  for cur_eta_CD_attempt in eta_CD_attempt_list
+    cur_solved_R_0, cur_solved_T_k, cur_eta_CD = converge_eta_CD(cur_B, given_equations[cur_constraint], cur_eta_CD_attempt, T_guess, verbose=verbose)
+
+    if !isnan(cur_eta_CD) ; break ; end
+  end
 
   solved_equation["eta_CD"] = cur_eta_CD
 
