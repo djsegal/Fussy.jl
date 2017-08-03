@@ -12,6 +12,7 @@
     "R_0" => ( Tokamak.R_0 / 1u"m" ),
     "B_0" => ( Tokamak.B_0 / 1u"T" ),
     "T_k" => ( Tokamak.T_k / 1u"keV" ),
+    "eta_CD" => Tokamak.default_eta_CD
   )
 
   Tokamak.load_input(" eta_CD = $(Tokamak.default_eta_CD) ")
