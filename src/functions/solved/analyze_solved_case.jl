@@ -57,7 +57,9 @@ function analyze_solved_case(found_data; verbose=true)
     end
 
     solved_case[cur_key] = calc_possible_values(
-      cur_value, cur_T_k = ( solved_case["T_k"] * 1u"keV" )
+      cur_value,
+      cur_T_k = ( solved_case["T_k"] * 1u"keV" ),
+      cur_eta_CD = ( solved_case["eta_CD"] )
     )
   end
 
@@ -68,6 +70,7 @@ function analyze_solved_case(found_data; verbose=true)
 
     solved_case[cur_key] = subs(
       cur_value,
+      symbol_dict["eta_CD"] => solved_case["eta_CD"],
       symbol_dict["n_bar"] => solved_case["n_bar"],
       symbol_dict["I_M"] => solved_case["I_M"],
       symbol_dict["R_0"] => solved_case["R_0"],
