@@ -12,7 +12,7 @@ max_beta_N = 0.0259
 
 default_eta_CD = 0.321
 
-# wave_theta = 135.0 * ( pi / 180 )
+wave_theta = 135.0 * ( pi / 180 )
 
 Z_eff = 1.2
 f_DT = 0.9
