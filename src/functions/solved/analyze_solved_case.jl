@@ -39,7 +39,11 @@ function analyze_solved_case(found_data; verbose=true)
     end
   end
 
-  if any(isnan,values(found_data))
+  cur_values = [ cur_value for cur_value in values(found_data) ]
+
+  filter!(cur_value->!isa(cur_value,AbstractString), cur_values)
+
+  if any(isnan, cur_values)
     for (cur_key, cur_value) in solved_case
       solved_case[cur_key] = NaN
     end
