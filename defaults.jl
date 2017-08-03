@@ -20,7 +20,9 @@ f_DT = 0.9
 
 wave_theta = 0.0
 wave_gamma0 = 8.562
-wave_error_level = 1e-3
+wave_error_level = 5e-3
+
+eta_cd_attempts = 25
 
 shape_sigma = 0.1
 
