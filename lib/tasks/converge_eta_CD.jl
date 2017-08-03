@@ -13,7 +13,7 @@ function converge_eta_CD(cur_B, cur_equation, prev_eta_CD, T_guess=15.0; verbose
 
     cur_solved_T_k = cur_equation["T_k"](T_guess, cur_B, prev_eta_CD) / 1u"keV"
 
-    if isnan(cur_solved_T_k) || !isreal(cur_solved_T_k)
+    if isnan(cur_solved_T_k)
       if verbose ; print("x") ; end
       return [ NaN , NaN , NaN ]
     end
