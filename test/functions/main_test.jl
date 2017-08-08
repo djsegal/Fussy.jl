@@ -11,7 +11,7 @@
 
   (outRead, outWrite) = redirect_stdout()
 
-  Tokamak.main(3)
+  Tokamak.main()
 
   close(outWrite)
 
