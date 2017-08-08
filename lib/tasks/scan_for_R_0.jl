@@ -1,23 +1,24 @@
 """
-    scan_for_R_0(R_0_value, B_list=linspace(5,30,5); rel_tol=1e-3, is_first_call=true, verbose=false)
+    scan_for_R_0(R_0_value, B_list=linspace(3,12,4); rel_tol=1e-3, is_first_call=true, verbose=false)
 
 Lorem ipsum dolor sit amet.
 """
-function scan_for_R_0(R_0_value, B_list=linspace(1,31,5); rel_tol=1e-3, is_first_call=true, verbose=false)
+function scan_for_R_0(R_0_value, B_list=linspace(3,12,4); rel_tol=1e-3, is_first_call=true, verbose=false)
 
   B_count = length(B_list)
 
   if is_first_call
-    cur_data = sweep_B_0(B_list, verbose=verbose)["beta"]
+    cur_data = sweep_B_0(B_list, verbose=verbose)
   else
     sub_section = 2 : ( B_count - 1 )
-    cur_data = sweep_B_0(B_list[sub_section], verbose=verbose)["beta"]
+    cur_data = sweep_B_0(B_list[sub_section], verbose=verbose)
   end
 
   bad_indices = findin(cur_data["T_k"], NaN)
 
   current_R_0_s = cur_data["R_0"]
   current_T_k_s = cur_data["T_k"]
+  current_eta_CD_s = cur_data["eta_CD"]
 
   R_0_diff = diff(current_R_0_s)
   R_0_diff = R_0_diff[.!isnan.(R_0_diff)]
@@ -47,6 +48,10 @@ function scan_for_R_0(R_0_value, B_list=linspace(1,31,5); rel_tol=1e-3, is_first
     B_count = length(B_list)
   end
 
+  if enable_eta_CD_derive
+    load_input(" default_eta_CD = $(mean(current_eta_CD_s)) ")
+  end
+
   first_R_0 = current_R_0_s[1]
   last_R_0 = current_R_0_s[length(current_R_0_s)]
 
@@ -55,6 +60,7 @@ function scan_for_R_0(R_0_value, B_list=linspace(1,31,5); rel_tol=1e-3, is_first
 
     reverse!(current_R_0_s)
     reverse!(current_T_k_s)
+    reverse!(current_eta_CD_s)
 
     reverse!(B_list)
   end
@@ -81,7 +87,8 @@ function scan_for_R_0(R_0_value, B_list=linspace(1,31,5); rel_tol=1e-3, is_first
     found_data = Dict(
       "B_0" => B_list[found_index],
       "R_0" => current_R_0_s[found_index],
-      "T_k" => current_T_k_s[found_index]
+      "T_k" => current_T_k_s[found_index],
+      "eta_CD" => current_eta_CD_s[found_index]
     )
 
     return found_data
@@ -103,5 +110,5 @@ function scan_for_R_0(R_0_value, B_list=linspace(1,31,5); rel_tol=1e-3, is_first
 
   new_B_list = linspace(B_list[low_index], B_list[high_index], 3)
 
-  return scan_for_R_0(R_0_value, new_B_list, rel_tol=rel_tol, is_first_call=false)
+  return scan_for_R_0(R_0_value, new_B_list, rel_tol=rel_tol, is_first_call=false, verbose=verbose)
 end
