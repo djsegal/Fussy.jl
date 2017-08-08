@@ -29,7 +29,6 @@ shape_sigma = 0.1
 default_eta_CD = 0.35
 
 max_beta_N = 0.026
-max_h_parallel = 500 * ( 1u"MW" / 1u"m^2" )
 max_P_W = 2.5
 
 enable_bremsstrahlung = true

@@ -20,6 +20,7 @@ function analyze_solved_case(found_data; verbose=true)
   solved_case["P_F"] = P_F() / 1u"MW"
   solved_case["P_BR"] = P_BR() / 1u"MW"
   solved_case["a"] = solved_case["R_0"] * epsilon
+  solved_case["q_P"] = q_P()
 
   given_equations = setup_given_equations()
 

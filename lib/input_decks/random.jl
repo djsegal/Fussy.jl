@@ -6,7 +6,6 @@ N_G = 0.71
 H = 1.7
 
 max_beta_N = 0.031
-max_h_parallel = 670 * ( 1u"MW" / 1u"m^2" )
 max_P_W = 7
 
 nu_n = 0.23
