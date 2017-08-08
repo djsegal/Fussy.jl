@@ -12,9 +12,11 @@ function solve_given_equation(cur_B, given_equations, T_guess=15.0; verbose=fals
 
   eta_CD_attempt_list = Array{AbstractFloat}([cur_eta_CD])
 
-  for cur_scaling = linspace(1.25, 1.75, 2)
-    push!(eta_CD_attempt_list, cur_eta_CD * cur_scaling)
-    push!(eta_CD_attempt_list, cur_eta_CD / cur_scaling)
+  if enable_eta_CD_derive
+    for cur_scaling = linspace(1.25, 1.75, 2)
+      push!(eta_CD_attempt_list, cur_eta_CD * cur_scaling)
+      push!(eta_CD_attempt_list, cur_eta_CD / cur_scaling)
+    end
   end
 
   cur_solved_R_0 = NaN
