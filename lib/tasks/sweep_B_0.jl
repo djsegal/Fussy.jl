@@ -8,8 +8,8 @@ function sweep_B_0(B_list, T_guess=15.0; verbose=true)
   given_equations = setup_given_equations()
 
   load_input( "beta_N = $(max_beta_N)" )
-  load_input( "P_W = $( max_P_W / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
   load_input( "h_parallel = $( max_h_parallel / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
+  load_input( "P_W = $( max_P_W ) * ( 1u\"MW\" / 1u\"m^2\" )" )
 
   solved_equations = OrderedDict()
 

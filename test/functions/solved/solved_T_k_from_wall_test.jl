@@ -6,7 +6,7 @@
 
   Tokamak.load_input(" eta_CD = $(Tokamak.default_eta_CD) ")
 
-  Tokamak.load_input( "P_W = $( Tokamak.max_P_W / ( 1u"MW" / 1u"m^2" ) ) * ( 1u\"MW\" / 1u\"m^2\" )" )
+  Tokamak.load_input( "P_W = $( Tokamak.max_P_W ) * ( 1u\"MW\" / 1u\"m^2\" )" )
 
   solved_B_0 = 5.0u"T"
 
@@ -22,7 +22,7 @@
 
   expected_value = Tokamak.K_W()
 
-  actual_value = ( Tokamak.max_P_W / 1u"MW/m^2" )
+  actual_value = Tokamak.max_P_W
 
   actual_value /= ( Tokamak.solved_steady_density() / 1u"n20" ) ^ 2
 

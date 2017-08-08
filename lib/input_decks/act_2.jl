@@ -13,4 +13,4 @@ default_eta_CD = 0.4
 Z_eff = 2.12
 
 max_beta_N = 2.25/100 # 0.026
-max_P_W = 1.46 * ( 1u"MW" / 1u"m^2" )
+max_P_W = 1.46

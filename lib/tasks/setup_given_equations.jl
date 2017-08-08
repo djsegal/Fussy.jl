@@ -18,7 +18,7 @@ function setup_given_equations()
     "T_k" => solved_T_k_from_wall,
     "R_0" => solved_R_0_from_T_k,
     "cur_limit" => ( wall_loading_limit() + ( P_W / ( 1u"MW" / 1u"m^2" ) ) ),
-    "max_limit" => max_P_W / ( 1u"MW" / 1u"m^2" )
+    "max_limit" => max_P_W
   )
 
   # given_equations["heat"] = OrderedDict(
