@@ -1,5 +1,5 @@
 """
-    solved_T_k_from_constraint(T_guess, cur_eta_CD, cur_eq)
+    solved_T_k_from_constraint(T_guess, cur_eta_CD, cur_eq, verbose)
 
 Lorem ipsum dolor sit amet.
 """
