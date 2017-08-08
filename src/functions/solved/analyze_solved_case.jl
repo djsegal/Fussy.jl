@@ -21,6 +21,7 @@ function analyze_solved_case(found_data; verbose=true)
   solved_case["P_BR"] = P_BR() / 1u"MW"
   solved_case["a"] = solved_case["R_0"] * epsilon
   solved_case["q_P"] = q_P()
+  solved_case["q_star"] = q_star()
 
   given_equations = setup_given_equations()
 
