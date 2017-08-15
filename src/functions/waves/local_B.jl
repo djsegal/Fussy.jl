@@ -1,9 +1,11 @@
 """
-    local_B(rho)
+    local_B(rho, cur_theta=wave_theta)
 
 Lorem ipsum dolor sit amet.
 """
 function local_B(rho, cur_theta=wave_theta)
+  cur_theta *= ( pi / 180 )
+
   cur_local_B = ( B_0 / 1u"T" )
 
   cur_denom = epsilon
