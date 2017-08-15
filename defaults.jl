@@ -31,6 +31,8 @@ default_eta_CD = 0.35
 max_beta_N = 0.026
 max_P_W = 2.5
 
+BR_scaling = 1.0
+
 enable_bremsstrahlung = true
 enable_eta_CD_derive = true
 enable_blanket_derive = true
