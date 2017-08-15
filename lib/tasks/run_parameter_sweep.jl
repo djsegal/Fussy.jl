@@ -10,7 +10,7 @@ function run_parameter_sweep(B_list, swept_params...; T_guess=15.0, verbose=true
 
   cur_variable, cur_range = first(swept_params)
 
-  cur_output = Dict()
+  cur_output = OrderedDict()
 
   for cur_value in cur_range
     cur_input = "$cur_variable = $cur_value"
