@@ -22,8 +22,6 @@ wave_theta = 0.0
 wave_gamma0 = 8.562
 wave_error_level = 5e-3
 
-eta_cd_attempts = 25
-
 shape_sigma = 0.1
 
 default_eta_CD = 0.35
@@ -45,6 +43,10 @@ integral_delta = 1e-4
 
 integral_zero = 0.0 + integral_delta
 integral_one = 1.0 - integral_delta
+
+T_attempt_count = 3
+eta_CD_attempt_count = 3
+convergence_attempt_counts = 25
 
 confinement_scaling = Dict(
   "constant" => 0.145,

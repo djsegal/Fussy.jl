@@ -13,7 +13,7 @@ function converge_eta_CD(cur_B, cur_equation, prev_eta_CD, T_guess=15.0; verbose
 
   while !has_converged
 
-    if length(attempt_bank) >= eta_cd_attempts
+    if length(attempt_bank) >= convergence_attempt_counts
       if any(cur_attempt -> !isnan(cur_attempt), attempt_bank)
         println("\nFailed to converge eta CD: \n$(unique(attempt_bank))\n")
       end
@@ -24,7 +24,7 @@ function converge_eta_CD(cur_B, cur_equation, prev_eta_CD, T_guess=15.0; verbose
 
     if isnan(cur_solved_T_k)
       if verbose ; print("x") ; end
-      append!(attempt_bank, [ NaN for i in 1:( eta_cd_attempts - length(attempt_bank) ) ])
+      append!(attempt_bank, [ NaN for i in 1:( convergence_attempt_counts - length(attempt_bank) ) ])
       continue
     end
 
@@ -38,7 +38,7 @@ function converge_eta_CD(cur_B, cur_equation, prev_eta_CD, T_guess=15.0; verbose
 
     if isnan(cur_new_eta_CD)
       if verbose ; print("#") ; end
-      append!(attempt_bank, [ NaN for i in 1:( eta_cd_attempts - length(attempt_bank) ) ])
+      append!(attempt_bank, [ NaN for i in 1:( convergence_attempt_counts - length(attempt_bank) ) ])
       continue
     end
 
