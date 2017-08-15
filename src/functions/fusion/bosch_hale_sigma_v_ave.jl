@@ -5,7 +5,7 @@ Lorem ipsum dolor sit amet.
 """
 function bosch_hale_sigma_v_ave(rho; cur_T_k=T_k)
 
-  cur_local_T = local_T_k(rho, cur_T_k)
+  cur_local_T = T_profile(rho, cur_T_k)
 
   cur_bg = pi
 

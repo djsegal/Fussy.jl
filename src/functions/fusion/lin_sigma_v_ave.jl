@@ -7,7 +7,7 @@ function lin_sigma_v_ave(rho; cur_T_k=T_k)
 
   cur_k_array = sigma_v_k_array()
 
-  cur_local_T = local_T_k(rho, cur_T_k)
+  cur_local_T = T_profile(rho, cur_T_k)
 
   cur_sigma_v_ave = 0.0
 
