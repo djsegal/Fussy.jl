@@ -22,7 +22,7 @@ macro generate_wave_equation_set(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k,
         symbol_dict["T_k"] => $(esc(cur_solved_T_k))
       )
 
-      cur_n_para = n_para(rho, cur_wave_chi)
+      cur_n_para = n_para(rho, cur_wave_chi=cur_wave_chi)
 
       cur_F[1] = (1+nu_T)
       cur_F[1] *= (1-rho^2)^nu_T*cur_n_para^2
