@@ -22,7 +22,7 @@ function solved_T_k_from_constraint(T_guess, cur_eta_CD, cur_eq, verbose)
     try
       solved_T_k = nlsolve(
         @generate_fusion_equation_set(cur_eq, cur_eta_CD), [cur_T_attempt],
-        show_trace = false, iterations=100
+        show_trace = false, xtol = ( wave_error_level / 10 ), iterations = 250
       ).zero[1]
 
       cur_F = calc_possible_values(
@@ -31,7 +31,7 @@ function solved_T_k_from_constraint(T_guess, cur_eta_CD, cur_eq, verbose)
         cur_eta_CD=cur_eta_CD
       )
 
-      if !isreal(solved_T_k) || abs(cur_F) > 1e-4
+      if !isreal(solved_T_k) || abs(cur_F) > wave_error_level
         did_work = false
       end
     catch DomainError
