@@ -19,5 +19,3 @@ f_DT = 0.9
 
 enable_bremsstrahlung = true
 enable_eta_CD_derive = false
-
-use_bosch_hale_sigma_v = false
