@@ -37,6 +37,48 @@ function sweep_B_0(B_list, T_guess=15.0; verbose=true)
 
   _sweep_B_0(given_equations, solved_equations, B_list, 1:length(B_list), T_guess, cur_constraint, cur_eta_CD, verbose, is_initial_run=true)
 
+  if all(x -> isnan(x), solved_equations["eta_CD"])
+    return solved_equations
+  end
+
+  has_seen_number = false
+
+  for cur_index in length(B_list):-1:1
+    if !has_seen_number && isnan(solved_equations["eta_CD"][cur_index])
+      continue
+    end
+
+    if !isnan(solved_equations["eta_CD"][cur_index])
+      has_seen_number = true
+      continue
+    end
+
+    _sweep_B_0(given_equations, solved_equations, B_list, cur_index, solved_equations["T_k"][cur_index+1], solved_equations["constraint"][cur_index+1], solved_equations["eta_CD"][cur_index+1], verbose)
+
+    if isnan(solved_equations["eta_CD"][cur_index])
+      break
+    end
+  end
+
+  has_seen_number = false
+
+  for cur_index in 1:+1:length(B_list)
+    if !has_seen_number && isnan(solved_equations["eta_CD"][cur_index])
+      continue
+    end
+
+    if !isnan(solved_equations["eta_CD"][cur_index])
+      has_seen_number = true
+      continue
+    end
+
+    _sweep_B_0(given_equations, solved_equations, B_list, cur_index, solved_equations["T_k"][cur_index-1], solved_equations["constraint"][cur_index-1], solved_equations["eta_CD"][cur_index-1], verbose)
+
+    if isnan(solved_equations["eta_CD"][cur_index])
+      break
+    end
+  end
+
   return solved_equations
 
 end
