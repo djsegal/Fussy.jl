@@ -62,11 +62,11 @@ function converge_eta_CD(cur_B, cur_equation, prev_eta_CD, T_guess=15.0; verbose
 
   end
 
-  output = Array{Any}(3)
-
-  output[1] = cur_solved_R_0
-  output[2] = cur_solved_T_k
-  output[3] = prev_eta_CD
+  output = [
+    cur_solved_R_0,
+    cur_solved_T_k,
+    SymPy.N(prev_eta_CD)
+  ]
 
   return output
 

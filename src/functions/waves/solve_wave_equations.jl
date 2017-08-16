@@ -53,23 +53,19 @@ function solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, pr
     symbol_dict["B_0"] => cur_solved_B_0
   )
 
-  cur_n_para = n_para(
-    rho_J, cur_omega_nor2=cur_omega_nor2
+  cur_n_para = subs(
+    n_para(
+      rho_J, cur_omega_nor2=cur_omega_nor2
+    ),
+    symbol_dict["B_0"] => cur_solved_B_0,
+    symbol_dict["n_bar"] => cur_n_bar
   )
 
   output = [
-    cur_n_para,
+    SymPy.N(cur_n_para),
     rho_J,
-    omega
+    SymPy.N(omega)
   ]
-
-  output = map(
-    x -> subs(x,
-      symbol_dict["B_0"] => cur_solved_B_0,
-      symbol_dict["n_bar"] => cur_n_bar
-    ),
-    output
-  )
 
   return output
 end
