@@ -1,3 +1,5 @@
+# act 2
+
 Q = 25.0
 kappa = 2.2
 delta = 0.63
@@ -11,6 +13,7 @@ nu_T = 1.15
 default_eta_CD = 0.4
 
 Z_eff = 2.12
+f_DT = 0.74
 
 max_beta_N = 2.25/100 # 0.026
 max_P_W = 1.46
