@@ -4,8 +4,9 @@
 Lorem ipsum dolor sit amet.
 """
 function converge_eta_CD(cur_B, cur_equation, prev_eta_CD, T_guess=15.0; verbose=false)
-  cur_solved_R_0 = nothing
-  cur_solved_T_k = nothing
+  cur_solved_R_0 = NaN
+  cur_solved_T_k = NaN
+  cur_rho_j = NaN
 
   has_converged = false
 
@@ -20,7 +21,7 @@ function converge_eta_CD(cur_B, cur_equation, prev_eta_CD, T_guess=15.0; verbose
       if any(cur_attempt -> !isnan(cur_attempt), attempt_bank)
         println("\nFailed to converge eta CD: \n$(unique(attempt_bank))\n")
       end
-      return [ NaN , NaN , NaN ]
+      return [ NaN , NaN , NaN , NaN ]
     end
 
     cur_solved_T_k = cur_equation["T_k"](T_guess, cur_B, work_eta_CD, verbose=verbose) / 1u"keV"
@@ -37,7 +38,7 @@ function converge_eta_CD(cur_B, cur_equation, prev_eta_CD, T_guess=15.0; verbose
       break
     end
 
-    cur_new_eta_CD = get_new_eta_CD(cur_solved_R_0, cur_B, cur_solved_T_k, prev_eta_CD, verbose=verbose)
+    cur_new_eta_CD, cur_rho_j = get_new_eta_CD(cur_solved_R_0, cur_B, cur_solved_T_k, prev_eta_CD, verbose=verbose)
 
     is_bad_eta_CD = isnan(cur_new_eta_CD)
     is_bad_eta_CD |= eltype(cur_new_eta_CD) == SymPy.Sym && is_real(cur_new_eta_CD) == nothing
@@ -65,7 +66,8 @@ function converge_eta_CD(cur_B, cur_equation, prev_eta_CD, T_guess=15.0; verbose
   output = [
     cur_solved_R_0,
     cur_solved_T_k,
-    SymPy.N(prev_eta_CD)
+    SymPy.N(prev_eta_CD),
+    SymPy.N(cur_rho_j)
   ]
 
   return output

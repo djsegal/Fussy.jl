@@ -22,14 +22,16 @@ function solve_given_equation(cur_B, given_equations, T_guess=15.0; verbose=fals
   cur_solved_R_0 = NaN
   cur_solved_T_k = NaN
   cur_eta_CD = NaN
+  cur_rho_j = NaN
 
   for cur_eta_CD_attempt in eta_CD_attempt_list
-    cur_solved_R_0, cur_solved_T_k, cur_eta_CD = converge_eta_CD(cur_B, given_equations[cur_constraint], cur_eta_CD_attempt, T_guess, verbose=verbose)
+    cur_solved_R_0, cur_solved_T_k, cur_eta_CD, cur_rho_j = converge_eta_CD(cur_B, given_equations[cur_constraint], cur_eta_CD_attempt, T_guess, verbose=verbose)
 
     if !isnan(cur_eta_CD) ; break ; end
   end
 
   solved_equation["eta_CD"] = cur_eta_CD
+  solved_equation["rho_j"] = cur_rho_j
 
   solved_equation["R_0"] = cur_solved_R_0
   solved_equation["B_0"] = cur_B

@@ -22,5 +22,5 @@ function get_new_eta_CD(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, prev_eta
     symbol_dict["eta_CD"] => prev_eta_CD
   )
 
-  cur_eta_CD
+  [ cur_eta_CD, rho_J ]
 end

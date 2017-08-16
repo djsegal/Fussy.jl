@@ -9,7 +9,7 @@
   cur_solved_B_0 = 10.0
   cur_solved_T_k = 17.8
 
-  actual_value = Tokamak.get_new_eta_CD(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, Tokamak.default_eta_CD)
+  actual_value = Tokamak.get_new_eta_CD(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, Tokamak.default_eta_CD)[1]
 
   expected_value = 0.36657
 

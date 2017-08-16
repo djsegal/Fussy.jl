@@ -15,6 +15,8 @@ function sweep_B_0(B_list, T_guess=15.0; verbose=true)
   solved_equations["R_0"] = Array{Float64}(length(B_list))
   solved_equations["T_k"] = Array{Float64}(length(B_list))
 
+  solved_equations["rho_j"] = Array{Float64}(length(B_list))
+
   solved_equations["eta_CD"] = Array{Float64}(length(B_list))
 
   for cur_val in values(solved_equations)
@@ -144,6 +146,7 @@ function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_gues
 
     cur_solved_equation["R_0"] = NaN
     cur_solved_equation["T_k"] = NaN
+    cur_solved_equation["rho_j"] = NaN
     cur_solved_equation["eta_CD"] = NaN
   end
 
@@ -158,6 +161,7 @@ function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_gues
   solved_equations["B_0"][cur_index] = cur_solved_equation["B_0"]
   solved_equations["T_k"][cur_index] = cur_solved_equation["T_k"]
 
+  solved_equations["rho_j"][cur_index] = cur_solved_equation["rho_j"]
   solved_equations["eta_CD"][cur_index] = cur_solved_equation["eta_CD"]
 
   for (sub_key, sub_value) in given_equations
