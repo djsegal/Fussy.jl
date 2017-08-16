@@ -7,7 +7,7 @@ function solved_T_k_from_constraint(T_guess, cur_eta_CD, cur_eq, verbose)
 
   T_attempt_list = Array{AbstractFloat}([T_guess])
 
-  for cur_scaling = linspace(2.0, 4.0, T_attempt_count)
+  for cur_scaling = (1:T_attempt_count) + 1.0
     push!(T_attempt_list, T_guess * cur_scaling)
     push!(T_attempt_list, T_guess / cur_scaling)
   end

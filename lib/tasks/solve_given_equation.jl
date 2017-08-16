@@ -13,7 +13,7 @@ function solve_given_equation(cur_B, given_equations, T_guess=15.0; verbose=fals
   eta_CD_attempt_list = Array{AbstractFloat}([cur_eta_CD])
 
   if enable_eta_CD_derive
-    for cur_scaling = linspace(1.25, 2.25, eta_CD_attempt_count)
+    for cur_scaling = (0:eta_CD_attempt_count-1)/2 + 1.25
       push!(eta_CD_attempt_list, cur_eta_CD * cur_scaling)
       push!(eta_CD_attempt_list, cur_eta_CD / cur_scaling)
     end
