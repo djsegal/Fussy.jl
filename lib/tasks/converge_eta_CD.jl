@@ -12,7 +12,7 @@ function converge_eta_CD(cur_B, cur_equation, prev_eta_CD, T_guess=15.0; verbose
 
   attempt_bank = []
 
-  new_weight = 0.3
+  min_weight = 0.3
   work_eta_CD = prev_eta_CD
 
   while !has_converged
@@ -48,6 +48,10 @@ function converge_eta_CD(cur_B, cur_equation, prev_eta_CD, T_guess=15.0; verbose
       append!(attempt_bank, [ NaN for i in 1:( convergence_attempt_counts - length(attempt_bank) ) ])
       continue
     end
+
+    new_weight = 1 - min_weight
+    new_weight *= sqrt( length(attempt_bank) / convergence_attempt_counts )
+    new_weight += min_weight
 
     work_eta_CD *= ( 1 - new_weight )
     work_eta_CD += cur_new_eta_CD * new_weight
