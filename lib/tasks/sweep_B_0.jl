@@ -27,6 +27,8 @@ function sweep_B_0(B_list, T_guess=15.0; verbose=true)
 
   solved_equations["constraint"] = Array{AbstractString}(length(B_list))
 
+  fill!(solved_equations["constraint"], "x")
+
   solved_equations["limits"] = OrderedDict()
 
   for cur_key in keys(given_equations)
@@ -151,7 +153,6 @@ function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_gues
   end
 
   if cur_constraint == nothing
-    solved_equations["constraint"][cur_index] = "x"
     cur_constraint = "beta"
   else
     solved_equations["constraint"][cur_index] = cur_constraint
