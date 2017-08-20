@@ -4,33 +4,19 @@
 Lorem ipsum dolor sit amet.
 """
 function surface_area(cur_R_0=R_0)
+  cur_surface_area = ( kappa ^ 2 - 1.0 )
 
-  cur_shape_array = d_shape_array()
+  cur_surface_area *= ( 2 / pi )
 
-  cur_func = function (cur_t)
-    dydt = kappa * cos(cur_t)
+  cur_surface_area += 1.0
 
-    dxdt = 0.0
+  cur_surface_area *= 4 * pi ^ 2
 
-    for cur_index = 0:3
-      cur_dxdt_part = cur_index * 1.0
+  cur_surface_area *= cur_R_0
 
-      cur_dxdt_part *= cur_shape_array[cur_index+1]
-      cur_dxdt_part *= sin(cur_index * cur_t)
+  cur_surface_area *= a(cur_R_0)
 
-      dxdt -= cur_dxdt_part
-    end
-
-    cur_value = sqrt( dxdt^2 + dydt^2 )
-
-    cur_value
-  end
-
-  cur_surface_area = QuadGK.quadgk( cur_func , 0 , (2*pi) )[1]
-
-  cur_surface_area *= a()
-
-  cur_surface_area *= 2 * pi * cur_R_0
+  cur_surface_area /= kappa
 
   cur_surface_area
 end

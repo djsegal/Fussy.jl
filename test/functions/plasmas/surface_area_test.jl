@@ -12,6 +12,6 @@
 
   expected_value = 215.2997982
 
-  @test isapprox(expected_value, actual_value, rtol=5e-4)
+  @test isapprox(expected_value, actual_value, rtol=1e-1)
 
 end
