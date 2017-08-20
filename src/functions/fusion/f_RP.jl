@@ -1,11 +1,11 @@
 """
-    f_RP()
+    f_RP(cur_Q=Q)
 
 Lorem ipsum dolor sit amet.
 """
-function f_RP()
+function f_RP(cur_Q=Q)
 
-  cur_f_RP = Q_E()
+  cur_f_RP = Q_E(cur_Q)
 
   cur_f_RP += 1
 
