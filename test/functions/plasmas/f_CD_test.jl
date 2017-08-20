@@ -12,9 +12,11 @@
 
   actual_value *= Tokamak.symbol_dict["I_M"]
 
+  actual_value /= Tokamak.eta_CD
+
   actual_value = SymPy.N(actual_value)
 
-  expected_value = Tokamak.K_CD_hat()
+  expected_value = Tokamak.K_CD()
 
   @test isapprox(expected_value, actual_value)
 

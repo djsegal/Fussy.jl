@@ -30,7 +30,9 @@
   expected_value *= Tokamak.K_B()
   expected_value *= ( Tokamak.T_k / 1u"keV" )
 
-  expected_value /= Tokamak.K_CD_hat()
+  expected_value /= Tokamak.K_CD()
+  expected_value /= Tokamak.eta_CD
+
   expected_value /= ( Tokamak.sigma_v_hat / 1u"m^3/s" )
 
   expected_value = Tokamak.calc_possible_values(expected_value)
