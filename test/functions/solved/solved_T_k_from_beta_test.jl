@@ -26,6 +26,6 @@
 
   actual_value /= ( Tokamak.T_k / 1u"keV" )
 
-  @test isapprox(expected_value, actual_value)
+  @test isapprox(expected_value, actual_value, rtol=Tokamak.wave_error_level)
 
 end

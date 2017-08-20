@@ -32,6 +32,6 @@
 
   actual_value = Tokamak.calc_possible_values(actual_value)
 
-  @test isapprox(expected_value, actual_value, rtol=5e-4)
+  @test isapprox(expected_value, actual_value, rtol=Tokamak.wave_error_level)
 
 end
