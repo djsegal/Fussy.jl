@@ -1,7 +1,7 @@
-Q = 40
+Q = 30.0
 kappa = 1.8
 delta = 0.4
-epsilon = 0.25
+epsilon = 0.35
 N_G = 0.8
 H = 1.0
 

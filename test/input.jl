@@ -8,4 +8,6 @@ eta_RF = 0.4
 
 delta = 0.5
 
+epsilon = 0.25
+
 dememoize()
