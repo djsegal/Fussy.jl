@@ -26,7 +26,7 @@ function solved_T_k_from_constraint(T_guess, cur_eta_CD, cur_eq, verbose)
     try
       solved_T_k = nlsolve(
         @generate_fusion_equation_set(cur_eq, cur_eta_CD), [cur_T_attempt],
-        show_trace = false, xtol = ( wave_error_level / 10 ), iterations = 250
+        show_trace = false, xtol=wave_error_level/1e4, ftol=wave_error_level/10, iterations = 250
       ).zero[1]
 
       cur_error = calc_possible_values(
