@@ -5,7 +5,7 @@ Lorem ipsum dolor sit amet.
 """
 function C_B()
   cur_func = function (rho)
-    cur_value = 1.0 - rho^2
+    cur_value = 1.0 - rho ^ 2
 
     cur_value ^= nu_n + nu_T - 1
 
