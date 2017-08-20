@@ -36,7 +36,8 @@ function sweep_B_0(B_list, T_guess=15.0; verbose=true)
     fill!(solved_equations["limits"][cur_key], NaN)
   end
 
-  cur_constraint = "beta"
+  cur_constraint = ( main_constraint == "x" ) ? default_constraint : main_constraint
+
   cur_eta_CD = default_eta_CD
 
   _sweep_B_0(given_equations, solved_equations, B_list, 1:length(B_list), T_guess, cur_constraint, cur_eta_CD, verbose, is_initial_run=true)
@@ -103,7 +104,9 @@ function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_gues
 
   initial_constraint = nothing
 
-  if isnan(cur_solved_equation["eta_CD"])
+  skip_search = main_constraint != "x"
+
+  if !skip_search && isnan(cur_solved_equation["eta_CD"])
     for tmp_constraint in [cur_key for cur_key in keys(cur_solved_equation["limits"])]
       if tmp_constraint == cur_constraint
         continue
@@ -129,12 +132,20 @@ function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_gues
     new_constraint = collect(keys(cur_solved_equation["limits"]))[indmax(collect(values(cur_solved_equation["limits"])))]
   end
 
-  if new_constraint != cur_constraint && new_constraint != initial_constraint
+  if !skip_search && new_constraint != cur_constraint && new_constraint != initial_constraint
     cur_constraint = new_constraint
 
     cur_solved_equation = solve_given_equation(cur_B, given_equations, T_guess, verbose=verbose, cur_constraint=cur_constraint, cur_eta_CD=cur_eta_CD)
 
     new_constraint = collect(keys(cur_solved_equation["limits"]))[indmax(collect(values(cur_solved_equation["limits"])))]
+  end
+
+  if skip_search
+    if isnan(cur_solved_equation["eta_CD"])
+      new_constraint = nothing
+    else
+      new_constraint = cur_constraint
+    end
   end
 
   if new_constraint != cur_constraint || new_constraint == initial_constraint
@@ -153,7 +164,7 @@ function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_gues
   end
 
   if cur_constraint == nothing
-    cur_constraint = "beta"
+    cur_constraint = ( main_constraint == "x" ) ? default_constraint : main_constraint
   else
     solved_equations["constraint"][cur_index] = cur_constraint
   end

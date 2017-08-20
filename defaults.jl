@@ -48,6 +48,9 @@ T_attempt_count = 2
 eta_CD_attempt_count = 2
 convergence_attempt_counts = 25
 
+main_constraint = "x"
+default_constraint = "beta"
+
 confinement_scaling = Dict(
   "constant" => 0.145,
   "I_M" => ( 93 // 100 ),

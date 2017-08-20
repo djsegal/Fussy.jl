@@ -1,9 +1,9 @@
 """
-    solve_given_equation(cur_B, given_equations, T_guess=15.0; verbose=false, cur_constraint="beta", cur_eta_CD=default_eta_CD)
+    solve_given_equation(cur_B, given_equations, T_guess=15.0; verbose=false, cur_constraint=default_constraint, cur_eta_CD=default_eta_CD)
 
 Lorem ipsum dolor sit amet.
 """
-function solve_given_equation(cur_B, given_equations, T_guess=15.0; verbose=false, cur_constraint="beta", cur_eta_CD=default_eta_CD)
+function solve_given_equation(cur_B, given_equations, T_guess=15.0; verbose=false, cur_constraint=default_constraint, cur_eta_CD=default_eta_CD)
   solved_equation = OrderedDict()
   solved_equation["limits"] = OrderedDict()
 
