@@ -10,8 +10,7 @@ function K_L()
   cur_K_L *= 1 + nu_T
   cur_K_L /= 1 + nu_n + nu_T
 
-  cur_K_L *= 5 * Q
-  cur_K_L /= 5 + Q
+  cur_K_L /= Q_kernel()
 
   cur_K_L
 end

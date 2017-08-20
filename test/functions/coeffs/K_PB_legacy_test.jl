@@ -4,9 +4,8 @@
 
   actual_value = Tokamak.K_PB_legacy()
 
-  expected_value = 5 + Tokamak.Q
-
-  expected_value /= Tokamak.Q
+  expected_value = Tokamak.Q_kernel()
+  expected_value *= 5
 
   expected_value ^= 0.31
 

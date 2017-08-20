@@ -15,8 +15,7 @@
   expected_value *= 1 + Tokamak.nu_T
   expected_value /= 1 + Tokamak.nu_n + Tokamak.nu_T
 
-  expected_value *= 5 * Tokamak.Q
-  expected_value /= 5 + Tokamak.Q
+  expected_value /= Tokamak.Q_kernel()
 
   expected_value /= Tokamak.f_DT ^ 2
 

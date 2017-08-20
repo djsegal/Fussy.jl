@@ -6,8 +6,7 @@ Lorem ipsum dolor sit amet.
 function K_DV()
   cur_K_DV = 10.2
 
-  cur_K_DV *= ( 5 + Q )
-  cur_K_DV /= ( 5 * Q )
+  cur_K_DV *= Q_kernel()
 
   cur_K_DV *= f_DT ^ 2
   cur_K_DV *= epsilon ^ 0.8

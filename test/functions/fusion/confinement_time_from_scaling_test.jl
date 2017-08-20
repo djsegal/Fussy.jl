@@ -13,9 +13,8 @@
   actual_value *= Tokamak.symbol_dict["R_0"] ^ ( 10 // 100 )
   actual_value *= Tokamak.symbol_dict["sigma_v_hat"] ^ ( 69 // 100 )
 
-  expected_value = ( 5 * Tokamak.Q )
-  expected_value /= ( 5 + Tokamak.Q )
-  expected_value ^= 0.69
+  expected_value = Tokamak.Q_kernel()
+  expected_value ^= -0.69
 
   expected_value *= 3.550e-3
   expected_value *= Tokamak.H

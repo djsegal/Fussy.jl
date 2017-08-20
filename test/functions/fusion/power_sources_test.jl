@@ -14,8 +14,7 @@
   actual_value = Tokamak.calc_possible_values(actual_value)
 
   expected_value = Tokamak.P_F()
-  expected_value *= 5 + Tokamak.Q
-  expected_value /= 5 * Tokamak.Q
+  expected_value *= Tokamak.Q_kernel()
   expected_value /= scale_factor
 
   expected_value = Tokamak.calc_possible_values(expected_value)

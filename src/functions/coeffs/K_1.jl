@@ -17,11 +17,7 @@ function K_1()
 
   cur_K_1 /= K_law()
 
-  cur_Q_factor = 5 * Q
-  cur_Q_factor /= 5 + Q
-  cur_Q_factor ^= alphas["P"]
-
-  cur_K_1 *= cur_Q_factor
+  cur_K_1 /= Q_kernel() ^ alphas["P"]
 
   cur_K_1 *= epsilon ^ alphas["a"]
 
