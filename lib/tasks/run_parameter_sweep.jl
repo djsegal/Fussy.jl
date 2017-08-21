@@ -13,6 +13,10 @@ function run_parameter_sweep(B_list, swept_params...; T_guess=15.0, verbose=true
   cur_output = OrderedDict()
 
   for cur_value in cur_range
+    if isa(cur_value, AbstractString)
+      cur_value = "\"$cur_value\""
+    end
+
     cur_input = "$cur_variable = $cur_value"
 
     if verbose ; println(" \n\n $cur_input \n ") ; end
