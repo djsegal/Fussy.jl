@@ -45,46 +45,8 @@ function sweep_B_0(B_list, T_guess=15.0; verbose=true)
 
   _sweep_B_0(given_equations, solved_equations, B_list, 1:length(B_list), T_guess, cur_constraint, cur_eta_CD, verbose, is_initial_run=true)
 
-  if all(x -> isnan(x), solved_equations["eta_CD"])
-    return solved_equations
-  end
-
-  has_seen_number = false
-
-  for cur_index in length(B_list):-1:1
-    if !has_seen_number && isnan(solved_equations["eta_CD"][cur_index])
-      continue
-    end
-
-    if !isnan(solved_equations["eta_CD"][cur_index])
-      has_seen_number = true
-      continue
-    end
-
-    _sweep_B_0(given_equations, solved_equations, B_list, cur_index, solved_equations["T_k"][cur_index+1], solved_equations["constraint"][cur_index+1], solved_equations["eta_CD"][cur_index+1], verbose)
-
-    if isnan(solved_equations["eta_CD"][cur_index])
-      break
-    end
-  end
-
-  has_seen_number = false
-
-  for cur_index in 1:+1:length(B_list)
-    if !has_seen_number && isnan(solved_equations["eta_CD"][cur_index])
-      continue
-    end
-
-    if !isnan(solved_equations["eta_CD"][cur_index])
-      has_seen_number = true
-      continue
-    end
-
-    _sweep_B_0(given_equations, solved_equations, B_list, cur_index, solved_equations["T_k"][cur_index-1], solved_equations["constraint"][cur_index-1], solved_equations["eta_CD"][cur_index-1], verbose)
-
-    if isnan(solved_equations["eta_CD"][cur_index])
-      break
-    end
+  if enable_eta_CD_derive && any(x -> !isnan(x), solved_equations["eta_CD"])
+    _resweep_side_B_0_s(solved_equations, given_equations, B_list, verbose)
   end
 
   return solved_equations
@@ -263,5 +225,45 @@ function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_gues
   _sweep_B_0(given_equations, solved_equations, B_list, end_range, T_guess, cur_constraint, cur_eta_CD, verbose, is_left_branch=right_is_left, has_bad_parent=!is_successful_run)
 
   return is_successful_run
+
+end
+
+function _resweep_side_B_0_s(solved_equations, given_equations, B_list, verbose)
+
+  difference_dict = OrderedDict(
+    "reverse" => Dict(
+      "cur_indices" => length(B_list):-1:1,
+      "cur_offset" => +1
+    ),
+    "forward" => Dict(
+      "cur_indices" => 1:+1:length(B_list),
+      "cur_offset" => -1
+    )
+  )
+
+  for cur_entry in values(difference_dict)
+
+    has_seen_number = false
+
+    for cur_index in cur_entry["cur_indices"]
+      if !has_seen_number && isnan(solved_equations["eta_CD"][cur_index])
+        continue
+      end
+
+      if !isnan(solved_equations["eta_CD"][cur_index])
+        has_seen_number = true
+        continue
+      end
+
+      cur_neighbor = cur_index + cur_entry["cur_offset"]
+
+      _sweep_B_0(given_equations, solved_equations, B_list, cur_index, solved_equations["T_k"][cur_neighbor], solved_equations["constraint"][cur_neighbor], verbose)
+
+      if isnan(solved_equations["eta_CD"][cur_index])
+        break
+      end
+    end
+
+  end
 
 end
