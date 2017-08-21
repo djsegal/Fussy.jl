@@ -35,6 +35,7 @@ function converge_eta_CD(cur_B, cur_equation, prev_eta_CD, T_guess=15.0; verbose
     cur_solved_R_0 = cur_equation["R_0"](cur_solved_T_k, cur_B, work_eta_CD) / 1u"m"
 
     if !enable_eta_CD_derive
+      cur_rho_j = 0.0
       break
     end
 
