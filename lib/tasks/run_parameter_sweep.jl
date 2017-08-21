@@ -1,11 +1,11 @@
 """
-    run_parameter_sweep(B_list, swept_params...; T_guess=15.0, verbose=true)
+    run_parameter_sweep(B_list, swept_params...; verbose=true)
 
 Lorem ipsum dolor sit amet.
 """
-function run_parameter_sweep(B_list, swept_params...; T_guess=15.0, verbose=true)
+function run_parameter_sweep(B_list, swept_params...; verbose=true)
   if isempty(swept_params)
-    return sweep_B_0(B_list, T_guess; verbose=verbose)
+    return sweep_B_0(B_list; verbose=verbose)
   end
 
   cur_variable, cur_range = first(swept_params)
