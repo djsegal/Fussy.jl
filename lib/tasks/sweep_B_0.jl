@@ -1,9 +1,9 @@
 """
-    sweep_B_0(B_list, T_guess=15.0; verbose=true)
+    sweep_B_0(B_list; verbose=true)
 
 Lorem ipsum dolor sit amet.
 """
-function sweep_B_0(B_list, T_guess=15.0; verbose=true)
+function sweep_B_0(B_list; verbose=true)
 
   given_equations = setup_given_equations()
 
@@ -41,9 +41,7 @@ function sweep_B_0(B_list, T_guess=15.0; verbose=true)
 
   cur_constraint = ( main_constraint == "x" ) ? default_constraint : main_constraint
 
-  cur_eta_CD = default_eta_CD
-
-  _sweep_B_0(given_equations, solved_equations, B_list, 1:length(B_list), T_guess, cur_constraint, cur_eta_CD, verbose, is_initial_run=true)
+  _sweep_B_0(given_equations, solved_equations, B_list, 1:length(B_list), cur_constraint, verbose, is_initial_run=true)
 
   if enable_eta_CD_derive && any(x -> !isnan(x), solved_equations["eta_CD"])
     _resweep_side_B_0_s(solved_equations, given_equations, B_list, verbose)
@@ -53,7 +51,7 @@ function sweep_B_0(B_list, T_guess=15.0; verbose=true)
 
 end
 
-function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_guess, cur_constraint, cur_eta_CD, verbose; is_left_branch=false, has_bad_parent=false, is_initial_run=false)
+function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, cur_constraint, verbose; is_left_branch=false, has_bad_parent=false, is_initial_run=false)
 
   if length(cur_range) == 0 ; return true ; end
 
@@ -62,6 +60,23 @@ function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_gues
   cur_index = ( first(cur_range) - 1 ) + Int( ceil( B_length / 2 ) )
 
   cur_B = B_list[cur_index]
+
+  success_indices = find(solved_equations["success"])
+
+  if length(success_indices) == 0
+    T_guess = default_T_guess
+    cur_eta_CD = default_eta_CD
+  elseif length(success_indices) == 1
+    T_guess = solved_equations["T_k"][success_indices[1]]
+    cur_eta_CD = solved_equations["eta_CD"][success_indices[1]]
+  else
+    cur_B_0_grid = solved_equations["B_0"][success_indices]
+    cur_T_k_grid = solved_equations["T_k"][success_indices]
+    cur_eta_CD_grid = solved_equations["eta_CD"][success_indices]
+
+    T_guess = Interpolations.interpolate((cur_B_0_grid,), cur_T_k_grid, Gridded(Linear()))[cur_B]
+    cur_eta_CD = Interpolations.interpolate((cur_B_0_grid,), cur_eta_CD_grid, Gridded(Linear()))[cur_B]
+  end
 
   if verbose ; print("\n\n$cur_B\n") ; end
 
@@ -155,11 +170,6 @@ function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_gues
     return is_successful_run
   end
 
-  if is_successful_run
-    T_guess = solved_equations["T_k"][cur_index]
-    cur_eta_CD = solved_equations["eta_CD"][cur_index]
-  end
-
   beg_range = first(cur_range):(cur_index-1)
   end_range = (cur_index+1):last(cur_range)
 
@@ -191,7 +201,7 @@ function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_gues
     else
       good_beg_value = _sweep_B_0(
         given_equations, solved_equations, B_list, first(beg_range),
-        T_guess, cur_constraint, cur_eta_CD, verbose,
+        cur_constraint, verbose,
         is_left_branch=left_is_left, has_bad_parent=!is_successful_run
       )
     end
@@ -209,7 +219,7 @@ function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_gues
     else
       good_end_value = _sweep_B_0(
         given_equations, solved_equations, B_list, last(end_range),
-        T_guess, cur_constraint, cur_eta_CD, verbose,
+        cur_constraint, verbose,
         is_left_branch=right_is_left, has_bad_parent=!is_successful_run
       )
     end
@@ -221,8 +231,8 @@ function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_gues
     end
   end
 
-  _sweep_B_0(given_equations, solved_equations, B_list, beg_range, T_guess, cur_constraint, cur_eta_CD, verbose, is_left_branch=left_is_left, has_bad_parent=!is_successful_run)
-  _sweep_B_0(given_equations, solved_equations, B_list, end_range, T_guess, cur_constraint, cur_eta_CD, verbose, is_left_branch=right_is_left, has_bad_parent=!is_successful_run)
+  _sweep_B_0(given_equations, solved_equations, B_list, beg_range, cur_constraint, verbose, is_left_branch=left_is_left, has_bad_parent=!is_successful_run)
+  _sweep_B_0(given_equations, solved_equations, B_list, end_range, cur_constraint, verbose, is_left_branch=right_is_left, has_bad_parent=!is_successful_run)
 
   return is_successful_run
 
@@ -257,7 +267,7 @@ function _resweep_side_B_0_s(solved_equations, given_equations, B_list, verbose)
 
       cur_neighbor = cur_index + cur_entry["cur_offset"]
 
-      _sweep_B_0(given_equations, solved_equations, B_list, cur_index, solved_equations["T_k"][cur_neighbor], solved_equations["constraint"][cur_neighbor], verbose)
+      _sweep_B_0(given_equations, solved_equations, B_list, cur_index, solved_equations["constraint"][cur_neighbor], verbose)
 
       if isnan(solved_equations["eta_CD"][cur_index])
         break

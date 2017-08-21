@@ -25,6 +25,7 @@ wave_error_level = 5e-3
 shape_sigma = 0.1
 
 default_eta_CD = 0.35
+default_T_guess = 15.0
 
 max_beta_N = 0.026
 max_P_W = 2.5
