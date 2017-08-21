@@ -16,7 +16,6 @@ function sweep_B_0(B_list, T_guess=15.0; verbose=true)
   solved_equations["T_k"] = Array{Float64}(length(B_list))
 
   solved_equations["rho_j"] = Array{Float64}(length(B_list))
-
   solved_equations["eta_CD"] = Array{Float64}(length(B_list))
 
   for cur_val in values(solved_equations)
@@ -24,6 +23,10 @@ function sweep_B_0(B_list, T_guess=15.0; verbose=true)
   end
 
   solved_equations["B_0"] = [B_list...]
+
+  solved_equations["success"] = Array{Bool}(length(B_list))
+
+  fill!(solved_equations["success"], false)
 
   solved_equations["constraint"] = Array{AbstractString}(length(B_list))
 
@@ -161,6 +164,8 @@ function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_gues
     cur_solved_equation["T_k"] = NaN
     cur_solved_equation["rho_j"] = NaN
     cur_solved_equation["eta_CD"] = NaN
+
+    cur_solved_equation["success"] = false
   end
 
   if cur_constraint == nothing
@@ -175,6 +180,8 @@ function _sweep_B_0(given_equations, solved_equations, B_list, cur_range, T_gues
 
   solved_equations["rho_j"][cur_index] = cur_solved_equation["rho_j"]
   solved_equations["eta_CD"][cur_index] = cur_solved_equation["eta_CD"]
+
+  solved_equations["success"][cur_index] = cur_solved_equation["success"]
 
   for (sub_key, sub_value) in given_equations
     solved_equations["limits"][sub_key][cur_index] = cur_solved_equation["limits"][sub_key]
