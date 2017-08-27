@@ -13,7 +13,7 @@ function K_F()
 
   cur_K_F *= kappa
 
-  cur_K_F *= g_factor()
+  cur_K_F *= geometry_scaling()
 
   cur_K_F
 

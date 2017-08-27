@@ -1,5 +1,5 @@
 enable_eta_CD_derive = false
-enable_geom_factor = false
+enable_geom_scaling = false
 
 f_DT = 1.0
 

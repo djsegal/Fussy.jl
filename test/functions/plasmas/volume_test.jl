@@ -2,6 +2,8 @@
 
   @test isdefined(Tokamak, :volume) == true
 
+  Tokamak.load_input(" enable_geom_scaling = true ")
+
   actual_value = Tokamak.volume()
 
   actual_value /= 1u"m^3"
