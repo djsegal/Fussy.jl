@@ -29,9 +29,17 @@ module HTMLElements
       cur_table *= "<tr>"
 
       for jj in 1:size(cur_matrix, 2)
-        cur_table *= "<td>"
+        cur_element = cur_matrix[ii, jj]
 
-        cur_table *= string(cur_matrix[ii, jj])
+        if isa(cur_element, Dict)
+          cur_table *= "<td class=\"$(cur_element["class"])\">"
+          cur_value = cur_element["value"]
+        else
+          cur_table *= "<td>"
+          cur_value = cur_element
+        end
+
+        cur_table *= string(cur_value)
 
         cur_table *= "</td>"
       end
