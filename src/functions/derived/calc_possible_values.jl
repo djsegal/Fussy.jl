@@ -1,5 +1,5 @@
 """
-    calc_possible_values()
+    calc_possible_values(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=symbol_dict["sigma_v_hat"]; cur_T_k=T_k, cur_eta_CD=eta_CD)
 
 Lorem ipsum dolor sit amet.
 """
