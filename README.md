@@ -17,4 +17,16 @@ To get working locally, type these lines into the terminal:
 
 Then you can edit code in your Julia package directory.
 
-// i.e. in `~/.julia/v0.5/Tokamak` (possibly)
+// i.e. in `~/.julia/v0.6/Tokamak` (possibly)
+
+-----
+
+A quick usage example would be:
+
+```
+> julia
+> using Tokamak
+> Tokamak.load_input("arc.jl", true)
+> Tokamak.load_input(" enable_eta_CD_derive = true ")
+> Tokamak.sweep_B_0(5:15)
+```
