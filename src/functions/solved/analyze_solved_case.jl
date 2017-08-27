@@ -23,6 +23,19 @@ function analyze_solved_case(found_data; verbose=true)
   solved_case["q_P"] = q_P()
   solved_case["q_star"] = q_star()
 
+  solved_case["Q"] = Q
+  solved_case["kappa"] = kappa
+  solved_case["delta"] = delta
+  solved_case["epsilon"] = epsilon
+  solved_case["N_G"] = N_G
+  solved_case["H"] = H
+  solved_case["nu_n"] = nu_n
+  solved_case["nu_T"] = nu_T
+  solved_case["Z_eff"] = Z_eff
+  solved_case["rho_m"] = rho_m
+  solved_case["f_DT"] = f_DT
+  solved_case["wave_theta"] = wave_theta
+
   given_equations = setup_given_equations()
 
   for (cur_key, cur_value) in given_equations
@@ -44,6 +57,7 @@ function analyze_solved_case(found_data; verbose=true)
   cur_values = [ cur_value for cur_value in values(found_data) ]
 
   filter!(cur_value->!isa(cur_value,AbstractString), cur_values)
+  filter!(cur_value->!isa(cur_value,Char), cur_values)
 
   if any(isnan, cur_values)
     for (cur_key, cur_value) in solved_case
