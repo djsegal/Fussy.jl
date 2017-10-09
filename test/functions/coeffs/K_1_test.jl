@@ -2,14 +2,22 @@
 
   @test isdefined(Tokamak, :K_1) == true
 
+  Tokamak.load_input( "tau_factor = $( Tokamak.max_tau_factor )" )
+
   Tokamak.load_input(" Q = 40 ")
   Tokamak.load_input(" f_DT = 0.9 ")
 
+  expected_value = 0.5572
+
+  expected_value /= ( 1 + Tokamak.f_DT ) / 2
+
   actual_value = Tokamak.K_1()
 
-  @test isapprox( actual_value, 0.5572, rtol=5e-4 )
+  @test isapprox( actual_value, expected_value, rtol=1e-3 )
 
   expected_value = 1.30
+
+  expected_value /= ( 1 + Tokamak.f_DT ) / 2
 
   expected_value *= Tokamak.A ^ 0.19
 

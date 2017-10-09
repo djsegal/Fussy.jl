@@ -2,6 +2,16 @@
 
   @test isdefined(Tokamak, :K_kappa) == true
 
-  @test isapprox( Tokamak.K_kappa() , 0.1221 , rtol=1e-4 )
+  Tokamak.load_input(" f_DT = 0.9 ")
+
+  expected_value = 0.1221
+
+  expected_value /= 2
+
+  expected_value *= ( 1 + Tokamak.f_DT )
+
+  actual_value = Tokamak.K_kappa()
+
+  @test isapprox( actual_value, expected_value, rtol=5e-3 )
 
 end
