@@ -1,9 +1,9 @@
 """
-    solve_given_equation(cur_B, given_equations, T_guess=15.0; verbose=false, cur_constraint=default_constraint, cur_eta_CD=default_eta_CD)
+    solve_given_equation(main_value, given_equations, side_guess=15.0; verbose=false, cur_eta_CD=default_eta_CD)
 
 Lorem ipsum dolor sit amet.
 """
-function solve_given_equation(cur_B, given_equations, T_guess=15.0; verbose=false, cur_constraint=default_constraint, cur_eta_CD=default_eta_CD)
+function solve_given_equation(main_value, given_equations, side_guess=15.0; verbose=false, cur_eta_CD=default_eta_CD)
   solved_equation = OrderedDict()
   solved_equation["limits"] = OrderedDict()
 
@@ -20,14 +20,23 @@ function solve_given_equation(cur_B, given_equations, T_guess=15.0; verbose=fals
   end
 
   cur_solved_R_0 = NaN
+  cur_solved_B_0 = NaN
   cur_solved_T_k = NaN
+
   cur_eta_CD = NaN
   cur_rho_j = NaN
 
   is_success = false
 
+  for sub_key in keys(constraint_params)
+    solved_equation["limits"][sub_key] = NaN
+  end
+
+  iszero(main_value) && ( eta_CD_attempt_list = [] )
+
   for cur_eta_CD_attempt in eta_CD_attempt_list
-    cur_solved_R_0, cur_solved_T_k, cur_eta_CD, cur_rho_j = converge_eta_CD(cur_B, given_equations[cur_constraint], cur_eta_CD_attempt, T_guess, verbose=verbose)
+    cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, cur_eta_CD, cur_rho_j =
+      converge_eta_CD(main_value, given_equations, cur_eta_CD_attempt, side_guess, verbose=verbose)
 
     if !isnan(cur_eta_CD)
       is_success = true
@@ -41,17 +50,40 @@ function solve_given_equation(cur_B, given_equations, T_guess=15.0; verbose=fals
   solved_equation["rho_j"] = cur_rho_j
 
   solved_equation["R_0"] = cur_solved_R_0
-  solved_equation["B_0"] = cur_B
+  solved_equation["B_0"] = cur_solved_B_0
   solved_equation["T_k"] = cur_solved_T_k
 
-  for (sub_key, sub_value) in given_equations
-    tmp_value = sub_value["cur_limit"]
-    tmp_value /= sub_value["max_limit"]
+  !is_success && ( return solved_equation )
+  iszero(main_value) && ( return solved_equation )
 
-    if isnan(cur_solved_T_k) || isnan(tmp_value)
-      solved_equation["limits"][sub_key] = NaN
-      continue
-    end
+  for (cur_index, (sub_key, sub_value)) in enumerate(constraint_params)
+    cur_limit_eq = subs(
+      getfield( Tokamak, Symbol("R_B_$(cur_index)") )(),
+      symbol_dict["R_0"] => cur_solved_R_0,
+      symbol_dict["B_0"] => cur_solved_B_0
+    )
+
+    cur_limit_eq -= (
+      symbol_dict["G_K_$(cur_index)"] *
+      getfield( Tokamak, Symbol("K_$(cur_index)") )()
+    )
+
+    tmp_value = first(elements(solveset(
+      cur_limit_eq,
+      symbol_dict[sub_value],
+      SymPy.S.Reals
+    )))
+
+    tmp_value = subs(
+      tmp_value,
+      symbol_dict["G_K_$(cur_index)"],
+      getfield( Tokamak, Symbol("G_$(cur_index)") )()
+    )
+
+    tmp_value /= eval(parse("max_$(sub_value)"))
+
+    isnan(cur_solved_T_k) && continue
+    isnan(tmp_value) && continue
 
     tmp_value = calc_possible_values(
       tmp_value,
@@ -63,8 +95,8 @@ function solve_given_equation(cur_B, given_equations, T_guess=15.0; verbose=fals
       symbol_dict["n_bar"] => cur_solved_steady_density,
       symbol_dict["I_M"] => cur_solved_steady_current,
       symbol_dict["R_0"] => cur_solved_R_0,
-      symbol_dict["T_k"] => cur_solved_T_k,
-      symbol_dict["B_0"] => cur_B
+      symbol_dict["B_0"] => cur_solved_B_0,
+      symbol_dict["T_k"] => cur_solved_T_k
     )
 
     solved_equation["limits"][sub_key] = tmp_value

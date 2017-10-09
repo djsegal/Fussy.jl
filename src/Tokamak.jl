@@ -33,7 +33,10 @@ module Tokamak
 
     solution_dict = OrderedDict()
 
-    data_var_keys = [ "R_0" , "B_0" , "T_k" , "eta_CD", "constraint" ]
+    data_var_keys = [
+      "R_0" , "B_0" , "T_k" , "eta_CD",
+      "primary_constraint", "secondary_constraint"
+    ]
 
     for (cur_index, cur_B) in enumerate(B_list)
       cur_data = OrderedDict()
@@ -51,7 +54,7 @@ module Tokamak
       for cur_key in all_var_keys
         cur_array = map(x -> string(x[cur_key]), values(solution_dict))
 
-        if cur_key != "constraint"
+        if cur_key != "primary_constraint" && cur_key != "secondary_constraint"
           cur_line = "$cur_key = [ $(join(cur_array, " , ")) ]\n"
 
           write(cur_file, cur_line)

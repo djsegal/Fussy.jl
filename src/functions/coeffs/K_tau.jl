@@ -8,5 +8,7 @@ function K_tau()
 
   cur_K_tau *= H
 
+  cur_K_tau /= tau_factor
+
   cur_K_tau
 end
