@@ -11,6 +11,7 @@ module Tokamak
   using Interpolations
   using YAML
   using Memoize
+  using ForwardDiff
 
   Base.cd("$(dirname(@__FILE__))/..") do
     include("../config/bootload.jl")

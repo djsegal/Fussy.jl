@@ -11,3 +11,4 @@ DataFrames
 Interpolations
 YAML
 Memoize
+ForwardDiff

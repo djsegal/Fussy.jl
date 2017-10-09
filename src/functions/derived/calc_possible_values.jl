@@ -4,6 +4,13 @@
 Lorem ipsum dolor sit amet.
 """
 function calc_possible_values(cur_value=symbol_dict["sigma_v_hat"], cur_symbol=symbol_dict["sigma_v_hat"]; cur_T_k=T_k, cur_eta_CD=eta_CD)
+  if isa(cur_T_k/1u"keV", ForwardDiff.Dual)
+    cur_T_k = 1u"keV" * (
+      cur_T_k /
+      1u"keV"
+    ).value
+  end
+
   cur_sigma_v_hat = sigma_v(cur_T_k)
 
   cur_sigma_v_hat *= 1e21
