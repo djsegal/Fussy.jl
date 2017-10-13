@@ -50,6 +50,10 @@ function analyze_solved_case(found_data; verbose=true)
     solved_case["f_CD"], symbol_dict["eta_CD"] => work_eta_CD
   )
 
+  if SymPy.isnan(solved_case["f_CD"])
+    solved_case["f_CD"] = NaN
+  end
+
   for (cur_index, (cur_key, cur_value)) in enumerate(constraint_params)
     tmp_value = solved_case["limits"][cur_key]
     tmp_value *= getfield( Tokamak, Symbol("max_$(cur_value)") )
