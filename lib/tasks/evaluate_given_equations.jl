@@ -10,17 +10,17 @@ function evaluate_given_equations(main_value, side_guess, cur_eta_CD, initial_pr
 
   filter!(
     x -> (
-      x != cur_primary_constraint &&
+      x != initial_primary_constraint &&
       x != initial_secondary_constraint
     ),
     cur_secondary_constraints
   )
 
-  unshift!(cur_secondary_constraints, initial_secondary_constraint)
-
   if !enable_secondary_constraint
-    cur_secondary_constraints = [initial_secondary_constraint]
+    cur_secondary_constraints = []
   end
+
+  unshift!(cur_secondary_constraints, initial_secondary_constraint)
 
   cur_solved_equation, cur_secondary_constraint, has_solution, worst_constraint =
     _evaluate_given_equations_deep(
