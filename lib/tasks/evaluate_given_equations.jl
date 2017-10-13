@@ -52,7 +52,7 @@ function evaluate_given_equations(main_value, side_guess, cur_eta_CD, initial_pr
 
   unshift!(possible_constraints, worst_constraint)
 
-  if !enable_primary_constraint
+  if !enable_secondary_constraint || !enable_primary_constraint
     possible_constraints = []
   end
 
@@ -122,6 +122,10 @@ function _evaluate_given_equations_shallow(main_value, side_guess, cur_eta_CD, c
   end
 
   has_solution = true
+
+  if !enable_secondary_constraint
+    return cur_solved_equation, has_solution, worst_constraint
+  end
 
   worst_value = max(
     1.0,
