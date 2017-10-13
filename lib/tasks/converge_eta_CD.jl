@@ -1,9 +1,9 @@
 """
-    converge_eta_CD(main_value, given_equations, prev_eta_CD, side_guess=15.0; verbose=false)
+    converge_eta_CD(main_value, given_equations, cur_eta_CD, side_guess=15.0; verbose=false)
 
 Lorem ipsum dolor sit amet.
 """
-function converge_eta_CD(main_value, given_equations, prev_eta_CD, side_guess=15.0; verbose=false)
+function converge_eta_CD(main_value, given_equations, cur_eta_CD, side_guess=15.0; verbose=false)
   cur_solved_R_0 = NaN
   cur_solved_B_0 = NaN
   cur_solved_T_k = NaN
@@ -15,7 +15,9 @@ function converge_eta_CD(main_value, given_equations, prev_eta_CD, side_guess=15
   attempt_bank = []
 
   min_weight = 0.3
-  work_eta_CD = prev_eta_CD
+
+  prev_eta_CD = cur_eta_CD
+  work_eta_CD = cur_eta_CD
 
   if main_variable == side_variable
     error("Main variable can not be the same as the side variable")
@@ -44,14 +46,7 @@ function converge_eta_CD(main_value, given_equations, prev_eta_CD, side_guess=15
     )
   end
 
-  while !has_converged
-
-    if length(attempt_bank) >= convergence_attempt_counts
-      if any(cur_attempt -> !isnan(cur_attempt), attempt_bank)
-        println("\nFailed to converge eta CD: \n$(unique(attempt_bank))\n")
-      end
-      return [ NaN , NaN , NaN , NaN , NaN ]
-    end
+  while length(attempt_bank) < convergence_attempt_counts
 
     if side_variable == "T_k"
       cur_solved_T_k = solved_T_k_from_constraint(main_value, side_guess, work_eta_CD, cur_equations["B_0"]/main_value - 1.0, verbose) / 1u"keV"
@@ -82,44 +77,67 @@ function converge_eta_CD(main_value, given_equations, prev_eta_CD, side_guess=15
     )
 
     if !enable_eta_CD_derive
+      has_converged = true
       cur_rho_j = 0.0
-      break
     end
 
-    cur_new_eta_CD, cur_rho_j = get_new_eta_CD(cur_solved_R_0, main_value, cur_solved_T_k, prev_eta_CD, verbose=verbose)
+    has_converged && break
 
-    is_bad_eta_CD = isnan(cur_new_eta_CD)
-    is_bad_eta_CD |= eltype(cur_new_eta_CD) == SymPy.Sym && is_real(cur_new_eta_CD) == nothing
+    tmp_eta_CD, cur_rho_j = get_new_eta_CD(cur_solved_R_0, main_value, cur_solved_T_k, work_eta_CD, verbose=verbose)
 
-    if is_bad_eta_CD
-      if verbose ; print("#") ; end
-      append!(attempt_bank, [ NaN for i in 1:( convergence_attempt_counts - length(attempt_bank) ) ])
-      continue
-    end
+    is_bad_eta_CD = isnan(tmp_eta_CD)
+    is_bad_eta_CD |= eltype(tmp_eta_CD) == SymPy.Sym && is_real(tmp_eta_CD) == nothing
 
     new_weight = 1 - min_weight
     new_weight *= sqrt( length(attempt_bank) / convergence_attempt_counts )
     new_weight += min_weight
 
-    work_eta_CD *= ( 1 - new_weight )
-    work_eta_CD += cur_new_eta_CD * new_weight
+    push!(attempt_bank, cur_eta_CD)
 
-    rel_error = abs( cur_new_eta_CD - prev_eta_CD )
-    rel_error /= cur_new_eta_CD
+    if is_bad_eta_CD
+      if verbose ; print("#") ; end
 
-    prev_eta_CD = cur_new_eta_CD
+      if prev_eta_CD == cur_eta_CD
+        append!(attempt_bank, [ NaN for i in 1:( convergence_attempt_counts - length(attempt_bank) ) ])
+      end
 
-    push!(attempt_bank, cur_new_eta_CD)
+      work_eta_CD *= ( 1 - new_weight )
+      work_eta_CD += cur_eta_CD * new_weight
+
+      continue
+    end
+
+    prev_eta_CD = cur_eta_CD
+    cur_eta_CD = tmp_eta_CD
+
+    rel_error =
+      abs( cur_eta_CD - prev_eta_CD ) /
+      min( cur_eta_CD , prev_eta_CD )
 
     has_converged = ( rel_error < wave_error_level )
 
+    if has_converged
+      work_eta_CD = cur_eta_CD
+      continue
+    end
+
+    work_eta_CD *= ( 1 - new_weight )
+    work_eta_CD += cur_eta_CD * new_weight
+
+  end
+
+  if !has_converged
+    if any(cur_attempt -> !isnan(cur_attempt), attempt_bank)
+      verbose && println("\nFailed to converge eta CD: \n$(unique(attempt_bank))\n")
+    end
+    return [ NaN , NaN , NaN , NaN , NaN ]
   end
 
   output = [
     cur_solved_R_0,
     cur_solved_B_0,
     cur_solved_T_k,
-    SymPy.N(prev_eta_CD),
+    SymPy.N(cur_eta_CD),
     SymPy.N(cur_rho_j)
   ]
 
