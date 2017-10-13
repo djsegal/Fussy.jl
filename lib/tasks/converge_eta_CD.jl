@@ -35,11 +35,13 @@ function converge_eta_CD(main_value, given_equations, prev_eta_CD, side_guess=15
     for (cur_sub_key, cur_sub_value) in constraint_params
       cur_value = subs(
         cur_value,
-        symbol_dict[main_variable] => main_value,
         symbol_dict[cur_sub_value] => eval(parse("max_$(cur_sub_value)"))
       )
     end
-    cur_equations[cur_key] = cur_value
+
+    cur_equations[cur_key] = subs(
+      cur_value, symbol_dict[main_variable] => main_value
+    )
   end
 
   while !has_converged
