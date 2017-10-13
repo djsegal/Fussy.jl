@@ -26,5 +26,7 @@ function restructure_sweep(old_sweep)
     end
   end
 
+  filter!(cur_run -> cur_run["success"], new_sweep)
+
   new_sweep
 end
