@@ -61,7 +61,7 @@ magnets:
 magnets_structure:
 
   price_per: Cost_ST_Total() # total cost of raw materials for magnets
-  fab_factor: 10 # arbitrary default value
+  fab_factor: 100 # arbitrary default value
 
 land:
 

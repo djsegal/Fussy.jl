@@ -1,18 +1,24 @@
+# skip: true
+
 @testset "Lcoe Function Tests" begin
 
   @test isdefined(Tokamak, :lcoe) == true
 
-  Tokamak.load_input(" R_0 = 3.3 * 1u\"m\" ")
-  Tokamak.load_input(" B_0 = 9.2 * 1u\"T\" ")
+  # Tokamak.load_input(" R_0 = 3.3 * 1u\"m\" ")
+  # Tokamak.load_input(" B_0 = 9.2 * 1u\"T\" ")
+  # Tokamak.load_input(" T_k = 15 * 1u\"keV\" ")
   Tokamak.load_input(" I_M = 8 * 1u\"MA\" ")
-  Tokamak.load_input(" T_k = 15 * 1u\"keV\" ")
   Tokamak.load_input(" n_bar = 1.5 * 1u\"n20\" ")
 
   cur_solution = Dict(
-    "R_0" => ( Tokamak.R_0 / 1u"m" ),
-    "B_0" => ( Tokamak.B_0 / 1u"T" ),
-    "T_k" => ( Tokamak.T_k / 1u"keV" ),
-    "eta_CD" => Tokamak.default_eta_CD
+    "R_0" => ( 3.3 / 1u"m" ),
+    "B_0" => ( 9.2 / 1u"T" ),
+    "T_k" => ( 15.0 / 1u"keV" ),
+    "eta_CD" => Tokamak.default_eta_CD,
+    "primary_constraint" => Tokamak.default_primary_constraint,
+    "secondary_constraint" => Tokamak.default_secondary_constraint,
+    "cur_limit" => 0.0,
+    "max_limit" => 1.0
   )
 
   Tokamak.load_input(" eta_CD = $(Tokamak.default_eta_CD) ")
