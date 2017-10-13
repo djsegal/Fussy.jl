@@ -91,7 +91,7 @@ function _sweep_B_0(solved_equations, B_list, cur_range, cur_primary_constraint,
   )
 
   solved_equations["R_0"][cur_index] = cur_solved_equation["R_0"]
-  solved_equations["B_0"][cur_index] = cur_solved_equation["B_0"]
+  # solved_equations["B_0"][cur_index] = cur_solved_equation["B_0"]
   solved_equations["T_k"][cur_index] = cur_solved_equation["T_k"]
 
   solved_equations["rho_j"][cur_index] = cur_solved_equation["rho_j"]
