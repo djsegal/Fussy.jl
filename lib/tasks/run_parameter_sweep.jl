@@ -1,11 +1,11 @@
 """
-    run_parameter_sweep(B_list, swept_params...; verbose=true)
+    run_parameter_sweep(T_list, swept_params...; verbose=true)
 
 Lorem ipsum dolor sit amet.
 """
-function run_parameter_sweep(B_list, swept_params...; verbose=true)
+function run_parameter_sweep(T_list, swept_params...; verbose=true)
   if isempty(swept_params)
-    return sweep_B_0(B_list; verbose=verbose)
+    return sweep_T_k(T_list; verbose=verbose)
   end
 
   cur_variable, cur_range = first(swept_params)
@@ -23,7 +23,7 @@ function run_parameter_sweep(B_list, swept_params...; verbose=true)
 
     Tokamak.load_input(cur_input)
 
-    cur_output[cur_input] = run_parameter_sweep(B_list, swept_params[2:end]...)
+    cur_output[cur_input] = run_parameter_sweep(T_list, swept_params[2:end]...)
   end
 
   cur_output
