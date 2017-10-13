@@ -1,8 +1,8 @@
 # act 1
 
 Q = 42.5
-kappa = 2.0
-delta = 0.575
+kappa = 2.1
+delta = 0.63
 epsilon = 0.25
 N_G = 1.0
 H = 1.65
@@ -23,6 +23,6 @@ wave_theta = 150.0
 eta_T = 0.575
 eta_RF = 0.4
 
-rho_m = 0.7
+rho_m = 0.8152
 
-default_constraint = "wall"
+default_secondary_constraint = "wall"
