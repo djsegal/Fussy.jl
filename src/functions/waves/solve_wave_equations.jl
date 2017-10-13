@@ -10,11 +10,18 @@ function solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, pr
     did_work = true
 
     try
-      rho_J = nlsolve(
+      rho_J = mcpsolve(
         @generate_wave_equation_set(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, prev_eta_CD),
-        [rand(linspace(0.1, 0.9))],
-        show_trace = false, xtol = 1e-2, ftol = 1e-5, iterations=40
+        [-1.0], [1.0], [rand(linspace(0.1, 0.9))],
+        ftol = 1e-6, xtol = 1e-4, iterations=50,
+        show_trace = false,
       ).zero[1]
+
+      rho_J = abs(rho_J)
+
+      if isapprox(0, rho_J, atol=1e-8)
+        did_work = false
+      end
     catch DomainError
       did_work = false
     end
