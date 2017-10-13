@@ -51,7 +51,6 @@ integral_delta = 1e-4
 integral_zero = 0.0 + integral_delta
 integral_one = 1.0 - integral_delta
 
-T_attempt_count = 2
 eta_CD_attempt_count = 2
 convergence_attempt_counts = 25
 
