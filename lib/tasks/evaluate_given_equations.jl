@@ -115,7 +115,7 @@ function _evaluate_given_equations_shallow(main_value, side_guess, cur_eta_CD, c
 
   given_equations = setup_given_equations(cur_constraint_list...)
 
-  cur_solved_equation = solve_given_equation(main_value, given_equations, side_guess, verbose=verbose, cur_eta_CD=cur_eta_CD)
+  cur_solved_equation = solve_given_equation(main_value, given_equations, side_guess, verbose=verbose, eta_CD_guess=cur_eta_CD)
 
   if isnan(cur_solved_equation["eta_CD"])
     return cur_solved_equation, has_solution, worst_constraint

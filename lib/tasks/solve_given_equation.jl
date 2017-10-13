@@ -1,21 +1,21 @@
 """
-    solve_given_equation(main_value, given_equations, side_guess=15.0; verbose=false, cur_eta_CD=default_eta_CD)
+    solve_given_equation(main_value, given_equations, side_guess=15.0; verbose=false, eta_CD_guess=eta_CD)
 
 Lorem ipsum dolor sit amet.
 """
-function solve_given_equation(main_value, given_equations, side_guess=15.0; verbose=false, cur_eta_CD=default_eta_CD)
+function solve_given_equation(main_value, given_equations, side_guess=15.0; verbose=false, eta_CD_guess=eta_CD)
   solved_equation = OrderedDict()
   solved_equation["limits"] = OrderedDict()
 
   cur_solved_steady_density = solved_steady_density() / 1u"n20"
   cur_solved_steady_current = solved_steady_current() / 1u"MA"
 
-  eta_CD_attempt_list = Array{AbstractFloat}([cur_eta_CD])
+  eta_CD_attempt_list = Array{AbstractFloat}([eta_CD_guess])
 
   if enable_eta_CD_derive
-    for cur_scaling = (0:eta_CD_attempt_count-1)/2 + 1.25
-      push!(eta_CD_attempt_list, cur_eta_CD * cur_scaling)
-      push!(eta_CD_attempt_list, cur_eta_CD / cur_scaling)
+    for cur_scaling = (0.0:eta_CD_attempt_count-1)/2 + 1.25
+      push!(eta_CD_attempt_list, eta_CD_guess * cur_scaling)
+      push!(eta_CD_attempt_list, eta_CD_guess / cur_scaling)
     end
   end
 
