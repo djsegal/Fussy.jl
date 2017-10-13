@@ -55,7 +55,7 @@ T_attempt_count = 2
 eta_CD_attempt_count = 2
 convergence_attempt_counts = 25
 
-enable_primary_constraint = true
+enable_primary_constraint = false
 enable_secondary_constraint = true
 
 default_primary_constraint = "steady"
