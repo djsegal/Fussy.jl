@@ -44,13 +44,15 @@ function analyze_solved_case(found_data; verbose=true)
   solved_case["f_DT"] = f_DT
   solved_case["wave_theta"] = wave_theta
 
-  work_eta_CD = first(get_new_eta_CD(
-    solved_case["R_0"], solved_case["B_0"], solved_case["T_k"], solved_case["eta_CD"]
-  ))
+  if !enable_eta_CD_derive
+    work_eta_CD = first(get_new_eta_CD(
+      solved_case["R_0"], solved_case["B_0"], solved_case["T_k"], solved_case["eta_CD"]
+    ))
 
-  solved_case["f_CD"] = subs(
-    solved_case["f_CD"], symbol_dict["eta_CD"] => work_eta_CD
-  )
+    solved_case["f_CD"] = subs(
+      solved_case["f_CD"], symbol_dict["eta_CD"] => work_eta_CD
+    )
+  end
 
   if SymPy.isnan(solved_case["f_CD"])
     solved_case["f_CD"] = NaN
