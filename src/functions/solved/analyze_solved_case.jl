@@ -20,6 +20,8 @@ function analyze_solved_case(found_data; verbose=true)
 
   solved_case["P_F"] = P_F() / 1u"MW"
 
+  solved_case["W_mag"] = W_mag()
+
   solved_case["P_BR"] = P_BR() / 1u"MW"
 
   solved_case["a"] = solved_case["R_0"] * epsilon
