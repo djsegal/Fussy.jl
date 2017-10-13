@@ -177,6 +177,7 @@ function _evaluate_given_equations_deep(main_value, side_guess, cur_eta_CD, cur_
 
   if worst_constraint != "x"
     cur_secondary_constraint = worst_constraint
+    cur_eta_CD = default_eta_CD
 
     cur_solved_equation, has_solution, worst_constraint =
       _evaluate_given_equations_shallow(
