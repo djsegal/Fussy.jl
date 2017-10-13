@@ -42,6 +42,8 @@ function solve_given_equation(main_value, given_equations, side_guess=15.0; verb
       is_success = true
       break
     end
+
+    verbose && print("~")
   end
 
   solved_equation["success"] = is_success
@@ -55,6 +57,7 @@ function solve_given_equation(main_value, given_equations, side_guess=15.0; verb
 
   !is_success && ( return solved_equation )
   iszero(main_value) && ( return solved_equation )
+  isnan(cur_solved_T_k) && ( return solved_equation )
 
   for (cur_index, (sub_key, sub_value)) in enumerate(constraint_params)
     cur_limit_eq = subs(
@@ -82,7 +85,6 @@ function solve_given_equation(main_value, given_equations, side_guess=15.0; verb
 
     tmp_value /= eval(parse("max_$(sub_value)"))
 
-    isnan(cur_solved_T_k) && continue
     isnan(tmp_value) && continue
 
     tmp_value = calc_possible_values(
