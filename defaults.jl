@@ -41,6 +41,8 @@ enable_cold_mass_calc = true
 enable_geom_scaling = true
 enable_radius_merging = true
 
+enable_hard_errors = true
+
 use_slow_sigma_v_funcs = true
 use_bosch_hale_sigma_v = true
 

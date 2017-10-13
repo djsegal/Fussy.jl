@@ -184,7 +184,15 @@ function _evaluate_given_equations_deep(main_value, side_guess, cur_eta_CD, cur_
         verbose
       )
 
-    if !has_solution ; throw("Improperly handled secondary constraint") ; end
+    if !has_solution
+      if enable_hard_errors
+        throw("Improperly handled secondary constraint")
+      else
+        println("Error: Improperly handled secondary constraint:\n")
+        print_workspace()
+        println("\n--------------------------\n\n")
+      end
+    end
   end
 
   return cur_solved_equation, cur_secondary_constraint, has_solution, worst_constraint
