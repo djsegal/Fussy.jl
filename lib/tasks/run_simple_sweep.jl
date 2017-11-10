@@ -4,7 +4,7 @@
 Lorem ipsum dolor sit amet.
 """
 function run_simple_sweep(cur_T_k, swept_param=("control" => true); verbose=true)
-  cur_sweep = run_parameter_sweep([cur_T_k], swept_param)
+  cur_sweep = run_parameter_sweep([cur_T_k], swept_param, verbose=verbose)
 
   cur_output = []
 
