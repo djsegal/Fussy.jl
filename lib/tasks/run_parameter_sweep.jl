@@ -23,7 +23,7 @@ function run_parameter_sweep(T_list, swept_params...; verbose=true)
 
     Tokamak.load_input(cur_input)
 
-    cur_output[cur_input] = run_parameter_sweep(T_list, swept_params[2:end]...)
+    cur_output[cur_input] = run_parameter_sweep(T_list, swept_params[2:end]..., verbose=verbose)
   end
 
   cur_output
