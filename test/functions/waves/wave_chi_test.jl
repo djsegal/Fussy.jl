@@ -18,7 +18,7 @@
   for (cur_key, expected_value) in test_hash
     actual_value = Tokamak.wave_chi(cur_key)
 
-    @test isapprox(expected_value, actual_value, rtol=5e-4)
+    @test isapprox(expected_value, actual_value, rtol=1e-3)
   end
 
 end

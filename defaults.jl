@@ -11,6 +11,7 @@ nu_T = 1.2
 eta_T = 0.4
 eta_RF = 0.5
 eta_a = 0.7
+eta_LH = 0.75
 
 Z_eff = 1.5
 rho_m = 0.6
@@ -19,7 +20,6 @@ A = 2.5
 f_DT = 0.9
 
 wave_theta = 0.0
-wave_gamma0 = 8.562
 wave_error_level = 5e-3
 
 shape_sigma = 0.1
@@ -40,7 +40,7 @@ enable_blanket_derive = true
 enable_cold_mass_calc = true
 enable_geom_scaling = true
 enable_radius_merging = true
-
+enable_log_lambda_calc = true
 enable_hard_errors = true
 
 use_slow_sigma_v_funcs = true
@@ -69,7 +69,7 @@ Tokamak.load_input("h_mode.jl", true)
 
 symbol_list = []
 
-append!(symbol_list, ["eta_CD"])
+append!(symbol_list, ["eta_CD", "n_para"])
 append!(symbol_list, ["T_k", "R_0", "B_0"])
 append!(symbol_list, ["I_M", "n_bar", "tau_E"])
 append!(symbol_list, ["sigma_v_hat", "K_CD_denom"])
@@ -83,6 +83,7 @@ for cur_symbol in symbol_list
 end
 
 eta_CD = symbol_dict["eta_CD"]
+n_para = symbol_dict["n_para"]
 
 T_k = symbol_dict["T_k"] * 1u"keV"
 R_0 = symbol_dict["R_0"] * 1u"m"
@@ -105,6 +106,7 @@ constraint_params = OrderedDict(
   "wall" => "P_W"
 )
 
+Tokamak.load_input("wave_defaults.jl", true)
 Tokamak.load_input("magnet_defaults.jl", true)
 Tokamak.load_input("econ_defaults.jl", true)
 Tokamak.load_input("reactor_tables.jl", true)
