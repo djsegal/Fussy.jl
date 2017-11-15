@@ -1,5 +1,5 @@
 """
-    wave_B(cur_rho)
+    wave_B(cur_rho, cur_theta=copy(wave_theta))
 
 Lorem ipsum dolor sit amet.
 """

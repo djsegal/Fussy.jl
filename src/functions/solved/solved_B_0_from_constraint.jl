@@ -13,6 +13,10 @@ function solved_B_0_from_constraint(main_value, side_guess, cur_eta_CD, cur_eq, 
     cur_eta_CD = cur_eta_CD
   )
 
+  if !isreal(solved_B_0)
+    solved_B_0 = NaN
+  end
+
   solved_B_0 *= 1u"T"
 
   solved_B_0

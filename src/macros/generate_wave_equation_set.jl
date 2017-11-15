@@ -18,6 +18,8 @@ macro generate_wave_equation_set(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k,
         symbol_dict["T_k"] => cur_T_k
       )
 
+      cur_wave_chi = SymPy.N(cur_wave_chi)
+
       cur_omega_hat_2 = wave_omega_hat_2(
         cur_rho,
         cur_wave_chi = cur_wave_chi
@@ -39,7 +41,7 @@ macro generate_wave_equation_set(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k,
 
       cur_rhs /= cur_T_k
 
-      cur_F[1] = cur_rhs - cur_lhs
+      cur_F[1] = cur_lhs / cur_rhs - 1.0
 
       cur_F
     end

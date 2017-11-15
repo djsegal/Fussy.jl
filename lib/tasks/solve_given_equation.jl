@@ -35,13 +35,10 @@ function solve_given_equation(main_value, given_equations, side_guess=15.0; verb
   iszero(main_value) && ( eta_CD_attempt_list = [] )
 
   for cur_eta_CD_attempt in eta_CD_attempt_list
-    cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, cur_eta_CD, cur_rho_j =
+    cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, cur_eta_CD, cur_rho_j, is_success =
       converge_eta_CD(main_value, given_equations, cur_eta_CD_attempt, side_guess, verbose=verbose)
 
-    if !isnan(cur_eta_CD)
-      is_success = true
-      break
-    end
+    is_success && break
 
     verbose && print("~")
   end
@@ -70,6 +67,8 @@ function solve_given_equation(main_value, given_equations, side_guess=15.0; verb
       symbol_dict["G_K_$(cur_index)"] *
       getfield( Tokamak, Symbol("K_$(cur_index)") )()
     )
+
+    SymPy.isnan(cur_limit_eq) && continue
 
     tmp_value = first(elements(solveset(
       cur_limit_eq,

@@ -1,3 +1,5 @@
+# skip: true
+
 @testset "Lcoe Function Tests" begin
 
   @test isdefined(Tokamak, :lcoe) == true

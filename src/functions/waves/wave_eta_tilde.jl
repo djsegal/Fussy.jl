@@ -1,9 +1,9 @@
 """
-    wave_eta_tilde(cur_rho)
+    wave_eta_tilde(cur_rho, cur_n_para=n_para, cur_T_k = T_k/1u"keV")
 
 Lorem ipsum dolor sit amet.
 """
-function wave_eta_tilde(cur_T_k, cur_rho, cur_n_para)
+function wave_eta_tilde(cur_rho, cur_n_para=n_para, cur_T_k = T_k/1u"keV")
   cur_w = subs(
     wave_w(cur_rho),
     symbol_dict["T_k"] => cur_T_k,

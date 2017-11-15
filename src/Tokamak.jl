@@ -13,6 +13,7 @@ module Tokamak
   using Memoize
   using ForwardDiff
   using Plasmas
+  using LegacyStrings
 
   Base.cd("$(dirname(@__FILE__))/..") do
     include("../config/bootload.jl")

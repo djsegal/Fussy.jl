@@ -37,9 +37,36 @@ function sweep_T_k(T_list; verbose=true)
     fill!(solved_equations["limits"][cur_key], NaN)
   end
 
+  good_beg_value = _sweep_T_k(
+    solved_equations,
+    T_list, 1:1,
+    default_primary_constraint, default_secondary_constraint,
+    verbose, is_initial_run=true
+  )
+
+  if good_beg_value
+    _resweep_side_T_k_s(solved_equations, T_list, verbose, cur_direction="forward")
+  end
+
+  good_end_value = _sweep_T_k(
+    solved_equations,
+    T_list, length(T_list):length(T_list),
+    default_primary_constraint, default_secondary_constraint,
+    verbose, is_initial_run=true
+  )
+
+  if good_end_value
+    _resweep_side_T_k_s(solved_equations, T_list, verbose, cur_direction="reverse")
+  end
+
   _sweep_T_k(
     solved_equations,
-    T_list, 1:length(T_list),
+    T_list,
+    (
+      findfirst(.!solved_equations["success"]) + 1
+    ):(
+      findlast(.!solved_equations["success"]) - 1
+    ),
     default_primary_constraint, default_secondary_constraint,
     verbose, is_initial_run=true
   )
@@ -52,13 +79,15 @@ function sweep_T_k(T_list; verbose=true)
 
 end
 
-function _sweep_T_k(solved_equations, T_list, cur_range, cur_primary_constraint, cur_secondary_constraint, verbose; is_left_branch=false, has_bad_parent=false, is_initial_run=false)
+function _sweep_T_k(solved_equations, T_list, cur_range, cur_primary_constraint, cur_secondary_constraint, verbose; is_left_branch=false, has_bad_parent=false, is_initial_run=false, cur_index=nothing)
 
   if length(cur_range) == 0 ; return true ; end
 
   T_length = length(T_list[cur_range])
 
-  cur_index = ( first(cur_range) - 1 ) + Int( ceil( T_length / 2 ) )
+  if cur_index == nothing
+    cur_index = ( first(cur_range) - 1 ) + Int( ceil( T_length / 2 ) )
+  end
 
   main_value = T_list[cur_index]
 
@@ -79,31 +108,35 @@ function _sweep_T_k(solved_equations, T_list, cur_range, cur_primary_constraint,
     cur_eta_CD = Interpolations.interpolate((cur_T_k_grid,), cur_eta_CD_grid, Gridded(Linear()))[main_value]
   end
 
-  if verbose ; print("\n\n$main_value\n") ; end
+  if !solved_equations["success"][cur_index]
 
-  cur_solved_equation = evaluate_given_equations(
-    main_value,
-    side_guess,
-    cur_eta_CD,
-    cur_primary_constraint,
-    cur_secondary_constraint,
-    verbose
-  )
+    if verbose ; print("\n\n$main_value\n") ; end
 
-  solved_equations["R_0"][cur_index] = cur_solved_equation["R_0"]
-  solved_equations["B_0"][cur_index] = cur_solved_equation["B_0"]
-  # solved_equations["T_k"][cur_index] = cur_solved_equation["T_k"]
+    cur_solved_equation = evaluate_given_equations(
+      main_value,
+      side_guess,
+      cur_eta_CD,
+      cur_primary_constraint,
+      cur_secondary_constraint,
+      verbose
+    )
 
-  solved_equations["rho_j"][cur_index] = cur_solved_equation["rho_j"]
-  solved_equations["eta_CD"][cur_index] = cur_solved_equation["eta_CD"]
+    solved_equations["R_0"][cur_index] = cur_solved_equation["R_0"]
+    solved_equations["B_0"][cur_index] = cur_solved_equation["B_0"]
+    # solved_equations["T_k"][cur_index] = cur_solved_equation["T_k"]
 
-  solved_equations["success"][cur_index] = cur_solved_equation["success"]
+    solved_equations["rho_j"][cur_index] = cur_solved_equation["rho_j"]
+    solved_equations["eta_CD"][cur_index] = cur_solved_equation["eta_CD"]
 
-  solved_equations["primary_constraint"][cur_index] = cur_solved_equation["primary_constraint"]
-  solved_equations["secondary_constraint"][cur_index] = cur_solved_equation["secondary_constraint"]
+    solved_equations["success"][cur_index] = cur_solved_equation["success"]
 
-  for cur_key in keys(constraint_params)
-    solved_equations["limits"][cur_key][cur_index] = cur_solved_equation["limits"][cur_key]
+    solved_equations["primary_constraint"][cur_index] = cur_solved_equation["primary_constraint"]
+    solved_equations["secondary_constraint"][cur_index] = cur_solved_equation["secondary_constraint"]
+
+    for cur_key in keys(constraint_params)
+      solved_equations["limits"][cur_key][cur_index] = cur_solved_equation["limits"][cur_key]
+    end
+
   end
 
   is_successful_run = !isnan(solved_equations["B_0"][cur_index])
@@ -178,14 +211,26 @@ function _sweep_T_k(solved_equations, T_list, cur_range, cur_primary_constraint,
     end
   end
 
-  _sweep_T_k(solved_equations, T_list, beg_range, cur_primary_constraint, cur_secondary_constraint, verbose, is_left_branch=left_is_left, has_bad_parent=!is_successful_run)
-  _sweep_T_k(solved_equations, T_list, end_range, cur_primary_constraint, cur_secondary_constraint, verbose, is_left_branch=right_is_left, has_bad_parent=!is_successful_run)
+  cur_left_index = nothing
+  cur_right_index = nothing
+
+  if is_successful_run
+    if !iszero(length(beg_range))
+      cur_left_index = last(beg_range)
+    end
+    if !iszero(length(end_range))
+      cur_right_index = first(end_range)
+    end
+  end
+
+  _sweep_T_k(solved_equations, T_list, beg_range, cur_primary_constraint, cur_secondary_constraint, verbose, is_left_branch=left_is_left, has_bad_parent=!is_successful_run, cur_index = cur_left_index)
+  _sweep_T_k(solved_equations, T_list, end_range, cur_primary_constraint, cur_secondary_constraint, verbose, is_left_branch=right_is_left, has_bad_parent=!is_successful_run, cur_index = cur_right_index)
 
   return is_successful_run
 
 end
 
-function _resweep_side_T_k_s(solved_equations, T_list, verbose)
+function _resweep_side_T_k_s(solved_equations, T_list, verbose; cur_direction=nothing)
 
   difference_dict = OrderedDict(
     "reverse" => Dict(
@@ -197,6 +242,12 @@ function _resweep_side_T_k_s(solved_equations, T_list, verbose)
       "cur_offset" => -1
     )
   )
+
+  if cur_direction != nothing
+    difference_dict = OrderedDict(
+      cur_direction => difference_dict[cur_direction]
+    )
+  end
 
   for cur_entry in values(difference_dict)
 

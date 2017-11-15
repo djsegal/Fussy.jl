@@ -10,7 +10,7 @@ function wave_n_para_2(cur_rho; cur_wave_chi=nothing, cur_omega_hat_2=nothing)
   end
 
   if cur_omega_hat_2 == nothing
-    cur_omega_hat_2 = wave_omega_hat_2(cur_rho, cur_wave_chi)
+    cur_omega_hat_2 = wave_omega_hat_2(cur_rho, cur_wave_chi=cur_wave_chi)
   end
 
   cur_n_para_2 = 1.0
