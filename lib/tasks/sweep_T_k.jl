@@ -6,34 +6,34 @@ Lorem ipsum dolor sit amet.
 function sweep_T_k(T_list; verbose=true)
   solved_equations = OrderedDict()
 
-  solved_equations["R_0"] = Array{Float64}(length(T_list))
-  solved_equations["B_0"] = Array{Float64}(length(T_list))
+  solved_equations["R_0"] = SharedArray{Float64}(length(T_list))
+  solved_equations["B_0"] = SharedArray{Float64}(length(T_list))
 
-  solved_equations["rho_j"] = Array{Float64}(length(T_list))
-  solved_equations["eta_CD"] = Array{Float64}(length(T_list))
+  solved_equations["rho_j"] = SharedArray{Float64}(length(T_list))
+  solved_equations["eta_CD"] = SharedArray{Float64}(length(T_list))
 
   for cur_val in values(solved_equations)
     fill!(cur_val, NaN)
   end
 
-  solved_equations["T_k"] = Array{Float64}(T_list)
+  solved_equations["T_k"] = SharedArray{Float64}(collect(T_list))
 
-  solved_equations["success"] = Array{Bool}(length(T_list))
+  solved_equations["success"] = SharedArray{Bool}(length(T_list))
 
   fill!(solved_equations["success"], false)
 
-  solved_equations["primary_constraint"] = Array{AbstractString}(length(T_list))
+  solved_equations["primary_constraint"] = SharedArray{SVector{10, Char}}(length(T_list))
 
   fill!(solved_equations["primary_constraint"], "x")
 
-  solved_equations["secondary_constraint"] = Array{AbstractString}(length(T_list))
+  solved_equations["secondary_constraint"] = SharedArray{SVector{10, Char}}(length(T_list))
 
   fill!(solved_equations["secondary_constraint"], "x")
 
   solved_equations["limits"] = OrderedDict()
 
   for cur_key in keys(constraint_params)
-    solved_equations["limits"][cur_key] = Array{Float64}(length(T_list))
+    solved_equations["limits"][cur_key] = SharedArray{Float64}(length(T_list))
     fill!(solved_equations["limits"][cur_key], NaN)
   end
 
