@@ -1,10 +1,10 @@
 @testset "P N Function Tests" begin
 
-  @test isdefined(Tokamak, :P_n) == true
+  @test isdefined(Fusion, :P_n) == true
 
-  actual_value = Tokamak.P_n()
+  actual_value = Fusion.P_n()
 
-  actual_value /= Tokamak.P_F()
+  actual_value /= Fusion.P_F()
 
   expected_value = 0.8
 

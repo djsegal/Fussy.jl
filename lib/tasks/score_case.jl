@@ -12,10 +12,10 @@ function score_case(analyzed_case, cur_reactor, exclude_list=[])
     "grade_F" => 0
   )
 
-  for cur_key in keys(Tokamak.reactor_tables[cur_reactor])
+  for cur_key in keys(Fusion.reactor_tables[cur_reactor])
     in(cur_key, exclude_list) && continue
 
-    expected_value = Tokamak.reactor_tables[cur_reactor][cur_key]
+    expected_value = Fusion.reactor_tables[cur_reactor][cur_key]
     actual_value = analyzed_case[cur_key]
 
     ( cur_key == "f_CD") && continue
@@ -27,13 +27,13 @@ function score_case(analyzed_case, cur_reactor, exclude_list=[])
         continue
     end
 
-    if in(cur_key, values(Tokamak.constraint_params))
+    if in(cur_key, values(Fusion.constraint_params))
         (
-            cur_key == Tokamak.constraint_params[analyzed_case["primary_constraint"]] ||
-            cur_key == Tokamak.constraint_params[analyzed_case["secondary_constraint"]]
+            cur_key == Fusion.constraint_params[analyzed_case["primary_constraint"]] ||
+            cur_key == Fusion.constraint_params[analyzed_case["secondary_constraint"]]
         ) && continue
 
-        actual_value *= getfield( Tokamak, Symbol("max_$(cur_key)") )
+        actual_value *= getfield( Fusion, Symbol("max_$(cur_key)") )
     end
 
     cur_rel_error = abs(expected_value - actual_value)

@@ -1,12 +1,12 @@
 @testset "Surface Area Function Tests" begin
 
-  @test isdefined(Tokamak, :surface_area) == true
+  @test isdefined(Fusion, :surface_area) == true
 
-  Tokamak.load_input("arc.jl", true)
+  Fusion.load_input("arc.jl", true)
 
-  Tokamak.load_input(" R_0 = 3.3 * 1u\"m\" ")
+  Fusion.load_input(" R_0 = 3.3 * 1u\"m\" ")
 
-  actual_value = Tokamak.surface_area()
+  actual_value = Fusion.surface_area()
 
   actual_value /= 1u"m^2"
 

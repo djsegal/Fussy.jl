@@ -2,7 +2,7 @@
 
 @testset "Main Function Tests" begin
 
-  @test isdefined(Tokamak, :main) == true
+  @test isdefined(Fusion, :main) == true
 
   out_data = "nil"
   did_break = false
@@ -11,7 +11,7 @@
 
   (outRead, outWrite) = redirect_stdout()
 
-  Tokamak.main()
+  Fusion.main()
 
   close(outWrite)
 

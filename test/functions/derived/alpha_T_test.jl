@@ -1,5 +1,5 @@
 @testset "Alpha T Function Tests" begin
 
-  @test isdefined(Tokamak, :alpha_T) == true
+  @test isdefined(Fusion, :alpha_T) == true
 
 end

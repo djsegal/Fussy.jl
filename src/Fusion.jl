@@ -1,4 +1,4 @@
-module Tokamak
+module Fusion
 
   using Julz
 

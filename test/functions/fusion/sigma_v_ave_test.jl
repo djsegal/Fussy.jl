@@ -1,6 +1,6 @@
 @testset "Sigma V Ave Function Tests" begin
 
-  @test isdefined(Tokamak, :sigma_v_ave) == true
+  @test isdefined(Fusion, :sigma_v_ave) == true
 
   test_count = 5
 
@@ -12,26 +12,26 @@
   for cur_bool in [false, true]
 
     if cur_bool
-      Tokamak.load_input("random.jl", true)
+      Fusion.load_input("random.jl", true)
     else
-      Tokamak.load_input("defaults.jl", true)
-      Tokamak.load_input("test/input.jl", true)
+      Fusion.load_input("defaults.jl", true)
+      Fusion.load_input("test/input.jl", true)
     end
 
     for cur_T_k in logspace(log_T_initial, log_T_final, test_count)
 
       for cur_rho in linspace(0.25, 0.75, test_count)
-        Tokamak.load_input( "T_k = $(cur_T_k)u\"keV\"" )
+        Fusion.load_input( "T_k = $(cur_T_k)u\"keV\"" )
 
-        Tokamak.load_input( "use_slow_sigma_v_funcs = true" )
-        expected_value = Tokamak.sigma_v_ave(cur_rho)
+        Fusion.load_input( "use_slow_sigma_v_funcs = true" )
+        expected_value = Fusion.sigma_v_ave(cur_rho)
         expected_value /= 1u"m^3/s"
 
-        Tokamak.load_input( "use_slow_sigma_v_funcs = false" )
-        actual_value = Tokamak.sigma_v_ave(cur_rho)
+        Fusion.load_input( "use_slow_sigma_v_funcs = false" )
+        actual_value = Fusion.sigma_v_ave(cur_rho)
         actual_value /= 1u"m^3/s"
 
-        if cur_rho == Tokamak.integral_one
+        if cur_rho == Fusion.integral_one
           @test actual_value < cur_small_value
           @test expected_value < cur_small_value
         elseif expected_value == 0
@@ -47,8 +47,8 @@
 
   end
 
-  Tokamak.load_input( "nu_T = 0" )
-  Tokamak.load_input( "use_slow_sigma_v_funcs = true" )
+  Fusion.load_input( "nu_T = 0" )
+  Fusion.load_input( "use_slow_sigma_v_funcs = true" )
 
   moses_table = Dict(
     " T_k =   1u\"keV\"" => 6.86e-21,
@@ -61,12 +61,12 @@
   )
 
   for (key, value) in moses_table
-    Tokamak.load_input( key )
+    Fusion.load_input( key )
 
-    expected_value = Tokamak.sigma_v_ave(0.5)/1u"m^3*s^-1"
+    expected_value = Fusion.sigma_v_ave(0.5)/1u"m^3*s^-1"
     actual_value = value * ( 1u"(cm/m)^3" |> NoUnits )
 
-    @test isapprox( expected_value , actual_value , rtol=3.0u"keV"/Tokamak.T_k )
+    @test isapprox( expected_value , actual_value , rtol=3.0u"keV"/Fusion.T_k )
   end
 
 end

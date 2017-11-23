@@ -60,7 +60,7 @@ function analyze_solved_case(found_data; verbose=true)
 
   for (cur_index, (cur_key, cur_value)) in enumerate(constraint_params)
     tmp_value = solved_case["limits"][cur_key]
-    tmp_value *= getfield( Tokamak, Symbol("max_$(cur_value)") )
+    tmp_value *= getfield( Fusion, Symbol("max_$(cur_value)") )
 
     solved_case[cur_value] = tmp_value
   end

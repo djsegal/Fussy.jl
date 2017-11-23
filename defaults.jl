@@ -65,7 +65,7 @@ side_variable = "B_0"
 
 custom_alpha_R = 140 // 100
 
-Tokamak.load_input("h_mode.jl", true)
+Fusion.load_input("h_mode.jl", true)
 
 symbol_list = []
 
@@ -106,7 +106,7 @@ constraint_params = OrderedDict(
   "wall" => "P_W"
 )
 
-Tokamak.load_input("wave_defaults.jl", true)
-Tokamak.load_input("magnet_defaults.jl", true)
-Tokamak.load_input("econ_defaults.jl", true)
-Tokamak.load_input("reactor_tables.jl", true)
+Fusion.load_input("wave_defaults.jl", true)
+Fusion.load_input("magnet_defaults.jl", true)
+Fusion.load_input("econ_defaults.jl", true)
+Fusion.load_input("reactor_tables.jl", true)

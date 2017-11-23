@@ -1,5 +1,5 @@
 @testset "Dememoize Function Tests" begin
 
-  @test isdefined(Tokamak, :dememoize) == true
+  @test isdefined(Fusion, :dememoize) == true
 
 end

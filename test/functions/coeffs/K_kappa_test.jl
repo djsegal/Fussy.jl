@@ -1,16 +1,16 @@
 @testset "K Kappa Function Tests" begin
 
-  @test isdefined(Tokamak, :K_kappa) == true
+  @test isdefined(Fusion, :K_kappa) == true
 
-  Tokamak.load_input(" f_DT = 0.9 ")
+  Fusion.load_input(" f_DT = 0.9 ")
 
   expected_value = 0.1221
 
   expected_value /= 2
 
-  expected_value *= ( 1 + Tokamak.f_DT )
+  expected_value *= ( 1 + Fusion.f_DT )
 
-  actual_value = Tokamak.K_kappa()
+  actual_value = Fusion.K_kappa()
 
   @test isapprox( actual_value, expected_value, rtol=5e-3 )
 

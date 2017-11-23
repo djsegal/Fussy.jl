@@ -6,7 +6,7 @@ Lorem ipsum dolor sit amet.
 function evaluate_given_equations(main_value, side_guess, cur_eta_CD, initial_primary_constraint, initial_secondary_constraint, verbose=true)
   cur_primary_constraint = initial_primary_constraint
 
-  cur_secondary_constraints = collect(keys(Tokamak.constraint_params))
+  cur_secondary_constraints = collect(keys(Fusion.constraint_params))
 
   filter!(
     x -> (
@@ -40,7 +40,7 @@ function evaluate_given_equations(main_value, side_guess, cur_eta_CD, initial_pr
     worst_constraint = initial_secondary_constraint
   end
 
-  possible_constraints = collect(keys(Tokamak.constraint_params))
+  possible_constraints = collect(keys(Fusion.constraint_params))
 
   filter!(
     x -> (

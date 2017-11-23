@@ -21,7 +21,7 @@ function run_parameter_sweep(T_list, swept_params...; verbose=true)
 
     if verbose ; println(" \n\n $cur_input \n ") ; end
 
-    Tokamak.load_input(cur_input)
+    Fusion.load_input(cur_input)
 
     cur_output[cur_input] = run_parameter_sweep(T_list, swept_params[2:end]..., verbose=verbose)
   end

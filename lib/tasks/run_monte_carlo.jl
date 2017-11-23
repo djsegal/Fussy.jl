@@ -14,7 +14,7 @@ function run_monte_carlo(cur_T, run_count, swept_params...; cur_sensitivity=0.2,
       continue
     end
 
-    sensitive_params[cur_param] = getfield( Tokamak, Symbol(cur_param) )
+    sensitive_params[cur_param] = getfield( Fusion, Symbol(cur_param) )
   end
 
   for cur_index in 1:run_count
@@ -47,7 +47,7 @@ function run_monte_carlo(cur_T, run_count, swept_params...; cur_sensitivity=0.2,
       loaded_input *= "$(cur_param) = $(mutated_value);"
     end
 
-    Tokamak.load_input(loaded_input)
+    Fusion.load_input(loaded_input)
 
     cur_sweep = sweep_T_k([cur_T]; verbose=false)
 
@@ -63,7 +63,7 @@ function run_monte_carlo(cur_T, run_count, swept_params...; cur_sensitivity=0.2,
       cur_sweep[cur_key] = first(cur_value)
     end
 
-    cur_output[cur_index] = Tokamak.analyze_solved_case(cur_sweep)
+    cur_output[cur_index] = Fusion.analyze_solved_case(cur_sweep)
   end
 
   cur_output

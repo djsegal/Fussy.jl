@@ -1,10 +1,10 @@
 @testset "T Profile Function Tests" begin
 
-  @test isdefined(Tokamak, :T_profile) == true
+  @test isdefined(Fusion, :T_profile) == true
 
-  Tokamak.load_input(" Z_eff = 1.0 ")
-  Tokamak.load_input(" n_bar = 0.86 * 1u\"n20\" ")
-  Tokamak.load_input(" B_0 = 10.0 * 1u\"T\" ")
+  Fusion.load_input(" Z_eff = 1.0 ")
+  Fusion.load_input(" n_bar = 0.86 * 1u\"n20\" ")
+  Fusion.load_input(" B_0 = 10.0 * 1u\"T\" ")
 
   cur_solved_R_0 = 4.0
   cur_solved_T_k = 17.8
@@ -16,10 +16,10 @@
   )
 
   for (cur_key, expected_value) in test_hash
-    actual_value = Tokamak.T_profile(cur_key)
+    actual_value = Fusion.T_profile(cur_key)
 
     actual_value = subs(
-      actual_value, Tokamak.symbol_dict["T_k"], cur_solved_T_k
+      actual_value, Fusion.symbol_dict["T_k"], cur_solved_T_k
     )
 
     @test isapprox(expected_value, actual_value, rtol=5e-4)

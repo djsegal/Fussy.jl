@@ -1,5 +1,5 @@
 @testset "Q Star Function Tests" begin
 
-  @test isdefined(Tokamak, :q_star) == true
+  @test isdefined(Fusion, :q_star) == true
 
 end

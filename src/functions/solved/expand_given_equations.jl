@@ -8,8 +8,8 @@ function expand_given_equations!(cur_given_equations, cur_primary_constraint, cu
   for cur_constraint in [cur_primary_constraint, cur_secondary_constraint]
     cur_index = first(find(x -> x == cur_constraint, keys(constraint_params)))
 
-    cur_G = getfield( Tokamak, Symbol("G_$(cur_index)") )
-    cur_K = getfield( Tokamak, Symbol("K_$(cur_index)") )
+    cur_G = getfield( Fusion, Symbol("G_$(cur_index)") )
+    cur_K = getfield( Fusion, Symbol("K_$(cur_index)") )
 
     cur_G_K = cur_G() * cur_K()
 

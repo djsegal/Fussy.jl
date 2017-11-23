@@ -1,4 +1,4 @@
-# Tokamak.jl Documentation
+# Fusion.jl Documentation
 
 ```@contents
 ```

@@ -1,11 +1,11 @@
 @testset "K PB Function Tests" begin
 
-  @test isdefined(Tokamak, :K_PB) == true
+  @test isdefined(Fusion, :K_PB) == true
 
-  Tokamak.load_input(" Q = 40 ")
-  Tokamak.load_input(" f_DT = 0.9 ")
+  Fusion.load_input(" Q = 40 ")
+  Fusion.load_input(" f_DT = 0.9 ")
 
-  actual_value = Tokamak.K_PB()
+  actual_value = Fusion.K_PB()
 
   expected_value = 5.69
 

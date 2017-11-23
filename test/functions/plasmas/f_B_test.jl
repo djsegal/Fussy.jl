@@ -1,18 +1,18 @@
 @testset "F B Function Tests" begin
 
-  @test isdefined(Tokamak, :f_B) == true
+  @test isdefined(Fusion, :f_B) == true
 
-  actual_value = Tokamak.f_B()
+  actual_value = Fusion.f_B()
 
-  actual_value /= Tokamak.symbol_dict["n_bar"]
-  actual_value /= Tokamak.symbol_dict["T_k"]
-  actual_value /= Tokamak.symbol_dict["R_0"] ^ 2
+  actual_value /= Fusion.symbol_dict["n_bar"]
+  actual_value /= Fusion.symbol_dict["T_k"]
+  actual_value /= Fusion.symbol_dict["R_0"] ^ 2
 
-  actual_value *= Tokamak.symbol_dict["I_M"] ^ 2
+  actual_value *= Fusion.symbol_dict["I_M"] ^ 2
 
   actual_value = SymPy.N(actual_value)
 
-  expected_value = Tokamak.K_B()
+  expected_value = Fusion.K_B()
 
   @test isapprox(expected_value, actual_value)
 

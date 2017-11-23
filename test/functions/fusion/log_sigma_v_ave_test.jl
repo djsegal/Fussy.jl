@@ -1,5 +1,5 @@
 @testset "Log Sigma V Ave Function Tests" begin
 
-  @test isdefined(Tokamak, :log_sigma_v_ave) == true
+  @test isdefined(Fusion, :log_sigma_v_ave) == true
 
 end

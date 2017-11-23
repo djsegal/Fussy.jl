@@ -1,10 +1,10 @@
 @testset "Geometry Scaling Function Tests" begin
 
-  @test isdefined(Tokamak, :geometry_scaling) == true
+  @test isdefined(Fusion, :geometry_scaling) == true
 
-  Tokamak.load_input(" enable_geom_scaling = true ")
+  Fusion.load_input(" enable_geom_scaling = true ")
 
-  actual_value = Tokamak.geometry_scaling()
+  actual_value = Fusion.geometry_scaling()
 
   expected_value = 0.9719
 
@@ -18,7 +18,7 @@
 
   for (cur_key, expected_value) in cur_tests
 
-    actual_value = Tokamak.geometry_scaling(cur_key)
+    actual_value = Fusion.geometry_scaling(cur_key)
 
     @test isapprox(expected_value, actual_value, rtol=1e-3)
 

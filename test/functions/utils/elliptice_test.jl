@@ -1,5 +1,5 @@
 @testset "Elliptice Function Tests" begin
 
-  @test isdefined(Tokamak, :elliptice) == true
+  @test isdefined(Fusion, :elliptice) == true
 
 end

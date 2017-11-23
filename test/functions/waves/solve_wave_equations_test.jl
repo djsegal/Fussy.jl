@@ -1,18 +1,18 @@
 @testset "Solve Wave Equations Function Tests" begin
 
-  @test isdefined(Tokamak, :solve_wave_equations) == true
+  @test isdefined(Fusion, :solve_wave_equations) == true
 
-  Tokamak.load_input(" Z_eff = 1.0 ")
-  Tokamak.load_input(" n_bar = 0.86 * 1u\"n20\" ")
-  Tokamak.load_input(" B_0 = 10.0 * 1u\"T\" ")
-  Tokamak.load_input(" R_0 = 4.0 * 1u\"m\" ")
-  Tokamak.load_input(" T_k = 17.8 * 1u\"keV\" ")
+  Fusion.load_input(" Z_eff = 1.0 ")
+  Fusion.load_input(" n_bar = 0.86 * 1u\"n20\" ")
+  Fusion.load_input(" B_0 = 10.0 * 1u\"T\" ")
+  Fusion.load_input(" R_0 = 4.0 * 1u\"m\" ")
+  Fusion.load_input(" T_k = 17.8 * 1u\"keV\" ")
 
-  actual_value = Tokamak.solve_wave_equations(
-    ( Tokamak.R_0 / 1u"m" ),
-    ( Tokamak.B_0 / 1u"T" ),
-    ( Tokamak.T_k / 1u"keV" ),
-    ( Tokamak.n_bar / 1u"n20" )
+  actual_value = Fusion.solve_wave_equations(
+    ( Fusion.R_0 / 1u"m" ),
+    ( Fusion.B_0 / 1u"T" ),
+    ( Fusion.T_k / 1u"keV" ),
+    ( Fusion.n_bar / 1u"n20" )
   )
 
   expected_value = 0.699085306107685

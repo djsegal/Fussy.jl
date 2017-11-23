@@ -1,8 +1,8 @@
 @testset "X Aa Of Pi Function Tests" begin
 
-  @test isdefined(Tokamak, :x_aa_of_pi) == true
+  @test isdefined(Fusion, :x_aa_of_pi) == true
 
-  actual_value = Tokamak.x_aa_of_pi()
+  actual_value = Fusion.x_aa_of_pi()
 
   expected_value = 0.225
 

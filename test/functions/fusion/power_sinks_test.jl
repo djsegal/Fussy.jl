@@ -1,7 +1,7 @@
 @testset "Power Sinks Function Tests" begin
 
-  @test isdefined(Tokamak, :power_sinks) == true
+  @test isdefined(Fusion, :power_sinks) == true
 
-  @test Tokamak.power_sinks() != Nullable
+  @test Fusion.power_sinks() != Nullable
 
 end

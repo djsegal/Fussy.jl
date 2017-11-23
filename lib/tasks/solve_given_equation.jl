@@ -58,14 +58,14 @@ function solve_given_equation(main_value, given_equations, side_guess=15.0; verb
 
   for (cur_index, (sub_key, sub_value)) in enumerate(constraint_params)
     cur_limit_eq = subs(
-      getfield( Tokamak, Symbol("R_B_$(cur_index)") )(),
+      getfield( Fusion, Symbol("R_B_$(cur_index)") )(),
       symbol_dict["R_0"] => cur_solved_R_0,
       symbol_dict["B_0"] => cur_solved_B_0
     )
 
     cur_limit_eq -= (
       symbol_dict["G_K_$(cur_index)"] *
-      getfield( Tokamak, Symbol("K_$(cur_index)") )()
+      getfield( Fusion, Symbol("K_$(cur_index)") )()
     )
 
     SymPy.isnan(cur_limit_eq) && continue
@@ -79,7 +79,7 @@ function solve_given_equation(main_value, given_equations, side_guess=15.0; verb
     tmp_value = subs(
       tmp_value,
       symbol_dict["G_K_$(cur_index)"],
-      getfield( Tokamak, Symbol("G_$(cur_index)") )()
+      getfield( Fusion, Symbol("G_$(cur_index)") )()
     )
 
     tmp_value /= eval(parse("max_$(sub_value)"))

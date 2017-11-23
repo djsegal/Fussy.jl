@@ -1,5 +1,5 @@
 @testset "HTMLElements Module Tests" begin
 
-  @test isdefined(Tokamak, :HTMLElements) == true
+  @test isdefined(Fusion, :HTMLElements) == true
 
 end

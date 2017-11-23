@@ -1,9 +1,9 @@
-using Documenter, Tokamak
+using Documenter, Fusion
 
 makedocs(
-  modules = [Tokamak],
+  modules = [Fusion],
   format = :html,
-  sitename = "Tokamak.jl",
+  sitename = "Fusion.jl",
   pages = Any[
     "Home" => "index.md",
     "Code" => "code.md",
@@ -12,7 +12,7 @@ makedocs(
 )
 
 deploydocs(
-  repo = "github.com/djsegal/Tokamak.jl.git",
+  repo = "github.com/djsegal/Fusion.jl.git",
   julia  = "release",
   target = "build",
   deps = nothing,

@@ -11,7 +11,7 @@ function wave_w(cur_rho)
   cur_w = subs(
     cur_w,
     Plasmas.symbol_dict["T_e"],
-    Tokamak.T_profile(cur_rho)
+    Fusion.T_profile(cur_rho)
   )
 
   cur_w /= n_para

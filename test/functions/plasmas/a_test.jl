@@ -1,6 +1,6 @@
 @testset "A Function Tests" begin
 
-  @test isdefined(Tokamak, :a) == true
+  @test isdefined(Fusion, :a) == true
 
   expected_values = Dict(
     0.25 => Dict(
@@ -14,12 +14,12 @@
   )
 
   for cur_epsilon in [ 0.25, 1 ]
-    Tokamak.load_input( "epsilon = $cur_epsilon" )
+    Fusion.load_input( "epsilon = $cur_epsilon" )
 
     for cur_R_0 in [ "1u\"m\"", "4u\"m\"" ]
-      Tokamak.load_input( "R_0 = $cur_R_0" )
+      Fusion.load_input( "R_0 = $cur_R_0" )
 
-      actual_value = Tokamak.a()
+      actual_value = Fusion.a()
       expected_value = expected_values[cur_epsilon][cur_R_0]
 
       @test isapprox( expected_value , actual_value )

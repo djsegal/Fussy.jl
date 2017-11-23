@@ -3,27 +3,27 @@
 ## Functions
 
 ```@autodocs
-Modules = [Tokamak]
+Modules = [Fusion]
 Order = [:function]
 ```
 
 ## Types
 
 ```@autodocs
-Modules = [Tokamak]
+Modules = [Fusion]
 Order = [:type]
 ```
 
 ## Constants
 
 ```@autodocs
-Modules = [Tokamak]
+Modules = [Fusion]
 Order = [:constant]
 ```
 
 ## Macros
 
 ```@autodocs
-Modules = [Tokamak]
+Modules = [Fusion]
 Order = [:macro]
 ```

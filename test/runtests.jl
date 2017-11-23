@@ -1,4 +1,4 @@
-using Tokamak
+using Fusion
 using Base.Test
 using TestSetExtensions
 
@@ -21,7 +21,7 @@ using SymPy
 
   Julz.include_all_files( test_dir,
     is_testing=true, is_focused=is_focused, is_sorted=is_sorted,
-    reload_function=Tokamak.load_input
+    reload_function=Fusion.load_input
   )
 end
 

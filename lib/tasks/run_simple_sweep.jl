@@ -9,11 +9,11 @@ function run_simple_sweep(cur_T_k, swept_param=("control" => true); verbose=true
   cur_output = []
 
   for (cur_key, cur_sub_sweep) in cur_sweep
-    Tokamak.load_input(cur_key)
+    Fusion.load_input(cur_key)
 
-    clean_sweep = first(Tokamak.restructure_sweep(cur_sub_sweep))
+    clean_sweep = first(Fusion.restructure_sweep(cur_sub_sweep))
 
-    cur_case = Tokamak.analyze_solved_case(clean_sweep)
+    cur_case = Fusion.analyze_solved_case(clean_sweep)
 
     push!(cur_output, cur_case)
   end

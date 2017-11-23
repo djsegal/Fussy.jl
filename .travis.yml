@@ -11,20 +11,20 @@ notifications:
 # uncomment the following lines to override the default test script
 #script:
 #  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
-#  - julia -e 'Pkg.clone(pwd()); Pkg.build("Tokamak"); Pkg.test("Tokamak"; coverage=true)'
+#  - julia -e 'Pkg.clone(pwd()); Pkg.build("Fusion"); Pkg.test("Fusion"; coverage=true)'
 after_success:
   # push coverage results to Coveralls
-  - julia -e 'cd(Pkg.dir("Tokamak")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
+  - julia -e 'cd(Pkg.dir("Fusion")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
   # push coverage results to Codecov
-  - julia -e 'cd(Pkg.dir("Tokamak")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
-  - julia -e 'cd(Pkg.dir("Tokamak")); Pkg.add("Documenter"); using Documenter; include(joinpath("docs", "make.jl"))'
+  - julia -e 'cd(Pkg.dir("Fusion")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
+  - julia -e 'cd(Pkg.dir("Fusion")); Pkg.add("Documenter"); using Documenter; include(joinpath("docs", "make.jl"))'
 matrix:
   allow_failures:
   - julia: nightly
 script:
   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
   - julia -e 'Pkg.clone(pwd());'
-  - (echo "y" && echo "Tokamak Test" && echo "danSegal2@gmail.com" && echo "Tokamak Test" && echo "n" && yes && cat) | julia -e 'using PkgDev; PkgDev.config();'
+  - (echo "y" && echo "Fusion Test" && echo "danSegal2@gmail.com" && echo "Fusion Test" && echo "n" && yes && cat) | julia -e 'using PkgDev; PkgDev.config();'
   - julia -e 'Pkg.checkout("Julz");'
   - julia -e 'ENV["PYTHON"]=""; Pkg.build("PyCall");'
-  - julia -e 'Pkg.build("Tokamak"); Pkg.test("Tokamak"; coverage=true)'
+  - julia -e 'Pkg.build("Fusion"); Pkg.test("Fusion"; coverage=true)'

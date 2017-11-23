@@ -1,12 +1,12 @@
 @testset "Wave B Function Tests" begin
 
-  @test isdefined(Tokamak, :wave_B) == true
+  @test isdefined(Fusion, :wave_B) == true
 
-  Tokamak.load_input(" Z_eff = 1.0 ")
-  Tokamak.load_input(" n_bar = 0.86 * 1u\"n20\" ")
-  Tokamak.load_input(" B_0 = 10.0 * 1u\"T\" ")
-  Tokamak.load_input(" R_0 = 4.0 * 1u\"m\" ")
-  Tokamak.load_input(" T_k = 17.8 * 1u\"keV\" ")
+  Fusion.load_input(" Z_eff = 1.0 ")
+  Fusion.load_input(" n_bar = 0.86 * 1u\"n20\" ")
+  Fusion.load_input(" B_0 = 10.0 * 1u\"T\" ")
+  Fusion.load_input(" R_0 = 4.0 * 1u\"m\" ")
+  Fusion.load_input(" T_k = 17.8 * 1u\"keV\" ")
 
   test_hash = Dict(
     0.0 => Dict(
@@ -25,7 +25,7 @@
 
   for (cur_key, sub_hash) in test_hash
     for (cur_sub_key, expected_value) in sub_hash
-      actual_value = Tokamak.wave_B(cur_key, cur_sub_key)
+      actual_value = Fusion.wave_B(cur_key, cur_sub_key)
 
       actual_value /= 1u"T"
 

@@ -1,10 +1,10 @@
 @testset "P Alpha Function Tests" begin
 
-  @test isdefined(Tokamak, :P_alpha) == true
+  @test isdefined(Fusion, :P_alpha) == true
 
-  actual_value = Tokamak.P_alpha()
+  actual_value = Fusion.P_alpha()
 
-  actual_value /= Tokamak.P_F()
+  actual_value /= Fusion.P_F()
 
   expected_value = 0.2
 
