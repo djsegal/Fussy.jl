@@ -4,7 +4,7 @@
 Lorem ipsum dolor sit amet.
 """
 function K_kappa()
-  cur_K_kappa = 0.475
+  cur_K_kappa = 0.4744
 
   cur_K_kappa *= 1 + nu_n
   cur_K_kappa *= 1 + nu_T

@@ -5,8 +5,8 @@ epsilon = 0.35
 N_G = 0.8
 H = 1.0
 
-nu_n = 0.3
-nu_T = 1.2
+nu_n = 0.4
+nu_T = 1.1
 
 eta_T = 0.4
 eta_RF = 0.5
@@ -14,7 +14,7 @@ eta_a = 0.7
 eta_LH = 0.75
 
 Z_eff = 1.5
-rho_m = 0.6
+l_i = 0.509
 A = 2.5
 
 f_DT = 0.9
@@ -31,6 +31,7 @@ default_B_guess = 10.0
 max_beta_N = 0.026
 max_P_W = 2.5
 max_tau_factor = 1.0
+max_P_E = 1000.0
 
 BR_scaling = 1.0
 
@@ -73,7 +74,7 @@ append!(symbol_list, ["eta_CD", "n_para"])
 append!(symbol_list, ["T_k", "R_0", "B_0"])
 append!(symbol_list, ["I_M", "n_bar", "tau_E"])
 append!(symbol_list, ["sigma_v_hat", "K_CD_denom"])
-append!(symbol_list, ["beta_N", "P_W", "tau_factor"])
+append!(symbol_list, ["beta_N", "P_W", "tau_factor", "P_E"])
 
 append!(symbol_list, ["G_K_1", "G_K_2", "G_K_3"])
 
@@ -99,11 +100,13 @@ K_CD_denom = symbol_dict["K_CD_denom"]
 beta_N = symbol_dict["beta_N"]
 P_W = symbol_dict["P_W"] * ( 1u"MW" / 1u"m^2" )
 tau_factor = symbol_dict["tau_factor"]
+P_W = symbol_dict["P_E"] * 1u"MW"
 
 constraint_params = OrderedDict(
   "steady" => "tau_factor",
   "beta" => "beta_N",
-  "wall" => "P_W"
+  "wall" => "P_W",
+  "power" => "P_E"
 )
 
 Tokamak.load_input("wave_defaults.jl", true)

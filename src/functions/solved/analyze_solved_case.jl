@@ -26,7 +26,7 @@ function analyze_solved_case(found_data; verbose=true)
 
   solved_case["a"] = solved_case["R_0"] * epsilon
 
-  solved_case["q_P"] = q_P()
+  solved_case["q_P"] = q_P() / ( 1u"GW" / 1u"m^2" )
 
   solved_case["q_star"] = q_star()
 

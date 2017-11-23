@@ -4,7 +4,7 @@
 Lorem ipsum dolor sit amet.
 """
 function K_B()
-  cur_K_B = 4.913
+  cur_K_B = 4.879
 
   cur_K_B *= 1 + kappa ^ 2
   cur_K_B /= 2

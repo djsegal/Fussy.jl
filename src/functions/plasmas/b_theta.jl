@@ -1,11 +1,9 @@
 """
-    b_theta(rho)
+    b_theta(rho, cur_gamma)
 
 Lorem ipsum dolor sit amet.
 """
-function b_theta(rho)
-  cur_gamma = 1 / ( 1 - rho_m ^ 2 )
-
+function b_theta(rho, cur_gamma)
   cur_b_theta = ( 1 - rho ^ 2 )
   cur_b_theta *= cur_gamma
   cur_b_theta += 1
