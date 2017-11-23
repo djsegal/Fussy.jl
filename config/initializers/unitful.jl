@@ -1,5 +1,5 @@
-using Unitful
-using Unitful.DefaultSymbols
+@reexport using Unitful
+@reexport using Unitful.DefaultSymbols
 
 cd = Base.cd
 

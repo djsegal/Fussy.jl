@@ -3,7 +3,6 @@ Julz
 Unitful
 QuadGK
 SymPy
-DataStructures
 NLsolve
 Elliptic
 Polynomials
@@ -12,3 +11,4 @@ Interpolations
 YAML
 Memoize
 ForwardDiff
+Plasmas

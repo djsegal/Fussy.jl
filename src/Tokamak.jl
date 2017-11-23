@@ -1,17 +1,19 @@
 module Tokamak
 
   using Julz
-  using QuadGK
-  using SymPy
-  using DataStructures
-  using NLsolve
-  using Elliptic
-  using Polynomials
-  using DataFrames
-  using Interpolations
-  using YAML
-  using Memoize
-  using ForwardDiff
+
+  @reexport using QuadGK
+  @reexport using SymPy
+  @reexport using NLsolve
+  @reexport using Elliptic
+  @reexport using Polynomials
+  @reexport using DataFrames
+  @reexport using Interpolations
+  @reexport using YAML
+  @reexport using Memoize
+  @reexport using ForwardDiff
+  @reexport using Plasmas
+  @reexport using StaticArrays
 
   Base.cd("$(dirname(@__FILE__))/..") do
     include("../config/bootload.jl")
