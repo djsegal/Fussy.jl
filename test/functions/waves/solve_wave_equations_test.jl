@@ -4,19 +4,19 @@
 
   Tokamak.load_input(" Z_eff = 1.0 ")
   Tokamak.load_input(" n_bar = 0.86 * 1u\"n20\" ")
+  Tokamak.load_input(" B_0 = 10.0 * 1u\"T\" ")
+  Tokamak.load_input(" R_0 = 4.0 * 1u\"m\" ")
+  Tokamak.load_input(" T_k = 17.8 * 1u\"keV\" ")
 
-  cur_solved_R_0 = 4.0
-  cur_solved_B_0 = 10.0
-  cur_solved_T_k = 17.8
+  actual_value = Tokamak.solve_wave_equations(
+    ( Tokamak.R_0 / 1u"m" ),
+    ( Tokamak.B_0 / 1u"T" ),
+    ( Tokamak.T_k / 1u"keV" ),
+    ( Tokamak.n_bar / 1u"n20" )
+  )
 
-  actual_value = Tokamak.solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, Tokamak.default_eta_CD)
+  expected_value = 0.699085306107685
 
-  expected_value = [1.273554655214011, 0.699050110239589, 1.464955718931050e+10]
-
-  @test length(actual_value) == length(expected_value)
-
-  for cur_index = 1:length(expected_value)
-    @test isapprox(expected_value[cur_index], actual_value[cur_index], rtol=5e-4)
-  end
+  @test isapprox(expected_value, actual_value, rtol=5e-4)
 
 end

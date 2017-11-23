@@ -1,27 +1,31 @@
 """
-    solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, prev_eta_CD; verbose=false)
+    solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, cur_solved_n_bar; verbose=false)
 
-Function to solve for n_para, rho_J, omega.
+Lorem ipsum dolor sit amet.
 """
-function solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, prev_eta_CD; verbose=false)
-  rho_J = nothing
+function solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, cur_solved_n_bar; verbose=false)
+  cur_rho = nothing
 
-  for cur_attempt in 1:7
+  cur_eq = @generate_wave_equation_set(
+    cur_solved_R_0,
+    cur_solved_B_0,
+    cur_solved_T_k,
+    cur_solved_n_bar
+  )
+
+  for cur_attempt in 1:4
     did_work = true
 
+    cur_rand_value = 0.1 + 0.8 * rand()
+
     try
-      rho_J = mcpsolve(
-        @generate_wave_equation_set(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, prev_eta_CD),
-        [-1.0], [1.0], [rand(linspace(0.1, 0.9))],
-        ftol = 1e-6, xtol = 1e-4, iterations=50,
-        show_trace = false,
+      cur_rho = mcpsolve(
+        cur_eq, [-1.0], [+1.0], [cur_rand_value],
+        iterations = 100,
+        show_trace = false
       ).zero[1]
 
-      rho_J = abs(rho_J)
-
-      if isapprox(0, rho_J, atol=1e-8)
-        did_work = false
-      end
+      cur_rho = abs(cur_rho)
     catch DomainError
       did_work = false
     end
@@ -31,48 +35,10 @@ function solve_wave_equations(cur_solved_R_0, cur_solved_B_0, cur_solved_T_k, pr
     if did_work ; break ; end
   end
 
-  if rho_J == nothing
+  if cur_rho == nothing || iszero(cur_rho)
     if verbose ; print("o") ; end
-    return [ NaN , NaN , NaN ]
+    return NaN
   end
 
-  cur_n_bar = subs(
-    calc_possible_values(
-      ( solved_steady_density() / 1u"n20" ),
-      cur_T_k = ( cur_solved_T_k * 1u"keV" ),
-      cur_eta_CD = prev_eta_CD
-    ),
-    symbol_dict["R_0"] => cur_solved_R_0
-  )
-
-  cur_omega_nor2 = subs(
-    omega_nor2(rho_J),
-    symbol_dict["B_0"] => cur_solved_B_0,
-    symbol_dict["n_bar"] => cur_n_bar
-  )
-
-  omega = subs(
-    sqrt(
-      cur_omega_nor2 *
-      omega_ce(rho_J) *
-      omega_ci(rho_J)
-    ),
-    symbol_dict["B_0"] => cur_solved_B_0
-  )
-
-  cur_n_para = subs(
-    n_para(
-      rho_J, cur_omega_nor2=cur_omega_nor2
-    ),
-    symbol_dict["B_0"] => cur_solved_B_0,
-    symbol_dict["n_bar"] => cur_n_bar
-  )
-
-  output = [
-    SymPy.N(cur_n_para),
-    rho_J,
-    SymPy.N(omega)
-  ]
-
-  return output
+  cur_rho
 end

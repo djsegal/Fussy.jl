@@ -1,6 +1,6 @@
-@testset "Wave Chi Function Tests" begin
+@testset "Wave B M Function Tests" begin
 
-  @test isdefined(Tokamak, :wave_chi) == true
+  @test isdefined(Tokamak, :wave_B_M) == true
 
   Tokamak.load_input(" Z_eff = 1.0 ")
   Tokamak.load_input(" n_bar = 0.86 * 1u\"n20\" ")
@@ -9,13 +9,15 @@
   Tokamak.load_input(" T_k = 17.8 * 1u\"keV\" ")
 
   test_hash = Dict(
-    0.0 => 0.115022303907001,
-    0.5 => 0.133538190241175,
-    1.0 => 0.0
+    0.0 => 10.0000,
+    0.5 => 11.4286,
+    1.0 => 13.3333
   )
 
   for (cur_key, expected_value) in test_hash
-    actual_value = Tokamak.wave_chi(cur_key)
+    actual_value = Tokamak.wave_B_M(cur_key)
+
+    actual_value /= 1u"T"
 
     @test isapprox(expected_value, actual_value, rtol=5e-4)
   end

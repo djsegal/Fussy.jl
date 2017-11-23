@@ -16,6 +16,7 @@ function converge_eta_CD(main_value, given_equations, cur_eta_CD, side_guess=15.
 
   min_weight = 0.3
 
+  init_eta_CD = cur_eta_CD
   prev_eta_CD = cur_eta_CD
   work_eta_CD = cur_eta_CD
 
@@ -92,7 +93,7 @@ function converge_eta_CD(main_value, given_equations, cur_eta_CD, side_guess=15.
     new_weight *= sqrt( length(attempt_bank) / convergence_attempt_counts )
     new_weight += min_weight
 
-    push!(attempt_bank, cur_eta_CD)
+    push!(attempt_bank, work_eta_CD)
 
     if is_bad_eta_CD
       if verbose ; print("#") ; end
@@ -102,7 +103,7 @@ function converge_eta_CD(main_value, given_equations, cur_eta_CD, side_guess=15.
       end
 
       work_eta_CD *= ( 1 - new_weight )
-      work_eta_CD += cur_eta_CD * new_weight
+      work_eta_CD += init_eta_CD * new_weight
 
       continue
     end
@@ -126,20 +127,33 @@ function converge_eta_CD(main_value, given_equations, cur_eta_CD, side_guess=15.
 
   end
 
+  output = Array{Any}(1, 6)
+
   if !has_converged
     if any(cur_attempt -> !isnan(cur_attempt), attempt_bank)
       verbose && println("\nFailed to converge eta CD: \n$(unique(attempt_bank))\n")
     end
-    return [ NaN , NaN , NaN , NaN , NaN ]
+
+    fill!(output,  NaN)
+    output[6] = false
+
+    return output
   end
 
-  output = [
+  verbose && print("✓")
+
+  output[1:3] = [
     cur_solved_R_0,
     cur_solved_B_0,
-    cur_solved_T_k,
+    cur_solved_T_k
+  ]
+
+  output[4:5] = [
     SymPy.N(cur_eta_CD),
     SymPy.N(cur_rho_j)
   ]
+
+  output[6] = true
 
   return output
 
