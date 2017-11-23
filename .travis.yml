@@ -24,7 +24,7 @@ matrix:
 script:
   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
   - julia -e 'Pkg.clone(pwd());'
-  - (echo "y" && echo "Fusion Test" && echo "danSegal2@gmail.com" && echo "Fusion Test" && echo "n" && yes && cat) | julia -e 'using PkgDev; PkgDev.config();'
+  - (echo "y" && echo "Fusion Test" && echo "danSegal2@gmail.com" && echo "Fusion Test" && echo "n" && yes && cat) | julia -e 'Pkg.add("PkgDev"); using PkgDev; PkgDev.config();'
   - julia -e 'Pkg.checkout("Julz");'
   - julia -e 'ENV["PYTHON"]=""; Pkg.build("PyCall");'
   - julia -e 'Pkg.build("Fusion"); Pkg.test("Fusion"; coverage=true)'
