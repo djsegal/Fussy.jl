@@ -2,7 +2,7 @@
 
   @test isdefined(Fusion, :P_kappa) == true
 
-  actual_value = Fusion.P_kappa()
+  actual_value = P_kappa()
 
   actual_value /= 1u"MW"
 
@@ -14,7 +14,7 @@
 
   actual_value = SymPy.N(actual_value)
 
-  expected_value = Fusion.K_kappa()
+  expected_value = K_kappa()
 
   @test isapprox(expected_value, actual_value)
 

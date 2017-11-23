@@ -4,6 +4,6 @@
 
   Fusion.load_input(" f_DT = 0.9 ")
 
-  @test isapprox( Fusion.K_W() , 1.20 , rtol=5e-3 )
+  @test isapprox( K_W() , 1.20 , rtol=5e-3 )
 
 end

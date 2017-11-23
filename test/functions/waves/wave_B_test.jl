@@ -25,7 +25,7 @@
 
   for (cur_key, sub_hash) in test_hash
     for (cur_sub_key, expected_value) in sub_hash
-      actual_value = Fusion.wave_B(cur_key, cur_sub_key)
+      actual_value = wave_B(cur_key, cur_sub_key)
 
       actual_value /= 1u"T"
 

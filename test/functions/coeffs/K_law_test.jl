@@ -7,23 +7,23 @@
 
   expected_value = 0.0214
 
-  expected_value *= ( 1 + Fusion.f_DT ) / 2
+  expected_value *= ( 1 + f_DT ) / 2
 
-  actual_value = Fusion.K_law()
+  actual_value = K_law()
 
   @test isapprox(actual_value, expected_value, rtol=5e-3)
 
   expected_value = 3.41e-3
 
-  expected_value *= 1 + Fusion.nu_n
-  expected_value *= 1 + Fusion.nu_T
-  expected_value /= 1 + Fusion.nu_n + Fusion.nu_T
+  expected_value *= 1 + nu_n
+  expected_value *= 1 + nu_T
+  expected_value /= 1 + nu_n + nu_T
 
-  expected_value /= Fusion.Q_kernel()
+  expected_value /= Q_kernel()
 
-  expected_value *= ( 1 + Fusion.f_DT ) / 2
+  expected_value *= ( 1 + f_DT ) / 2
 
-  expected_value /= Fusion.f_DT ^ 2
+  expected_value /= f_DT ^ 2
 
   @test isapprox(actual_value, expected_value, rtol=5e-3)
 

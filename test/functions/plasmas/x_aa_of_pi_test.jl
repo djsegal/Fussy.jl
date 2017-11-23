@@ -2,7 +2,7 @@
 
   @test isdefined(Fusion, :x_aa_of_pi) == true
 
-  actual_value = Fusion.x_aa_of_pi()
+  actual_value = x_aa_of_pi()
 
   expected_value = 0.225
 

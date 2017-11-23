@@ -11,7 +11,7 @@
 
   (outRead, outWrite) = redirect_stdout()
 
-  Fusion.main()
+  main()
 
   close(outWrite)
 

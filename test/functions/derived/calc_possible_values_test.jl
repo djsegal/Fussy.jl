@@ -18,10 +18,10 @@
 
       Fusion.load_input( "T_k = $(cur_T_k)u\"keV\"" )
 
-      actual_value = Fusion.calc_possible_values()
+      actual_value = calc_possible_values()
       actual_value *= 1u"m^3/s"
 
-      expected_value = Fusion.sigma_v()
+      expected_value = sigma_v()
       expected_value *= 1e21
 
       @test isapprox(expected_value, actual_value, rtol=5e-3)

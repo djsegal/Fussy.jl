@@ -4,7 +4,7 @@
 
   Fusion.load_input(" enable_geom_scaling = true ")
 
-  actual_value = Fusion.volume()
+  actual_value = volume()
 
   actual_value /= 1u"m^3"
 

@@ -2,9 +2,9 @@
 
   @test isdefined(Fusion, :G_1) == true
 
-  expected_value = Fusion.K_nu()
+  expected_value = K_nu()
 
-  actual_value = Fusion.G_1()
+  actual_value = G_1()
 
   actual_value *= Fusion.symbol_dict["sigma_v_hat"] ^ 0.69
 

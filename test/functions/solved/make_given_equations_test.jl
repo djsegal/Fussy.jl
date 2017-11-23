@@ -12,19 +12,19 @@
 
   # reversibility
 
-  actual_value = Fusion.make_given_equations("steady", "wall")["R_0"]
+  actual_value = make_given_equations("steady", "wall")["R_0"]
 
-  actual_value /= Fusion.make_given_equations("steady", "beta")["R_0"]
+  actual_value /= make_given_equations("steady", "beta")["R_0"]
 
   @test isapprox( actual_value, expected_value, rtol=1e-4 )
 
   # 1 - steady
 
-  actual_value = Fusion.make_given_equations("steady", "wall")["R_0"]
+  actual_value = make_given_equations("steady", "wall")["R_0"]
 
   actual_value ^= 0.16
 
-  actual_value /= ( Fusion.B_0 / 1u"T" ) ^ 0.15
+  actual_value /= ( B_0 / 1u"T" ) ^ 0.15
 
   actual_value /= Fusion.symbol_dict["G_K_1"]
 
@@ -32,9 +32,9 @@
 
   # 2 - beta
 
-  actual_value = Fusion.make_given_equations("beta", "steady")["R_0"]
+  actual_value = make_given_equations("beta", "steady")["R_0"]
 
-  actual_value *= ( Fusion.B_0 / 1u"T" )
+  actual_value *= ( B_0 / 1u"T" )
 
   actual_value /= Fusion.symbol_dict["G_K_2"]
 
@@ -42,7 +42,7 @@
 
   # 3 - wall
 
-  actual_value = Fusion.make_given_equations("wall", "steady")["R_0"]
+  actual_value = make_given_equations("wall", "steady")["R_0"]
 
   actual_value ^= 3
 
@@ -56,15 +56,15 @@
 
   # reversibility
 
-  actual_value = Fusion.make_given_equations("wall", "beta")["B_0"]
+  actual_value = make_given_equations("wall", "beta")["B_0"]
 
-  actual_value /= Fusion.make_given_equations("beta", "wall")["B_0"]
+  actual_value /= make_given_equations("beta", "wall")["B_0"]
 
   @test isapprox( actual_value, expected_value, rtol=1e-4 )
 
   # 1 & 2 - steady + beta
 
-  actual_value = Fusion.make_given_equations("steady", "beta")["B_0"]
+  actual_value = make_given_equations("steady", "beta")["B_0"]
 
   actual_value ^= ( 31 // 100 )
 
@@ -76,7 +76,7 @@
 
   # 1 & 3 - steady + wall
 
-  actual_value = Fusion.make_given_equations("steady", "wall")["B_0"]
+  actual_value = make_given_equations("steady", "wall")["B_0"]
 
   actual_value ^= ( 15 // 100 )
 

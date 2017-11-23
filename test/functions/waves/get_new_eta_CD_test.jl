@@ -10,11 +10,11 @@
 
   Fusion.load_input(" enable_log_lambda_calc = false ")
 
-  actual_value = Fusion.get_new_eta_CD(
-    Fusion.R_0 / 1u"m",
-    Fusion.B_0 / 1u"T",
-    Fusion.T_k / 1u"keV",
-    Fusion.default_eta_CD
+  actual_value = get_new_eta_CD(
+    R_0 / 1u"m",
+    B_0 / 1u"T",
+    T_k / 1u"keV",
+    default_eta_CD
   )[1]
 
   expected_value = 0.366623988062387

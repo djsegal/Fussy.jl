@@ -10,7 +10,7 @@
 
   expected_value = 3.83
 
-  actual_value = Fusion.wave_D()
+  actual_value = wave_D()
 
   @test isapprox(expected_value, actual_value, rtol=5e-4)
 

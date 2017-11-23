@@ -2,6 +2,6 @@
 
   @test isdefined(Fusion, :K_n) == true
 
-  @test isapprox( Fusion.K_n(), 1.208, rtol=1e-3 )
+  @test isapprox( K_n(), 1.208, rtol=1e-3 )
 
 end

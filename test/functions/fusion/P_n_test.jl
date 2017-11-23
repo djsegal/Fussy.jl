@@ -2,9 +2,9 @@
 
   @test isdefined(Fusion, :P_n) == true
 
-  actual_value = Fusion.P_n()
+  actual_value = P_n()
 
-  actual_value /= Fusion.P_F()
+  actual_value /= P_F()
 
   expected_value = 0.8
 

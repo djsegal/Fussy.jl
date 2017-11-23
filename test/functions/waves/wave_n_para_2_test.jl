@@ -15,7 +15,7 @@
   )
 
   for (cur_key, expected_value) in test_hash
-    actual_value = Fusion.wave_n_para_2(cur_key)
+    actual_value = wave_n_para_2(cur_key)
 
     @test isapprox(expected_value, actual_value, rtol=5e-4)
   end

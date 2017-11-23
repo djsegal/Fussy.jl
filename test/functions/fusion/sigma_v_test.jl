@@ -20,12 +20,12 @@
     for cur_T_k in logspace(0, log10(50), test_count)
       Fusion.load_input( "T_k = $(cur_T_k)u\"keV\"" )
 
-      actual_value = Fusion.sigma_v()
+      actual_value = sigma_v()
 
       actual_value *= 1e21
       actual_value /= 1u"m^3/s"
 
-      actual_value /= Fusion.calc_possible_values()
+      actual_value /= calc_possible_values()
 
       @test isapprox(actual_value, expected_value)
     end
@@ -45,15 +45,15 @@
       Fusion.load_input( "T_k = $(cur_T_k)u\"keV\"" )
 
       Fusion.load_input( "use_slow_sigma_v_funcs = false" )
-      expected_value = Fusion.sigma_v()
+      expected_value = sigma_v()
 
       Fusion.load_input( "use_slow_sigma_v_funcs = true" )
-      actual_value = Fusion.sigma_v()
+      actual_value = sigma_v()
 
       @test isapprox(actual_value, expected_value, rtol=0.9)
 
       Fusion.load_input( "use_bosch_hale_sigma_v = true" )
-      actual_value = Fusion.sigma_v()
+      actual_value = sigma_v()
 
       @test isapprox(actual_value, expected_value, rtol=0.9)
     end
@@ -63,9 +63,9 @@
   Fusion.load_input( "nu_T = 0" )
   Fusion.load_input( "nu_n = 0" )
 
-  actual_value = Fusion.sigma_v()
+  actual_value = sigma_v()
 
-  expected_value = Fusion.sigma_v_ave(0.5)
+  expected_value = sigma_v_ave(0.5)
   expected_value /= 2
 
   @test isapprox(actual_value, expected_value, rtol=5e-4)
@@ -99,9 +99,9 @@
         r = ( i - 1 ) / ( n_points - 1 )
         dr = 1 / ( n_points - 1 )
 
-        sigma_v_ave = Fusion.sigma_v_ave(r)
+        sigma_v_ave = sigma_v_ave(r)
 
-        push!(cur_integral, (1+Fusion.nu_n)^2 * (1-r^2)^(2*Fusion.nu_n) * sigma_v_ave * r * dr)
+        push!(cur_integral, (1+nu_n)^2 * (1-r^2)^(2*nu_n) * sigma_v_ave * r * dr)
       end
 
       cur_sum = 0u"m^3/s"
@@ -111,7 +111,7 @@
       end
 
       push!(sigma_v_expected, cur_sum)
-      push!(sigma_v_actual, Fusion.sigma_v())
+      push!(sigma_v_actual, sigma_v())
 
     end
 

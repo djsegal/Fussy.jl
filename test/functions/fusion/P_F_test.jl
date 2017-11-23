@@ -2,9 +2,9 @@
 
   @test isdefined(Fusion, :P_F) == true
 
-  @test Fusion.P_F() != Nullable
+  @test P_F() != Nullable
 
-  actual_value = Fusion.P_F()
+  actual_value = P_F()
 
   actual_value /= 1u"MW"
 
@@ -14,7 +14,7 @@
 
   actual_value = SymPy.N(actual_value)
 
-  expected_value = Fusion.K_F()
+  expected_value = K_F()
 
   @test isapprox(expected_value, actual_value)
 

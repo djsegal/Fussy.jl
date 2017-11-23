@@ -4,7 +4,7 @@
 
   expected_value = Fusion.symbol_dict["T_k"]
 
-  actual_value = Fusion.G_2()
+  actual_value = G_2()
 
   @test isapprox(expected_value, actual_value, rtol=5e-4)
 

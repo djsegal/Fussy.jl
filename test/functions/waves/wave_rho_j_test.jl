@@ -13,7 +13,7 @@
 
   expected_value = 0.773925336996854
 
-  actual_value = Fusion.wave_rho_j(cur_rho_j, cur_n_para_m)
+  actual_value = wave_rho_j(cur_rho_j, cur_n_para_m)
 
   @test isapprox(expected_value, actual_value, rtol=5e-4)
 

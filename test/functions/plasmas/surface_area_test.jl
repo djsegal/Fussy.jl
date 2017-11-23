@@ -6,7 +6,7 @@
 
   Fusion.load_input(" R_0 = 3.3 * 1u\"m\" ")
 
-  actual_value = Fusion.surface_area()
+  actual_value = surface_area()
 
   actual_value /= 1u"m^2"
 

@@ -2,7 +2,7 @@
 
   @test isdefined(Fusion, :confinement_time_from_scaling) == true
 
-  actual_value = Fusion.confinement_time_from_scaling()
+  actual_value = confinement_time_from_scaling()
 
   actual_value /= 1u"s"
 
@@ -13,13 +13,13 @@
   actual_value *= Fusion.symbol_dict["R_0"] ^ ( 10 // 100 )
   actual_value *= Fusion.symbol_dict["sigma_v_hat"] ^ ( 69 // 100 )
 
-  expected_value = Fusion.Q_kernel()
+  expected_value = Q_kernel()
   expected_value ^= -0.69
 
   expected_value *= 3.550e-3
-  expected_value *= Fusion.H
-  expected_value *= Fusion.kappa ^ 0.09
-  expected_value /= Fusion.epsilon ^ 0.8
+  expected_value *= H
+  expected_value *= kappa ^ 0.09
+  expected_value /= epsilon ^ 0.8
 
   @test isapprox(expected_value, actual_value, rtol=5e-3)
 

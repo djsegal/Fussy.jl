@@ -2,6 +2,6 @@
 
   @test isdefined(Fusion, :power_sinks) == true
 
-  @test Fusion.power_sinks() != Nullable
+  @test power_sinks() != Nullable
 
 end

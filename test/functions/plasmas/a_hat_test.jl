@@ -4,6 +4,6 @@
 
   Fusion.load_input( "R_0 = 4u\"m\"" )
 
-  @test isapprox( Fusion.a_hat() , 1.15u"m" , rtol=5e-4 )
+  @test isapprox( a_hat() , 1.15u"m" , rtol=5e-4 )
 
 end

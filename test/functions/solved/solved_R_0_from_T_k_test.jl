@@ -2,6 +2,6 @@
 
   @test isdefined(Fusion, :solved_R_0_from_T_k) == true
 
-  @test Fusion.solved_R_0_from_T_k(10.0) != Nullable
+  @test solved_R_0_from_T_k(10.0) != Nullable
 
 end

@@ -14,19 +14,19 @@
   cur_primary_constraint = "steady"
   cur_secondary_constraint = "beta"
 
-  Fusion.expand_given_equations!(cur_given_equations, cur_primary_constraint, cur_secondary_constraint)
+  expand_given_equations!(cur_given_equations, cur_primary_constraint, cur_secondary_constraint)
 
   expected_value = 1.0
 
   actual_value = cur_given_equations["R_0"]
 
-  actual_value *= Fusion.G_2()
+  actual_value *= G_2()
 
-  actual_value *= Fusion.K_2()
+  actual_value *= K_2()
 
-  actual_value /= Fusion.G_1()
+  actual_value /= G_1()
 
-  actual_value /= Fusion.K_1()
+  actual_value /= K_1()
 
   @test isapprox( actual_value, expected_value, rtol=1e-4 )
 

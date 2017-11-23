@@ -19,7 +19,7 @@
     for cur_R_0 in [ "1u\"m\"", "4u\"m\"" ]
       Fusion.load_input( "R_0 = $cur_R_0" )
 
-      actual_value = Fusion.a()
+      actual_value = a()
       expected_value = expected_values[cur_epsilon][cur_R_0]
 
       @test isapprox( expected_value , actual_value )

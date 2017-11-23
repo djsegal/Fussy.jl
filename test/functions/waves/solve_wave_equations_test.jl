@@ -8,11 +8,11 @@
   Fusion.load_input(" R_0 = 4.0 * 1u\"m\" ")
   Fusion.load_input(" T_k = 17.8 * 1u\"keV\" ")
 
-  actual_value = Fusion.solve_wave_equations(
-    ( Fusion.R_0 / 1u"m" ),
-    ( Fusion.B_0 / 1u"T" ),
-    ( Fusion.T_k / 1u"keV" ),
-    ( Fusion.n_bar / 1u"n20" )
+  actual_value = solve_wave_equations(
+    ( R_0 / 1u"m" ),
+    ( B_0 / 1u"T" ),
+    ( T_k / 1u"keV" ),
+    ( n_bar / 1u"n20" )
   )
 
   expected_value = 0.699085306107685

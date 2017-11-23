@@ -2,7 +2,7 @@
 
   @test isdefined(Fusion, :f_B) == true
 
-  actual_value = Fusion.f_B()
+  actual_value = f_B()
 
   actual_value /= Fusion.symbol_dict["n_bar"]
   actual_value /= Fusion.symbol_dict["T_k"]
@@ -12,7 +12,7 @@
 
   actual_value = SymPy.N(actual_value)
 
-  expected_value = Fusion.K_B()
+  expected_value = K_B()
 
   @test isapprox(expected_value, actual_value)
 

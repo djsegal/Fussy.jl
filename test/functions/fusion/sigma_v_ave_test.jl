@@ -24,14 +24,14 @@
         Fusion.load_input( "T_k = $(cur_T_k)u\"keV\"" )
 
         Fusion.load_input( "use_slow_sigma_v_funcs = true" )
-        expected_value = Fusion.sigma_v_ave(cur_rho)
+        expected_value = sigma_v_ave(cur_rho)
         expected_value /= 1u"m^3/s"
 
         Fusion.load_input( "use_slow_sigma_v_funcs = false" )
-        actual_value = Fusion.sigma_v_ave(cur_rho)
+        actual_value = sigma_v_ave(cur_rho)
         actual_value /= 1u"m^3/s"
 
-        if cur_rho == Fusion.integral_one
+        if cur_rho == integral_one
           @test actual_value < cur_small_value
           @test expected_value < cur_small_value
         elseif expected_value == 0
@@ -63,10 +63,10 @@
   for (key, value) in moses_table
     Fusion.load_input( key )
 
-    expected_value = Fusion.sigma_v_ave(0.5)/1u"m^3*s^-1"
+    expected_value = sigma_v_ave(0.5)/1u"m^3*s^-1"
     actual_value = value * ( 1u"(cm/m)^3" |> NoUnits )
 
-    @test isapprox( expected_value , actual_value , rtol=3.0u"keV"/Fusion.T_k )
+    @test isapprox( expected_value , actual_value , rtol=3.0u"keV"/T_k )
   end
 
 end

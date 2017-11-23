@@ -2,9 +2,9 @@
 
   @test isdefined(Fusion, :P_H) == true
 
-  actual_value = Fusion.P_H()
+  actual_value = P_H()
 
-  actual_value /= Fusion.P_F()
+  actual_value /= P_F()
 
   expected_value = 0.02
 
@@ -12,9 +12,9 @@
 
   Fusion.load_input(" Q = 40 ")
 
-  actual_value = Fusion.P_H()
+  actual_value = P_H()
 
-  actual_value /= Fusion.P_F()
+  actual_value /= P_F()
 
   expected_value = 0.025
 

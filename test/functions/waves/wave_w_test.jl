@@ -14,7 +14,7 @@
   expected_value = 2.999409995184309
 
   actual_value = subs(
-    Fusion.wave_w(cur_rho_m),
+    wave_w(cur_rho_m),
     Fusion.symbol_dict["n_para"],
     cur_n_para_m
   )

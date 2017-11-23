@@ -8,9 +8,9 @@
 
   expected_value /= 2
 
-  expected_value *= ( 1 + Fusion.f_DT )
+  expected_value *= ( 1 + f_DT )
 
-  actual_value = Fusion.K_kappa()
+  actual_value = K_kappa()
 
   @test isapprox( actual_value, expected_value, rtol=5e-3 )
 

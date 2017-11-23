@@ -16,7 +16,7 @@
   )
 
   for (cur_key, expected_value) in test_hash
-    actual_value = Fusion.n_profile(cur_key)
+    actual_value = n_profile(cur_key)
 
     @test isapprox(expected_value, actual_value, rtol=5e-4)
   end

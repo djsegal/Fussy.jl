@@ -16,7 +16,7 @@
   )
 
   for (cur_key, expected_value) in test_hash
-    actual_value = Fusion.T_profile(cur_key)
+    actual_value = T_profile(cur_key)
 
     actual_value = subs(
       actual_value, Fusion.symbol_dict["T_k"], cur_solved_T_k

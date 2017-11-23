@@ -2,6 +2,6 @@
 
   @test isdefined(Fusion, :E_F) == true
 
-  @test isapprox(Fusion.E_F(), 17.6u"MeV")
+  @test isapprox(E_F(), 17.6u"MeV")
 
 end
