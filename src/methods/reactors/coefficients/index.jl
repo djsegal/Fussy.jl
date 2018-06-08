@@ -19,3 +19,8 @@ include("k_do.jl")
 
 include("k_vi.jl")
 include("k_vt.jl")
+
+include("k_rp.jl")
+include("k_lp.jl")
+
+include("k_cs.jl")

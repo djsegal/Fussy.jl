@@ -31,6 +31,7 @@ function demo_deck(cur_T_bar::AbstractSymbol)
     sigma_CS = 660,
     sigma_TF = 660,
     J_CS = 50,
-    J_TF = 230
+    J_TF = 230,
+    k = 0.333
   )
 end

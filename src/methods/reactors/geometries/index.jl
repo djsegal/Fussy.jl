@@ -18,3 +18,6 @@ include("d.jl")
 
 include("perimeter.jl")
 include("g_p.jl")
+
+include("kappa_x.jl")
+include("delta_x.jl")

@@ -57,6 +57,8 @@
 
   B_CS::AbstractSymbol = 12.77
 
+  k::AbstractSymbol = 0.333
+
   sigma_CS::AbstractSymbol = 300.0
   sigma_TF::AbstractSymbol = 600.0
 
