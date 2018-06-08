@@ -15,3 +15,6 @@ include("r_cs.jl")
 include("h_cs.jl")
 include("c.jl")
 include("d.jl")
+
+include("perimeter.jl")
+include("g_p.jl")

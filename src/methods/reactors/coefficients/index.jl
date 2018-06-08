@@ -16,3 +16,6 @@ include("k_rad.jl")
 
 include("k_dr.jl")
 include("k_do.jl")
+
+include("k_vi.jl")
+include("k_vt.jl")
