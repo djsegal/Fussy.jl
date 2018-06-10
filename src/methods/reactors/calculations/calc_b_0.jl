@@ -5,7 +5,7 @@ function calc_B_0(cur_reactor::AbstractReactor)
 
   cur_function = getfield(Fussy, cur_symbol)
 
-  cur_R = cur_function(cur_reactor)
+  cur_B = cur_function(cur_reactor)
 
-  cur_R
+  cur_B
 end

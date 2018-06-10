@@ -24,3 +24,8 @@ include("k_rp.jl")
 include("k_lp.jl")
 
 include("k_cs.jl")
+
+include("k_bs.jl")
+include("k_cd.jl")
+
+include("k_w.jl")

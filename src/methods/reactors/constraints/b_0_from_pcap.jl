@@ -1,7 +1,7 @@
 function B_0_from_pcap(cur_reactor::AbstractReactor)
   cur_B_power = cur_reactor.mode_scaling[:B]
 
-  cur_R_power = cur_reactor.mode_scaling[:R]
+  cur_R_power = alpha_R_star(cur_reactor)
 
   cur_I_power = alpha_I_star(cur_reactor) + 2 * cur_R_power
 

@@ -1,6 +1,7 @@
 include("a.jl")
 include("g.jl")
 
+include("a_p.jl")
 include("epsilon_p.jl")
 include("kappa_p.jl")
 
@@ -21,3 +22,6 @@ include("g_p.jl")
 
 include("kappa_x.jl")
 include("delta_x.jl")
+
+include("surface_area.jl")
+include("volume.jl")

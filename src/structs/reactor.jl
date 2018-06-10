@@ -89,7 +89,7 @@
 
   f_BS::AbstractCalculated = nothing
   f_CD::AbstractCalculated = nothing
-  f_ID::AbstractCalculated = nothing
+  f_IN::AbstractCalculated = nothing
 
   resistance::AbstractCalculated = nothing
   voltage::AbstractCalculated = nothing
@@ -119,6 +119,10 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
     end
 
     setfield!(cur_reactor, cur_key, cur_value)
+  end
+
+  if !cur_reactor.is_pulsed
+    cur_reactor.tau_FT = 1.6e9
   end
 
   if cur_reactor.constraint == nothing
@@ -181,7 +185,7 @@ end
 function Reactor(cur_temp::AbstractSymbol, cur_dict::Dict)
   if haskey(cur_dict, :deck) && cur_dict[:deck] != nothing
     cur_deck_symbol = Symbol("$(cur_dict[:deck])_deck")
-    cur_deck_func = getfield(FusionSystems, cur_deck_symbol)
+    cur_deck_func = getfield(Fussy, cur_deck_symbol)
 
     cur_reactor = cur_deck_func(cur_temp)
   else

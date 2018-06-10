@@ -4,3 +4,7 @@ include("composites/index.jl")
 include("constraints/index.jl")
 include("formulas/index.jl")
 include("geometries/index.jl")
+include("powers/index.jl")
+include("profiles/index.jl")
+
+include("solve.jl")
