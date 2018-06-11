@@ -3,8 +3,6 @@ function demo_solution()
 
   cur_reactor = demo_deck(cur_T)
 
-  cur_reactor.eta_CD = 0.2721
-
   cur_reactor.n_bar = 0.7983
   cur_reactor.I_P = 19.6
 

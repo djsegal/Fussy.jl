@@ -29,17 +29,15 @@ function solve!(cur_reactor::AbstractReactor)
 
   cur_reactor.I_P = cur_I_P
 
-  if cur_reactor.is_good
-    _add_solutions_to_reactor(cur_reactor)
-  else
-    _NanizeReactor!(cur_reactor)
-  end
+  cur_reactor.is_good && _add_solutions_to_reactor(cur_reactor)
+
+  cur_reactor.is_good || _NanizeReactor!(cur_reactor)
 
   cur_reactor
 end
 
 function _solve(cur_eq::SymEngine.Basic, cur_min::Number=min_I_P, cur_max::Number=max_I_P, cur_depth::Int=0)
-  ( cur_depth > 6 ) && return NaN
+  ( cur_depth > 3 ) && return NaN
 
   cur_I_P = NaN
 

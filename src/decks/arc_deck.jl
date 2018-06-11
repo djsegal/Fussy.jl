@@ -33,6 +33,7 @@ function arc_deck(cur_T_bar::AbstractSymbol)
     J_CS= 50.0,
     J_TF= 200.0,
     C_ejima = 0.3,
-    b = 1.2
+    b = 1.2,
+    eta_CD = 0.321
   )
 end

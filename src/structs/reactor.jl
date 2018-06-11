@@ -71,6 +71,8 @@
   max_P_E::AbstractSymbol = 1500.0
   max_P_W::AbstractSymbol = 8.0
 
+  eta_CD::AbstractSymbol = 0.2721
+
   tau_E::AbstractCalculated = nothing
   p_bar::AbstractCalculated = nothing
   P_F::AbstractCalculated = nothing
@@ -100,11 +102,9 @@
   W_M::AbstractCalculated = nothing
   cost::AbstractCalculated = nothing
 
-  eta_CD::AbstractCalculated = nothing
-
   a::AbstractCalculated = nothing
 
-  constraint::Union{Void, AbstractString} = nothing
+  constraint::Union{Void, Symbol} = nothing
 end
 
 function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)

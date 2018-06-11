@@ -7,7 +7,7 @@
 
   cur_K /= cur_epsilon ^ 2
 
-  cur_K /= kappa_x(cur_reactor)
+  cur_K /= cur_reactor.kappa_95
 
   cur_K /= ( 1 - 1.31 * sqrt(cur_epsilon) + 0.46 * cur_epsilon )
 

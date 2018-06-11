@@ -3,8 +3,6 @@ function act_2_solution()
 
   cur_reactor = act_2_deck(cur_T)
 
-  cur_reactor.eta_CD = 0.256
-
   cur_reactor.n_bar = 0.86
   cur_reactor.I_P = 13.98
 

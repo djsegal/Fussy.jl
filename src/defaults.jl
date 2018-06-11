@@ -36,3 +36,21 @@ const bosch_hale_coeffs = [
   -1.06750e-4,
   +1.36600e-5
 ]
+
+const secondary_limits = OrderedDict(
+  :beta => "TB",
+  :kink => "KF",
+  :pcap => "PC",
+  :wall => "WL",
+  :heat => "DV"
+)
+
+const secondary_params = OrderedDict(
+  :beta => "beta_N",
+  :kink => "q_95",
+  :pcap => "P_E",
+  :wall => "P_W",
+  :heat => "q_DV"
+)
+
+N(cur_number::Float64) = cur_number

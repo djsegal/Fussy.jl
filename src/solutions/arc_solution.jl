@@ -3,8 +3,6 @@ function arc_solution()
 
   cur_reactor = arc_deck(cur_T)
 
-  cur_reactor.eta_CD = 0.321
-
   cur_reactor.n_bar = 1.3
   cur_reactor.I_P = 7.8
 

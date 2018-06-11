@@ -13,3 +13,6 @@ include("p_bar.jl")
 include("q_dv.jl")
 
 include("w_m.jl")
+
+include("r_p.jl")
+include("l_p.jl")

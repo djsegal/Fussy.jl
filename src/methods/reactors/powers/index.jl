@@ -8,4 +8,6 @@ include("p_e.jl")
 include("p_w.jl")
 
 include("p_kappa.jl")
-include("p_b.jl")
+include("p_br.jl")
+
+include("p_ohmic.jl")

@@ -25,6 +25,9 @@ function act_2_deck(cur_T_bar::AbstractSymbol)
     max_P_E = 1500.0,
 
     max_P_W = 1.46,
-    max_q_DV = 10.0
+    max_q_DV = 10.0,
+
+    b = 1.2,
+    eta_CD = 0.256
   )
 end

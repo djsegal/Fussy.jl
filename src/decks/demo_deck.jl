@@ -20,18 +20,18 @@ function demo_deck(cur_T_bar::AbstractSymbol)
     tau_RD = 15.0,
     tau_DW = 1800.0,
     C_ejima = 0.3,
-    B_CS = 12.77,
-    R_CS = 2.483,
-    dR_CS = 0.8181,
     max_beta_N = 0.02591,
     max_q_95 = 2.5,
     max_P_E = 1500.0,
     max_P_W = 8.0,
     max_q_DV = 10.0,
+    B_CS = 12.77,
     sigma_CS = 660,
     sigma_TF = 660,
     J_CS = 50,
     J_TF = 230,
-    k = 0.333
+    k = 0.333,
+    b = 1.2,
+    eta_CD = 0.2721,
   )
 end
