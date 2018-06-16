@@ -6,7 +6,7 @@
   cur_perimeter *= a(cur_reactor)
 
   cur_perimeter *= sqrt(
-    _perimeter_g(cur_reactor)
+    g_p(cur_reactor)
   )
 
   cur_perimeter

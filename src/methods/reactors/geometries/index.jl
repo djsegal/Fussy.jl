@@ -23,5 +23,6 @@ include("g_p.jl")
 include("kappa_x.jl")
 include("delta_x.jl")
 
+include("cross_sectional_area.jl")
 include("surface_area.jl")
 include("volume.jl")

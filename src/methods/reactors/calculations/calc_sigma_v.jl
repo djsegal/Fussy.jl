@@ -29,17 +29,6 @@
   cur_sigma_v
 end
 
-@symbol_func function calc_sigma_v(cur_reactor::AbstractReactor, cur_formula::Union{Void, SymEngine.Basic})
-  cur_sigma_v = calc_sigma_v(cur_reactor)
-
-  cur_value = subs(
-    cur_formula,
-    symbols(:sigma_v) => cur_sigma_v
-  )
-
-  cur_value
-end
-
 _bosch_hale(::SymEngine.Basic) = symbols(:sigma_v_ave)
 
 function _bosch_hale(cur_temp::AbstractFloat)

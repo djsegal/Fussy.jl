@@ -11,3 +11,4 @@ include("p_kappa.jl")
 include("p_br.jl")
 
 include("p_ohmic.jl")
+include("p_n.jl")

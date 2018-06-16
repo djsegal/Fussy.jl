@@ -3,7 +3,7 @@ include("q_e.jl")
 include("tau_e.jl")
 
 include("q_95.jl")
-include("beta_N.jl")
+include("beta_n.jl")
 
 include("f_bs.jl")
 include("f_cd.jl")
@@ -16,3 +16,12 @@ include("w_m.jl")
 
 include("r_p.jl")
 include("l_p.jl")
+
+include("f_rp.jl")
+
+include("beta_p.jl")
+include("b_v.jl")
+
+include("n_hat.jl")
+
+include("v_loop.jl")
