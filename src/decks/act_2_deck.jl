@@ -1,7 +1,7 @@
 function act_2_deck(cur_T_bar::AbstractSymbol)
   BaseReactor(
     T_bar = cur_T_bar,
-    is_pulsed = false,
+    # is_pulsed = false,
     H = 1.22,
     Q = 25.0,
     epsilon = 0.25,

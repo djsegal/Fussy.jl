@@ -1,7 +1,7 @@
 function arc_deck(cur_T_bar::AbstractSymbol)
   BaseReactor(
     T_bar = cur_T_bar,
-    is_pulsed = false,
+    # is_pulsed = false,
     H = 1.8,
     Q = 13.6,
     epsilon = 0.3333,
