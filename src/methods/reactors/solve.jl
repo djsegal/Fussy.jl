@@ -3,7 +3,7 @@ function solve!(cur_reactor::AbstractReactor)
 
   cur_I_P = NaN
 
-  if !isnan(cur_reactor.sigma_v)
+  if cur_reactor.T_bar > 0 && !isnan(cur_reactor.sigma_v)
     cur_eq = calc_I_P(cur_reactor)
 
     if isa(cur_eq, SymEngine.Basic)
