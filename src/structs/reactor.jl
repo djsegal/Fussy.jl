@@ -212,11 +212,16 @@ end
 function _NanizeReactor!(cur_reactor::AbstractReactor)
   for cur_field_name in fieldnames(cur_reactor)
     ( cur_field_name == :T_bar ) && continue
+    ( cur_field_name == :constraint ) && continue
+    ( cur_field_name == :deck ) && continue
 
     cur_field = getfield(cur_reactor, cur_field_name)
-    isa(cur_field, AbstractFloat) ||
-      isa(cur_field, SymEngine.Basic) ||
-      continue
+
+    is_nan_field = isa(cur_field, AbstractFloat)
+    is_nan_field |= isa(cur_field, SymEngine.Basic)
+    is_nan_field |= cur_field == nothing
+
+    is_nan_field || continue
 
     setfield!(cur_reactor, cur_field_name, NaN)
   end
