@@ -27,7 +27,16 @@ function act_2_deck(cur_T_bar::AbstractSymbol)
     max_P_W = 1.46,
     max_q_DV = 10.0,
 
+    B_CS = 12.77,
+    k = 0.333,
+    sigma_CS = 660,
+    sigma_TF = 660,
+    J_CS = 50,
+    J_TF = 230,
+    C_ejima = 0.3,
     b = 1.2,
+    tau_FT = 1.6e9,
+
     eta_CD = 0.256
   )
 end
