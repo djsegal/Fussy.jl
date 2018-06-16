@@ -13,13 +13,15 @@ end
 function _calc_I_P_pulsed(cur_reactor::AbstractReactor)
   cur_G_PU = G_PU(cur_reactor)
 
-  cur_numerator = G_PU(cur_reactor) * ( K_BS(cur_reactor) )
+  cur_G_V = G_V(cur_reactor)
 
-  cur_denominator = G_PU(cur_reactor) * ( 1 - K_CD(cur_reactor) * cur_reactor.sigma_v )
+  cur_numerator = cur_G_PU * ( K_BS(cur_reactor) )
 
-  cur_numerator += G_V(cur_reactor) * K_VT(cur_reactor)
+  cur_denominator = cur_G_PU * ( 1 - K_CD(cur_reactor) * cur_reactor.sigma_v )
 
-  cur_denominator -= G_V(cur_reactor) * K_VI(cur_reactor)
+  cur_numerator += cur_G_V * K_VT(cur_reactor)
+
+  cur_denominator -= cur_G_V * K_VI(cur_reactor)
 
   cur_numerator += G_CS(cur_reactor) * K_CS(cur_reactor)
 
