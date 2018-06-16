@@ -63,11 +63,22 @@ end
 
 function _add_solutions_to_reactor(cur_reactor::AbstractReactor)
 
-  cur_reactor.B_0 = calc_B_0(cur_reactor)
+  try
 
-  cur_reactor.R_0 = calc_R_0(cur_reactor)
+    cur_reactor.B_0 = convert(Real, calc_B_0(cur_reactor))
+    cur_reactor.R_0 = convert(Real, calc_R_0(cur_reactor))
+    cur_reactor.n_bar = convert(Real, calc_n_bar(cur_reactor))
 
-  cur_reactor.n_bar = calc_n_bar(cur_reactor)
+  catch cur_error
+
+    is_caught_error = isa(cur_error, InexactError)
+    is_caught_error |= isa(cur_error, DomainError)
+    is_caught_error || rethrow(cur_error)
+
+    cur_reactor.is_good = false
+    return
+
+  end
 
   cur_reactor.tau_E = tau_E(cur_reactor)
   cur_reactor.p_bar = p_bar(cur_reactor)
