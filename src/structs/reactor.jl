@@ -46,11 +46,11 @@
   eta_T::AbstractSymbol = 0.3531
   eta_RF::AbstractSymbol = 0.4
 
-  tau_RU::AbstractSymbol = 15.0
-  tau_RD::AbstractSymbol = 15.0
+  tau_RU::AbstractSymbol = 30.0
+  tau_RD::AbstractSymbol = 30.0
   tau_DW::AbstractSymbol = 1800.0
 
-  tau_FT::AbstractSymbol = 7273.0
+  tau_FT::AbstractSymbol = 7200.0
   C_ejima::AbstractSymbol = 0.3
 
   pi::AbstractSymbol = AbstractFloat(Base.pi)
@@ -59,11 +59,11 @@
 
   k::AbstractSymbol = 0.333
 
-  sigma_CS::AbstractSymbol = 300.0
-  sigma_TF::AbstractSymbol = 600.0
+  sigma_CS::AbstractSymbol = 660.0
+  sigma_TF::AbstractSymbol = 660.0
 
   J_CS::AbstractSymbol = 50.0
-  J_TF::AbstractSymbol = 200.0
+  J_TF::AbstractSymbol = 461.1
 
   max_beta_N::AbstractSymbol = 0.02591
   max_q_95::AbstractSymbol = 2.5
