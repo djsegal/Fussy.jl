@@ -17,7 +17,15 @@ function solve!(cur_reactor::AbstractReactor)
 
       cur_eq -= 1.0
 
-      cur_I_P = _solve(cur_eq)
+      cur_lambda = lambdify(cur_eq)
+
+      cur_func = function (work_I_P)
+        cur_value = cur_lambda(complex(float(work_I_P)))
+        iszero(imag(cur_value)) || return float(-max_I_P)
+        return Real(cur_value)
+      end
+
+      cur_I_P = _solve(cur_reactor, cur_func)
     else
       cur_I_P = cur_eq
     end
@@ -36,29 +44,31 @@ function solve!(cur_reactor::AbstractReactor)
   cur_reactor
 end
 
-function _solve(cur_eq::SymEngine.Basic, cur_min::Number=min_I_P, cur_max::Number=max_I_P, cur_depth::Int=0)
-  ( cur_depth > 3 ) && return NaN
+function _solve(cur_reactor::AbstractReactor, cur_eq::Function)
+  cur_I_P_list = Roots.find_zeros(cur_eq, min_I_P, max_I_P)
 
-  cur_I_P = NaN
+  bad_indices = []
 
-  try
-    cur_I_P = fzero(cur_eq, cur_min, cur_max)
-  catch cur_error
-    cur_mid = mean([cur_min, cur_max])
+  for (cur_index, cur_I_P) in enumerate(cur_I_P_list)
+    iszero(cur_I_P) && ( push!(bad_indices, cur_index) ; continue )
 
-    cur_I_P_bot = _solve(cur_eq, cur_min, cur_mid, cur_depth+1)
-    cur_I_P_top = _solve(cur_eq, cur_mid, cur_max, cur_depth+1)
+    tmp_reactor = deepcopy(cur_reactor)
 
-    if isnan(cur_I_P_bot)
-      cur_I_P = cur_I_P_top
-    elseif isnan(cur_I_P_top)
-      cur_I_P = cur_I_P_bot
-    else
-      cur_I_P = min(cur_I_P_bot, cur_I_P_top)
-    end
+    tmp_reactor.I_P = cur_I_P
+    tmp_reactor.B_0 = convert(Real, calc_B_0(tmp_reactor))
+    tmp_reactor.R_0 = convert(Real, calc_R_0(tmp_reactor))
+    tmp_reactor.n_bar = convert(Real, calc_n_bar(tmp_reactor))
+
+    ( f_BS(tmp_reactor) > 0 ) || ( push!(bad_indices, cur_index) ; continue )
+    ( f_CD(tmp_reactor) > 0 ) || ( push!(bad_indices, cur_index) ; continue )
+    ( f_IN(tmp_reactor) > 0 ) || ( push!(bad_indices, cur_index) ; continue )
   end
 
-  cur_I_P
+  deleteat!(cur_I_P_list, bad_indices)
+
+  isempty(cur_I_P_list) && return NaN
+
+  return first(cur_I_P_list)
 end
 
 function _add_solutions_to_reactor(cur_reactor::AbstractReactor)

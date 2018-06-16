@@ -52,5 +52,3 @@ const secondary_params = OrderedDict(
   :wall => "P_W",
   :heat => "q_DV"
 )
-
-N(cur_number::Float64) = cur_number
