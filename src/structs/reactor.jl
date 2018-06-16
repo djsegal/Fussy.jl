@@ -11,7 +11,7 @@
 
   mode_scaling::Dict = h_mode_scaling
 
-  deck::Union{Void, Symbol} = nothing
+  deck::AbstractKey = nothing
 
   is_pulsed::Bool = true
   is_symbolic::Bool = false
@@ -104,7 +104,7 @@
 
   a::AbstractCalculated = nothing
 
-  constraint::Union{Void, Symbol} = nothing
+  constraint::AbstractKey = nothing
 end
 
 function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
