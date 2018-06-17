@@ -12,3 +12,5 @@ include("p_br.jl")
 
 include("p_ohmic.jl")
 include("p_n.jl")
+
+include("p_lh.jl")
