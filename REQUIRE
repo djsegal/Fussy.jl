@@ -1,5 +1,7 @@
 julia 0.6
 DataStructures
+PmapProgressMeter
+ProgressMeter
 Parameters
 SymEngine
 Unitful

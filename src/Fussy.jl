@@ -2,7 +2,9 @@
 
 module Fussy
 
+  using PmapProgressMeter
   using DataStructures
+  using ProgressMeter
   using Parameters
   using SymEngine
   using Unitful

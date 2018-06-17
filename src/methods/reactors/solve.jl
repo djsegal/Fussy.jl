@@ -1,4 +1,5 @@
-function solve!(cur_reactor::AbstractReactor)
+function solve!(cur_reactor::AbstractReactor, is_direct_call::Bool=true)
+
   cur_reactor.sigma_v = calc_sigma_v(cur_reactor)
 
   cur_I_P = NaN
@@ -37,6 +38,7 @@ function solve!(cur_reactor::AbstractReactor)
 
   cur_reactor.I_P = cur_I_P
 
+  is_direct_call || return cur_reactor
 
   update!(cur_reactor)
 

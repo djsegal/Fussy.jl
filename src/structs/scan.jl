@@ -21,22 +21,53 @@ function Scan(cur_T_bar_list::Any; cur_kwargs...)
   cur_deck = haskey(cur_dict, :deck) ?
     cur_dict[:deck] : nothing
 
+  cur_limits = collect(keys(secondary_limits))
+
+  limit_count = length(cur_limits)
+  T_bar_count = length(cur_T_bar_list)
+
+  reactor_count = T_bar_count * limit_count
+
   cur_scan = Scan(
     cur_T_bar_list, cur_deck,
-    [], [], [], [], [], [], []
+    [ Vector{AbstractReactor}(T_bar_count) for cur_index in 1:limit_count ]...,
+    [], []
   )
 
-  for cur_limit in keys(secondary_limits)
+  cur_array = SharedArray{Float64}(limit_count, T_bar_count)
+
+  cur_func = function (cur_index::Integer)
+    cur_col = fld(cur_index-1, limit_count) + 1
+    cur_row = mod(cur_index-1, limit_count) + 1
+
+    cur_limit = cur_limits[cur_row]
+    cur_T_bar = cur_scan.T_bar_list[cur_col]
+
+    cur_reactor = Reactor(
+      cur_T_bar, merge(cur_dict, Dict(Symbol("constraint") => cur_limit))
+    )
+
+    solve!(cur_reactor, false)
+    cur_array[cur_row, cur_col] = cur_reactor.I_P
+  end
+
+  cur_progress = Progress(reactor_count)
+  pmap(cur_func, cur_progress, 1:reactor_count)
+
+  for cur_row in 1:limit_count
+    cur_limit = cur_limits[cur_row]
     cur_field_symbol = Symbol("$(cur_limit)_reactors")
 
     cur_reactor_list = getfield(cur_scan, cur_field_symbol)
 
-    for cur_T_bar in cur_scan.T_bar_list
+    for (cur_col, cur_T_bar) in enumerate(cur_scan.T_bar_list)
       cur_reactor = Reactor(
         cur_T_bar, merge(cur_dict, Dict(Symbol("constraint") => cur_limit))
       )
 
-      push!(cur_reactor_list, solve!(cur_reactor))
+      cur_reactor.I_P = cur_array[cur_row, cur_col]
+
+      cur_reactor_list[cur_col] = update!(cur_reactor)
     end
   end
 
