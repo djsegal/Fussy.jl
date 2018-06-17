@@ -1,7 +1,7 @@
-function demo_solution()
+function demo_pulsed_solution()
   cur_T = 13.065
 
-  cur_reactor = demo_deck(cur_T)
+  cur_reactor = demo_pulsed_deck(cur_T)
 
   cur_reactor.n_bar = 0.7983
   cur_reactor.I_P = 19.6

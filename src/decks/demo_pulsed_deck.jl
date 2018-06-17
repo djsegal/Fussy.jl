@@ -1,4 +1,4 @@
-function demo_deck(cur_T_bar::AbstractSymbol)
+function demo_pulsed_deck(cur_T_bar::AbstractSymbol)
   BaseReactor(
     T_bar = cur_T_bar,
     H = 1.1,
@@ -31,7 +31,6 @@ function demo_deck(cur_T_bar::AbstractSymbol)
     J_CS = 50,
     J_TF = 230,
     k = 0.333,
-    b = 1.2,
     eta_CD = 0.2721,
   )
 end
