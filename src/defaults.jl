@@ -6,7 +6,7 @@ const integral_one = 1.0 - integral_offset
 const min_I_P = 0.100
 const max_I_P = 100.0
 
-const h_mode_scaling = Dict(
+const H_mode_scaling = Dict(
   :constant => 0.1445,
   :I => 0.93,
   :R => 1.39,
@@ -18,7 +18,19 @@ const h_mode_scaling = Dict(
   :P => 0.69
 )
 
-const scaling_keys = keys(h_mode_scaling)
+const L_mode_scaling = Dict(
+  :constant => 0.0578,
+  :I => 0.96,
+  :R => 1.89,
+  :a => -0.06,
+  :kappa => 0.64,
+  :n => 0.40,
+  :B => 0.03,
+  :A => 0.20,
+  :P => 0.73
+)
+
+const scaling_keys = keys(H_mode_scaling)
 
 const E_F = 17.6
 const E_Li = 4.8

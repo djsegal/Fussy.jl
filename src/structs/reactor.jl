@@ -9,7 +9,7 @@
 
   sigma_v::AbstractSymbol = symbols(:sigma_v)
 
-  mode_scaling::Dict = h_mode_scaling
+  mode_scaling::Dict = H_mode_scaling
 
   deck::AbstractKey = nothing
 
