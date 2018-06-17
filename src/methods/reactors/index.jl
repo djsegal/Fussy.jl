@@ -9,3 +9,4 @@ include("powers/index.jl")
 include("profiles/index.jl")
 
 include("solve.jl")
+include("update.jl")
