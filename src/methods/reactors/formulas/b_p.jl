@@ -34,7 +34,7 @@ end
 
 function int_b_p(cur_gamma::AbstractFloat)
   quadgk(
-    cur_rho -> cur_rho * b_p(cur_gamma, cur_rho)^2,
+    cur_rho -> cur_rho * b_p(cur_gamma, cur_rho) ^ 2,
     integral_zero,
     integral_one
   )[1]

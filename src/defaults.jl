@@ -3,8 +3,8 @@ const integral_offset = 1e-8
 const integral_zero = 0.0 + integral_offset
 const integral_one = 1.0 - integral_offset
 
-const min_I_P = 0.1
-const max_I_P = 100
+const min_I_P = 0.100
+const max_I_P = 100.0
 
 const h_mode_scaling = Dict(
   :constant => 0.1445,
