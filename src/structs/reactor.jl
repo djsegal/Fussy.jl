@@ -149,12 +149,16 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
     cur_lhs *= 1 + cur_reactor.kappa_95 ^ 2
     cur_lhs /= 4 * cur_reactor.kappa_95
 
-    cur_gamma = 0.0
-    for cur_attempt in 1:10
-      cur_gamma = fzero(
-        tmp_gamma -> int_b_p(tmp_gamma) - cur_lhs,
-        rand()
-      )
+    cur_gamma = NaN
+    for cur_attempt in 1:100
+      try
+        cur_gamma = fzero(
+          tmp_gamma -> int_b_p(tmp_gamma) - cur_lhs,
+          rand()
+        )
+      catch
+        continue
+      end
 
       iszero(cur_gamma) || break
     end
