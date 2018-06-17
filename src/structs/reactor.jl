@@ -26,8 +26,6 @@
   kappa_95::AbstractSymbol = 1.590
   delta_95::AbstractSymbol = 0.333
 
-  b::AbstractSymbol = 1.2
-
   nu_n::AbstractSymbol = 0.27
   nu_T::AbstractSymbol = 1.094
 

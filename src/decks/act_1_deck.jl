@@ -34,7 +34,6 @@ function act_1_deck(cur_T_bar::AbstractSymbol)
     J_CS = 50,
     J_TF = 230,
     C_ejima = 0.3,
-    b = 1.2,
     tau_FT = 1.6e9,
 
     eta_CD = 0.188

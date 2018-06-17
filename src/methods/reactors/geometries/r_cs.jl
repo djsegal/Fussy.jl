@@ -3,7 +3,7 @@
 
   cur_R -= a(cur_reactor)
 
-  cur_R -= cur_reactor.b
+  cur_R -= b(cur_reactor)
 
   cur_R -= c(cur_reactor)
 

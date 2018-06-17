@@ -14,6 +14,7 @@ include("alpha_r_star.jl")
 include("epsilon_b.jl")
 include("r_cs.jl")
 include("h_cs.jl")
+include("b.jl")
 include("c.jl")
 include("d.jl")
 
