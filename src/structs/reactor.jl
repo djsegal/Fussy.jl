@@ -177,7 +177,7 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
 end
 
 function Reactor(cur_temp::AbstractSymbol; cur_kwargs...)
-  cur_dict = Dict(cur_kwargs)
+  cur_dict = merge!(Dict(), Dict(cur_kwargs))
 
   cur_reactor = Reactor(cur_temp, cur_dict)
 
@@ -238,7 +238,7 @@ function NanReactor(cur_temp::AbstractSymbol, cur_dict::Dict)
 end
 
 function NanReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
-  cur_dict = Dict(cur_kwargs)
+  cur_dict = merge!(Dict(), Dict(cur_kwargs))
 
   cur_reactor = NanReactor(cur_temp, cur_dict)
 
@@ -246,7 +246,7 @@ function NanReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
 end
 
 function SymbolicReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
-  cur_dict = Dict(cur_kwargs)
+  cur_dict = merge!(Dict(), Dict(cur_kwargs))
 
   cur_scaling = haskey(cur_dict, :mode_scaling) ?
     cur_dict[:mode_scaling] : symbol_scaling
@@ -266,7 +266,7 @@ function SymbolicReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...
 end
 
 function BaseReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
-  cur_dict = Dict(cur_kwargs)
+  cur_dict = merge!(Dict(), Dict(cur_kwargs))
 
   cur_reactor = Reactor(T_bar = cur_temp)
 
