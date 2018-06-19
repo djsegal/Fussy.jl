@@ -15,5 +15,5 @@ function demo_steady_solution()
   cur_reactor.beta_N = cur_reactor.max_beta_N
   cur_reactor.q_95 = 4.405
 
-  # cur_reactor
+  cur_reactor
 end
