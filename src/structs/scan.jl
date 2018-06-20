@@ -10,19 +10,25 @@ mutable struct Scan <: AbstractScan
   heat_reactors::Vector{AbstractReactor}
 
   main_reactors::Vector{AbstractReactor}
-  main_limits::Vector{Symbol}
 end
 
-function Scan(cur_T_bar_list::Any; cur_kwargs...)
-  cur_dict = Dict()
+function Scan(cur_T_bar_list::Any, cur_limit::Symbol; cur_kwargs...)
+  cur_dict = merge!(Dict(), Dict(cur_kwargs))
 
-  merge!(cur_dict, Dict(cur_kwargs))
+  Scan(cur_T_bar_list, [cur_limit], cur_dict)
+end
 
+function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray=collect(keys(secondary_limits)); cur_kwargs...)
+  cur_dict = merge!(Dict(), Dict(cur_kwargs))
+
+  Scan(cur_T_bar_list, cur_limits, cur_dict)
+end
+
+function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray, cur_dict::Dict)
   cur_deck = haskey(cur_dict, :deck) ?
     cur_dict[:deck] : nothing
 
-  cur_limits = collect(keys(secondary_limits))
-
+  roots_count = max_roots
   limit_count = length(cur_limits)
   T_bar_count = length(cur_T_bar_list)
 
@@ -30,15 +36,16 @@ function Scan(cur_T_bar_list::Any; cur_kwargs...)
 
   cur_scan = Scan(
     cur_T_bar_list, cur_deck,
-    [ Vector{AbstractReactor}(T_bar_count) for cur_index in 1:limit_count ]...,
-    [], []
+    [ AbstractReactor[] for cur_index in 1:length(keys(secondary_limits)) ]...,
+    Vector{AbstractReactor}(T_bar_count)
   )
 
-  cur_array = SharedArray{Float64}(limit_count, T_bar_count)
+  cur_array = SharedArray{Float64}(limit_count, T_bar_count, roots_count)
+  fill!(cur_array, NaN)
 
   cur_func = function (cur_index::Integer)
-    cur_col = fld(cur_index-1, limit_count) + 1
-    cur_row = mod(cur_index-1, limit_count) + 1
+    cur_row = fld(cur_index-1, T_bar_count) + 1
+    cur_col = mod(cur_index-1, T_bar_count) + 1
 
     cur_limit = cur_limits[cur_row]
     cur_T_bar = cur_scan.T_bar_list[cur_col]
@@ -47,8 +54,8 @@ function Scan(cur_T_bar_list::Any; cur_kwargs...)
       cur_T_bar, merge(cur_dict, Dict(Symbol("constraint") => cur_limit))
     )
 
-    solve!(cur_reactor, false)
-    cur_array[cur_row, cur_col] = cur_reactor.I_P
+    cur_I_P_list = solve(cur_reactor)
+    cur_array[cur_row, cur_col, 1:length(cur_I_P_list)] = cur_I_P_list
   end
 
   cur_progress = Progress(reactor_count)
@@ -61,64 +68,18 @@ function Scan(cur_T_bar_list::Any; cur_kwargs...)
     cur_reactor_list = getfield(cur_scan, cur_field_symbol)
 
     for (cur_col, cur_T_bar) in enumerate(cur_scan.T_bar_list)
-      cur_reactor = Reactor(
-        cur_T_bar, merge(cur_dict, Dict(Symbol("constraint") => cur_limit))
-      )
+      for cur_root in cur_array[cur_row, cur_col, :]
+        isnan(cur_root) && break
 
-      cur_reactor.I_P = cur_array[cur_row, cur_col]
+        cur_reactor = Reactor(
+          cur_T_bar, merge(cur_dict, Dict(Symbol("constraint") => cur_limit))
+        )
 
-      cur_reactor_list[cur_col] = update!(cur_reactor)
-    end
-  end
+        cur_reactor.I_P = cur_root
 
-  cur_dict[:is_solved] = true
-  cur_dict[:is_good] = false
-
-  ignored_limits = [:pcap, :heat]
-
-  for (cur_index, cur_T_bar) in enumerate(cur_scan.T_bar_list)
-    has_valid_reactor = false
-
-    for cur_limit_sym in keys(secondary_limits)
-      in(cur_limit_sym, ignored_limits) && continue
-
-      cur_field_symbol = Symbol("$(cur_limit_sym)_reactors")
-
-      cur_reactor_list = getfield(cur_scan, cur_field_symbol)
-
-      cur_reactor = cur_reactor_list[cur_index]
-
-      cur_reactor.is_good || continue
-
-      is_main_limit = true
-
-      for (cur_sub_limit_sym, cur_sub_limit_param) in secondary_params
-        in(cur_sub_limit_sym, ignored_limits) && continue
-
-        cur_norm_symbol = Symbol("norm_$(cur_sub_limit_param)")
-
-        cur_norm_value = getfield(cur_reactor, cur_norm_symbol)
-
-        cur_norm_value <= 1.001  && continue
-
-        is_main_limit = false
-        break
+        push!(cur_reactor_list, update!(cur_reactor))
       end
-
-      is_main_limit || continue
-
-      has_valid_reactor = true
-
-      push!(cur_scan.main_limits, cur_limit_sym)
-      push!(cur_scan.main_reactors, cur_reactor)
-
-      break
     end
-
-    has_valid_reactor && continue
-
-    push!(cur_scan.main_limits, :none)
-    push!(cur_scan.main_reactors, NanReactor(cur_T_bar, cur_dict))
   end
 
   cur_scan

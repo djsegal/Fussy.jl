@@ -1,73 +1,72 @@
-function solve!(cur_reactor::AbstractReactor, is_direct_call::Bool=true)
-
-  cur_reactor.sigma_v = calc_sigma_v(cur_reactor)
-
-  cur_I_P = NaN
-
-  if cur_reactor.T_bar > 0 && !isnan(cur_reactor.sigma_v)
-    cur_eq = calc_I_P(cur_reactor)
-
-    if isa(cur_eq, SymEngine.Basic)
-      cur_eq = subs(
-        calc_I_P(cur_reactor),
-        symbols(:R_0) => calc_R_0(cur_reactor),
-        symbols(:B_0) => calc_B_0(cur_reactor)
-      )
-
-      cur_eq /= symbols(:I_P)
-
-      cur_eq -= 1.0
-
-      cur_lambda = lambdify(cur_eq)
-
-      cur_func = function (work_I_P)
-        cur_value = cur_lambda(complex(float(work_I_P)))
-        iszero(imag(cur_value)) || return float(-max_I_P)
-        return Real(cur_value)
-      end
-
-      cur_I_P = _solve(cur_reactor, cur_func)
-    else
-      cur_I_P = cur_eq
-    end
-  end
-
-  cur_reactor.is_good = !isnan(cur_I_P)
-
+function solve!(cur_reactor::AbstractReactor)
+  cur_I_P_list = solve(cur_reactor)
   cur_reactor.is_solved = true
 
-  cur_reactor.I_P = cur_I_P
-
-  is_direct_call || return cur_reactor
+  cur_reactor.cur_I_P = isempty(cur_I_P_list) ? NaN : first(cur_I_P_list)
+  cur_reactor.is_good = !isnan(cur_reactor.I_P)
 
   update!(cur_reactor)
-
   cur_reactor
 end
 
-function _solve(cur_reactor::AbstractReactor, cur_eq::Function)
-  cur_I_P_list = Roots.find_zeros(cur_eq, min_I_P, max_I_P)
+function solve(cur_reactor::AbstractReactor)
+  cur_reactor.T_bar <= 0 && return []
 
-  bad_indices = []
+  cur_reactor.sigma_v = calc_sigma_v(cur_reactor)
+  isnan(cur_reactor.sigma_v) && return []
+
+  cur_equation = calc_I_P(cur_reactor)
+
+  isa(cur_equation, SymEngine.Basic) || return [cur_equation]
+
+  cur_equation = subs(
+    cur_equation,
+    symbols(:R_0) => calc_R_0(cur_reactor),
+    symbols(:B_0) => calc_B_0(cur_reactor)
+  )
+
+  cur_equation /= symbols(:I_P)
+
+  cur_equation -= 1.0
+
+  _solve(cur_reactor, cur_equation)
+end
+
+function _solve(cur_reactor::AbstractReactor, cur_equation::SymEngine.Basic)
+  cur_I_P_list = Roots.find_zeros(
+    cur_equation, min_I_P, max_I_P,
+    no_pts = num_points
+  )
+
+  isempty(cur_I_P_list) && return []
+
+  good_reactors = Vector{AbstractReactor}()
 
   for (cur_index, cur_I_P) in enumerate(cur_I_P_list)
-    iszero(cur_I_P) && ( push!(bad_indices, cur_index) ; continue )
+    isapprox(0.0, cur_I_P, atol=10*eps()) && continue
 
     tmp_reactor = deepcopy(cur_reactor)
 
     tmp_reactor.I_P = cur_I_P
+
     tmp_reactor.B_0 = convert(Real, calc_B_0(tmp_reactor))
     tmp_reactor.R_0 = convert(Real, calc_R_0(tmp_reactor))
     tmp_reactor.n_bar = convert(Real, calc_n_bar(tmp_reactor))
 
-    ( f_BS(tmp_reactor) > 0 ) || ( push!(bad_indices, cur_index) ; continue )
-    ( f_CD(tmp_reactor) > 0 ) || ( push!(bad_indices, cur_index) ; continue )
-    ( f_IN(tmp_reactor) > 0 ) || ( push!(bad_indices, cur_index) ; continue )
+    ( 0 <= f_BS(tmp_reactor) <= 1 ) || continue
+    ( 0 <= f_CD(tmp_reactor) <= 1 ) || continue
+    ( 0 <= f_IN(tmp_reactor) <= 1 ) || continue
+
+    push!(good_reactors, tmp_reactor)
   end
 
-  deleteat!(cur_I_P_list, bad_indices)
+  isempty(good_reactors) && return []
 
-  isempty(cur_I_P_list) && return NaN
+  real_root_count = length(cur_I_P_list)
 
-  return first(cur_I_P_list)
+  @assert real_root_count <= max_roots
+
+  cur_I_P_list = map(tmp_reactor -> tmp_reactor.I_P, good_reactors)
+
+  cur_I_P_list
 end
