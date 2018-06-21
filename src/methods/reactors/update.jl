@@ -53,6 +53,21 @@ function update!(cur_reactor::AbstractReactor)
   cur_reactor.norm_q_95 ^= -1
 
   # cur_reactor.cost = cost(cur_reactor)
+  cur_reactor.is_valid = true
+
+  for (cur_limit, cur_variable) in secondary_params
+    in(cur_limit, cur_reactor.ignored_limits) && continue
+
+    cur_norm_symbol = Symbol("norm_$(cur_variable)")
+
+    cur_norm_value = getfield(cur_reactor, cur_norm_symbol)
+
+    cur_norm_value <= 1.001  && continue
+
+    cur_reactor.is_valid = false
+    break
+  end
+
   cur_reactor.volume = volume(cur_reactor)
   cur_reactor.W_M = W_M(cur_reactor)
 

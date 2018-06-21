@@ -8,8 +8,6 @@ mutable struct Scan <: AbstractScan
   pcap_reactors::Vector{AbstractReactor}
   wall_reactors::Vector{AbstractReactor}
   heat_reactors::Vector{AbstractReactor}
-
-  main_reactors::Vector{AbstractReactor}
 end
 
 function Scan(cur_T_bar_list::Any, cur_limit::Symbol; cur_kwargs...)
@@ -36,8 +34,7 @@ function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray, cur_dict::Dict)
 
   cur_scan = Scan(
     cur_T_bar_list, cur_deck,
-    [ AbstractReactor[] for cur_index in 1:length(keys(secondary_limits)) ]...,
-    Vector{AbstractReactor}(T_bar_count)
+    [ AbstractReactor[] for cur_index in 1:length(keys(secondary_limits)) ]...
   )
 
   cur_array = SharedArray{Float64}(limit_count, T_bar_count, roots_count)

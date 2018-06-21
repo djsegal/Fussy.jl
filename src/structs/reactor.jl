@@ -17,6 +17,7 @@
   is_symbolic::Bool = false
 
   is_solved::Bool = false
+  is_valid::Bool = true
   is_good::Bool = true
 
   H::AbstractSymbol = 1.1
@@ -103,6 +104,9 @@
   a::AbstractCalculated = nothing
 
   constraint::AbstractKey = nothing
+
+  ignored_limits::Vector{Symbol} = [:pcap, :heat]
+
 end
 
 function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
