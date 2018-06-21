@@ -1,9 +1,10 @@
 julia 0.6
-DataStructures
 PmapProgressMeter
+DataStructures
 ProgressMeter
 Parameters
 SymEngine
+CurveFit
 Unitful
 QuadGK
 Roots

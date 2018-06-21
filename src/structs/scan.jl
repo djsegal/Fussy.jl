@@ -59,25 +59,111 @@ function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray, cur_dict::Dict)
   pmap(cur_func, cur_progress, 1:reactor_count)
 
   for cur_row in 1:limit_count
+
+    cur_max_roots = maximum(
+        map(cur_col -> max_roots - count(isnan, cur_array[cur_row, cur_col, :]), 1:length(cur_T_bar_list))
+    )
+
+    has_branches_enabled = cur_max_roots > 1
+    if has_branches_enabled
+      cur_point_indices = find(
+          cur_col -> count(isnan, cur_array[cur_row, cur_col, :]) == ( max_roots - cur_max_roots ), 1:length(cur_T_bar_list)
+      )
+
+      has_branches_enabled &= ( length(cur_point_indices) > 2 )
+    end
+
+    if has_branches_enabled
+      ( cur_branch_T_lists, cur_branch_I_lists ) =
+        _get_branch_lists(cur_array[cur_row,:,:], cur_T_bar_list)
+    else
+      cur_branch_T_lists = [ Real[] ]
+      cur_branch_I_lists = [ Real[] ]
+
+      for (cur_col, cur_T_bar) in enumerate(cur_scan.T_bar_list)
+        for cur_I_P in cur_array[cur_row, cur_col, :]
+          isnan(cur_I_P) && break
+          push!(cur_branch_T_lists[1], cur_T_bar)
+          push!(cur_branch_I_lists[1], cur_I_P)
+        end
+      end
+    end
+
     cur_limit = cur_limits[cur_row]
     cur_field_symbol = Symbol("$(cur_limit)_reactors")
 
     cur_reactor_list = getfield(cur_scan, cur_field_symbol)
 
-    for (cur_col, cur_T_bar) in enumerate(cur_scan.T_bar_list)
-      for cur_root in cur_array[cur_row, cur_col, :]
-        isnan(cur_root) && break
-
+    for (cur_index, (cur_branch_T_list, cur_branch_I_list)) in enumerate(zip(cur_branch_T_lists, cur_branch_I_lists))
+      for (cur_T_bar, cur_I_P) in zip(cur_branch_T_list, cur_branch_I_list)
         cur_reactor = Reactor(
           cur_T_bar, merge(cur_dict, Dict(Symbol("constraint") => cur_limit))
         )
 
-        cur_reactor.I_P = cur_root
-
+        cur_reactor.I_P = cur_I_P
+        cur_reactor.branch_id = cur_index
         push!(cur_reactor_list, update!(cur_reactor))
       end
     end
   end
 
   cur_scan
+end
+
+function _get_branch_lists(cur_array::Matrix, cur_x_list)
+  cur_max_roots = maximum(
+      map(cur_row -> max_roots - count(isnan, cur_array[cur_row, :]), 1:length(cur_x_list))
+  )
+
+  cur_point_indices = find(
+      cur_row -> count(isnan, cur_array[cur_row, :]) == ( max_roots - cur_max_roots ), 1:length(cur_x_list)
+  )
+
+  cur_branch_x_lists = [ Real[] for cur_index in 1:cur_max_roots ]
+  cur_branch_y_lists = [ Real[] for cur_index in 1:cur_max_roots ]
+
+  for (cur_index, cur_row) in enumerate(cur_point_indices)
+      cur_x = cur_x_list[cur_row]
+      for (cur_sub_index, cur_y) in enumerate(cur_array[cur_row, 1:cur_max_roots])
+          push!(cur_branch_x_lists[cur_sub_index], cur_x)
+          push!(cur_branch_y_lists[cur_sub_index], cur_y)
+      end
+  end
+
+  cur_branch_fits = []
+
+  for (cur_branch_x_list, cur_branch_y_list) in zip(cur_branch_x_lists, cur_branch_y_lists)
+      cur_fit_params = poly_fit(cur_branch_x_list, cur_branch_y_list, 2)
+      cur_fit = (cur_x) -> cur_fit_params[1] + cur_fit_params[2]*cur_x + cur_fit_params[3]*cur_x^2
+
+      push!(cur_branch_fits, cur_fit)
+  end
+
+  for (cur_row, cur_x) in enumerate(cur_x_list)
+    expected_values = map(cur_fit -> cur_fit(cur_x), cur_branch_fits)
+    actual_values = filter(!isnan, cur_array[cur_row, :])
+
+    ( 0 < length(actual_values) < length(expected_values) ) || continue
+
+    cur_matrix = nothing
+    cur_actual_values = deepcopy(actual_values)
+
+    while !isempty(cur_actual_values)
+      cur_matrix = Matrix(length(expected_values), length(cur_actual_values))
+      for (cur_index, cur_expected_value) in enumerate(expected_values)
+        for (cur_sub_index, cur_actual_value) in enumerate(cur_actual_values)
+          cur_matrix[cur_index, cur_sub_index] = abs(cur_expected_value - cur_actual_value)
+        end
+      end
+
+      (tmp_index, tmp_sub_index) = ind2sub(size(cur_matrix),indmin(cur_matrix))
+
+      push!(cur_branch_x_lists[tmp_index], cur_x)
+      push!(cur_branch_y_lists[tmp_index], cur_actual_values[tmp_sub_index])
+
+      deleteat!(cur_actual_values, tmp_sub_index)
+    end
+  end
+
+  return ( cur_branch_x_lists, cur_branch_y_lists )
 end

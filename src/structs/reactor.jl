@@ -107,6 +107,8 @@
 
   ignored_limits::Vector{Symbol} = [:pcap, :heat]
 
+  branch_id::Int = 1
+
 end
 
 function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
