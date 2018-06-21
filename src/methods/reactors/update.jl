@@ -52,7 +52,6 @@ function update!(cur_reactor::AbstractReactor)
 
   cur_reactor.norm_q_95 ^= -1
 
-  # cur_reactor.cost = cost(cur_reactor)
   cur_reactor.is_valid = true
 
   for (cur_limit, cur_variable) in secondary_params
@@ -71,9 +70,11 @@ function update!(cur_reactor::AbstractReactor)
   cur_reactor.volume = volume(cur_reactor)
   cur_reactor.W_M = W_M(cur_reactor)
 
-  # cur_reactor.resistance = rho_spitzer(cur_reactor)
-  # cur_reactor.voltage = V_L(cur_reactor)
-  # cur_reactor.inductance = L_P(cur_reactor)
+  cur_reactor.cost = cur_reactor.W_M / cur_reactor.P_F
+
+  cur_reactor.resistance = R_P(cur_reactor)
+  cur_reactor.voltage = V_loop(cur_reactor)
+  cur_reactor.inductance = L_P(cur_reactor)
 
   cur_reactor.a = a(cur_reactor)
 
