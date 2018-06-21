@@ -7,7 +7,7 @@ const min_I_P = 0.00
 const max_I_P = 75.0
 
 const max_roots = 5
-const num_points = 251
+const num_points = 151
 
 const H_mode_scaling = Dict(
   :constant => 0.1445,
