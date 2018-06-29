@@ -133,10 +133,8 @@ function _get_branch_lists(cur_array::Matrix, cur_x_list)
   cur_branch_fits = []
 
   for (cur_branch_x_list, cur_branch_y_list) in zip(cur_branch_x_lists, cur_branch_y_lists)
-      cur_fit_params = poly_fit(cur_branch_x_list, cur_branch_y_list, 2)
-      cur_fit = (cur_x) -> cur_fit_params[1] + cur_fit_params[2]*cur_x + cur_fit_params[3]*cur_x^2
-
-      push!(cur_branch_fits, cur_fit)
+    cur_fit = polyfit(Vector{Float64}(cur_branch_x_list), Vector{Float64}(cur_branch_y_list), 2)
+    push!(cur_branch_fits, cur_fit)
   end
 
   for (cur_row, cur_x) in enumerate(cur_x_list)

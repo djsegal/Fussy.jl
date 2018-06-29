@@ -4,7 +4,7 @@ DataStructures
 ProgressMeter
 Parameters
 SymEngine
-CurveFit
+Polynomials
 Unitful
 QuadGK
 Roots

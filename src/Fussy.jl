@@ -7,7 +7,7 @@ module Fussy
   using ProgressMeter
   using Parameters
   using SymEngine
-  using CurveFit
+  using Polynomials
   using Unitful
   using QuadGK
   using Roots
