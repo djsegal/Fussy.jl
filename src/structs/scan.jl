@@ -146,22 +146,36 @@ function _get_branch_lists(cur_array::Matrix, cur_x_list)
     ( 0 < length(actual_values) < length(expected_values) ) || continue
 
     cur_matrix = nothing
+
     cur_actual_values = deepcopy(actual_values)
+    cur_used_indices = Int[]
 
     while !isempty(cur_actual_values)
       cur_matrix = Matrix(length(expected_values), length(cur_actual_values))
       for (cur_index, cur_expected_value) in enumerate(expected_values)
         for (cur_sub_index, cur_actual_value) in enumerate(cur_actual_values)
-          cur_matrix[cur_index, cur_sub_index] = abs(cur_expected_value - cur_actual_value)
+          if in(cur_index, cur_used_indices)
+            cur_matrix[cur_index, cur_sub_index] = Inf
+          else
+            cur_matrix[cur_index, cur_sub_index] = abs(cur_expected_value - cur_actual_value)
+          end
         end
       end
 
       (tmp_index, tmp_sub_index) = ind2sub(size(cur_matrix),indmin(cur_matrix))
 
+      push!(cur_used_indices, tmp_index)
       push!(cur_branch_x_lists[tmp_index], cur_x)
       push!(cur_branch_y_lists[tmp_index], cur_actual_values[tmp_sub_index])
 
       deleteat!(cur_actual_values, tmp_sub_index)
+    end
+
+    sort!(cur_used_indices)
+    sorted_y_list = sort(map(last, cur_branch_y_lists[cur_used_indices]))
+
+    for (cur_index, cur_sub_index) in enumerate(cur_used_indices)
+      cur_branch_y_lists[cur_sub_index][end] = sorted_y_list[cur_index]
     end
   end
 
