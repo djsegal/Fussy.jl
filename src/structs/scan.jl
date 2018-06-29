@@ -23,6 +23,10 @@ function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray=collect(keys(second
 end
 
 function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray, cur_dict::Dict)
+  cur_is_consistent = (
+    haskey(cur_dict, :is_consistent) && cur_dict[:is_consistent]
+  )
+
   cur_deck = haskey(cur_dict, :deck) ?
     cur_dict[:deck] : nothing
 
@@ -47,16 +51,25 @@ function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray, cur_dict::Dict)
     cur_limit = cur_limits[cur_row]
     cur_T_bar = cur_scan.T_bar_list[cur_col]
 
-    cur_reactor = Reactor(
-      cur_T_bar, merge(cur_dict, Dict(Symbol("constraint") => cur_limit))
+    tmp_dict = merge(
+      cur_dict, Dict(:constraint => cur_limit)
     )
 
-    cur_I_P_list = solve(cur_reactor)
-    cur_array[cur_row, cur_col, 1:length(cur_I_P_list)] = cur_I_P_list
+    if cur_is_consistent
+      cur_root_list = converge(cur_T_bar, tmp_dict)
+    else
+      cur_reactor = Reactor(cur_T_bar, tmp_dict)
+
+      cur_root_list = solve(cur_reactor)
+    end
+
+    cur_array[cur_row, cur_col, 1:length(cur_root_list)] = cur_root_list
   end
 
   cur_progress = Progress(reactor_count)
-  pmap(cur_func, cur_progress, 1:reactor_count)
+  pmap(cur_func, cur_progress, shuffle(1:reactor_count))
+
+  omitted_root_count = 0
 
   for cur_row in 1:limit_count
 
@@ -74,17 +87,30 @@ function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray, cur_dict::Dict)
     end
 
     if has_branches_enabled
-      ( cur_branch_T_lists, cur_branch_I_lists ) =
+      ( cur_branch_x_lists, cur_branch_y_lists ) =
         _get_branch_lists(cur_array[cur_row,:,:], cur_T_bar_list)
     else
-      cur_branch_T_lists = [ Real[] ]
-      cur_branch_I_lists = [ Real[] ]
+      cur_branch_x_lists = [ Real[] ]
+      cur_branch_y_lists = [ Real[] ]
 
       for (cur_col, cur_T_bar) in enumerate(cur_scan.T_bar_list)
-        for cur_I_P in cur_array[cur_row, cur_col, :]
-          isnan(cur_I_P) && break
-          push!(cur_branch_T_lists[1], cur_T_bar)
-          push!(cur_branch_I_lists[1], cur_I_P)
+        cur_root_list = cur_array[cur_row, cur_col, :]
+        filter!(!isnan, cur_root_list)
+
+        isempty(cur_root_list) && continue
+
+        if cur_is_consistent
+          ( length(cur_root_list) > 1 ) && ( omitted_root_count += 1 )
+
+          ( omitted_root_count == 5 ) &&
+            println("*** ALERT *** 5 or more omitted roots!")
+
+          cur_root_list = cur_root_list[end:end]
+        end
+
+        for cur_root in cur_root_list
+          push!(cur_branch_x_lists[1], cur_T_bar)
+          push!(cur_branch_y_lists[1], cur_root)
         end
       end
     end
@@ -94,15 +120,27 @@ function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray, cur_dict::Dict)
 
     cur_reactor_list = getfield(cur_scan, cur_field_symbol)
 
-    for (cur_index, (cur_branch_T_list, cur_branch_I_list)) in enumerate(zip(cur_branch_T_lists, cur_branch_I_lists))
-      for (cur_T_bar, cur_I_P) in zip(cur_branch_T_list, cur_branch_I_list)
+    for (cur_index, (cur_branch_x_list, cur_branch_y_list)) in enumerate(zip(cur_branch_x_lists, cur_branch_y_lists))
+      for (cur_T_bar, cur_root) in zip(cur_branch_x_list, cur_branch_y_list)
         cur_reactor = Reactor(
           cur_T_bar, merge(cur_dict, Dict(Symbol("constraint") => cur_limit))
         )
 
-        cur_reactor.I_P = cur_I_P
+        if cur_is_consistent
+          cur_reactor.eta_CD = cur_root
+
+          solve!(cur_reactor)
+        else
+          cur_reactor.I_P = cur_root
+
+          cur_reactor.is_solved = true
+          cur_reactor.is_good = true
+
+          update!(cur_reactor)
+        end
+
         cur_reactor.branch_id = cur_index
-        push!(cur_reactor_list, update!(cur_reactor))
+        push!(cur_reactor_list, cur_reactor)
       end
     end
   end
@@ -123,11 +161,11 @@ function _get_branch_lists(cur_array::Matrix, cur_x_list)
   cur_branch_y_lists = [ Real[] for cur_index in 1:cur_max_roots ]
 
   for (cur_index, cur_row) in enumerate(cur_point_indices)
-      cur_x = cur_x_list[cur_row]
-      for (cur_sub_index, cur_y) in enumerate(cur_array[cur_row, 1:cur_max_roots])
-          push!(cur_branch_x_lists[cur_sub_index], cur_x)
-          push!(cur_branch_y_lists[cur_sub_index], cur_y)
-      end
+    cur_x = cur_x_list[cur_row]
+    for (cur_sub_index, cur_y) in enumerate(cur_array[cur_row, 1:cur_max_roots])
+      push!(cur_branch_x_lists[cur_sub_index], cur_x)
+      push!(cur_branch_y_lists[cur_sub_index], cur_y)
+    end
   end
 
   cur_branch_fits = []

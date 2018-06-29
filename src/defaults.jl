@@ -5,9 +5,17 @@ const integral_one = 1.0 - integral_offset
 
 const min_I_P = 0.00
 const max_I_P = 75.0
+const no_pts_I_P = 151
 
-const max_roots = 5
-const num_points = 151
+const min_eta_CD = 0.0
+const max_eta_CD = 1.5
+const no_pts_eta_CD = 51
+
+const min_rho = 0.0
+const max_rho = 1.0
+const no_pts_rho = 21
+
+const max_roots = 10
 
 const H_mode_scaling = Dict(
   :constant => 0.1445,
@@ -67,3 +75,16 @@ const secondary_params = OrderedDict(
   :wall => "P_W",
   :heat => "q_DV"
 )
+
+const wave_gamma = 8.562
+
+const wave_M = 1.0
+
+const wave_n = 0.77
+
+const wave_m = 1.38
+
+const wave_x_r = 2.47
+
+const wave_c = 0.778
+

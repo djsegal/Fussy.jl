@@ -29,6 +29,7 @@ module Fussy
 
   function __init__()
     global const rho_sym = symbols(:rho)
+    global const eta_CD_sym = symbols(:eta_CD)
 
     global const symbol_scaling = Dict(
       zip(

@@ -15,6 +15,7 @@
 
   is_pulsed::Bool = true
   is_symbolic::Bool = false
+  is_consistent::Bool = false
 
   is_solved::Bool = false
   is_valid::Bool = true
@@ -54,6 +55,8 @@
 
   pi::AbstractSymbol = AbstractFloat(Base.pi)
 
+  speed_of_light::AbstractSymbol = 3e8
+
   B_CS::AbstractSymbol = 12.77
 
   k::AbstractSymbol = 0.333
@@ -71,6 +74,9 @@
   max_P_W::AbstractSymbol = 8.0
 
   eta_CD::AbstractSymbol = 0.2721
+
+  wave_theta::AbstractSymbol = 135.0
+  eta_LH::AbstractSymbol = 0.6
 
   tau_E::AbstractCalculated = nothing
   p_bar::AbstractCalculated = nothing
@@ -112,6 +118,8 @@
 end
 
 function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
+  @assert !( cur_reactor.is_pulsed && cur_reactor.is_consistent )
+
   for (cur_key, cur_value) in cur_kwargs
     cur_field = getfield(cur_reactor, cur_key)
 
@@ -127,6 +135,10 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
 
   if !cur_reactor.is_pulsed
     cur_reactor.tau_FT = 1.6e9
+  end
+
+  if cur_reactor.is_consistent
+    cur_reactor.eta_CD = eta_CD_sym
   end
 
   if cur_reactor.constraint == nothing
@@ -279,6 +291,8 @@ function BaseReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
   _SymbolizeReactor!(cur_reactor)
 
   cur_reactor.pi = AbstractFloat(Base.pi)
+
+  cur_reactor.speed_of_light = 3e8
 
   _Reactor!(cur_reactor, cur_dict)
 

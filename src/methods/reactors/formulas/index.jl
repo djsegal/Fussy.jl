@@ -25,3 +25,11 @@ include("b_v.jl")
 include("n_hat.jl")
 
 include("v_loop.jl")
+
+include("r_le.jl")
+include("v_te.jl")
+
+include("omega_ce.jl")
+include("omega_pe.jl")
+
+include("plasma_parameter.jl")

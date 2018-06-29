@@ -32,5 +32,7 @@ function demo_steady_deck(cur_T_bar::AbstractSymbol)
     J_TF = 24.7,
     k = 0.216,
     eta_CD = 0.4152,
+    wave_theta = 135.0,
+    eta_LH = 0.6
   )
 end

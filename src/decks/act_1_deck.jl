@@ -36,6 +36,8 @@ function act_1_deck(cur_T_bar::AbstractSymbol)
     C_ejima = 0.3,
     tau_FT = 1.6e9,
 
-    eta_CD = 0.188
+    eta_CD = 0.188,
+    wave_theta = 135.0,
+    eta_LH = 0.6
   )
 end

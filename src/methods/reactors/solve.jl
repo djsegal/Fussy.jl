@@ -2,7 +2,7 @@ function solve!(cur_reactor::AbstractReactor)
   cur_I_P_list = solve(cur_reactor)
   cur_reactor.is_solved = true
 
-  cur_reactor.cur_I_P = isempty(cur_I_P_list) ? NaN : first(cur_I_P_list)
+  cur_reactor.I_P = isempty(cur_I_P_list) ? NaN : first(cur_I_P_list)
   cur_reactor.is_good = !isnan(cur_reactor.I_P)
 
   update!(cur_reactor)
@@ -33,9 +33,11 @@ function solve(cur_reactor::AbstractReactor)
 end
 
 function _solve(cur_reactor::AbstractReactor, cur_equation::SymEngine.Basic)
-  cur_I_P_list = Roots.find_zeros(
+  cur_atol = 10 * eps()
+
+  cur_I_P_list = find_zeros(
     cur_equation, min_I_P, max_I_P,
-    no_pts = num_points
+    no_pts = no_pts_I_P
   )
 
   isempty(cur_I_P_list) && return []
@@ -43,19 +45,37 @@ function _solve(cur_reactor::AbstractReactor, cur_equation::SymEngine.Basic)
   good_reactors = Vector{AbstractReactor}()
 
   for (cur_index, cur_I_P) in enumerate(cur_I_P_list)
-    isapprox(0.0, cur_I_P, atol=10*eps()) && continue
+    isapprox(0.0, cur_I_P, atol=cur_atol) && continue
 
     tmp_reactor = deepcopy(cur_reactor)
 
     tmp_reactor.I_P = cur_I_P
 
-    tmp_reactor.B_0 = convert(Real, calc_B_0(tmp_reactor))
-    tmp_reactor.R_0 = convert(Real, calc_R_0(tmp_reactor))
-    tmp_reactor.n_bar = convert(Real, calc_n_bar(tmp_reactor))
+    try
+
+      tmp_reactor.B_0 = convert(Real, calc_B_0(tmp_reactor))
+      tmp_reactor.R_0 = convert(Real, calc_R_0(tmp_reactor))
+      tmp_reactor.n_bar = convert(Real, calc_n_bar(tmp_reactor))
+
+    catch cur_error
+
+      is_caught_error = isa(cur_error, InexactError)
+      is_caught_error |= isa(cur_error, DomainError)
+      is_caught_error || rethrow(cur_error)
+
+      continue
+
+    end
 
     ( 0 <= f_BS(tmp_reactor) <= 1 ) || continue
     ( 0 <= f_CD(tmp_reactor) <= 1 ) || continue
-    ( 0 <= f_IN(tmp_reactor) <= 1 ) || continue
+
+    ( f_IN(tmp_reactor) > -0.01 ) || continue
+    ( f_IN(tmp_reactor) <= 1.00 ) || continue
+
+    f_total = f_BS(tmp_reactor) + f_CD(tmp_reactor) + f_IN(tmp_reactor)
+
+    isapprox(1.0, f_total, atol=cur_atol) || continue
 
     push!(good_reactors, tmp_reactor)
   end

@@ -32,5 +32,7 @@ function demo_pulsed_deck(cur_T_bar::AbstractSymbol)
     J_TF = 230,
     k = 0.333,
     eta_CD = 0.2721,
+    wave_theta = 135.0,
+    eta_LH = 0.6
   )
 end

@@ -1,4 +1,4 @@
-function T_rho(cur_reactor::AbstractReactor, cur_rho::AbstractSymbol=rho_sym)
+@symbol_func function T_rho(cur_reactor::AbstractReactor, cur_rho::AbstractSymbol)
   cur_T_bar = cur_reactor.T_bar
 
   cur_nu_T = cur_reactor.nu_T

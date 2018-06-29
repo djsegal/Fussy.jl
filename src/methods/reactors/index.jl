@@ -10,3 +10,4 @@ include("profiles/index.jl")
 
 include("solve.jl")
 include("update.jl")
+include("converge.jl")
