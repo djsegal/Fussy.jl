@@ -157,6 +157,26 @@ function _get_branch_lists(cur_array::Matrix, cur_x_list)
       cur_row -> count(isnan, cur_array[cur_row, :]) == ( max_roots - cur_max_roots ), 1:length(cur_x_list)
   )
 
+  long_stride = []
+  work_stride = []
+
+  for cur_index in cur_point_indices
+    if isempty(work_stride) || work_stride[end] == cur_index - 1
+      push!(work_stride, cur_index)
+      continue
+    end
+
+    ( length(long_stride) < length(work_stride) ) &&
+      ( long_stride = work_stride[:] )
+
+    work_stride = [cur_index]
+  end
+
+  ( length(long_stride) < length(work_stride) ) &&
+    ( long_stride = work_stride[:] )
+
+  cur_point_indices = long_stride
+
   cur_branch_x_lists = [ Real[] for cur_index in 1:cur_max_roots ]
   cur_branch_y_lists = [ Real[] for cur_index in 1:cur_max_roots ]
 
