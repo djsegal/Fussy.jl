@@ -108,6 +108,12 @@
   cost::AbstractCalculated = nothing
 
   a::AbstractCalculated = nothing
+  b::AbstractCalculated = nothing
+  c::AbstractCalculated = nothing
+  d::AbstractCalculated = nothing
+
+  h_CS::AbstractCalculated = nothing
+  R_CS::AbstractCalculated = nothing
 
   constraint::AbstractKey = nothing
 

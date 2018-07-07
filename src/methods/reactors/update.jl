@@ -61,7 +61,7 @@ function update!(cur_reactor::AbstractReactor)
 
     cur_norm_value = getfield(cur_reactor, cur_norm_symbol)
 
-    cur_norm_value <= 1.001  && continue
+    cur_norm_value <= 1.001 && continue
 
     cur_reactor.is_valid = false
     break
@@ -77,6 +77,26 @@ function update!(cur_reactor::AbstractReactor)
   cur_reactor.inductance = L_P(cur_reactor)
 
   cur_reactor.a = a(cur_reactor)
+  cur_reactor.b = b(cur_reactor)
+
+  try
+
+    cur_reactor.c = c(cur_reactor)
+    cur_reactor.d = d(cur_reactor)
+
+    cur_reactor.R_CS = R_CS(cur_reactor)
+    cur_reactor.h_CS = h_CS(cur_reactor)
+
+  catch cur_error
+
+    is_caught_error = isa(cur_error, InexactError)
+    is_caught_error |= isa(cur_error, DomainError)
+    is_caught_error || rethrow(cur_error)
+
+    cur_reactor.is_valid = false
+    return cur_reactor
+
+  end
 
   cur_reactor
 
