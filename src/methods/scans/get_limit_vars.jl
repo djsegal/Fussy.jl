@@ -8,10 +8,17 @@ function get_limit_vars(cur_scan::AbstractScan, cur_limit::Symbol, cur_field::Sy
   for cur_reactor in cur_reactor_list
     cur_reactor.is_good || continue
 
-    push!(
-      cur_values,
-      getfield(cur_reactor, cur_field)
-    )
+    cur_value = nothing
+
+    if isdefined(cur_reactor, cur_field)
+      cur_value = getfield(cur_reactor, cur_field)
+    elseif isdefined(Fussy, cur_field)
+      cur_value = getfield(Fussy, cur_field)(cur_reactor)
+    else
+      getfield(cur_reactor, cur_field) # throw error
+    end
+
+    push!(cur_values, cur_value)
   end
 
   cur_length = length(cur_values)
