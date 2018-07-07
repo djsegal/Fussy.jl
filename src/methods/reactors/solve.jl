@@ -35,9 +35,9 @@ end
 function _solve(cur_reactor::AbstractReactor, cur_equation::SymEngine.Basic)
   cur_atol = 10 * eps()
 
-  cur_I_P_list = find_zeros(
+  cur_I_P_list = find_roots(
     cur_equation, min_I_P, max_I_P,
-    no_pts = no_pts_I_P
+    no_pts = no_pts_I_P, rtol = 1e-2
   )
 
   isempty(cur_I_P_list) && return []

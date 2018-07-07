@@ -38,7 +38,7 @@ end
 
   cur_equation -= ( 28.39 / cur_reactor.T_bar )
 
-  solved_rhos = find_zeros(
+  solved_rhos = find_roots(
     cur_equation, min_rho, max_rho,
     no_pts=no_pts_rho, abstol = 1e-4
   )
@@ -59,7 +59,7 @@ end
 
   cur_equation = diff(cur_n, cur_rho)
 
-  cur_roots = find_zeros(
+  cur_roots = find_roots(
     cur_equation, min_rho, max_rho,
     no_pts=no_pts_rho, abstol = 1e-4
   )

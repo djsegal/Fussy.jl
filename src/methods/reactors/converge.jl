@@ -25,7 +25,7 @@ function converge(cur_T_bar::AbstractFloat, tmp_dict::Dict)
     cur_equation
   end
 
-  cur_root_list = find_zeros(
+  cur_root_list = find_roots(
     cur_func, min_eta_CD, max_eta_CD,
     no_pts = no_pts_eta_CD, abstol = 1e-4
   )
