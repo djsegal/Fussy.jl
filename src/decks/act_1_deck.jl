@@ -5,21 +5,22 @@ function act_1_deck(cur_T_bar::AbstractSymbol)
     H = 1.65,
     Q = 42.5,
     epsilon = 0.25,
-    kappa_95 = 1.964,
-    delta_95 = 0.42,
+    kappa_95 = 2.1,
+    delta_95 = 0.4,
     nu_n = 0.27,
     nu_T = 1.15,
     Z_eff = 2.11,
     f_D = 0.75,
 
     A = 2.5,
-    l_i = 0.47,
+    # l_i = 0.47,
+    gamma = 3.0525,
 
     N_G = 1.0,
     eta_T = 0.575,
     eta_RF = 0.4,
 
-    max_beta_N = 0.056,
+    max_beta_N = 0.0427,
     max_q_95 = 2.5,
 
     max_P_E = 1500.0,
