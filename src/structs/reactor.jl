@@ -306,13 +306,13 @@ function BaseReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
 end
 
 Reactor(cur_temp::Number; cur_kwargs...) =
-  Reactor(float(cur_temp); cur_kwargs...)
+  Reactor(real(float(cur_temp)); cur_kwargs...)
 
 SymbolicReactor(cur_temp::Number; cur_kwargs...) =
-  SymbolicReactor(float(cur_temp); cur_kwargs...)
+  SymbolicReactor(real(float(cur_temp)); cur_kwargs...)
 
 BaseReactor(cur_temp::Number; cur_kwargs...) =
-  BaseReactor(float(cur_temp); cur_kwargs...)
+  BaseReactor(real(float(cur_temp)); cur_kwargs...)
 
 NanReactor(cur_temp::Number; cur_kwargs...) =
-  NanReactor(float(cur_temp); cur_kwargs...)
+  NanReactor(real(float(cur_temp)); cur_kwargs...)
