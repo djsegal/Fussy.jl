@@ -16,13 +16,36 @@ function Scan(cur_T_bar_list::Any, cur_limit::Symbol; cur_kwargs...)
   Scan(cur_T_bar_list, [cur_limit], cur_dict)
 end
 
-function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray=collect(keys(secondary_limits)); cur_kwargs...)
+function Scan(cur_T_bar_list::Any; cur_kwargs...)
+  cur_T_bar_list = collect(cur_T_bar_list)
+
+  cur_dict = merge!(Dict(), Dict(cur_kwargs))
+
+  cur_limits = collect(keys(secondary_limits))
+
+  if haskey(cur_dict, :deck)
+    tmp_reactor = Reactor(symbols(:T_bar), deck=cur_dict[:deck])
+
+    cur_skipped_limits = tmp_reactor.skipped_limits
+    filter!(cur_limit -> !in(cur_limit, cur_skipped_limits), cur_limits)
+
+    cur_ignored_limits = tmp_reactor.ignored_limits
+    filter!(cur_limit -> !in(cur_limit, cur_ignored_limits), cur_limits)
+  end
+
+  Scan(cur_T_bar_list, cur_limits, cur_dict)
+end
+
+function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray; cur_kwargs...)
   cur_dict = merge!(Dict(), Dict(cur_kwargs))
 
   Scan(cur_T_bar_list, cur_limits, cur_dict)
 end
 
 function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray, cur_dict::Dict)
+  isa(cur_T_bar_list, AbstractArray) ||
+    ( cur_T_bar_list = [ cur_T_bar_list ] )
+
   cur_is_consistent = (
     haskey(cur_dict, :is_consistent) && cur_dict[:is_consistent]
   )
@@ -35,6 +58,20 @@ function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray, cur_dict::Dict)
   T_bar_count = length(cur_T_bar_list)
 
   reactor_count = T_bar_count * limit_count
+
+  if !haskey(cur_dict, :is_parallel)
+    cur_is_parallel = true
+  else
+    cur_is_parallel = cur_dict[:is_parallel]
+    delete!(cur_dict, :is_parallel)
+  end
+
+  if !haskey(cur_dict, :verbose)
+    cur_verbose = true
+  else
+    cur_verbose = cur_dict[:verbose]
+    delete!(cur_dict, :verbose)
+  end
 
   cur_scan = Scan(
     cur_T_bar_list, cur_deck,
@@ -66,8 +103,16 @@ function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray, cur_dict::Dict)
     cur_array[cur_row, cur_col, 1:length(cur_root_list)] = cur_root_list
   end
 
-  cur_progress = Progress(reactor_count)
-  pmap(cur_func, cur_progress, shuffle(1:reactor_count))
+  if cur_is_parallel
+    if cur_verbose
+      cur_progress = Progress(reactor_count)
+      pmap(cur_func, cur_progress, shuffle(1:reactor_count))
+    else
+      pmap(cur_func, shuffle(1:reactor_count))
+    end
+  else
+    map(cur_func, shuffle(1:reactor_count))
+  end
 
   omitted_root_count = 0
 
@@ -128,6 +173,12 @@ function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray, cur_dict::Dict)
           cur_reactor.is_good = true
 
           update!(cur_reactor)
+        end
+
+        if !cur_reactor.is_good
+          @assert !cur_reactor.is_pulsed
+          @assert !cur_reactor.is_consistent
+          continue
         end
 
         cur_reactor.branch_id = cur_index
