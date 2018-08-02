@@ -13,8 +13,6 @@ module Fussy
   using Roots
   using Optim
 
-  using Revise
-
   include("abstracts.jl")
   include("defaults.jl")
 
