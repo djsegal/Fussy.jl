@@ -10,6 +10,16 @@ function calc_I_P(cur_reactor::AbstractReactor)
   cur_I
 end
 
+function calc_I_P(cur_reactor::AbstractReactor, cur_constraint::Symbol)
+  cur_symbol = Symbol("I_P_from_beta_$(cur_constraint)")
+
+  cur_function = getfield(Fussy, cur_symbol)
+
+  cur_I = cur_function(cur_reactor)
+
+  cur_I
+end
+
 function _calc_I_P_pulsed(cur_reactor::AbstractReactor)
   cur_G_PU = G_PU(cur_reactor)
 
