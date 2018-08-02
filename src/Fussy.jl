@@ -11,6 +11,7 @@ module Fussy
   using Unitful
   using QuadGK
   using Roots
+  using Optim
 
   using Revise
 
@@ -26,6 +27,8 @@ module Fussy
   include("solutions/index.jl")
 
   export Reactor
+  export Study
+  export Scan
 
   function __init__()
     global const rho_sym = symbols(:rho)

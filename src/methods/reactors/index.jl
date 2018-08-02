@@ -9,5 +9,7 @@ include("powers/index.jl")
 include("profiles/index.jl")
 
 include("solve.jl")
+include("match.jl")
 include("update.jl")
 include("converge.jl")
+include("hone.jl")

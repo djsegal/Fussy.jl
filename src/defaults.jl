@@ -15,6 +15,10 @@ const min_rho = 0.0 + 1e-8
 const max_rho = 1.0 - 1e-8
 const no_pts_rho = 21
 
+const min_T_bar = 3.0
+const max_T_bar = 36.0
+const no_pts_T_bar = 51
+
 const max_roots = 10
 
 const H_mode_scaling = Dict(
