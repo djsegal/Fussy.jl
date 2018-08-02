@@ -148,10 +148,6 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
     cur_reactor.tau_FT = 1.6e9
   end
 
-  if cur_reactor.is_consistent
-    cur_reactor.eta_CD = eta_CD_sym
-  end
-
   if cur_reactor.constraint == nothing
     if cur_reactor.is_pulsed
       cur_reactor.constraint = "kink"
