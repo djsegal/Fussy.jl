@@ -46,10 +46,6 @@
   eta_T::AbstractSymbol = 0.3531
   eta_RF::AbstractSymbol = 0.4
 
-  tau_RU::AbstractSymbol = 30.0
-  tau_RD::AbstractSymbol = 30.0
-  tau_DW::AbstractSymbol = 1800.0
-
   tau_FT::AbstractSymbol = 7200.0
   C_ejima::AbstractSymbol = 0.3
 
