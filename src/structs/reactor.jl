@@ -193,11 +193,13 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
 
       iszero(cur_gamma) || break
     end
+
     cur_reactor.gamma = cur_gamma
   end
 
   if isa(cur_reactor.rho_m, SymEngine.Basic)
     cur_gamma = cur_reactor.gamma
+
     if cur_gamma < 1
       cur_reactor.rho_m = 0.0
     else
@@ -296,10 +298,12 @@ function SymbolicReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...
   cur_reactor
 end
 
-function BaseReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
-  cur_dict = merge!(Dict(), Dict(cur_kwargs))
+function BaseReactor(cur_dict::Dict)
+  @assert haskey(cur_dict, :T_bar)
 
-  cur_reactor = Reactor(T_bar = cur_temp)
+  cur_T_bar = cur_dict[:T_bar]
+
+  cur_reactor = Reactor(T_bar = cur_T_bar)
 
   _SymbolizeReactor!(cur_reactor)
 
@@ -310,6 +314,12 @@ function BaseReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
   _Reactor!(cur_reactor, cur_dict)
 
   cur_reactor
+end
+
+function BaseReactor(cur_temp::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
+  cur_dict = merge!(Dict(), Dict(cur_kwargs))
+
+  BaseReactor(cur_dict)
 end
 
 Reactor(cur_temp::Number; cur_kwargs...) =
