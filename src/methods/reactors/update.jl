@@ -20,6 +20,8 @@ function update!(cur_reactor::AbstractReactor)
     is_caught_error || rethrow(cur_error)
 
     cur_reactor.is_good = false
+    _NanizeReactor!(cur_reactor)
+
     return cur_reactor
 
   end
@@ -87,10 +89,15 @@ function update!(cur_reactor::AbstractReactor)
     cur_reactor.R_CS = R_CS(cur_reactor)
     cur_reactor.h_CS = h_CS(cur_reactor)
 
+    cur_reactor.is_pulsed &&
+      ( @assert cur_reactor.R_CS >= 0 )
+
   catch cur_error
 
     is_caught_error = isa(cur_error, InexactError)
     is_caught_error |= isa(cur_error, DomainError)
+    is_caught_error |= isa(cur_error, AssertionError)
+
     is_caught_error || rethrow(cur_error)
 
     cur_reactor.is_valid = false
