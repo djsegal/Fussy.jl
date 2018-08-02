@@ -12,24 +12,26 @@ end
 function solve(cur_reactor::AbstractReactor)
   cur_reactor.T_bar <= 0 && return []
 
-  cur_reactor.sigma_v = calc_sigma_v(cur_reactor)
-  isnan(cur_reactor.sigma_v) && return []
+  tmp_reactor = deepcopy(cur_reactor)
 
-  cur_equation = calc_I_P(cur_reactor)
+  tmp_reactor.sigma_v = calc_sigma_v(tmp_reactor)
+  isnan(tmp_reactor.sigma_v) && return []
+
+  cur_equation = calc_I_P(tmp_reactor)
 
   isa(cur_equation, SymEngine.Basic) || return [cur_equation]
 
   cur_equation = subs(
     cur_equation,
-    symbols(:R_0) => calc_R_0(cur_reactor),
-    symbols(:B_0) => calc_B_0(cur_reactor)
+    symbols(:R_0) => calc_R_0(tmp_reactor),
+    symbols(:B_0) => calc_B_0(tmp_reactor)
   )
 
   cur_equation /= symbols(:I_P)
 
   cur_equation -= 1.0
 
-  _solve(cur_reactor, cur_equation)
+  _solve(tmp_reactor, cur_equation)
 end
 
 function _solve(cur_reactor::AbstractReactor, cur_equation::SymEngine.Basic)
