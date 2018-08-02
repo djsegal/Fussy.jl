@@ -37,7 +37,7 @@ function _solve(cur_reactor::AbstractReactor, cur_equation::SymEngine.Basic)
 
   cur_I_P_list = find_roots(
     cur_equation, min_I_P, max_I_P,
-    no_pts = no_pts_I_P, rtol = 1e-2
+    no_pts = no_pts_I_P, reltol = 1e-2
   )
 
   isempty(cur_I_P_list) && return []
