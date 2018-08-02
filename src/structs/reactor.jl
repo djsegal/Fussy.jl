@@ -135,6 +135,15 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
     setfield!(cur_reactor, cur_key, cur_value)
   end
 
+  isa(cur_reactor.f_D, AbstractFloat) &&
+    @assert( cur_reactor.f_D <= 1 )
+
+  isa(cur_reactor.N_G, AbstractFloat) &&
+    @assert( cur_reactor.N_G > 0 )
+
+  isa(cur_reactor.epsilon, AbstractFloat) &&
+    @assert( cur_reactor.epsilon > 0 )
+
   if !cur_reactor.is_pulsed
     cur_reactor.tau_FT = 1.6e9
   end
@@ -152,6 +161,12 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
   end
 
   isa(cur_reactor.kappa_95, AbstractFloat) || return
+
+  @assert (
+    !isa(cur_reactor.l_i, SymEngine.Basic) ||
+    !isa(cur_reactor.gamma, SymEngine.Basic) ||
+    !isa(cur_reactor.rho_m, SymEngine.Basic)
+  )
 
   if isa(cur_reactor.l_i, SymEngine.Basic)
     if isa(cur_reactor.rho_m, AbstractFloat)
