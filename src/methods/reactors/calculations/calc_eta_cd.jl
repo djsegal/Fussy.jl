@@ -1,6 +1,8 @@
 function calc_eta_CD(cur_reactor::AbstractReactor)
   cur_rho_m = _rho_m(cur_reactor)
 
+  isnan(cur_rho_m) && return NaN
+
   cur_rho_j = _rho_j(cur_reactor, rho_sym)
 
   isnan(cur_rho_j) && return NaN
@@ -63,6 +65,8 @@ end
     cur_equation, min_rho, max_rho,
     no_pts=no_pts_rho, abstol = 1e-4
   )
+
+  isempty(cur_roots) && return NaN
 
   cur_extrema = map(cur_root -> _n_para_2(cur_reactor, cur_root), cur_roots)
 
