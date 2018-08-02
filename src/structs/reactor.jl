@@ -1,4 +1,5 @@
 @with_kw mutable struct Reactor <: AbstractReactor
+
   T_bar::AbstractSymbol
 
   n_bar::AbstractSymbol = symbols(:n_bar)
@@ -113,7 +114,8 @@
 
   constraint::AbstractKey = nothing
 
-  ignored_limits::Vector{Symbol} = [:pcap, :heat]
+  skipped_limits::Vector{Symbol} = [:pcap]
+  ignored_limits::Vector{Symbol} = [:heat]
 
   branch_id::Int = 1
 
