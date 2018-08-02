@@ -171,7 +171,7 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
   if isa(cur_reactor.l_i, SymEngine.Basic)
     if isa(cur_reactor.rho_m, AbstractFloat)
       isa(cur_reactor.gamma, SymEngine.Basic) &&
-        ( cur_reactor.gamma = 1 / ( 1 - cur_reactor.rho_m ) )
+        ( cur_reactor.gamma = 1 / ( 1 - cur_reactor.rho_m ^ 2 ) )
     end
 
     cur_reactor.l_i = int_b_p(cur_reactor.gamma)
