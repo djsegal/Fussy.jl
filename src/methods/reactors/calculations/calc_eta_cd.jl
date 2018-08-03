@@ -123,22 +123,12 @@ end
   cur_w
 end
 
-@symbol_func function _wave_B(cur_reactor::AbstractReactor, cur_rho::AbstractSymbol, cur_theta::AbstractSymbol)
-  cur_angle = cur_theta * ( cur_reactor.pi / 180.0 )
-
-  cur_B = cur_reactor.B_0
-
-  cur_B /= 1 + cur_reactor.epsilon * cur_rho * cos(cur_angle)
-
-  cur_B
-end
-
 @symbol_func function _wave_B_M(cur_reactor::AbstractReactor, cur_rho::AbstractSymbol)
-  cur_B = _wave_B(cur_reactor, cur_rho, 180.0)
+  cur_B = B_rho(cur_reactor, cur_rho, 180.0)
 end
 
 @symbol_func function _wave_x_t_2(cur_reactor::AbstractReactor, cur_rho::AbstractSymbol)
-  cur_B = _wave_B(cur_reactor, cur_rho, cur_reactor.wave_theta)
+  cur_B = B_rho(cur_reactor, cur_rho, cur_reactor.wave_theta)
 
   cur_x_2 = _wave_w(cur_reactor, cur_rho) ^ 2
 
