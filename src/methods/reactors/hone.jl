@@ -18,21 +18,6 @@ function hone(cur_reactor::AbstractReactor, cur_constraint::Symbol; reltol::Numb
     new_reactor = match(work_reactor, cur_constraint)
     ( new_reactor == nothing ) && return nothing
 
-    work_reactor.T_bar = new_reactor.T_bar
-
-    tmp_reactor = deepcopy(work_reactor)
-
-    cur_eta_CD_list = converge(tmp_reactor; no_pts=5)
-
-    isempty(cur_eta_CD_list) && return nothing
-    @assert length(cur_eta_CD_list) == 1
-
-    cur_bias = 0.75 / ceil(cur_index/4)
-    tmp_eta_CD = cur_bias * work_reactor.eta_CD
-    tmp_eta_CD += ( 1 - cur_bias ) * cur_eta_CD_list[1]
-
-    work_reactor.eta_CD += cur_eta_CD_list[1]
-    work_reactor.eta_CD /= 2
 
     if cur_index > 1
       tmp_T_list = [prev_T, work_reactor.T_bar]
@@ -51,11 +36,33 @@ function hone(cur_reactor::AbstractReactor, cur_constraint::Symbol; reltol::Numb
         break
       end
     end
+
+    work_reactor.T_bar = new_reactor.T_bar
+
+    tmp_reactor = deepcopy(work_reactor)
+
+    cur_eta_CD_list = converge(tmp_reactor, no_pts=Int(ceil(no_pts_eta_CD/2)))
+
+    if isempty(cur_eta_CD_list)
+      solved_reactor = solve!(tmp_reactor)
+      solved_reactor.is_valid || return nothing
+      solved_reactor.is_good || return nothing
+
+      work_eta_CD = calc_eta_CD(solved_reactor)
+      isnan(work_eta_CD) && return nothing
+      cur_eta_CD_list = [ work_eta_CD ]
+    else
+      filter_approx!(cur_eta_CD_list, atol=3e-3)
+    end
+
+      @assert length(cur_eta_CD_list) == 1
+
+    work_reactor.eta_CD += cur_eta_CD_list[1]
+    work_reactor.eta_CD /= 2
   end
 
   ( honed_reactor == nothing ) && return nothing
 
-  honed_reactor = match(work_reactor, cur_constraint)
   @assert honed_reactor.is_valid
   @assert honed_reactor.is_good
 
