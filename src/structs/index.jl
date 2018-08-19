@@ -1,4 +1,5 @@
 include("reactor.jl")
 include("scan.jl")
 include("study.jl")
+include("calibration.jl")
 include("counter_function.jl")
