@@ -52,7 +52,7 @@ function _find_recursive_roots(f, a::Real, b::Real, args...;
         vcat(root_list,last(cur_range))
     )
 
-    for (cur_a, cur_b) in cur_intervals
+    for (cur_index, (cur_a, cur_b)) in enumerate(cur_intervals)
         loose_isapprox(cur_a, cur_b, abstol, reltol) && continue
 
         tmp_a = find_next_non_root(cur_a, f, cur_b, reltol, abstol)
@@ -62,9 +62,15 @@ function _find_recursive_roots(f, a::Real, b::Real, args...;
         loose_isapprox(tmp_a, tmp_b, abstol, reltol) && continue
         ( tmp_a < tmp_b ) || continue
 
+        if cur_depth < 5 && 1 < cur_index < length(cur_intervals)
+          tmp_no_pts = no_pts
+        else
+          tmp_no_pts = sub_no_pts
+        end
+
         cur_roots = _find_recursive_roots(
             f, tmp_a, tmp_b, args...;
-            no_pts=sub_no_pts, abstol=abstol, reltol=reltol,
+            no_pts=tmp_no_pts, abstol=abstol, reltol=reltol,
             cur_depth=(cur_depth+1), kwargs...
         )
 
