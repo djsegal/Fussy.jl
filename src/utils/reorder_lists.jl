@@ -64,3 +64,23 @@ function centering_indices(num_points::Number)
 
   cur_indices
 end
+
+function in_out_reorder!(cur_vector::Vector)
+  cur_indices = dividing_indices(length(cur_vector))
+  cur_vector .= cur_vector[cur_indices]
+  cur_vector
+end
+
+function dividing_indices(num_points::Number)
+  cur_indices = []
+
+  cur_half_point = Int(floor(num_points/2))
+
+  isodd(num_points) && push!(cur_indices, cur_half_point+1)
+  for cur_index in reverse(1:cur_half_point)
+    push!(cur_indices, cur_index)
+    push!(cur_indices, num_points-(cur_index-1))
+  end
+
+  cur_indices
+end
