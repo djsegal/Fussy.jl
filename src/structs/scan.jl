@@ -139,7 +139,7 @@ function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray, cur_dict::Dict)
           ( length(cur_root_list) > 1 ) && ( omitted_root_count += 1 )
 
           ( omitted_root_count == 5 ) &&
-            println("*** ALERT *** 5 or more omitted roots!")
+            custom_log("*** ALERT *** 5 or more omitted roots!")
 
           cur_root_list = cur_root_list[end:end]
         end

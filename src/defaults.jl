@@ -21,6 +21,8 @@ const no_pts_T_bar = 51
 
 const max_roots = 10
 
+const __is_logging = true
+
 const H_mode_scaling = Dict(
   :constant => 0.1445,
   :I => 0.93,

@@ -1,3 +1,5 @@
+include("custom_log.jl")
+
 include("symbol_func.jl")
 
 include("norm_int.jl")
