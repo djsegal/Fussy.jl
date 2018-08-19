@@ -18,6 +18,8 @@ include("is_true.jl")
 
 include("progress.jl")
 
+include("filter_approx.jl")
+
 include("safe_symbol.jl")
 
 include("safe_get.jl")
