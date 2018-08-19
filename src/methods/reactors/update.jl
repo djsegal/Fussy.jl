@@ -12,6 +12,7 @@ function update!(cur_reactor::AbstractReactor)
     cur_reactor.B_0 = convert(Real, calc_B_0(cur_reactor))
     cur_reactor.R_0 = convert(Real, calc_R_0(cur_reactor))
     cur_reactor.n_bar = convert(Real, calc_n_bar(cur_reactor))
+    cur_reactor.tau_E = tau_E(cur_reactor)
 
   catch cur_error
 
@@ -26,7 +27,6 @@ function update!(cur_reactor::AbstractReactor)
 
   end
 
-  cur_reactor.tau_E = tau_E(cur_reactor)
   cur_reactor.p_bar = p_bar(cur_reactor)
   cur_reactor.P_F = P_F(cur_reactor)
 
