@@ -30,9 +30,9 @@ function arc_deck(cur_T_bar::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
     :B_CS => 12.77,
     :k => 0.333,
     :sigma_CS => 660,
-    :sigma_TF => 660,
+    :sigma_TF => 88888888,
     :J_CS => 50,
-    :J_TF => 230,
+    :J_TF => 88888888,
     :C_ejima => 0.3,
     :tau_FT => 1.6e9,
 
