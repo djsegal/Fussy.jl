@@ -4,11 +4,11 @@ const integral_zero = 0.0 + integral_offset
 const integral_one = 1.0 - integral_offset
 
 const min_I_P = 0
-const max_I_P = 75
-const no_pts_I_P = 151
+const max_I_P = 40
+const no_pts_I_P = 301
 
-const min_eta_CD = 0.0
-const max_eta_CD = 1.0
+const min_eta_CD = 0.01
+const max_eta_CD = 1.10
 const no_pts_eta_CD = 31
 
 const min_rho = 0.0 + 1e-8
