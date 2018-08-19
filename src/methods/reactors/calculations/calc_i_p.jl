@@ -20,6 +20,22 @@ function calc_I_P(cur_reactor::AbstractReactor, cur_constraint::Symbol)
   cur_I
 end
 
+function calc_I_P(cur_reactor::AbstractReactor, cur_field::Symbol, cur_value::Number)
+  cur_constraint = cur_reactor.constraint
+
+  if cur_field == :R_0
+    cur_symbol = Symbol("I_P_from_$(cur_field)_$(cur_constraint)")
+  else
+    cur_symbol = Symbol("I_P_from_$(cur_field)")
+  end
+
+  cur_function = getfield(Fussy, cur_symbol)
+
+  cur_I = cur_function(cur_reactor, cur_value)
+
+  cur_I
+end
+
 function _calc_I_P_pulsed(cur_reactor::AbstractReactor)
   cur_G_PU = G_PU(cur_reactor)
 
