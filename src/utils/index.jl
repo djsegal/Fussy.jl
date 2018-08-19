@@ -17,3 +17,4 @@ include("safe_symbol.jl")
 
 include("safe_get.jl")
 
+include("is_nan.jl")
