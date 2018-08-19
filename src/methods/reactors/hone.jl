@@ -1,5 +1,5 @@
-function hone(cur_reactor::AbstractReactor, cur_constraint::Symbol; reltol::Number=3e-3, max_attempts::Int = 10)
-  @assert cur_reactor.constraint == :beta
+function hone(cur_reactor::AbstractReactor, cur_constraint::Symbol, cur_value::Union{Void, Number}=nothing; reltol::Number=3e-3, max_attempts::Int = 10, strong_fail::Bool = false)
+  ( cur_value == nothing ) && @assert cur_reactor.constraint == :beta
 
   cur_reactor.is_good || return nothing
 
@@ -15,9 +15,13 @@ function hone(cur_reactor::AbstractReactor, cur_constraint::Symbol; reltol::Numb
     prev_T = work_reactor.T_bar
     prev_eta_CD = work_reactor.eta_CD
 
-    new_reactor = match(work_reactor, cur_constraint)
-    ( new_reactor == nothing ) && return nothing
+    if cur_value == nothing
+      new_reactor = match(work_reactor, cur_constraint)
+    else
+      new_reactor = match(work_reactor, cur_constraint, cur_value)
+    end
 
+    ( new_reactor == nothing ) && return nothing
 
     if cur_index > 1
       tmp_T_list = [prev_T, work_reactor.T_bar]
@@ -55,7 +59,15 @@ function hone(cur_reactor::AbstractReactor, cur_constraint::Symbol; reltol::Numb
       filter_approx!(cur_eta_CD_list, atol=3e-3)
     end
 
+    if strong_fail
       @assert length(cur_eta_CD_list) == 1
+    else
+      if length(cur_eta_CD_list) != 1
+        custom_log("Too many eta CD values")
+        custom_log(cur_eta_CD_list)
+        custom_log(new_reactor)
+      end
+    end
 
     work_reactor.eta_CD += cur_eta_CD_list[1]
     work_reactor.eta_CD /= 2
