@@ -137,12 +137,38 @@ function find_bisection_roots(f, cur_range::AbstractVector{T}, abstol::Real, rel
 
   cur_values = f.(cur_range)
 
-  cur_signs = map(sign, cur_values[1:end-1] .* cur_values[2:end])
   cur_finite_count = count(isfinite, cur_values)
 
   iszero(cur_finite_count) && return []
 
+  if cur_finite_count == 1
+    cur_index = findfirst(isfinite, cur_values)
+    cur_point = cur_range[cur_index]
 
+    cur_diff_list = diff(cur_range)
+    filter_approx!(cur_diff_list; atol=10*eps())
+
+    @assert length(cur_diff_list) == 1
+    cur_diff = cur_diff_list[1]
+
+    cur_c = cur_point
+    cur_f_c = f(cur_c)
+
+    cur_a = cur_point - cur_diff
+    cur_b = cur_point + cur_diff
+
+    if 1 < cur_index < length(cur_values)
+      cur_root = custom_bisection(f, cur_a, cur_c, f(cur_a), cur_f_c; abstol=abstol)
+      isnan(cur_root) || return [cur_root]
+
+      cur_root = custom_bisection(f, cur_c, cur_b, cur_f_c, f(cur_b); abstol=abstol)
+      isnan(cur_root) || return [cur_root]
+    end
+
+    return []
+  end
+
+  cur_signs = map(sign, cur_values[1:end-1] .* cur_values[2:end])
 
   for (cur_index, cur_sign) in enumerate(cur_signs)
     isinf(cur_sign) && continue
