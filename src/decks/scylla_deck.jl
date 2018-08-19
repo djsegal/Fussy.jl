@@ -1,7 +1,7 @@
 function scylla_deck(cur_T_bar::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
   cur_dict = Dict(
     :T_bar => cur_T_bar,
-    :H => 1.2,
+    :H => 1.0,
     :Q => 25.0,
     :epsilon => 0.3,
     :kappa_95 => 1.8,
