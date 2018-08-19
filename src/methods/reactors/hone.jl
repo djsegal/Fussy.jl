@@ -1,9 +1,13 @@
 function hone(cur_reactor::AbstractReactor, cur_constraint::Symbol; reltol::Number=3e-3, max_attempts::Int = 10)
   @assert cur_reactor.constraint == :beta
 
+  cur_reactor.is_good || return nothing
+
   prev_T = nothing
   prev_eta_CD = nothing
   cur_error = NaN
+
+  honed_reactor = nothing
 
   work_reactor = deepcopy(cur_reactor)
 
@@ -38,13 +42,22 @@ function hone(cur_reactor::AbstractReactor, cur_constraint::Symbol; reltol::Numb
       cur_eta_CD_error = 1 - minimum(tmp_eta_CD_list)/maximum(tmp_eta_CD_list)
 
       cur_error = max(cur_T_error, cur_eta_CD_error)
-      ( cur_error < reltol ) && break
+
+      if cur_error < reltol
+        new_reactor.is_valid || break
+        new_reactor.is_good || break
+
+        honed_reactor = new_reactor
+        break
+      end
     end
   end
 
-  ( cur_error < reltol ) || return nothing
+  ( honed_reactor == nothing ) && return nothing
 
   honed_reactor = match(work_reactor, cur_constraint)
+  @assert honed_reactor.is_valid
+  @assert honed_reactor.is_good
 
   honed_reactor
 end
