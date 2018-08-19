@@ -1,5 +1,5 @@
 @symbol_func function G_V(cur_reactor::AbstractReactor)
-  cur_G = cur_reactor.R_0 ^ 2
+  cur_G = safe_symbol(cur_reactor, :R_0) ^ 2
 
   cur_G -= ( R_CS(cur_reactor) + d(cur_reactor) ) ^ 2
 

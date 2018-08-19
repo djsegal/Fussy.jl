@@ -1,5 +1,5 @@
 @symbol_func function G_CO(cur_reactor::AbstractReactor)
-  cur_G = cur_reactor.B_0
+  cur_G = safe_symbol(cur_reactor, :B_0)
 
   cur_G /= (2/5) * cur_reactor.pi
 

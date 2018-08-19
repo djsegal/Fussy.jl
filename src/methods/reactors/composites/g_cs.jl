@@ -3,7 +3,7 @@
 
   cur_G *= G_LO(cur_reactor)
 
-  cur_G *= cur_reactor.R_0 ^ 3
+  cur_G *= safe_symbol(cur_reactor, :R_0) ^ 3
 
   cur_G *= cur_reactor.T_bar
 

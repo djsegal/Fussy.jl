@@ -5,7 +5,7 @@
 
   if isa(cur_n, SymEngine.Basic)
     cur_P = subs(
-      cur_P, cur_n => calc_n_bar(cur_reactor)
+      cur_P, symbols(:n_bar) => calc_n_bar(cur_reactor)
     )
   end
 

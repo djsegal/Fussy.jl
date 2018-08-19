@@ -1,5 +1,5 @@
 @symbol_func function R_CS(cur_reactor::AbstractReactor)
-  cur_R = cur_reactor.R_0
+  cur_R = safe_symbol(cur_reactor, :R_0)
 
   cur_R -= a(cur_reactor)
 

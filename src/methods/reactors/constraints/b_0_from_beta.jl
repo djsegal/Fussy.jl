@@ -9,7 +9,7 @@ function B_0_from_beta(cur_reactor::AbstractReactor)
 
   cur_B /= G_PB(cur_reactor)
 
-  cur_B *= cur_reactor.I_P ^ cur_I_power
+  cur_B *= safe_symbol(cur_reactor, :I_P) ^ cur_I_power
 
   cur_B *= K_TB(cur_reactor) ^ cur_R_power
 

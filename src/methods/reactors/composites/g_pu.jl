@@ -5,7 +5,7 @@
 
   cur_right_part = K_LP(cur_reactor)
 
-  cur_right_part *= cur_reactor.R_0 ^ 2
+  cur_right_part *= safe_symbol(cur_reactor, :R_0) ^ 2
 
   cur_right_part *= cur_reactor.T_bar ^ (3/2)
 
