@@ -36,7 +36,7 @@ function _find_recursive_roots(f, a::Real, b::Real, args...;
 
     cur_range = collect(linspace(a, b, no_pts))
 
-    root_list = find_root_list(f, cur_range, abstol, reltol)
+    root_list = find_root_list(f, cur_range, abstol, reltol; kwargs...)
 
     isempty(root_list) && return root_list
 
@@ -117,20 +117,20 @@ function find_next_non_root(cur_root, cur_func, barrier_point, reltol, abstol)
   cur_value
 end
 
-function find_root_list(f, cur_range::AbstractVector{T}, abstol::Real, reltol::Real) where T <: Real
+function find_root_list(f, cur_range::AbstractVector{T}, abstol::Real, reltol::Real; kwargs...) where T <: Real
   isempty(cur_range) && return Real[]
 
-  cur_roots = find_bisection_roots(f, cur_range, abstol, reltol)
+  cur_roots = find_bisection_roots(f, cur_range, abstol, reltol; kwargs...)
   isempty(cur_roots) || return cur_roots
 
-  cur_root = find_order_root(f, cur_range, abstol, reltol)
+  cur_root = find_order_root(f, cur_range, abstol, reltol; kwargs...)
   isnan(cur_root) && return Real[]
 
   cur_roots = [cur_root]
   cur_roots
 end
 
-function find_bisection_roots(f, cur_range::AbstractVector{T}, abstol::Real, reltol::Real) where T <: Real
+function find_bisection_roots(f, cur_range::AbstractVector{T}, abstol::Real, reltol::Real; kwargs...) where T <: Real
   no_pts = length(cur_range)
 
   root_list = Real[]
@@ -172,7 +172,7 @@ function find_bisection_roots(f, cur_range::AbstractVector{T}, abstol::Real, rel
   root_list
 end
 
-function find_order_root(f, cur_range::AbstractVector{T}, abstol::Real, reltol::Real) where T <: Real
+function find_order_root(f, cur_range::AbstractVector{T}, abstol::Real, reltol::Real; kwargs...) where T <: Real
   min_value = first(cur_range)
   max_value = last(cur_range)
 
