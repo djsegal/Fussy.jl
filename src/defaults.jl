@@ -21,6 +21,12 @@ const no_pts_T_bar = 51
 
 const max_roots = 10
 
+const assumed_T_bar = 15.0
+const assumed_n_bar = 1.0
+const assumed_I_P = 15.0
+const assumed_B_0 = 10.0
+const assumed_R_0 = 8.0
+
 const __is_logging = true
 
 const H_mode_scaling = Dict(
