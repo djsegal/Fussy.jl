@@ -9,6 +9,8 @@ include("find_roots.jl")
 include("reorder_lists.jl")
 
 include("romanize.jl")
+
+include("pluck.jl")
 include("safe_symbol.jl")
 
 include("safe_get.jl")
