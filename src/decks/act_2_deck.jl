@@ -13,7 +13,8 @@ function act_2_deck(cur_T_bar::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
     :f_D => 0.74,
 
     :A => 2.5,
-    :rho_m => 0.0,
+    :l_i => 0.60275,
+    # :rho_m => 0.0,
 
     :N_G => 1.3,
     :eta_T => 0.44,
