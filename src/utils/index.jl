@@ -13,6 +13,9 @@ include("romanize.jl")
 include("pluck.jl")
 
 include("is_inside.jl")
+
+include("is_true.jl")
+
 include("progress.jl")
 
 include("safe_symbol.jl")
