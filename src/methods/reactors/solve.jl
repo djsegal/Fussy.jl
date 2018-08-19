@@ -5,9 +5,25 @@ function solve!(cur_reactor::AbstractReactor)
   cur_reactor.is_solved = true
 
   cur_reactor.I_P = isempty(cur_I_P_list) ? NaN : first(cur_I_P_list)
-  cur_reactor.is_good = !isnan(cur_reactor.I_P)
+  cur_reactor.is_good = false
+
+  for cur_I_P in cur_I_P_list
+    work_reactor = deepcopy(cur_reactor)
+
+    work_reactor.I_P = cur_I_P
+    work_reactor.is_good = true
+
+    update!(work_reactor)
+    work_reactor.is_valid || continue
+
+    cur_reactor.I_P = cur_I_P
+    cur_reactor.is_good = true
+
+    break
+  end
 
   update!(cur_reactor)
+
   cur_reactor
 end
 
