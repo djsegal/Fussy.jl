@@ -11,8 +11,6 @@
 
   cur_K /= K_P(cur_reactor) ^ cur_scaling[:P]
 
-  cur_K /= K_F(cur_reactor) ^ cur_scaling[:P]
-
   cur_K *= cur_reactor.epsilon ^ cur_scaling[:a]
 
   cur_K *= kappa_tau(cur_reactor) ^ cur_scaling[:kappa]

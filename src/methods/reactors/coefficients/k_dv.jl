@@ -1,8 +1,6 @@
 @symbol_func function K_DV(cur_reactor::AbstractReactor)
   cur_K = _K_DV(cur_reactor)
 
-  cur_K *= K_F(cur_reactor)
-
   cur_K *= K_n(cur_reactor) ^ 2
 
   cur_K /= cur_reactor.max_q_DV
