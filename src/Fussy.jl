@@ -4,6 +4,7 @@ module Fussy
 
   using PmapProgressMeter
   using DataStructures
+  using Distributions
   using ProgressMeter
   using Parameters
   using SymEngine
@@ -24,6 +25,7 @@ module Fussy
   include("decks/index.jl")
   include("solutions/index.jl")
 
+  export Sampling
   export Reactor
   export Study
   export Scan

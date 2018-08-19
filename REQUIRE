@@ -1,6 +1,7 @@
 julia 0.6
 PmapProgressMeter
 DataStructures
+Distributions
 ProgressMeter
 Parameters
 SymEngine
