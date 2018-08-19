@@ -11,6 +11,8 @@ include("reorder_lists.jl")
 include("romanize.jl")
 
 include("pluck.jl")
+
+include("is_inside.jl")
 include("progress.jl")
 
 include("safe_symbol.jl")
