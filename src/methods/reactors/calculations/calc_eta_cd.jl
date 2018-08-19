@@ -1,14 +1,54 @@
-function calc_eta_CD(cur_reactor::AbstractReactor)
+function calc_eta_CD(cur_reactor::AbstractReactor; strong_fail::Bool=false)
   cur_rho_m = _rho_m(cur_reactor)
 
   isnan(cur_rho_m) && return NaN
 
-  cur_rho_j = _rho_j(cur_reactor, rho_sym)
+  cur_rho_j_list = _rho_j(cur_reactor, rho_sym)
 
-  isnan(cur_rho_j) && return NaN
+  isempty(cur_rho_j_list) && return NaN
 
-  ( cur_rho_m < cur_rho_j ) ||
-    ( cur_rho_j = _rho_j(cur_reactor, cur_rho_m) )
+  for (cur_index, cur_rho_j) in enumerate(cur_rho_j_list)
+    ( cur_rho_m < cur_rho_j ) && continue
+
+    tmp_rho_j_list = _rho_j(cur_reactor, cur_rho_m)
+
+    if isempty(tmp_rho_j_list)
+      cur_rho_j_list[cur_index] = NaN
+      continue
+    end
+
+    if strong_fail
+      @assert length(tmp_rho_j_list) == 1
+    else
+      if length(tmp_rho_j_list) != 1
+        custom_log("Too many rho_j in tmp list")
+        custom_log(tmp_rho_j_list)
+        custom_log(cur_reactor)
+        return NaN
+      end
+    end
+
+    cur_rho_j_list[cur_index] = first(tmp_rho_j_list)
+  end
+
+  filter!(!isnan, cur_rho_j_list)
+  isempty(cur_rho_j_list) && return NaN
+
+  cur_rho_j_list = unique(cur_rho_j_list)
+  filter_approx!(cur_rho_j_list)
+
+  if strong_fail
+    @assert length(cur_rho_j_list) == 1
+  else
+    if length(cur_rho_j_list) != 1
+      custom_log("Too many rho_j in cur list")
+      custom_log(cur_rho_j_list)
+      custom_log(cur_reactor)
+      return NaN
+    end
+  end
+
+  cur_rho_j = first(cur_rho_j_list)
 
   cur_eta_twiddle = _wave_eta_twiddle(cur_reactor, cur_rho_j)
 
@@ -40,37 +80,46 @@ end
 
   cur_equation -= ( 28.39 / cur_reactor.T_bar )
 
-  solved_rhos = find_roots(
-    cur_equation, min_rho, max_rho,
-    no_pts=no_pts_rho, abstol = 1e-4
-  )
+  solved_rhos = []
 
-  iszero(length(solved_rhos)) && return NaN
+  for cur_attempt in 1:4
+    solved_rhos = find_roots(
+      cur_equation, min_rho, max_rho,
+      no_pts=no_pts_rho, abstol = 1e-4
+    )
 
-  @assert length(solved_rhos) == 1
+    isempty(solved_rhos) || break
+  end
 
-  solved_rho = first(solved_rhos)
+  filter_approx!(solved_rhos)
 
-  solved_rho
+  solved_rhos
 end
 
-@symbol_func function _rho_m(cur_reactor::AbstractReactor)
+function _rho_m(cur_reactor::AbstractReactor)
   cur_rho = rho_sym
 
-  cur_n = _n_para_2(cur_reactor, cur_rho)
+  cur_equation = _n_para_2(cur_reactor, cur_rho)
 
-  cur_equation = diff(cur_n, cur_rho)
+  is_nan(cur_equation) && return NaN
 
-  cur_roots = find_roots(
-    cur_equation, min_rho, max_rho,
-    no_pts=no_pts_rho, abstol = 1e-4
-  )
+  cur_equation *= -1
 
-  isempty(cur_roots) && return NaN
+  cur_func = function (tmp_rho)
+    cur_value = float(cur_equation(tmp_rho))
+    isa(cur_value, Complex) && return Inf
+    cur_value
+  end
 
-  cur_extrema = map(cur_root -> _n_para_2(cur_reactor, cur_root), cur_roots)
+  solved_rho = NaN
 
-  solved_rho = cur_roots[indmax(cur_extrema)]
+  try
+    solved_rho = optimize(
+      cur_func, min_rho, max_rho
+    ).minimizer
+  catch cur_error
+    isa(cur_error, DomainError) || rethrow(cur_error)
+  end
 
   solved_rho
 end
