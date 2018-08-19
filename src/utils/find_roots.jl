@@ -15,12 +15,12 @@ function find_roots(f, a::Real, b::Real, args...;
       no_pts=no_pts, abstol=abstol, reltol=reltol, kwargs...
     )
 
-    # redo if it appears function oscillates alot in this interval...
     if length(root_list) > Int(ceil( (1/4) * no_pts ))
-        return find_roots(
-            f, a, b, args...;
-            no_pts = 10*no_pts, abstol=abstol, reltol=reltol, kwargs...
-        )
+      custom_log("Redoing root hunt on larger grid")
+      return find_roots(
+        f, a, b, args...;
+        no_pts = 10*no_pts, abstol=abstol, reltol=reltol, kwargs...
+      )
     end
 
     sort!(root_list)
