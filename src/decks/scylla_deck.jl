@@ -28,7 +28,7 @@ function scylla_deck(cur_T_bar::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
     :J_CS => 50,
     :J_TF => 200,
     :k => 0.4,
-    :eta_CD => 0.2,
+    :eta_CD => 0.0,
     :wave_theta => 135.0,
     :eta_LH => 0.6
   )
