@@ -174,6 +174,13 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
     !isa(cur_reactor.rho_m, SymEngine.Basic)
   )
 
+  @assert (
+    ( isa(cur_reactor.l_i, SymEngine.Basic) && isa(cur_reactor.gamma, SymEngine.Basic) ) ||
+    ( isa(cur_reactor.rho_m, SymEngine.Basic) && isa(cur_reactor.l_i, SymEngine.Basic) ) ||
+    ( isa(cur_reactor.gamma, SymEngine.Basic) && isa(cur_reactor.rho_m, SymEngine.Basic) ) ||
+    !( isa(cur_reactor.l_i, SymEngine.Basic) || isa(cur_reactor.gamma, SymEngine.Basic) || isa(cur_reactor.rho_m, SymEngine.Basic) )
+  )
+
   if isa(cur_reactor.l_i, SymEngine.Basic)
     if isa(cur_reactor.rho_m, AbstractFloat)
       isa(cur_reactor.gamma, SymEngine.Basic) &&
@@ -246,6 +253,17 @@ function Reactor(cur_temp::AbstractSymbol, cur_dict::Dict)
     cur_deck_func = getfield(Fussy, cur_deck_symbol)
 
     cur_reactor = cur_deck_func(cur_temp)
+
+    cur_redundant_keys = [:rho_m, :gamma, :l_i]
+
+    for cur_key in cur_redundant_keys
+      haskey(cur_dict, cur_key) || continue
+      for cur_sub_key in cur_redundant_keys
+        ( cur_key == cur_sub_key ) && continue
+        cur_dict[cur_sub_key] = symbols(cur_sub_key)
+      end
+      break
+    end
   else
     cur_reactor = Reactor(T_bar=cur_temp)
   end
