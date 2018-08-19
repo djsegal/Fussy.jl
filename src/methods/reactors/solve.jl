@@ -39,10 +39,14 @@ function solve(cur_reactor::AbstractReactor)
 
   isa(cur_equation, SymEngine.Basic) || return [cur_equation]
 
+  cur_B_0 = calc_B_0(tmp_reactor)
+
+  is_nan(cur_B_0) && return []
+
   cur_equation = subs(
     cur_equation,
     symbols(:R_0) => calc_R_0(tmp_reactor),
-    symbols(:B_0) => calc_B_0(tmp_reactor)
+    symbols(:B_0) => cur_B_0
   )
 
   cur_equation /= symbols(:I_P)

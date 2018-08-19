@@ -5,11 +5,9 @@
 
   cur_K *= cur_scaling[:constant]
 
-  cur_K /= K_law(cur_reactor)
-
   cur_K *= K_n(cur_reactor) ^ alpha_n_star(cur_reactor)
 
-  cur_K /= K_P(cur_reactor) ^ cur_scaling[:P]
+  cur_K /= K_kappa(cur_reactor)
 
   cur_K *= cur_reactor.epsilon ^ cur_scaling[:a]
 
