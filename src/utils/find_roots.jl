@@ -244,7 +244,7 @@ function custom_bisection(f, cur_a::Number, cur_b::Number, cur_f_a::Number, cur_
   ( is_bad_a && is_bad_b ) && return NaN
 
   if is_bad_a || is_bad_b || is_bad_c
-    if !is_bad_d && ( isapprox(cur_c, cur_a, atol=atol) || isapprox(cur_c, cur_b, atol=atol) )
+    if !is_bad_d && ( isapprox(cur_c, cur_a, atol=abstol) || isapprox(cur_c, cur_b, atol=abstol) )
       cur_g = cur_d
       cur_f_g = cur_f_d
     else
