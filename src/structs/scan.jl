@@ -111,7 +111,7 @@ function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray, cur_dict::Dict)
       pmap(cur_func, shuffle(1:reactor_count))
     end
   else
-    map(cur_func, shuffle(1:reactor_count))
+    @showprogress [cur_func(tmp_index) for tmp_index in shuffle(1:reactor_count)]
   end
 
   omitted_root_count = 0
