@@ -19,9 +19,7 @@
 
   cur_tau_E *= cur_reactor.A ^ cur_scaling[:A]
 
-  cur_tau_E /= (
-    P_alpha(cur_reactor) + P_H(cur_reactor)
-  ) ^ cur_scaling[:P]
+  cur_tau_E /= P_L(cur_reactor) ^ cur_scaling[:P]
 
   cur_tau_E
 end
