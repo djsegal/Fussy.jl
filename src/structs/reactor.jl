@@ -137,15 +137,6 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
     setfield!(cur_reactor, cur_key, cur_value)
   end
 
-  isa(cur_reactor.f_D, AbstractFloat) &&
-    @assert( cur_reactor.f_D <= 1 )
-
-  isa(cur_reactor.N_G, AbstractFloat) &&
-    @assert( cur_reactor.N_G > 0 )
-
-  isa(cur_reactor.epsilon, AbstractFloat) &&
-    @assert( cur_reactor.epsilon > 0 )
-
   if !cur_reactor.is_pulsed
     cur_reactor.tau_FT = 1.6e9
   end
@@ -156,6 +147,23 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
     else
       cur_reactor.constraint = "beta"
     end
+  end
+
+  is_bad_reactor = false
+
+  is_bad_reactor |= ( isa(cur_reactor.f_D, AbstractFloat) && ( cur_reactor.f_D > 1 ) )
+
+  is_bad_reactor |= ( isa(cur_reactor.N_G, AbstractFloat) && ( cur_reactor.N_G <= 0 ) )
+
+  is_bad_reactor |= ( isa(cur_reactor.epsilon, AbstractFloat) && ( cur_reactor.epsilon <= 0 ) )
+
+  is_bad_reactor |= ( isa(cur_reactor.rho_m, AbstractFloat) && ( cur_reactor.rho_m > 1 ) )
+
+  is_bad_reactor |= ( isa(cur_reactor.rho_m, AbstractFloat) && ( cur_reactor.rho_m < 0 ) )
+
+  if is_bad_reactor
+    cur_reactor.is_good = false
+    return
   end
 
   isa(cur_reactor.kappa_95, AbstractFloat) || return
@@ -209,6 +217,19 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
       cur_reactor.rho_m /= sqrt( cur_gamma )
     end
   end
+
+  is_bad_reactor |= !isfinite(cur_reactor.rho_m)
+
+  is_bad_reactor |= !isfinite(cur_reactor.gamma)
+
+  is_bad_reactor |= !isfinite(cur_reactor.l_i)
+
+  is_bad_reactor |= ( cur_reactor.rho_m > 1 )
+
+  is_bad_reactor |= ( cur_reactor.rho_m < 0 )
+
+  is_bad_reactor && ( cur_reactor.is_good = false )
+
 end
 
 function Reactor(cur_temp::AbstractSymbol; cur_kwargs...)
