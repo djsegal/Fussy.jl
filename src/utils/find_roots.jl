@@ -138,9 +138,11 @@ function find_bisection_roots(f, cur_range::AbstractVector{T}, abstol::Real, rel
   cur_values = f.(cur_range)
 
   cur_signs = map(sign, cur_values[1:end-1] .* cur_values[2:end])
+  cur_finite_count = count(isfinite, cur_values)
 
-  all(isinf, cur_signs) && return []
-  all(isnan, cur_signs) && return []
+  iszero(cur_finite_count) && return []
+
+
 
   for (cur_index, cur_sign) in enumerate(cur_signs)
     isinf(cur_sign) && continue
