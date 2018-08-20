@@ -253,23 +253,7 @@ function _get_branch_lists(cur_array::Matrix, cur_x_list)
     cur_branch_fits = []
 
     for (cur_branch_x_list, cur_branch_y_list) in zip(cur_branch_x_lists, cur_branch_y_lists)
-      if length(cur_branch_x_list) == 3
-        cur_order = 1
-        tmp_x_list = Vector{Float64}(cur_branch_x_list)
-        tmp_y_list = Vector{Float64}(cur_branch_y_list)
-
-        cur_range = ( cur_x < first(tmp_x_list) ) ? (1:2) : (2:3)
-
-        cur_fit = polyfit(tmp_x_list[cur_range], tmp_y_list[cur_range], cur_order)
-      else
-        if length(cur_branch_x_list) < 3
-          cur_order = length(cur_branch_x_list) - 1
-        else
-          cur_order = 2
-        end
-        cur_fit = polyfit(Vector{Float64}(cur_branch_x_list), Vector{Float64}(cur_branch_y_list), cur_order)
-      end
-
+      cur_fit = _make_scan_polyfit(cur_branch_x_list, cur_branch_y_list, cur_x)
       push!(cur_branch_fits, cur_fit)
     end
 
@@ -360,4 +344,27 @@ function _get_branch_lists(cur_array::Matrix, cur_x_list)
   end
 
   return ( cur_branch_x_lists, cur_branch_y_lists )
+end
+
+function _make_scan_polyfit(cur_x_list, cur_y_list, cur_x)
+  if length(cur_x_list) == 3
+    cur_order = 1
+    cur_range = ( cur_x < first(cur_x_list) ) ? (1:2) : (2:3)
+
+    tmp_x_list = Vector{Float64}(cur_x_list[cur_range])
+    tmp_y_list = Vector{Float64}(cur_y_list[cur_range])
+  else
+    if length(cur_x_list) < 3
+      cur_order = length(cur_x_list) - 1
+    else
+      cur_order = 2
+    end
+
+    tmp_x_list = Vector{Float64}(cur_x_list)
+    tmp_y_list = Vector{Float64}(cur_y_list)
+  end
+
+  cur_fit = polyfit(tmp_x_list, tmp_y_list, cur_order)
+
+  cur_fit
 end
