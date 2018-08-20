@@ -1,9 +1,9 @@
-function filter_approx!(cur_vector; atol=5e-2)
+function filter_approx!(cur_vector; atol=5e-2, rtol=eps())
   delete_indices = []
 
   for (cur_index, cur_value) in enumerate(cur_vector)
     is_duplicate = any(
-      tmp_value -> isapprox(tmp_value, cur_value, atol=atol),
+      tmp_value -> loose_isapprox(tmp_value, cur_value, atol, rtol),
       cur_vector[1:cur_index-1]
     )
 
@@ -18,7 +18,7 @@ end
 
 function approx_push!(cur_vector, cur_value; atol=5e-2)
   is_duplicate = any(
-    tmp_value -> isapprox(tmp_value, cur_value, atol=atol),
+    tmp_value -> loose_isapprox(tmp_value, cur_value, atol, rtol),
     cur_vector
   )
 
