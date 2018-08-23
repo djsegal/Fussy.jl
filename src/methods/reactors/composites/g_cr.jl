@@ -1,6 +1,8 @@
 @symbol_func function G_CR(cur_reactor::AbstractReactor)
   cur_epsilon = epsilon_b(cur_reactor)
 
+  ( isa(cur_epsilon, AbstractFloat) && cur_epsilon >= 1 ) && return NaN
+
   cur_left_part = safe_symbol(cur_reactor, :B_0) ^ 2
 
   cur_left_part /= (8/5) * cur_reactor.pi
