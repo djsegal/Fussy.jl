@@ -189,7 +189,7 @@ function find_bisection_roots(f, cur_range::AbstractVector{T}, abstol::Real, rel
 
     cur_root = NaN
     try
-      cur_root = find_zero(f, [cur_a, cur_b], FalsePosition())
+      cur_root = find_zero(f, [cur_a, cur_b], FalsePosition(), maxevals=16)
       @assert isapprox(f(cur_root), 0.0, atol=abstol)
     catch
       cur_root = custom_bisection(f, cur_a, cur_b, f(cur_a), f(cur_b); abstol=abstol)
