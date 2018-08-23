@@ -271,49 +271,30 @@ function _get_branch_lists(cur_array::Matrix, cur_x_list)
 
       cur_index_pair = nothing
 
-      for allowed_misses = 0:10
-        for is_targeted = [true, false]
+      cur_matrix = Matrix(length(expected_values), length(cur_actual_values))
+      fill!(cur_matrix, Inf)
 
-          cur_matrix = Matrix(length(expected_values), length(cur_actual_values))
-          fill!(cur_matrix, Inf)
+      for (cur_sub_index, cur_actual_value) in enumerate(cur_actual_values)
+        cur_used_y_list = map(last, cur_branch_y_lists[cur_used_indices])
 
-          for (cur_sub_index, cur_actual_value) in enumerate(cur_actual_values)
-            cur_used_y_list = map(last, cur_branch_y_lists[cur_used_indices])
+        for cur_index in 1:length(expected_values)
+          in(cur_index, cur_used_indices) && continue
 
-            if is_targeted
-              min_index = findlast(cur_y -> ( cur_y < cur_actual_value ), cur_used_y_list)
-              max_index = findfirst(cur_y -> ( cur_y > cur_actual_value ), cur_used_y_list)
+          cur_skipped_count = minimum( abs.( cur_branch_x_lists[cur_index] - cur_x ) )
+          cur_skipped_count /= minimum( diff(cur_x_list) )
+          cur_skipped_count = round(cur_skipped_count) - 1
 
-              min_index = iszero(min_index) ? 1 : cur_used_indices[min_index] + 1
-              max_index = iszero(max_index) ? length(expected_values) : cur_used_indices[max_index] - 1
-            else
-              min_index = 1
-              max_index = length(expected_values)
-            end
+          cur_value = abs( expected_values[cur_index] - cur_actual_value )
+          cur_value /= abs( cur_actual_value )
+          cur_value *= sqrt( cur_skipped_count + 1 )
 
-            for cur_index in min_index:max_index
-              in(cur_index, cur_used_indices) && continue
-
-              cur_skipped_count = minimum( abs.( cur_branch_x_lists[cur_index] - cur_x ) )
-              cur_skipped_count /= minimum( diff(cur_x_list) )
-              cur_skipped_count = round(cur_skipped_count) - 1
-
-              ( cur_skipped_count == allowed_misses ) || continue
-
-              cur_value = abs( expected_values[cur_index] - cur_actual_value )
-              cur_matrix[cur_index, cur_sub_index] = cur_value
-            end
-          end
-
-          cur_min_error, cur_min_index = findmin(cur_matrix)
-          isinf(cur_min_error) && continue
-
-          cur_index_pair = ind2sub(size(cur_matrix),cur_min_index)
-          break
+          cur_matrix[cur_index, cur_sub_index] = cur_value
         end
-
-        ( cur_index_pair == nothing ) || break
       end
+
+      cur_min_error, cur_min_index = findmin(cur_matrix)
+      isfinite(cur_min_error) &&
+        ( cur_index_pair = ind2sub(size(cur_matrix),cur_min_index) )
 
       if cur_index_pair == nothing
         @assert length(cur_actual_values) == 1
@@ -343,6 +324,69 @@ function _get_branch_lists(cur_array::Matrix, cur_x_list)
     end
   end
 
+  new_branch_x_list, new_branch_y_list = [], []
+
+  for (cur_index, (cur_branch_x_list, cur_branch_y_list)) in enumerate(zip(cur_branch_x_lists, cur_branch_y_lists))
+    sort_lists!(cur_branch_x_list, cur_branch_y_list)
+
+    work_y_list = cur_branch_y_list[:]
+    filter_approx!(work_y_list)
+
+    ( length(work_y_list) == 1 ) && continue
+
+    cur_diff_list = diff(work_y_list)
+
+    cur_flips = 0
+    cur_direction = sign(cur_diff_list[1])
+
+    for cur_diff in cur_diff_list[2:end]
+      iszero(cur_diff) && continue
+
+      tmp_direction = sign(cur_diff)
+      ( cur_direction == tmp_direction ) && continue
+
+      cur_flips += 1
+      cur_direction = tmp_direction
+    end
+
+    ( cur_flips < 3 ) && continue
+
+    @assert cur_flips == 3
+
+    cur_max_value = maximum(work_y_list)
+    cur_max_index = findfirst(work_y -> work_y == cur_max_value, cur_branch_y_list)
+    cur_max_space = cur_branch_x_list[cur_max_index]
+
+    cur_bot_branch_x_list = cur_branch_x_list[1:cur_max_index-1]
+    cur_bot_branch_y_list = cur_branch_y_list[1:cur_max_index-1]
+
+    cur_top_branch_x_list = cur_branch_x_list[cur_max_index+1:end]
+    cur_top_branch_y_list = cur_branch_y_list[cur_max_index+1:end]
+
+    cur_bot_fit = _make_scan_polyfit(cur_bot_branch_x_list, cur_bot_branch_y_list, cur_max_space)
+    cur_top_fit = _make_scan_polyfit(cur_top_branch_x_list, cur_top_branch_y_list, cur_max_space)
+
+    cur_bot_error = abs( cur_max_value - cur_bot_fit(cur_max_space) )
+    cur_top_error = abs( cur_max_value - cur_top_fit(cur_max_space) )
+
+    if cur_bot_error < cur_top_error
+      push!(cur_bot_branch_x_list, cur_max_space)
+      push!(cur_bot_branch_y_list, cur_max_value)
+    else
+      unshift!(cur_top_branch_x_list, cur_max_space)
+      unshift!(cur_top_branch_y_list, cur_max_value)
+    end
+
+    cur_branch_x_lists[cur_index] = cur_bot_branch_x_list
+    cur_branch_y_lists[cur_index] = cur_bot_branch_y_list
+
+    push!(new_branch_x_list, cur_top_branch_x_list)
+    push!(new_branch_y_list, cur_top_branch_y_list)
+  end
+
+  append!(cur_branch_x_lists, new_branch_x_list)
+  append!(cur_branch_y_lists, new_branch_y_list)
+
   return ( cur_branch_x_lists, cur_branch_y_lists )
 end
 
@@ -353,16 +397,29 @@ function _make_scan_polyfit(cur_x_list, cur_y_list, cur_x)
 
     tmp_x_list = Vector{Float64}(cur_x_list[cur_range])
     tmp_y_list = Vector{Float64}(cur_y_list[cur_range])
-  else
-    if length(cur_x_list) < 3
-      cur_order = length(cur_x_list) - 1
-    else
-      cur_order = 2
-    end
 
-    tmp_x_list = Vector{Float64}(cur_x_list)
-    tmp_y_list = Vector{Float64}(cur_y_list)
+    cur_fit = polyfit(tmp_x_list, tmp_y_list, cur_order)
+
+    return cur_fit
   end
+
+  work_x_list = deepcopy(cur_x_list)
+  work_y_list = deepcopy(cur_y_list)
+
+  tmp_x_list = Float64[]
+  tmp_y_list = Float64[]
+
+  for cur_point in 1:min(5, length(cur_x_list))
+    cur_min_index = indmin( abs.( work_x_list - cur_x ) )
+
+    push!(tmp_x_list, work_x_list[cur_min_index])
+    push!(tmp_y_list, work_y_list[cur_min_index])
+
+    deleteat!(work_x_list, cur_min_index)
+    deleteat!(work_y_list, cur_min_index)
+  end
+
+  cur_order = min(2, length(tmp_x_list) - 1)
 
   cur_fit = polyfit(tmp_x_list, tmp_y_list, cur_order)
 
