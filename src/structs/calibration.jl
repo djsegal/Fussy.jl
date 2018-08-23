@@ -99,6 +99,7 @@ end
 function _find_prototype(cur_dict::Dict, tuning_parameter::Symbol, target_parameter::Symbol, tuning_max_value::AbstractFloat, cur_target_value::AbstractFloat, matched_constraint::Symbol, constraint_value::Union{Void,Number})
   tmp_func = function(tmp_value)
     cur_value = real(tmp_value)
+
     isnan(cur_value) && return NaN
 
     tmp_dict = deepcopy(cur_dict)
@@ -123,7 +124,7 @@ function _find_prototype(cur_dict::Dict, tuning_parameter::Symbol, target_parame
     cur_error
   end
 
-  cur_roots = find_roots(tmp_func, 0.0, tuning_max_value, abstol=1e-4, no_pts = 11)
+  cur_roots = find_roots(tmp_func, 0.0, tuning_max_value, reltop=3e-3, abstol=3e-3, no_pts = 11)
 
   isempty(cur_roots) && return nothing
   @assert length(cur_roots) == 1
