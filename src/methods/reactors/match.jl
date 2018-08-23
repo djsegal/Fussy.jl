@@ -77,7 +77,7 @@ function _match(cur_reactor::AbstractReactor, cur_function::Function, cur_constr
 
   cur_T_bar_list = find_roots(
     cur_function, min_T_bar, max_T_bar,
-    no_pts = no_pts_T_bar, reltol = 1e-1
+    no_pts = Int(ceil(no_pts_T_bar/2))+1, reltol = 1e-2, abstol = 1e-4
   )
 
   isempty(cur_T_bar_list) && return []
