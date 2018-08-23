@@ -137,36 +137,9 @@ function find_bisection_roots(f, cur_range::AbstractVector{T}, abstol::Real, rel
 
   cur_values = f.(cur_range)
 
-  cur_finite_count = count(isfinite, cur_values)
+  filtered_cur_values = filter(isfinite, cur_values)
 
-  iszero(cur_finite_count) && return []
-
-  if cur_finite_count == 1
-    cur_index = findfirst(isfinite, cur_values)
-    cur_point = cur_range[cur_index]
-
-    cur_diff_list = diff(cur_range)
-    filter_approx!(cur_diff_list; atol=10*eps())
-
-    @assert length(cur_diff_list) == 1
-    cur_diff = cur_diff_list[1]
-
-    cur_c = cur_point
-    cur_f_c = f(cur_c)
-
-    cur_a = cur_point - cur_diff
-    cur_b = cur_point + cur_diff
-
-    if 1 < cur_index < length(cur_values)
-      cur_root = custom_bisection(f, cur_a, cur_c, f(cur_a), cur_f_c; abstol=abstol)
-      isnan(cur_root) || return [cur_root]
-
-      cur_root = custom_bisection(f, cur_c, cur_b, cur_f_c, f(cur_b); abstol=abstol)
-      isnan(cur_root) || return [cur_root]
-    end
-
-    return []
-  end
+  isempty(filtered_cur_values) && return []
 
   cur_signs = map(sign, cur_values[1:end-1] .* cur_values[2:end])
 
@@ -192,12 +165,77 @@ function find_bisection_roots(f, cur_range::AbstractVector{T}, abstol::Real, rel
       cur_root = find_zero(f, [cur_a, cur_b], FalsePosition(), maxevals=16)
       @assert isapprox(f(cur_root), 0.0, atol=abstol)
     catch
-      cur_root = custom_bisection(f, cur_a, cur_b, f(cur_a), f(cur_b); abstol=abstol)
+      cur_root = custom_bisection(f, cur_a, cur_b, f(cur_a), f(cur_b); abstol=abstol, kwargs...)
     end
     isnan(cur_root) || push!(root_list, cur_root)
   end
 
-  root_list
+  isempty(root_list) || return root_list
+
+  super_diff = diff(filtered_cur_values)
+  cur_attempt_index = []
+  if length(super_diff) == 0 || ( any(is_positive, super_diff) && any(!is_positive, super_diff) )
+    cur_attempt_index = [
+      findfirst(isfinite, cur_values),
+      findlast(isfinite, cur_values)
+    ]
+  else
+    if all(is_positive, filtered_cur_values) || all(!is_positive, filtered_cur_values)
+      cur_is_increasing = is_positive(first(super_diff))
+
+      first_finite_index = findfirst(isfinite, cur_values)
+      last_finite_index = findlast(isfinite, cur_values)
+
+      if cur_is_increasing
+        if cur_values[first_finite_index] < 0
+          cur_attempt_index = [last_finite_index]
+        else
+          cur_attempt_index = [first_finite_index]
+        end
+      else
+        if cur_values[first_finite_index] < 0
+          cur_attempt_index = [first_finite_index]
+        else
+          cur_attempt_index = [last_finite_index]
+        end
+      end
+    else
+      tmp_signs = map(sign, filtered_cur_values[1:end-1] .* filtered_cur_values[2:end])
+      cur_attempt_index = findin(cur_values, filtered_cur_values[find(!is_positive, tmp_signs)])
+    end
+  end
+
+  cur_min_index = indmin(map(cur_value -> isfinite(cur_value) ? abs(cur_value) : Inf, cur_values))
+
+  push!(cur_attempt_index, cur_min_index)
+
+  cur_attempt_index = unique(cur_attempt_index)
+
+  for cur_index in cur_attempt_index
+    cur_point = cur_range[cur_index]
+
+    cur_diff_list = diff(cur_range)
+    filter_approx!(cur_diff_list; atol=10*eps())
+
+    @assert length(cur_diff_list) == 1
+    cur_diff = cur_diff_list[1]
+
+    if 1 < cur_index < length(cur_values)
+      cur_c = cur_point
+      cur_f_c = f(cur_c)
+
+      cur_a = cur_point - cur_diff
+      cur_b = cur_point + cur_diff
+
+      cur_root = custom_bisection(f, cur_a, cur_c, f(cur_a), cur_f_c; abstol=abstol, kwargs...)
+      isnan(cur_root) || return [cur_root]
+
+      cur_root = custom_bisection(f, cur_c, cur_b, cur_f_c, f(cur_b); abstol=abstol, kwargs...)
+      isnan(cur_root) || return [cur_root]
+    end
+  end
+
+  []
 end
 
 function find_order_root(f, cur_range::AbstractVector{T}, abstol::Real, reltol::Real; kwargs...) where T <: Real
@@ -239,8 +277,8 @@ function loose_isapprox(first_value, second_value, atol, rtol)
   false
 end
 
-function custom_bisection(f, cur_a::Number, cur_b::Number, cur_f_a::Number, cur_f_b::Number, cur_flag::Bool=true; abstol::Number=10*eps(), cur_c::Number=NaN, cur_f_c::Number=NaN, cur_d::Number=NaN, cur_f_d::Number=NaN, bad_streak::Number=0)
-  ( bad_streak > 4 ) && return NaN
+function custom_bisection(f, cur_a::Number, cur_b::Number, cur_f_a::Number, cur_f_b::Number, cur_flag::Bool=true; abstol::Number=10*eps(), cur_c::Number=NaN, cur_f_c::Number=NaN, cur_d::Number=NaN, cur_f_d::Number=NaN, bad_streak::Number=0, kwargs...)
+  ( bad_streak > 6 ) && return NaN
 
   init_a = cur_a
   init_b = cur_b
@@ -282,11 +320,45 @@ function custom_bisection(f, cur_a::Number, cur_b::Number, cur_f_a::Number, cur_
       cur_f_g = cur_f_c
     end
 
-    bad_streak += 1
+    cur_f_list = [cur_f_a, cur_f_b, cur_f_g]
+    filter!(isfinite, cur_f_list)
 
-    cur_root = custom_bisection(f, cur_a, cur_g, cur_f_a, cur_f_c, abstol=abstol, bad_streak=bad_streak)
-    isnan(cur_root) &&
-      ( cur_root = custom_bisection(f, cur_g, cur_b, cur_f_c, cur_f_b, abstol=abstol, bad_streak=bad_streak) )
+    is_on_good_streak = isfinite(cur_f_g)
+    is_on_good_streak &= abs(cur_f_g) == minimum(map(abs, cur_f_list))
+
+    is_on_good_streak &= !isapprox(cur_f_g, cur_f_a, atol=abstol)
+    is_on_good_streak &= !isapprox(cur_f_g, cur_f_b, atol=abstol)
+
+    is_on_good_streak &= !isapprox(cur_g, cur_a, atol=abstol)
+    is_on_good_streak &= !isapprox(cur_g, cur_b, atol=abstol)
+
+    if is_on_good_streak
+      bad_streak -= 1
+
+      filter!(work_f -> work_f == cur_f_g, cur_f_list)
+
+      second_min_f = minimum(map(abs, cur_f_list))
+
+      ( second_min_f / abs(cur_f_g) > 8 ) &&
+        ( bad_streak -= 1 )
+
+      bad_streak = max(0, bad_streak)
+    else
+      if length(cur_f_list) == 1
+        bad_streak += 1
+      else
+        bad_streak += 2
+      end
+    end
+
+    cur_root = NaN
+
+    !isapprox(cur_f_a, cur_f_g, atol=abstol) &&
+      ( cur_root = custom_bisection(f, cur_a, cur_g, cur_f_a, cur_f_g; abstol=abstol, bad_streak=bad_streak, kwargs...) )
+
+    ( isnan(cur_root) && !isapprox(cur_f_g, cur_f_b, atol=abstol) ) &&
+      ( cur_root = custom_bisection(f, cur_g, cur_b, cur_f_g, cur_f_b; abstol=abstol, bad_streak=bad_streak, kwargs...) )
+
     return cur_root
   end
 
@@ -360,17 +432,18 @@ function custom_bisection(f, cur_a::Number, cur_b::Number, cur_f_a::Number, cur_
     cur_c = middle(cur_a, cur_b)
     cur_f_c = f(cur_c)
 
-    cur_root = custom_bisection(f, cur_a, cur_c, cur_f_a, cur_f_c, abstol=abstol, bad_streak=bad_streak)
+    cur_root = custom_bisection(f, cur_a, cur_c, cur_f_a, cur_f_c; abstol=abstol, bad_streak=bad_streak, kwargs...)
     isnan(cur_root) || return cur_root
 
-    cur_root = custom_bisection(f, cur_c, cur_b, cur_f_c, cur_f_b, abstol=abstol, bad_streak=bad_streak)
+    cur_root = custom_bisection(f, cur_c, cur_b, cur_f_c, cur_f_b; abstol=abstol, bad_streak=bad_streak, kwargs...)
     return cur_root
   end
 
   custom_bisection(
-    f, cur_a, cur_b, cur_f_a, cur_f_b,
-    cur_flag, abstol=abstol, bad_streak=bad_streak,
+    f, cur_a, cur_b, cur_f_a, cur_f_b, cur_flag;
+    abstol=abstol, bad_streak=bad_streak,
     cur_c=cur_c, cur_f_c=cur_f_c,
-    cur_d=cur_d, cur_f_d=cur_f_d
+    cur_d=cur_d, cur_f_d=cur_f_d,
+    kwargs...
   )
 end
