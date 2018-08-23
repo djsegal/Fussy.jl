@@ -13,13 +13,8 @@ mutable struct Study <: AbstractStudy
   wall_reactors::Vector{AbstractReactor}
   cost_reactors::Vector{AbstractReactor}
 
-  top_R_0_reactors::Vector{AbstractReactor}
   top_B_0_reactors::Vector{AbstractReactor}
-
-  mid_R_0_reactors::Vector{AbstractReactor}
   mid_B_0_reactors::Vector{AbstractReactor}
-
-  bot_R_0_reactors::Vector{AbstractReactor}
   bot_B_0_reactors::Vector{AbstractReactor}
 end
 
@@ -96,7 +91,6 @@ function Study(cur_parameter, init_dict=Dict(); sensitivity=0.2, num_points=9, v
     _make_kink_study_reactors(cur_input...)
 
     for cur_scalar in [0.5, 1.0, 1.5]
-      _make_some_study_reactors(:R_0, cur_scalar, cur_input...)
       _make_some_study_reactors(:B_0, cur_scalar, cur_input...)
     end
 
@@ -232,7 +226,9 @@ function _make_wall_study_reactors(cur_study, cur_parameter, parameter_list, cur
   _make_study_reactors!(cur_study.wall_reactors, cur_parameter, parameter_list, cur_dict, cur_array)
 end
 
-function _make_some_study_reactors(cur_field, cur_scalar, cur_study, cur_parameter, parameter_list, cur_dict, num_points, verbose, is_parallel)
+function _make_some_study_reactors(cur_scalar, cur_study, cur_parameter, parameter_list, cur_dict, num_points, verbose, is_parallel)
+  cur_field = :B_0
+
   cur_array = SharedArray{Float64}(num_points, 3)
   fill!(cur_array, NaN)
 
