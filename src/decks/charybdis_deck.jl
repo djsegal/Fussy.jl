@@ -2,7 +2,7 @@ function charybdis_deck(cur_T_bar::AbstractSymbol=symbols(:T_bar); cur_kwargs...
   cur_dict = Dict(
     :T_bar => cur_T_bar,
     :is_pulsed => false,
-    :H => 1.6296,
+    :H => 1.565775,
     :Q => 25.0,
     :epsilon => 0.3,
     :kappa_95 => 1.8,
@@ -29,7 +29,7 @@ function charybdis_deck(cur_T_bar::AbstractSymbol=symbols(:T_bar); cur_kwargs...
     :J_CS => 50,
     :J_TF => 88888888,
     :k => 0.4,
-    :eta_CD => 0.2814,
+    :eta_CD => 0.29282,
     :wave_theta => 135.0,
     :eta_LH => 0.6
   )
