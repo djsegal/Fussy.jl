@@ -9,6 +9,9 @@ function solve!(cur_reactor::AbstractReactor)
   cur_reactor.I_P = isempty(cur_I_P_list) ? NaN : first(cur_I_P_list)
   cur_reactor.is_good = false
 
+  valid_reactors = []
+  valid_costs = []
+
   for cur_I_P in cur_I_P_list
     work_reactor = deepcopy(cur_reactor)
 
@@ -18,10 +21,13 @@ function solve!(cur_reactor::AbstractReactor)
     update!(work_reactor)
     work_reactor.is_valid || continue
 
-    cur_reactor.I_P = cur_I_P
-    cur_reactor.is_good = true
+    push!(valid_reactors, work_reactor)
+    push!(valid_costs, work_reactor.cost)
+  end
 
-    break
+  if !isempty(valid_reactors)
+    cur_reactor.I_P = valid_reactors[indmin(valid_costs)].I_P
+    cur_reactor.is_good = true
   end
 
   update!(cur_reactor)
