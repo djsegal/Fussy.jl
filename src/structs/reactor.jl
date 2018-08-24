@@ -239,6 +239,14 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
 
 end
 
+function Reactor(cur_temp::Symbol; cur_kwargs...)
+  cur_dict = merge!(Dict(), Dict(cur_kwargs))
+
+  cur_reactor = Reactor(SymEngine.symbols(cur_temp), cur_dict)
+
+  cur_reactor
+end
+
 function Reactor(cur_temp::AbstractSymbol; cur_kwargs...)
   cur_dict = merge!(Dict(), Dict(cur_kwargs))
 
