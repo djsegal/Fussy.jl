@@ -33,3 +33,5 @@ include("omega_ce.jl")
 include("omega_pe.jl")
 
 include("plasma_parameter.jl")
+
+include("gray_cost.jl")

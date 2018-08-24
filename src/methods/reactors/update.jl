@@ -72,7 +72,7 @@ function update!(cur_reactor::AbstractReactor)
   cur_reactor.volume = volume(cur_reactor)
   cur_reactor.W_M = W_M(cur_reactor)
 
-  cur_reactor.cost = cur_reactor.W_M / cur_reactor.P_F
+  cur_reactor.cost = gray_cost(cur_reactor)
 
   cur_reactor.resistance = R_P(cur_reactor)
   cur_reactor.voltage = V_loop(cur_reactor)
