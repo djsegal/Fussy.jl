@@ -1,4 +1,6 @@
 function solve!(cur_reactor::AbstractReactor)
+  isa(cur_reactor.T_bar, SymEngine.Basic) && return cur_reactor
+
   cur_reactor.is_good || return cur_reactor
 
   cur_I_P_list = solve(cur_reactor)
