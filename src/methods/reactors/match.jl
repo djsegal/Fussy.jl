@@ -1,6 +1,4 @@
-function match(cur_reactor::AbstractReactor, cur_constraint::Symbol, cur_value::Union{Void, Number}=nothing)
-  ( cur_value == nothing ) && @assert cur_reactor.constraint == :beta
-
+function match(cur_reactor::AbstractReactor, cur_constraint::Symbol, cur_value::Union{Void, Number}=nothing, is_singular::Bool=true)
   cur_func = function (cur_T_bar::Number)
     tmp_reactor = deepcopy(cur_reactor)
 
@@ -12,37 +10,29 @@ function match(cur_reactor::AbstractReactor, cur_constraint::Symbol, cur_value::
 
     isnan(tmp_reactor.sigma_v) && return NaN
 
-    if cur_value != nothing
-      @assert cur_constraint == :R_0 || cur_constraint == :B_0
-      setfield!(tmp_reactor, cur_constraint, cur_value)
-    end
-
     cur_error = calc_I_P(tmp_reactor)
 
     cur_error /= symbols(:I_P)
 
     cur_error -= 1.0
 
-    if cur_value == nothing
-      tmp_I_P = calc_I_P(tmp_reactor, cur_constraint)
-    else
-      tmp_I_P = calc_I_P(tmp_reactor, cur_constraint, cur_value)
-    end
+    secondary_constraint = getfield(Fussy, Symbol("$(tmp_reactor.constraint)_equation"))(tmp_reactor)
 
     if cur_value == nothing
-      cur_error = subs(
-        cur_error,
-        symbols(:R_0) => calc_R_0(tmp_reactor),
-        symbols(:B_0) => calc_B_0(tmp_reactor),
-        symbols(:I_P) => tmp_I_P
-      )
+      tertiary_constraint = getfield(Fussy, Symbol("$(cur_constraint)_equation"))(tmp_reactor)
     else
-      isa(cur_error, SymEngine.Basic) && ( cur_error = subs(cur_error, symbols(:I_P) => tmp_I_P) )
-      isa(cur_error, SymEngine.Basic) && ( cur_error = subs(cur_error, symbols(:R_0) => calc_R_0(tmp_reactor)) )
-      isa(cur_error, SymEngine.Basic) && ( cur_error = subs(cur_error, symbols(:B_0) => calc_B_0(tmp_reactor)) )
-      isa(cur_error, SymEngine.Basic) && ( cur_error = subs(cur_error, symbols(:R_0) => calc_R_0(tmp_reactor)) )
-      isa(cur_error, SymEngine.Basic) && ( cur_error = subs(cur_error, symbols(:I_P) => tmp_I_P) )
+      tertiary_constraint = getfield(Fussy, Symbol("$(cur_constraint)_equation"))(tmp_reactor, cur_value)
     end
+
+    tmp_dict = equation_set_dict(
+      EquationSet(tmp_reactor, secondary_constraint, tertiary_constraint)
+    )
+
+    any(is_nan, values(tmp_dict)) && return NaN
+
+    @assert all(is_finite, values(tmp_dict))
+
+    cur_error = subs(cur_error, tmp_dict...)
 
     cur_error = real(float(cur_error))
 
@@ -52,24 +42,31 @@ function match(cur_reactor::AbstractReactor, cur_constraint::Symbol, cur_value::
   matched_reactors = _match(cur_reactor, cur_func, cur_constraint, cur_value)
   matched_reactors = filter!(work_reactor -> work_reactor.is_good, matched_reactors)
 
-  isempty(matched_reactors) && return nothing
+  isempty(matched_reactors) && return ( is_singular ? nothing : [] )
 
   if length(matched_reactors) > 1
     work_reactors = filter(work_reactor -> work_reactor.is_valid, matched_reactors)
 
     if !isempty(work_reactors)
+      is_singular || return work_reactors
+
       if length(work_reactors) > 1
         custom_log("Bad match! Too many reactors!")
         custom_log(cur_constraint, " - ", cur_value)
         custom_log(work_reactors)
       end
 
-      min_index = indmin(map(work_reactor -> work_reactor.cost, work_reactors))
+      min_index = indmin(
+        map(work_reactor -> (cur_constraint == :cost ? work_reactor.W_M : work_reactor.cost), work_reactors)
+      )
+
       return work_reactors[min_index]
     end
   end
 
-  first(matched_reactors)
+  is_singular && return first(matched_reactors)
+
+  matched_reactors
 end
 
 function _match(cur_reactor::AbstractReactor, cur_function::Function, cur_constraint::Symbol, cur_value::Union{Void, Number}=nothing)
@@ -93,16 +90,15 @@ function _match(cur_reactor::AbstractReactor, cur_function::Function, cur_constr
 
     tmp_reactor.sigma_v = calc_sigma_v(tmp_reactor)
 
-    if cur_value == nothing
-      cur_I_P = calc_I_P(tmp_reactor, cur_constraint)
-    else
-      setfield!(tmp_reactor, cur_constraint, cur_value)
-      cur_I_P = calc_I_P(tmp_reactor, cur_constraint, cur_value)
+    secondary_constraint = getfield(Fussy, Symbol("$(tmp_reactor.constraint)_equation"))(tmp_reactor)
 
-      isa(cur_I_P, SymEngine.Basic) && ( cur_I_P = subs(cur_I_P, symbols(:R_0) => calc_R_0(tmp_reactor)) )
-      isa(cur_I_P, SymEngine.Basic) && ( cur_I_P = subs(cur_I_P, symbols(:B_0) => calc_R_0(tmp_reactor)) )
-      isa(cur_I_P, SymEngine.Basic) && ( cur_I_P = subs(cur_I_P, symbols(:R_0) => calc_R_0(tmp_reactor)) )
+    if cur_value == nothing
+      tertiary_constraint = getfield(Fussy, Symbol("$(cur_constraint)_equation"))(tmp_reactor)
+    else
+      tertiary_constraint = getfield(Fussy, Symbol("$(cur_constraint)_equation"))(tmp_reactor, cur_value)
     end
+
+    cur_I_P = EquationSet(tmp_reactor, secondary_constraint, tertiary_constraint).I_P
 
     isnan(cur_I_P) && continue
 
