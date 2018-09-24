@@ -29,3 +29,5 @@ include("minimize.jl")
 include("safe_get.jl")
 
 include("is_nan.jl")
+
+include("is_nothing.jl")
