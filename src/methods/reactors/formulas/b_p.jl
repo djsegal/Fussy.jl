@@ -35,16 +35,9 @@ end
 function int_b_p(cur_gamma::AbstractFloat)
   isfinite(cur_gamma) || return NaN
 
-  cur_integral = nothing
-  try
-    cur_integral = quadgk(
-      cur_rho -> cur_rho * b_p(cur_gamma, cur_rho) ^ 2,
-      integral_zero,
-      integral_one
-    )[1]
-  catch
-    return NaN
-  end
+  cur_func = (cur_rho) -> cur_rho * b_p(cur_gamma, cur_rho) ^ 2
+
+  cur_integral = norm_int(cur_func)
 
   cur_integral
 end
