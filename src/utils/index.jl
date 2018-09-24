@@ -24,8 +24,6 @@ include("filter_approx.jl")
 
 include("safe_symbol.jl")
 
-include("minimize.jl")
-
 include("safe_get.jl")
 
 include("is_nan.jl")
