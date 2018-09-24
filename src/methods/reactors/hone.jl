@@ -1,7 +1,7 @@
 function hone(cur_reactor::AbstractReactor, cur_constraint::Symbol, cur_value::Union{Void, Number}=nothing; reltol::Number=3e-3, max_attempts::Int = 10, strong_fail::Bool = false)
   ( cur_value == nothing ) && @assert cur_reactor.constraint == :beta
 
-  cur_reactor.is_good || return nothing
+  cur_reactor.is_good || return
 
   prev_T = nothing
   prev_eta_CD = nothing
@@ -21,7 +21,7 @@ function hone(cur_reactor::AbstractReactor, cur_constraint::Symbol, cur_value::U
       new_reactor = match(work_reactor, cur_constraint, cur_value)
     end
 
-    ( new_reactor == nothing ) && return nothing
+    is_nothing(new_reactor) && return
 
     if cur_index > 1
       tmp_T_list = [prev_T, work_reactor.T_bar]
@@ -49,11 +49,11 @@ function hone(cur_reactor::AbstractReactor, cur_constraint::Symbol, cur_value::U
 
     if isempty(cur_eta_CD_list)
       solved_reactor = solve!(tmp_reactor)
-      solved_reactor.is_valid || return nothing
-      solved_reactor.is_good || return nothing
+      solved_reactor.is_valid || return
+      solved_reactor.is_good || return
 
       work_eta_CD = calc_eta_CD(solved_reactor)
-      isnan(work_eta_CD) && return nothing
+      isnan(work_eta_CD) && return
       cur_eta_CD_list = [ work_eta_CD ]
     else
       filter_approx!(cur_eta_CD_list, atol=3e-3)
@@ -73,7 +73,7 @@ function hone(cur_reactor::AbstractReactor, cur_constraint::Symbol, cur_value::U
     work_reactor.eta_CD /= 2
   end
 
-  ( honed_reactor == nothing ) && return nothing
+  is_nothing(honed_reactor) && return
 
   @assert honed_reactor.is_valid
   @assert honed_reactor.is_good
