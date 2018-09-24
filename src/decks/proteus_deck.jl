@@ -1,6 +1,7 @@
-function scylla_deck(cur_T_bar::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
+function proteus_deck(cur_T_bar::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
   cur_dict = Dict(
     :T_bar => cur_T_bar,
+    :is_pulsed => true,
     :H => 1.0,
     :Q => 25.0,
     :epsilon => 0.3,
@@ -22,7 +23,7 @@ function scylla_deck(cur_T_bar::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
     :max_P_E => 3000.0,
     :max_P_W => 3.0,
     :max_q_DV => 10.0,
-    :B_CS => 20.34,
+    :B_CS => 20.0,
     :sigma_CS => 600,
     :sigma_TF => 300,
     :J_CS => 50,
