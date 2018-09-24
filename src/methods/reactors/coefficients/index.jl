@@ -29,3 +29,7 @@ include("k_cd.jl")
 include("k_w.jl")
 
 include("k_omega.jl")
+
+include("k_wm.jl")
+
+include("k_nt.jl")
