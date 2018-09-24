@@ -267,7 +267,9 @@ function Reactor(cur_temp::AbstractSymbol; cur_kwargs...)
   cur_reactor
 end
 
-function Reactor(cur_temp::AbstractSymbol, cur_dict::Dict)
+function Reactor(cur_temp::AbstractSymbol, tmp_dict::Dict)
+  cur_dict = deepcopy(tmp_dict)
+
   if haskey(cur_dict, :deck) && cur_dict[:deck] != nothing
     cur_deck_symbol = Symbol("$(cur_dict[:deck])_deck")
     cur_deck_func = getfield(Fussy, cur_deck_symbol)
