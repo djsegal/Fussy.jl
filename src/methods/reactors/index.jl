@@ -14,4 +14,3 @@ include("update.jl")
 include("converge.jl")
 include("hone.jl")
 
-include("find_low_cost_reactor.jl")
