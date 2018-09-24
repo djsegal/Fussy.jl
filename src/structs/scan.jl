@@ -3,11 +3,11 @@ mutable struct Scan <: AbstractScan
 
   deck::Union{Void, Symbol}
 
-  beta_reactors::Vector{AbstractReactor}
-  kink_reactors::Vector{AbstractReactor}
-  pcap_reactors::Vector{AbstractReactor}
-  wall_reactors::Vector{AbstractReactor}
-  heat_reactors::Vector{AbstractReactor}
+  beta_reactors::Vector{Reactor}
+  kink_reactors::Vector{Reactor}
+  pcap_reactors::Vector{Reactor}
+  wall_reactors::Vector{Reactor}
+  heat_reactors::Vector{Reactor}
 end
 
 function Scan(cur_T_bar_list::Any, cur_limit::Symbol; cur_kwargs...)
@@ -75,7 +75,7 @@ function Scan(cur_T_bar_list::Any, cur_limits::AbstractArray, cur_dict::Dict)
 
   cur_scan = Scan(
     cur_T_bar_list, cur_deck,
-    [ AbstractReactor[] for cur_index in 1:length(keys(secondary_limits)) ]...
+    [ Reactor[] for cur_index in 1:length(keys(secondary_limits)) ]...
   )
 
   cur_array = SharedArray{Float64}(limit_count, T_bar_count, roots_count)
