@@ -23,8 +23,8 @@ function Study(cur_parameter, init_dict=Dict(); sensitivity=0.2, num_points=9, v
 
   merge!(cur_dict, Dict(cur_kwargs))
 
-  cur_is_fast = safe_get(cur_dict, :is_fast, true)
   cur_is_light = haskey(cur_dict, :is_light) && cur_dict[:is_light]
+  cur_is_fast = haskey(cur_dict, :is_fast) && cur_dict[:is_fast]
 
   delete!(cur_dict, :is_fast)
   delete!(cur_dict, :is_light)
