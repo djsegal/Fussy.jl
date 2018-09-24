@@ -7,10 +7,14 @@ function update!(cur_reactor::AbstractReactor)
 
   cur_reactor.sigma_v = calc_sigma_v(cur_reactor)
 
+  secondary_constraint = getfield(Fussy, Symbol("$(cur_reactor.constraint)_equation"))(cur_reactor)
+
+  cur_equation_set = EquationSet(cur_reactor, secondary_constraint)
+
   try
 
-    cur_reactor.B_0 = convert(Real, calc_B_0(cur_reactor))
-    cur_reactor.R_0 = convert(Real, calc_R_0(cur_reactor))
+    cur_reactor.B_0 = convert(Real, cur_equation_set.B_0)
+    cur_reactor.R_0 = convert(Real, cur_equation_set.R_0)
     cur_reactor.n_bar = convert(Real, calc_n_bar(cur_reactor))
     cur_reactor.tau_E = tau_E(cur_reactor)
 
