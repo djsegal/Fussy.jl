@@ -351,7 +351,7 @@ function _get_branch_lists(cur_array::Matrix, cur_x_list)
 
     ( cur_flips < 3 ) && continue
 
-    @assert cur_flips == 3
+    ( cur_flips > 3 ) && continue
 
     cur_max_value = maximum(work_y_list)
     cur_max_index = findfirst(work_y -> work_y == cur_max_value, cur_branch_y_list)
