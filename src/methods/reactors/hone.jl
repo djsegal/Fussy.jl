@@ -18,7 +18,13 @@ function hone(cur_reactor::AbstractReactor, cur_constraint::Symbol, cur_value::U
     if cur_value == nothing
       new_reactor = match(work_reactor, cur_constraint)
     else
-      new_reactor = match(work_reactor, cur_constraint, cur_value)
+      work_reactors = match(work_reactor, cur_constraint, cur_value, false)
+      isempty(work_reactors) && return
+
+      min_index = indmin(
+        map(work_reactor -> (cur_constraint == :cost ? work_reactor.W_M : work_reactor.cost), work_reactors)
+      )
+      new_reactor = work_reactors[min_index]
     end
 
     is_nothing(new_reactor) && return
