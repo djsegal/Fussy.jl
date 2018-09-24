@@ -151,15 +151,27 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
 
   is_bad_reactor = false
 
+  is_bad_reactor |= ( isa(cur_reactor.f_D, AbstractFloat) && ( cur_reactor.f_D <= 0 ) )
+
   is_bad_reactor |= ( isa(cur_reactor.f_D, AbstractFloat) && ( cur_reactor.f_D > 1 ) )
+
+  is_bad_reactor |= ( isa(cur_reactor.Z_eff, AbstractFloat) && ( cur_reactor.Z_eff < 1 ) )
 
   is_bad_reactor |= ( isa(cur_reactor.N_G, AbstractFloat) && ( cur_reactor.N_G <= 0 ) )
 
   is_bad_reactor |= ( isa(cur_reactor.epsilon, AbstractFloat) && ( cur_reactor.epsilon <= 0 ) )
 
+  is_bad_reactor |= ( isa(cur_reactor.kappa_95, AbstractFloat) && ( cur_reactor.kappa_95 < 1 ) )
+
   is_bad_reactor |= ( isa(cur_reactor.rho_m, AbstractFloat) && ( cur_reactor.rho_m > 1 ) )
 
   is_bad_reactor |= ( isa(cur_reactor.rho_m, AbstractFloat) && ( cur_reactor.rho_m < 0 ) )
+
+  is_bad_reactor |= ( isa(cur_reactor.max_beta_N, AbstractFloat) && ( cur_reactor.max_beta_N <= 0 ) )
+
+  is_bad_reactor |= ( isa(cur_reactor.max_P_W, AbstractFloat) && ( cur_reactor.max_P_W <= 0 ) )
+
+  is_bad_reactor |= ( isa(cur_reactor.max_q_95, AbstractFloat) && ( cur_reactor.max_q_95 <= 0 ) )
 
   if is_bad_reactor
     cur_reactor.is_good = false
