@@ -83,6 +83,8 @@ function update!(cur_reactor::AbstractReactor)
 
   try
 
+    @assert !isnan(cur_reactor.f_BS)
+
     cur_reactor.c = c(cur_reactor)
     cur_reactor.d = d(cur_reactor)
 
