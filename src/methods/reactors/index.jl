@@ -13,4 +13,4 @@ include("match.jl")
 include("update.jl")
 include("converge.jl")
 include("hone.jl")
-
+include("minimize.jl")
