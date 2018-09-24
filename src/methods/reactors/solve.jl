@@ -36,6 +36,8 @@ function solve!(cur_reactor::AbstractReactor)
 end
 
 function solve(cur_reactor::AbstractReactor)
+  @assert !isa(cur_reactor.T_bar, SymEngine.Basic)
+
   cur_reactor.T_bar <= 0 && return []
 
   tmp_reactor = deepcopy(cur_reactor)
