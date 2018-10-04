@@ -30,23 +30,19 @@ function bisect_reorder!(cur_vector::Vector)
   cur_vector
 end
 
-function breadth_indices(num_points::Number)
-  cur_indices = []
+function collect_bisection_indexes!(ix, level, a, b)
+    a ≤ b || return
+    mid = (a+b) ÷ 2
+    push!(ix, level => mid)
+    collect_bisection_indexes!(ix, level + 1, a, mid - 1)
+    collect_bisection_indexes!(ix, level + 1, mid + 1, b)
+end
 
-  cur_step = num_points
-  while length(cur_indices) < num_points - 1
-    cur_step = Int(floor( (cur_step-1) / 2 )) + 1
-    @assert !iszero(cur_step)
-
-    for cur_index in 1:num_points-1
-      iszero( cur_index % cur_step ) || continue
-      in(cur_index, cur_indices) && continue
-      push!(cur_indices, cur_index)
-    end
-  end
-  push!(cur_indices, num_points)
-
-  cur_indices
+function breadth_indices(n)
+    ix = Vector{Pair{Int,Int}}()
+    sizehint!(ix, n)
+    collect_bisection_indexes!(ix, 0, 1, n)
+    last.(sort!(ix, by = first))
 end
 
 function out_in_reorder!(cur_vector::Vector)
