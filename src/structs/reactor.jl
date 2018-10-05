@@ -214,7 +214,7 @@ function _Reactor!(cur_reactor::AbstractReactor, cur_kwargs::Dict)
       try
         cur_gamma = fzero(
           tmp_gamma -> int_b_p(tmp_gamma) - cur_lhs,
-          rand()
+          2 * rand() - 1
         )
       catch
         continue
