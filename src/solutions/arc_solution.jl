@@ -10,10 +10,16 @@ function arc_solution()
   cur_reactor.B_0 = 9.2
 
   cur_reactor.P_F = 525
+
   cur_reactor.f_BS = 0.63
+  cur_reactor.f_CD = 1.00 - cur_reactor.f_BS
+  cur_reactor.f_IN = 0.00
 
   cur_reactor.beta_N = cur_reactor.max_beta_N
   cur_reactor.q_95 = 7.2
+  cur_reactor.P_W = 2.5
+
+  cur_reactor.volume = 141
 
   cur_reactor
 end

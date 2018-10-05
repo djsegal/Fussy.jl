@@ -10,10 +10,16 @@ function act_2_solution()
   cur_reactor.B_0 = 8.75
 
   cur_reactor.P_F = 2637
+
   cur_reactor.f_BS = 0.77
+  cur_reactor.f_CD = 1.00 - cur_reactor.f_BS
+  cur_reactor.f_IN = 0.00
 
   cur_reactor.beta_N = cur_reactor.max_beta_N
   cur_reactor.q_95 = 8.0
+  cur_reactor.P_W = 1.46
+
+  cur_reactor.volume = 2209
 
   cur_reactor
 end

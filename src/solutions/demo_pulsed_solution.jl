@@ -10,10 +10,16 @@ function demo_pulsed_solution()
   cur_reactor.B_0 = 5.667
 
   cur_reactor.P_F = 2037
-  cur_reactor.f_BS = 0.323
+
+  cur_reactor.f_BS = 0.348
+  cur_reactor.f_CD = 0.096
+  cur_reactor.f_IN = 0.557
 
   cur_reactor.beta_N = cur_reactor.max_beta_N
   cur_reactor.q_95 = 3.247
+  cur_reactor.P_W = 1.05
+
+  cur_reactor.volume = 2502
 
   cur_reactor
 end
