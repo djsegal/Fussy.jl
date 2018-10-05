@@ -28,6 +28,8 @@ function solve!(cur_reactor::AbstractReactor)
   if !isempty(valid_reactors)
     cur_reactor.I_P = valid_reactors[indmin(valid_costs)].I_P
     cur_reactor.is_good = true
+  else
+    cur_reactor.is_valid = false
   end
 
   update!(cur_reactor)
