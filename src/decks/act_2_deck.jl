@@ -1,5 +1,6 @@
 function act_2_deck(cur_T_bar::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
   cur_dict = Dict(
+    :deck => :act_2,
     :T_bar => cur_T_bar,
     :is_pulsed => false,
     :H => 1.22,

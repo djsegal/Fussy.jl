@@ -1,5 +1,6 @@
 function arc_deck(cur_T_bar::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
   cur_dict = Dict(
+    :deck => :arc,
     :T_bar => cur_T_bar,
     :is_pulsed => false,
     :H => 1.8,

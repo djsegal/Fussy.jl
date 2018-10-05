@@ -1,5 +1,6 @@
 function demo_steady_deck(cur_T_bar::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
   cur_dict = Dict(
+    :deck => :demo_steady,
     :T_bar => cur_T_bar,
     :is_pulsed => false,
     :H => 1.4,

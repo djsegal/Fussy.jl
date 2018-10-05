@@ -1,5 +1,6 @@
 function proteus_deck(cur_T_bar::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
   cur_dict = Dict(
+    :deck => :proteus,
     :T_bar => cur_T_bar,
     :is_pulsed => true,
     :H => 1.0,

@@ -1,5 +1,6 @@
 function demo_pulsed_deck(cur_T_bar::AbstractSymbol=symbols(:T_bar); cur_kwargs...)
   cur_dict = Dict(
+    :deck => :demo_pulsed,
     :T_bar => cur_T_bar,
     :H => 1.1,
     :Q => 39.86,
