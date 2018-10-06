@@ -11,12 +11,16 @@
   cur_numerator += K_P(cur_reactor) * cur_reactor.sigma_v
   cur_denominator += K_P(cur_reactor) * cur_reactor.sigma_v
 
-  cur_numerator ^= cur_reactor.mode_scaling[:P]
-  cur_numerator *= cur_reactor.T_bar
-
+  # cur_numerator -= K_BR(cur_reactor) * sqrt(cur_reactor.T_bar)
   cur_denominator -= K_BR(cur_reactor) * sqrt(cur_reactor.T_bar)
 
-  cur_G = cur_numerator
+  ( cur_numerator > 0 ) || return NaN
+
+  cur_numerator ^= cur_reactor.mode_scaling[:P]
+
+  cur_G = cur_reactor.T_bar
+
+  cur_G *= cur_numerator
 
   cur_G /= cur_denominator
 
